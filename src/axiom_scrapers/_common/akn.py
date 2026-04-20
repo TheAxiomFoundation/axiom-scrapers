@@ -100,6 +100,11 @@ def build_akn_xml(section: Section) -> str:
     exp_uri = f"{work_uri}/eng@{gen}"
     manifestation_uri = f"{exp_uri}/main.xml"
 
+    work_uri_xml = xml_escape(work_uri, {'"': "&quot;"})
+    exp_uri_xml = xml_escape(exp_uri, {'"': "&quot;"})
+    manifestation_uri_xml = xml_escape(manifestation_uri, {'"': "&quot;"})
+    author_url_xml = xml_escape(section.author_url, {'"': "&quot;"})
+
     eid = _safe_eid(number)
 
     return f"""<?xml version="1.0" encoding="UTF-8"?>
@@ -108,34 +113,34 @@ def build_akn_xml(section: Section) -> str:
     <meta>
       <identification source="#axiom">
         <FRBRWork>
-          <FRBRthis value="{work_uri}"/>
-          <FRBRuri value="{work_uri}"/>
+          <FRBRthis value="{work_uri_xml}"/>
+          <FRBRuri value="{work_uri_xml}"/>
           <FRBRauthor href="#{section.author_id}"/>
           <FRBRcountry value="{jurisdiction}"/>
-          <FRBRnumber value="{xml_escape(number)}"/>
-          <FRBRname value="{xml_escape(section.authority_code)}"/>
+          <FRBRnumber value="{xml_escape(number, {'"': "&quot;"})}"/>
+          <FRBRname value="{xml_escape(section.authority_code, {'"': "&quot;"})}"/>
         </FRBRWork>
         <FRBRExpression>
-          <FRBRthis value="{exp_uri}"/>
-          <FRBRuri value="{exp_uri}"/>
+          <FRBRthis value="{exp_uri_xml}"/>
+          <FRBRuri value="{exp_uri_xml}"/>
           <FRBRdate date="{gen}" name="publication"/>
           <FRBRauthor href="#axiom"/>
           <FRBRlanguage language="eng"/>
         </FRBRExpression>
         <FRBRManifestation>
-          <FRBRthis value="{manifestation_uri}"/>
-          <FRBRuri value="{manifestation_uri}"/>
+          <FRBRthis value="{manifestation_uri_xml}"/>
+          <FRBRuri value="{manifestation_uri_xml}"/>
           <FRBRdate date="{gen}" name="generation"/>
           <FRBRauthor href="#axiom"/>
         </FRBRManifestation>
       </identification>
       <references source="#axiom">
-        <TLCOrganization eId="{section.author_id}" href="{section.author_url}" showAs="{xml_escape(section.author_name)}"/>
+        <TLCOrganization eId="{section.author_id}" href="{author_url_xml}" showAs="{xml_escape(section.author_name, {'"': "&quot;"})}"/>
         <TLCOrganization eId="axiom" href="https://axiom-foundation.org" showAs="Axiom Foundation"/>
       </references>
     </meta>
     <body>
-      <section eId="{eid}">
+      <section eId="{xml_escape(eid, {'"': "&quot;"})}">
         <num>{xml_escape(section.citation)}</num>
         <heading>{xml_escape(section.heading or f"Section {number}")}</heading>
         <content>

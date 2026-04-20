@@ -26,6 +26,7 @@ from __future__ import annotations
 import re
 from collections.abc import Iterable
 from datetime import date
+from pathlib import Path
 
 from axiom_scrapers._common import Scraper, Section, clean_text, http_get
 
@@ -76,10 +77,8 @@ class ILCSStatutesScraper(Scraper[str]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> import_pathlib.Path:  # type: ignore[name-defined]
+    def relative_output_path(self, section: Section) -> Path:
         """Nest by chapter so the tree stays browseable."""
-        from pathlib import Path  # local — keep the module import surface tight
-
         chapter = section.work_number.split("-")[0]
         return Path(
             self.jurisdiction,

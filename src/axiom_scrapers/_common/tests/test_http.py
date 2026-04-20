@@ -30,7 +30,7 @@ class _FakeResponse:
         return self._body
 
 
-def _make_opener(responses: list[Any]):
+def _make_opener(responses: list[Any]) -> Any:
     """Return a fake ``opener`` callable that replays `responses` in order.
 
     Each entry is either a ``_FakeResponse`` (returned) or an ``Exception``
@@ -45,7 +45,8 @@ def _make_opener(responses: list[Any]):
         nxt = responses.pop(0)
         if isinstance(nxt, BaseException):
             raise nxt
-        return nxt  # type: ignore[return-value]
+        assert isinstance(nxt, _FakeResponse)
+        return nxt
 
     opener.calls = calls  # type: ignore[attr-defined]
     return opener
@@ -103,19 +104,19 @@ class TestHttpGetSkippable:
     @pytest.mark.parametrize("status", sorted(SKIPPABLE_STATUS))
     def test_skippable_status_returns_none_no_retry(self, status: int) -> None:
         err = urllib.error.HTTPError(
-            url="https://x.test/", code=status, msg="gone", hdrs=None, fp=io.BytesIO(b"")
+            url="https://x.test/", code=status, msg="gone", hdrs=None, fp=io.BytesIO(b"")  # type: ignore[arg-type]
         )
         opener = _make_opener([err])
         got = http_get("https://x.test/", opener=opener, sleeper=_noop_sleep)
         assert got is None
         # One call — no retry after a skippable status.
-        assert len(opener.calls) == 1  # type: ignore[attr-defined]
+        assert len(opener.calls) == 1
 
 
 class TestHttpGetRetries:
     def test_retries_on_5xx_then_succeeds(self) -> None:
         err = urllib.error.HTTPError(
-            url="https://x.test/", code=502, msg="bad gateway", hdrs=None, fp=io.BytesIO(b"")
+            url="https://x.test/", code=502, msg="bad gateway", hdrs=None, fp=io.BytesIO(b"")  # type: ignore[arg-type]
         )
         opener = _make_opener([err, err, _FakeResponse(b"ok")])
         sleeps: list[float] = []
@@ -141,17 +142,17 @@ class TestHttpGetRetries:
 
     def test_soft_fails_after_retries_exhausted(self) -> None:
         err = urllib.error.HTTPError(
-            url="https://x.test/", code=500, msg="boom", hdrs=None, fp=io.BytesIO(b"")
+            url="https://x.test/", code=500, msg="boom", hdrs=None, fp=io.BytesIO(b"")  # type: ignore[arg-type]
         )
         opener = _make_opener([err] * 5)
         got = http_get("https://x.test/", retries=5, opener=opener, sleeper=_noop_sleep)
         assert got is None
         # 5 attempts total, 4 backoff sleeps between them.
-        assert len(opener.calls) == 5  # type: ignore[attr-defined]
+        assert len(opener.calls) == 5
 
     def test_429_uses_longer_backoff(self) -> None:
         err = urllib.error.HTTPError(
-            url="https://x.test/", code=429, msg="rate limited", hdrs=None, fp=io.BytesIO(b"")
+            url="https://x.test/", code=429, msg="rate limited", hdrs=None, fp=io.BytesIO(b"")  # type: ignore[arg-type]
         )
         opener = _make_opener([err, _FakeResponse(b"ok")])
         sleeps: list[float] = []
@@ -162,7 +163,7 @@ class TestHttpGetRetries:
 
     def test_429_caps_at_60_seconds(self) -> None:
         err = urllib.error.HTTPError(
-            url="https://x.test/", code=429, msg="rate limited", hdrs=None, fp=io.BytesIO(b"")
+            url="https://x.test/", code=429, msg="rate limited", hdrs=None, fp=io.BytesIO(b"")  # type: ignore[arg-type]
         )
         opener = _make_opener([err] * 10 + [_FakeResponse(b"ok")])
         sleeps: list[float] = []

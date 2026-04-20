@@ -9,7 +9,7 @@ cross-cutting run options.
 
 Example::
 
-    uv run axiom-scrape --jurisdiction us-il --doc-type statutes --out ./out
+    uv run axiom-scrape --jurisdiction us-il --doc-type statute --out ./out
     uv run axiom-scrape --list
 """
 
@@ -19,17 +19,24 @@ import argparse
 import importlib
 import sys
 from pathlib import Path
+from typing import Any
 
 from ._common import Scraper
 
 #: (jurisdiction, doc_type) → fully-qualified scraper class path.
 #: Adding a new scraper is one line here plus its module + tests.
+#: ``doc_type`` matches ``Section.doc_type`` (singular: "statute", "regulation").
 REGISTRY: dict[tuple[str, str], str] = {
-    ("us-il", "statutes"): "axiom_scrapers.jurisdictions.us_il.statutes.scrape:ILCSStatutesScraper",
+    ("us-il", "statute"): "axiom_scrapers.jurisdictions.us_il.statutes.scrape:ILCSStatutesScraper",
+    ("us-mt", "statute"): "axiom_scrapers.jurisdictions.us_mt.statutes.scrape:MCAStatutesScraper",
+    ("us-nc", "statute"): "axiom_scrapers.jurisdictions.us_nc.statutes.scrape:GSStatutesScraper",
+    ("us-nv", "statute"): "axiom_scrapers.jurisdictions.us_nv.statutes.scrape:NRSStatutesScraper",
+    ("us-oh", "statute"): "axiom_scrapers.jurisdictions.us_oh.statutes.scrape:RCStatutesScraper",
+    ("us-pa", "statute"): "axiom_scrapers.jurisdictions.us_pa.statutes.scrape:PAStatutesScraper",
 }
 
 
-def _load(path: str) -> type[Scraper]:
+def _load(path: str) -> type[Scraper[Any]]:
     """Import ``module:attr`` and return the attribute."""
     mod_name, attr = path.split(":", 1)
     mod = importlib.import_module(mod_name)
@@ -53,8 +60,8 @@ def main(argv: list[str] | None = None) -> int:
     )
     parser.add_argument(
         "--doc-type",
-        default="statutes",
-        help="One of: statutes, regulations, guidance, manuals, bills, rulemaking.",
+        default="statute",
+        help="One of: statute, regulation, guidance, manual, bill, rulemaking.",
     )
     parser.add_argument("--out", type=Path, default=Path("./out"))
     parser.add_argument("--limit", type=int, default=None)

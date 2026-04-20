@@ -23,7 +23,7 @@ from __future__ import annotations
 import sys
 import time
 from abc import ABC, abstractmethod
-from collections.abc import Iterable
+from collections.abc import Callable, Iterable
 from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import date
@@ -34,6 +34,7 @@ from .akn import Section, build_akn_xml
 from .text import safe_path_segment
 
 SectionRef = TypeVar("SectionRef")
+LogFn = Callable[[str], None]
 
 
 @dataclass(frozen=True)
@@ -216,9 +217,6 @@ class Scraper(ABC, Generic[SectionRef]):
         """
         safe = safe_path_segment(section.work_number)
         return Path(self.jurisdiction) / self.doc_type / f"{safe}.xml"
-
-
-LogFn = "callable[[str], None]"  # type: ignore[assignment]
 
 
 def _default_logger(msg: str) -> None:

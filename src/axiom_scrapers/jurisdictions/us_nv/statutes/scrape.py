@@ -30,6 +30,7 @@ the full page into a list of :class:`Section` objects, splitting on the
 from __future__ import annotations
 
 import re
+import sys
 import time
 from collections.abc import Callable, Iterable
 from concurrent.futures import ThreadPoolExecutor, as_completed
@@ -176,13 +177,17 @@ class NRSStatutesScraper(Scraper[tuple[str, str]]):
 
         def _fetch_chapter(ref: tuple[str, str]) -> list[Section]:
             _chapter, filename = ref
-            res = http_get(f"{BASE}/{filename}")
-            if res is None:
+            try:
+                res = http_get(f"{BASE}/{filename}")
+                if res is None:
+                    return []
+                return _parse_sections(
+                    res.text(_NV_ENCODING),
+                    generation_date=self.generation_date,
+                )
+            except Exception as exc:  # soft-fail, mirrors base class behavior
+                print(f"  WARN parse failed for {filename!r}: {exc}", file=sys.stderr, flush=True)
                 return []
-            return _parse_sections(
-                res.text(_NV_ENCODING),
-                generation_date=self.generation_date,
-            )
 
         with ThreadPoolExecutor(max_workers=self.workers) as ex:
             futures = {ex.submit(_fetch_chapter, ref): ref for ref in refs}

@@ -35,7 +35,7 @@ class TestMain:
         assert exc.value.code == 2
 
     def test_unknown_scraper_exits_2(self, capsys: pytest.CaptureFixture[str]) -> None:
-        rc = cli.main(["--jurisdiction", "us-xx", "--doc-type", "statutes"])
+        rc = cli.main(["--jurisdiction", "us-xx", "--doc-type", "statute"])
         assert rc == 2
         err = capsys.readouterr().err
         assert "no scraper registered" in err
@@ -78,7 +78,7 @@ class TestMain:
         # Register the stub and point the loader at it.
         monkeypatch.setitem(
             cli.REGISTRY,
-            ("us-stub", "statutes"),
+            ("us-stub", "statute"),
             "tests.test_cli:_STUB_SCRAPER_REF",
         )
         # Also patch _load to bypass import machinery for the stub.
@@ -96,7 +96,7 @@ class TestMain:
                 "--jurisdiction",
                 "us-stub",
                 "--doc-type",
-                "statutes",
+                "statute",
                 "--out",
                 str(tmp_path),
             ]

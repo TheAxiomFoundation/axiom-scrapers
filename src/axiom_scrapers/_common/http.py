@@ -21,6 +21,7 @@ import time
 import urllib.error
 import urllib.request
 from collections.abc import Callable
+from typing import Any
 
 DEFAULT_UA = (
     "Mozilla/5.0 (compatible; axiom-scraper/0.1; "
@@ -59,8 +60,7 @@ def http_get(
     timeout: float = 30.0,
     user_agent: str = DEFAULT_UA,
     sleeper: Callable[[float], None] = time.sleep,
-    opener: Callable[[urllib.request.Request, float], urllib.request.http.client.HTTPResponse]
-    | None = None,
+    opener: Callable[[urllib.request.Request, float], Any] | None = None,
 ) -> FetchResult | None:
     """Fetch a URL with retries + soft-fail. Returns None on give-up.
 
@@ -93,15 +93,14 @@ def http_get(
     thousand-section walk shouldn't kill the whole run. Callers should
     check for ``None`` and skip cleanly.
     """
-    if opener is None:
-        opener = urllib.request.urlopen  # type: ignore[assignment]
+    _opener: Any = opener if opener is not None else urllib.request.urlopen
 
     last_exc: Exception | None = None
     req = urllib.request.Request(url, headers={"User-Agent": user_agent})
 
     for attempt in range(1, retries + 1):
         try:
-            with opener(req, timeout) as resp:  # type: ignore[misc]
+            with _opener(req, timeout) as resp:
                 body = resp.read()
                 charset: str | None = None
                 content_type = resp.headers.get("Content-Type", "")
