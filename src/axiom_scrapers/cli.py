@@ -27,12 +27,25 @@ from ._common import Scraper
 #: Adding a new scraper is one line here plus its module + tests.
 #: ``doc_type`` matches ``Section.doc_type`` (singular: "statute", "regulation").
 REGISTRY: dict[tuple[str, str], str] = {
+    ("us-az", "statute"): "axiom_scrapers.jurisdictions.us_az.statutes.scrape:ARSStatutesScraper",
+    ("us-de", "statute"): "axiom_scrapers.jurisdictions.us_de.statutes.scrape:DelCodeStatutesScraper",
     ("us-il", "statute"): "axiom_scrapers.jurisdictions.us_il.statutes.scrape:ILCSStatutesScraper",
+    ("us-in", "statute"): "axiom_scrapers.jurisdictions.us_in.statutes.scrape:ICStatutesScraper",
+    ("us-ky", "statute"): "axiom_scrapers.jurisdictions.us_ky.statutes.scrape:KRSStatutesScraper",
+    ("us-mn", "statute"): "axiom_scrapers.jurisdictions.us_mn.statutes.scrape:MinnStatutesScraper",
+    ("us-mo", "statute"): "axiom_scrapers.jurisdictions.us_mo.statutes.scrape:RSMoStatutesScraper",
     ("us-mt", "statute"): "axiom_scrapers.jurisdictions.us_mt.statutes.scrape:MCAStatutesScraper",
     ("us-nc", "statute"): "axiom_scrapers.jurisdictions.us_nc.statutes.scrape:GSStatutesScraper",
+    ("us-ne", "statute"): "axiom_scrapers.jurisdictions.us_ne.statutes.scrape:NebRevStatScraper",
+    ("us-nh", "statute"): "axiom_scrapers.jurisdictions.us_nh.statutes.scrape:RSAStatutesScraper",
     ("us-nv", "statute"): "axiom_scrapers.jurisdictions.us_nv.statutes.scrape:NRSStatutesScraper",
     ("us-oh", "statute"): "axiom_scrapers.jurisdictions.us_oh.statutes.scrape:RCStatutesScraper",
+    ("us-or", "statute"): "axiom_scrapers.jurisdictions.us_or.statutes.scrape:ORSStatutesScraper",
     ("us-pa", "statute"): "axiom_scrapers.jurisdictions.us_pa.statutes.scrape:PAStatutesScraper",
+    ("us-ri", "statute"): "axiom_scrapers.jurisdictions.us_ri.statutes.scrape:RIGLStatutesScraper",
+    ("us-sc", "statute"): "axiom_scrapers.jurisdictions.us_sc.statutes.scrape:SCCodeStatutesScraper",
+    ("us-vt", "statute"): "axiom_scrapers.jurisdictions.us_vt.statutes.scrape:VSAStatutesScraper",
+    ("us-wa", "statute"): "axiom_scrapers.jurisdictions.us_wa.statutes.scrape:RCWStatutesScraper",
 }
 
 

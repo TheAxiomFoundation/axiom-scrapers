@@ -1,0 +1,982 @@
+﻿
+	<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+	
+	<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
+	<head>
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	    <meta name="robots" content="noimageindex">
+	    <meta charset="iso-8859-1">
+	    <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=ISO-8859-1">
+	    	    <title>Code of Laws - Title 1 - Chapter 1- - ADMINISTRATION OF THE GOVERNMENT</title>
+	    <link rel="SHORTCUT ICON" href="/images/stateflagsmall.ico" />
+		<link rel="icon" href="/images/stateflagsmall.ico" type="image/ico" />
+		<link rel="SHORTCUT ICON" href="/images/South-Carolina-Flag2.ico" />
+
+		<link type="text/css" rel="stylesheet" href="/css/main.css" media="all" />
+				
+		<!--[if lte IE 7]>
+		<link type="text/css" rel="stylesheet" href="/css/ie7main.css" media="all" />
+		<![endif]-->
+		<!--[if gte IE 7]>
+		<link type="text/css" rel="stylesheet" href="/css/iemain.css" media="all" />
+		<![endif]-->
+		<link type="text/css" rel="stylesheet" href="/css/print.css" media="print" />
+		<link type="text/css" rel="stylesheet" href="/css/supplement.css" media="screen" />
+		<!--<link type="text/css" rel="stylesheet" href="/css/zipsearch.css" media="screen" />
+		<link type="text/css" rel="stylesheet" href="/css/vote.css" media="screen" />
+		<link type="text/css" rel="stylesheet" href="/css/contact.css" media="screen" />
+		<link type="text/css" rel="stylesheet" href="/css/navwrap.css" media="screen" />
+		<link type="text/css" rel="stylesheet" href="/css/linkbar.css" media="screen" />-->
+	
+		<!--<script type="text/javascript" src="/js/jquery-1.10.1.min.js"></script>
+		<script type="text/javascript" src="/js/jquery-1.12.4.min.js"></script>-->
+		<script type="text/javascript" src="/js/jquery-3.5.1.min.js"></script>
+				<script type="text/javascript" src="/js/main_linux.js"></script>
+		
+
+		
+
+
+
+		<!--<script type="text/javascript" src="/js/common.js"></script>
+		<script type="text/javascript" src="/js/utils.js"></script>
+		<script type="text/javascript" src="/js/date.js"></script>
+		<script type="text/javascript" src="/js/lightbox.js"></script>
+		<script type="text/javascript" src="/js/legislation.js"></script>
+		<script type="text/javascript" src="/js/logon_lits.js"></script>
+		<script type="text/javascript" src="/js/message.js"></script>
+		<script type="text/javascript" src="/js/comm_meeting.js"></script>-->
+		<script type="text/vbscript" src="/vbs/comm_meeting.vbs"></script>
+		<!--<script type="text/javascript" src="/js/regs.js"></script>-->
+				
+	   	<script type="text/javascript">
+	    //document.onclick = function () { document.getElementById('transbox').style.display= 'none' };
+	    	var xmlhttp=false;
+			xmlhttp = create_xml_object();
+	
+			function getElement(ele)
+			{
+				var theobj = false;
+				if(typeof ele == 'string')
+					theobj = (document.getElementById)?document.getElementById(ele):document.all[ele];
+				else
+					theobj = ele;
+			
+				return theobj;
+			}
+		
+			function checkreader(friendlyalert)
+			{
+			 	/*friendlyalert=friendlyalert||false;
+			 	
+			 	var browser_info = perform_acrobat_detection();
+				if (!browser_info.acrobat)
+				{
+				 	loadadobebox('adobebox', '/adobe.php');
+					return false;
+				}
+				else if (friendlyalert)
+				{
+			 		alert(friendlyalert);
+				}*/
+				return true;
+			}
+				
+			function loadadobebox(boxname, url)
+			{
+				var response = false;
+	
+				doRequest(xmlhttp, "GET", url, false, null, null);
+				if (xmlhttp.status == 200)
+				{
+		         	response = xmlhttp.responseText;
+				}
+	
+				if(response)
+				{
+			 		var ele = document.getElementById(boxname);
+				 	if (ele)
+				 	{
+				 		ele.style.visibility = 'hidden';
+		 				ele.style.display = 'block';
+	
+		 				positionElement(ele, 'center', 'center', true);
+	
+						ele.innerHTML = response;
+					    ele.style.visibility = 'visible';
+					    ele.style.display = 'block';
+	//				    ele.scrollIntoView(true);
+					}
+				}
+				return response;
+			}
+	
+	
+			function init()
+			{
+		 		var ld=document.getElementById("loading");
+				if(ld)
+				{
+					ld.style.display = 'none';
+				}
+			}
+			
+			function openmore()
+			{
+			 	var id = document.getElementById('quicksearch');
+			 	if (id)
+			 	{
+				 	var pos = findPos(id);
+				 	id.style.zIndex = 10;
+		//		 	id.style.left = pos[0]+'px';
+		//		  	id.style.top = pos[1]+'px';
+				  	id.style.height = '295px';
+				  	id.style.position = 'absolute';
+				  	id.style.backgroundColor = '#f7f4ec';
+				  	var id2 = document.getElementById('searchmore');
+				  	if (id2)
+				  	{
+				  	 	id2.style.display = 'none';
+				  	}
+				  	var id3 = document.getElementById('contactlegislatordiv');
+				  	if (id3)
+				  	{
+				  	 	id3.style.display = 'none';
+				  	}
+				}
+			}
+		
+			function closemore()
+			{
+			 	var id = document.getElementById('quicksearch');
+			 	if (id)
+			 	{
+				  	id.style.height = '135px';
+				  	id.style.position = '';
+				  	id.style.backgroundColor = 'transparent';
+				  	var id2 = document.getElementById('searchmore');
+				  	if (id2)
+				  	{
+				  	 	id2.style.display = 'block';
+				  	}
+				  	var id3 = document.getElementById('contactlegislatordiv');
+				  	if (id3)
+				  	{
+				  	 	id3.style.display = '';
+				  	}
+				}		 	
+			}
+		
+		<!-- This script and many more are available free online at -->
+		<!-- The JavaScript Source!! http://javascript.internet.com -->
+		
+		<!-- Begin
+		function right(e) {
+		var msg = "Use of this image is strictly prohibited unless express written permission is given to the user by South Carolina Legislative Services Agency.";
+		if (navigator.appName == 'Netscape' && e.which == 3) {
+		alert(msg);
+		return false;
+		stopEvent(e);
+		}
+		if (navigator.appName == 'Microsoft Internet Explorer' && event.button==2) {
+		alert(msg);
+		return false;
+			stopEvent(event);
+		}
+		else return true;
+		}
+		
+	function trap() 
+	{
+		if(document.images)
+		{
+			for(i=0;i<document.images.length;i++)
+			{
+				if(document.images[i].className == 'allowcontextmenu')
+				{
+					// this should have no scripting
+				}
+				else
+				{
+				 	document.images[i].onmousedown = right;
+					document.images[i].oncontextmenu = function(){ return false; };
+					//document.images[i].onmouseup = right;
+				}
+			}
+		}
+	}
+
+	function findfwtext(texttofind) 
+	{
+	 	var fwtextele = document.getElementById('fwtext');
+		if(fwtextele)
+		{
+			fwtextele.value = texttofind;
+		}
+	}	
+		// End -->
+		</script>
+
+		<!-- ADDED FOR V4 -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LJY6FMNQKH"></script>
+
+
+<script type="text/javascript">
+
+//ADDED FOR V4
+//Google tag (gtag.js) 
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-LJY6FMNQKH');
+
+ 
+ /* COMMENTING OUT UPGRADING TO V4 -A
+  var _gaq = _gaq || [];
+  _gaq.push(['_setAccount', 'UA-36207109-1']);
+  _gaq.push(['_setDomainName', 'scstatehouse.gov']);
+  _gaq.push(['_setAllowLinker', true]);
+  _gaq.push(['_trackPageview']);
+ 
+  (function() {
+    var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+    ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+  })();
+*/
+  
+      $(document).ready(function(){
+        // COMMENTING THIS OUT NO LONGER BEING ACTIVELY USED TO MONITOR FOR TRAFFIC TO SPECIFIC LINKS - A
+        /*
+          var anchors = $('div#contentsection a');
+
+          //console.log('anchors...'+anchors.length);
+          if(anchors.length > 0){
+            //console.log('setting up event handler...');
+            anchors.click(function(){
+              var a = $(this).attr('href');
+              if(_gaq && (a.substr(-3) == 'htm' || a.substr(-4) == 'html' || a.substr(-3) == 'doc' || a.substr(-4) == 'docx' || a.substr(-3) == 'pdf' || a.substr(-3) == 'xls' || a.substr(-4) == 'xlsx')) {
+                //console.log(a);
+                _gaq.push(['_trackPageview', $(this).attr('href')]);
+              }
+              
+              var aText = $(this).text().toLowerCase();
+              if (a.indexOf('getfile.php') > -1 && aText === 'word'){
+                    _gaq.push(['_trackEvent', 'Word Doc', 'Download', ('from page: ' + document.location + ' - href: ' + a)]);
+              }
+
+            });
+          }
+          */
+      });
+
+</script>
+	</head>
+	
+		
+	<body class="home"  onload="init(); trap();">
+	<noscript>Your browser does not support JavaScript!  This page will not render correctly.</noscript> 
+
+
+	
+	<div id="adobebox" style="position:absolute; width:400px; height:150px; border:2px solid #555555; background-color:#cccccc; display:none;"></div>
+	<div id="container" >	
+				<div id="header" class="nodisplay" style="text-align:center; height:100px;" >
+									<img id="headerimg" class="nodisplay" alt="South Carolina Legislature" title="South Carolina Legislature" src="/images/header8.png" />
+								
+							<!--	<div class="award"><span style="color:#831224; font-weight:bold; font-size:1.5em;">*</span> Recipient of<br>the Notable State Documents Award<br>by the<br>South Carolina<br>State Library.</div>-->
+				
+				
+			</div>
+			<div class="printdisplay"><img border="0" src="/images/titleprint.jpg" alt="South Carolina Legislature" title="South Carolina Legislature" alt="South Carolina Legislature" title="South Carolina State Legislature" /><br /><hr /><br /></div>
+	
+			<div id="pagebody" >
+	
+	
+<!--<div id="topmessage">
+<br style="display:block; margin-top:10px;">
+Searches and data queries will be unavailable beginning Friday, August 19, 2016, from 8:00 PM until Saturday, August 20th at 8:00 AM<br>due to scheduled maintenance.</div>-->
+				<!-- Prompt IE 8/7/6 users to upgrade to a newer browser. -->
+				<!--[if lte IE 8]>
+				<div class="oldframe">In order to improve your experience using this website, please <a href="http://browsehappy.com/">upgrade your browser</a>.</div>
+				<![endif]-->
+			
+			
+			
+			<div id="menu" class="nodisplay">
+				<ul class="nodisplay">
+				<li><a href="/index.php">Home</a></li>
+<li><a href="/senate.php">Senate</a></li>
+<li><a href="/house.php">House</a></li>
+<li><a href="/committeeinfo.php">Committee&nbsp;Postings&nbsp;and&nbsp;Reports</a></li>
+<li><a href="/council.php">Legislative Council</a></li>
+<li><a href="/citizens.php">Citizens&#39; Interest</a></li>
+<li><a href="/publications.php">Publications</a></li>
+		    	</ul>
+			</div>
+			<div id="search" class="nodisplay" style="height: 28px;"><div class="nodisplay" style="float:right; margin:6px 20px 0px 0;">
+							<!--<a style="color:#f7f4ec; height:15px;" href="#" onClick="rsswindow();"><img border=0 src="/images/lock.png" style="vertical-align: middle; width: 15px; height: 15px;">&nbsp;Staff&nbsp;Portal</a>-->
+<!--				<a style="color:#f7f4ec; height:15px;" href="/splashpage/splashpage.html"><img border=0 src="/images/lock.png" style="vertical-align: middle; width: 15px; height: 15px;">&nbsp;Staff&nbsp;Portal</a> -->
+				<a style="color:#f7f4ec; height:15px;" href="/onlineservices/index.php"><img border="0" src="/images/lock.png" style="vertical-align: middle; width: 15px; height: 15px;">&nbsp;Staff&nbsp;Portal</a>
+			<!--	<a style="color:#f7f4ec; height:15px;" href="/maintenance_portal.php"><img border=0 src="/images/lock.png" style="vertical-align: middle; width: 15px; height: 15px;">&nbsp;Staff&nbsp;Portal</a>-->
+						</div></div>
+			
+	
+					<div id="sidebar" class="nodisplay">
+	<div id="vidlinks" style="height: 50px;">
+						<!--<img src="/images/videobutton12d.png">-->
+											<ul id="vidsidemenu">
+	<li id="vidinnermenu" style="font-size:16px; margin: 0 0 5px 0;">Chamber Video</li>
+<li id="sbroadcast" style="float: left; width:50%;">
+<a id="liveS" style="width: 100%; text-decoration:underline;" href="javascript:void(0);" onClick="live_stream('S', false, false, '0')">Senate</a><br><a id="liveaudioS" style="margin:-3px 0 0 0; text-decoration:underline; width: 100%; font-size: 8px;" href="javascript:void(0);" onClick="live_stream('S', false, false, '1');">(Audio Only)</a>
+</li>
+<li id="hbroadcast" style="float: left; width:50%;">
+<a id="liveH" style="width: 100%; text-decoration:underline;" href="javascript:void(0);" onClick="live_stream('H', false, false, '0')">House</a><br><a id="liveaudioH" style="margin:-3px 0 0 0; text-decoration:underline; width: 100%; font-size: 8px;" href="javascript:void(0);" onClick="live_stream('H', false, false, '1');">(Audio Only)</a>
+</li>
+						</ul>
+					</div>
+					<div id="commvidlinks"><a href="/video/schedule.php">Video&nbsp;Schedule</a><a style="border-top:1px solid #fff; padding-top:12px;" href="/video/archives.php">Video Archives</a></div>
+										<div id="sidemenu">
+						<ul id="innermenu">
+		
+							<li><a href="/howdoi.php">How do I...</a></li>
+										
+							
+								<li class="nolink" onMouseOver="var ele=document.getElementById('sidesearch'); if(ele){ele.style.display='block'; document.sidesearchform.searchtext.focus();}" onMouseOut="var ele=document.getElementById('sidesearch'); if(ele){ele.style.display='none';}"><div class="nolinkdiv">Quick Search</div>
+								<div id="sidesearch" class="sidesubmenu">
+									<form id="sidesearchform" name="sidesearchform" method="POST" action="/search.php">
+									<input type="hidden" name="search" value="side" />
+									<div class="topelement"><label for="searchtext"><span class="label">Search for:</span></label><input id="searchtext" name="searchtext" type="text"/><a id="searchlink2" href="javascript:void(0);" onClick="document.sidesearchform.submit();"><img id="searchicon" src="/images/searchbutton.png" alt="Search" title="Search"/></a></div>
+			<!--						<div><input type="checkbox" id="searchchoice_all" name="searchchoice_all" value="all" /><label for="searchchoice_all">All</label></div>-->
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_fullsite" name="category" value="FULLSITE" /><label for="searchchoice_fullsite">&nbsp;Full Site Search</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_billnumber" name="category" value="BILL" /><label for="searchchoice_billnumber">&nbsp;Bill Number</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_legislation" name="category" value="LEGISLATION" CHECKED /><label for="searchchoice_legislation">&nbsp;Legislation</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_budget" name="category" value="BUDGET" /><label for="searchchoice_budget">&nbsp;Budget</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_codeoflaws" name="category" value="CODEOFLAWS" /><label for="searchchoice_codeoflaws">&nbsp;Code of Laws</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_codeofregs" name="category" value="CODEOFREGS" /><label for="searchchoice_codeofregs">&nbsp;Code of Regulations</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_constitution" name="category" value="CONSTITUTION" /><label for="searchchoice_constitution">&nbsp;Constitution</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_housejournals" name="category" value="HOUSEJOURNALS" /><label for="searchchoice_housejournals">&nbsp;House Journals</label></div>
+									<div style="padding-left:20px;"><input type="radio" id="searchchoice_senatejournals" name="category" value="SENATEJOURNALS" /><label for="searchchoice_senatejournals">&nbsp;Senate Journals</label></div>
+									<div class="bottomelement" style="padding-left:20px;"><input type="radio" id="searchchoice_billsummary" name="category" value="SUMMARY" /><label for="searchchoice_billsummary">&nbsp;LSA Bill Summary</label></div>
+								</form>
+									
+								</div>
+							</li>
+							<li><a href="/legislatorssearch.php">Find Your Legislators</a></li>
+							<li id="contactLegislatorLink"><a href="/email.php?chamber=B">Contact Your Legislator</a></li>
+									
+							<li><a href="/legislation.php">Legislation</a></li>
+							<li><a href="/listtracking/main.php" target="LTS">Track Legislation</a></li>
+							<li><a href="/multicriteria2/search.php" target="MCS">Multi-Criteria Search</a></li>
+									<!--<li><a href="#" onclick="multisearchwindow('INTROBOTH');">Multi-Criteria Search</a></li>-->
+									<!--<li><a href="#" onclick="multisearchwindow('INTROMANUAL');">Multi-Criteria Search</a></li>-->
+									<li><a href="/research.php">Research</a></li>
+	
+								<li class="nolink" onMouseOver="var ele=document.getElementById('law'); if(ele){ele.style.display='block';}" onMouseOut="var ele=document.getElementById('law'); if(ele){ele.style.display='none';}"><div class="nolinkdiv">South Carolina Law</div> 
+								<div id="law" class="sidesubmenu">
+									<div class="sidediv topelement"><a href="/newlaws.php">Ratifications &amp; Acts</a></div>
+									<div class="sidediv"><a href="/code/statmast.php">Code of Laws</a></div>
+									<div class="sidediv"><a href="/coderegs/statmast.php">Code of Regulations</a></div>
+									<div class="sidediv"><a href="/scconstitution/scconst.php">Constitution</a></div>
+									<div class="sidediv bottomelement"><a href="/state_register.php">State Register</a></div>
+								</div>
+							</li>
+										<li class="nolink" onMouseOver="var ele=document.getElementById('manual'); if(ele){ele.style.display='block';}" onMouseOut="var ele=document.getElementById('manual'); if(ele){ele.style.display='none';}"><div class="nolinkdiv">Legislative Manual</div>
+								<div id="manual" class="sidesubmenu">
+								
+<!--									<div class="sidediv topelement"><a href="https://web.sc.gov/LSAShoppingcart/Default.aspx" target="_blank">Purchase Manual</a></div>-->
+								
+<!--									<div class="sidediv topelement"><a href="https://secure.scstatehouse.gov/cgi-bin/webstore.exe" target="_blank">Purchase Manual</a></div>-->
+									<div class="sidediv topelement"><a href="javascript:#" onClick="alert('We are sorry, but we are unable to process online transactions at this time.\n\nIf you would still like to make a purchase, please contact us directly at (803) 212-4490 during normal business hours (8:30am - 5:00pm EST).');">Purchase Manual</a></div>
+									<div class="sidediv bottomelement"><a href="/man25/manual25.php">View Manual Online</a></div>
+								</div>
+							</li>
+							<li><a href="http://www.studentconnection.scstatehouse.gov">Student Connection</a></li>
+							<li><a href="/visit.php">Visiting the State House</a></li>
+							<li><a href="/archives.php">Archives</a></li>
+							<li><a href="http://www.sc.gov/Agency-Listing" target="_blank">State Agency Websites</a></li>
+							<!--<li><a href="/stateagencysites.php">State Agency Websites</a></li>-->
+							<li><a href="/citizensinterestpage/media.php">Media Links</a></li>
+				 		</ul>
+			    	</div>
+	
+					<div id="side_ad">
+						<A href="http://www.sc.gov/" target="_blank"><img border=0 src="/images/scgov3.jpg" alt="SC.gov" title="SC.gov" /></a>
+													<A href="http://www.statelibrary.sc.gov" target="_blank"><img border=0 src="/images/scsl_logo_rgb_web.png" alt="StateLibrary.SC.gov" title="StateLibrary.SC.gov" /></a>
+											</div>	    	
+			</div>
+
+	
+	<script type="text/javascript"> 
+		if ( '' === '1'){
+		 	
+			var link = document.getElementById('contactLegislatorLink');
+			if (link != 'undefined' && link != null){
+				link.style.display = 'none'; 
+				link.style.visibility = 'hidden';
+			}
+		}
+		if ( '' === '1'){
+		 	setTimeout(function(){
+				var link2 = document.getElementById('sendMsgLink');
+				if (link2 != 'undefined' && link2 != null){
+					link2.style.display = 'none'; 
+					link2.style.visibility = 'hidden';
+				};
+			}, 20);
+			
+		}  
+	</script>
+<div class="mainwidepanel">
+
+				<div id="breadcrumbs">
+						South Carolina Law &gt; <a href="/code/statmast.php">Code of Laws</a> &gt; <a href="/code/title1.php">Title 1</a>
+				</div>
+
+					<h2 class="barheader">South Carolina Code of Laws<br />
+									Unannotated<br />
+					</h2>
+
+				<div id="contentsection">
+<div style="font-weight: bold; text-align: center;">Title 1 - ADMINISTRATION OF THE GOVERNMENT</div>
+<br />
+
+<div style="text-align: center;">CHAPTER 1</div>
+<div style="text-align: center;">General Provisions</div><br />
+<div style="text-align: center;">ARTICLE 1</div>
+<div style="text-align: center;">Jurisdiction and Boundaries of State</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-10.</span> Jurisdiction and boundaries of the State.<br /><br />
+	The sovereignty and jurisdiction of this State extends to all places within its bounds, which are declared to be as follows:<br /><br />
+	The northern line beginning at a point at the low-water mark of the Atlantic Ocean on the eastern shore of Bird Island and then following the line as recorded by a set of 51 signed plats as follows:<br /><br />
+	Section between Horry County, SC and Brunswick/Columbus counties, NC: 1 plat sheet, signed by Sidney C. Miller 9/29/14 and Gary W. Thompson 2/24/15; Section between Dillon County, SC and Robeson County, NC: 2 plat sheets, signed by Sidney C. Miller and Gary W. Thompson 10/7/13; Section between Marlboro, Chesterfield and Lancaster counties, SC and Scotland, Richmond, Anson and Union counties, NC: 5 plat sheets, signed by Sidney C. Miller and Gary W. Thompson 10/7/13; Section between Lancaster and York counties, SC and Union and Mecklenberg counties, NC: 3 plat sheets, signed by Sidney C. Miller and Gary W. Thompson 10/7/13; Section of Lake Wylie: 1 plat sheet, signed by Sidney C. Miller and Gary W. Thompson 3/23/12; Section between York, Cherokee and Spartanburg counties, SC and Gaston, Cleveland, Rutherford and Polk counties, NC: 4 plat sheets, signed by Sidney C. Miller and Gary W. Thompson 10/7/13 (Section between Greenville and Pickens counties, SC and Polk, Henderson and Transylvania counties, NC: 34 plat sheets, signed by Sidney C. Miller and Gary W. Thompson dated 12/20/2005; Section between Pickens and Oconee counties, SC and Transylvania and Jackson counties, NC: 1 plat sheet, prepared by Concord Engineering &amp; Surveying, Inc. dated May 2005 to the most westward point on those plats marked by the &quot;+&quot; in the inscription &quot;LAT 35, AD 1813, NC + SC&quot; chiseled on Commissioners&#39; Rock on the east bank of the Chattooga River; thence following a geodetic line with a geodetic azimuth of 270 degrees to the centerline of the Chattooga River. (Plats on file with the South Carolina Department of Archives and History, the South Carolina Geodetic Survey and filed for record as applicable in the respective county offices where deeds are recorded in Horry, Dillon, Marlboro, Chesterfield, Lancaster, York, Cherokee, Spartanburg, Greenville, Pickens and Oconee counties).<br /><br />
+	The lateral seaward boundary between North Carolina and South Carolina from the low-water mark of the Atlantic Ocean shall be and is hereby designated as a continuation of the North Carolina-South Carolina boundary line as described by monuments located at latitude 33&#176; 51&#39; 50.7214&quot; N., longitude 78&#176; 33&#39; 22.9448&quot; W., at latitude 33&#176; 51&#39; 36.4626&quot; N., longitude 78&#176; 33&#39; 06.1937&quot; W., and at latitude 33&#176; 51&#39; 07.8792&quot; N., longitude 78&#176; 32&#39; 32.6210&quot; W., (coordinates based on North American Datum 1927), in a straight line projection of said line to the seaward limits of the states&#39; territorial jurisdiction, such line to be extended on the same bearing insofar as a need for further delimitation may arise.<br /><br />
+	From the state of Georgia, this State is divided by the Savannah River, at the point where the northern edge of the navigable channel of the Savannah River intersects the seaward limit of the state&#39;s territorial jurisdiction; thence generally along the northern edge of the navigable channel up the Savannah River; thence along the northern edge of the sediment basin to the Tidegate; thence to the confluence of the Tugaloo and Seneca Rivers; thence up the Tugaloo River to the confluence of the Tallulah and the Chattooga Rivers; thence up the Chattooga River to the 35th parallel of north latitude, which is the boundary of North Carolina, the line being midway between the banks of said respective rivers when the water is at ordinary stage, except in the lower reaches of the Savannah River, as hereinafter described. And when the rivers are broken by islands of natural formation which, under the Treaty of Beaufort, are reserved to the state of Georgia, the line is midway between the island banks and the South Carolina banks when the water is at ordinary stage, except in the lower reaches of the Savannah River, as hereinafter described.<br /><br />
+	The boundary between Georgia and South Carolina along the lower reaches of the Savannah River, and the lateral seaward boundary, is more particularly described as follows and depicted in &quot;Georgia—South Carolina Boundary Project, Lower Savannah River Segment, Portfolio of Maps&quot; prepared by the United States Department of Commerce, National Oceanic and Atmospheric Administration, National Ocean Service, National Geodetic Survey, Remote Sensing Division—2001 (copies on file at the South Carolina Department of Archives and History and the South Carolina Geodetic Survey):<br /><br />
+	Beginning at a point where the thread of the northernmost branch of the Savannah River equidistant between its banks intersects latitude 32&#176; 07&#39; 00&quot; N., (North American Datum 1983-86), located in the Savannah River, and proceeding in a southeasterly direction down the thread of the Savannah River equidistant between the banks of the Savannah River on Hutchinson Island and on the mainland of South Carolina including the small downstream island southeast of the aforesaid point, at ordinary stage, until reaching the vicinity of Pennyworth Island;<br /><br />
+	Proceeding thence easterly down the thread of the northernmost channel of the Savannah River known as the Back River as it flows north of Pennyworth Island, making the transition to the said northernmost channel using the equidistant method between Pennyworth Island, the Georgia bank on Hutchinson Island, and the South Carolina mainland bank, thence to the thread of the said northernmost channel equidistant from the South Carolina mainland bank and Pennyworth Island at ordinary stage, around Pennyworth Island;<br /><br />
+	Proceeding thence southeasterly to the thread of the northern channel of the Savannah River equidistant from the Georgia bank on Hutchinson Island and the South Carolina mainland bank, making the transition utilizing the equidistant method between Pennyworth Island, the Georgia bank on Hutchinson Island, and the South Carolina mainland bank;<br /><br />
+	Proceeding thence southeasterly down the thread of the Savannah River equidistant from the Hutchinson Island and South Carolina mainland banks of the river at ordinary stage, through the tide gates, until reaching the northwestern (farthest upstream) boundary of the &quot;Back River Sediment Basin&quot;, as defined in the &quot;Annual Survey-1992, Savannah Harbor, Georgia, U. S. Coastal Highway, No. 17 to the Sea&quot;, U. S. Army Corps of Engineers, Savannah District as amended by the Examination Survey-1992 charts for the Savannah Harbor Deepening Project, Drawings No. DSH 1 12/107, (hereinafter the &quot;Channel Chart&quot;);<br /><br />
+	Proceeding thence along the said northwestern boundary to its intersection with the northern boundary of the Back River Sediment Basin; thence southeasterly until said northern boundary intersects the northern boundary of the main navigational channel as depicted on the Channel Chart at the point designated as SR-34 (latitude 32&#176; 05&#39; 01.440&quot; N., longitude 081&#176; 02&#39; 17.252&quot; W., North American Datum (NAD 1983-86);<br /><br />
+	Proceeding thence toward the mouth of the Savannah River along the northern boundary of the main navigational channel at the new channel limit as depicted on the Channel Chart, via Oglethorpe Range through point SR-33 (latitude 32&#176; 05&#39; 17.168&quot; N., longitude 081&#176; 01&#39; 34.665&quot; W., NAD 1983-86), Fort Jackson Range through point SR-32 (latitude 32&#176; 05&#39; 30.133&quot; N., longitude 081&#176; 01&#39; 17.750&quot; W., NAD 1983-86), the Bight Channel through points SR-31 (latitude 32&#176; 05&#39; 55.631&quot; N., longitude 081&#176; 01&#39; 02.480&quot; W., NAD 1983-86), SR-30 (latitude 32&#176; 06&#39; 06.272&quot; N., longitude 081&#176; 00&#39; 44.802&quot; W., NAD 1983-86), SR-29 (latitude 32&#176; 06&#39; 09.053&quot; N., longitude 081&#176; 00&#39; 31.887&quot; W., NAD 1983-86), SR-28 (latitude 32&#176; 06&#39; 08.521&quot; N., longitude 081&#176; 00&#39; 15.498&quot; W., NAD 1983-86), and SR-27 (latitude 32&#176; 06&#39; 01.565&quot; N., longitude 080&#176; 59&#39; 58.406&quot; W., NAD 1983-86), Upper Flats Range through points SR-26 (latitude 32&#176; 05&#39; 41.698&quot; N., longitude 080&#176; 59&#39; 31.968&quot; W., NAD 1983-86) and SR-25 (latitude 32&#176; 05&#39; 02.819&quot; N., longitude 080&#176; 59&#39; 12.644&quot; W., NAD 1983-86), Lower Flats Range through points SR-24 (latitude 32&#176; 04&#39; 46.375&quot; N., longitude 080&#176; 59&#39; 00.631&quot; W., NAD 1983-86), SR-23 (latitude 32&#176; 04&#39; 40.209&quot; N., longitude 080&#176; 58&#39; 49.947&quot; W., NAD 1983-86), SR-22 (latitude 32&#176; 04&#39; 28.679&quot; N., longitude 080&#176; 58&#39; 18.895&quot; W., NAD 1983-86), and SR-21 (latitude 32&#176; 04&#39; 22.274&quot; N., longitude 080&#176; 57&#39; 34.449&quot; W., NAD 1983-86), Long Island Crossing Range through points SR-20 (latitude 32&#176; 04&#39; 13.042&quot; N., longitude 080&#176; 57&#39; 14.511&quot; W., NAD 1983-86), and SR-19 (latitude 32&#176; 02&#39; 30.984&quot; N., longitude 080&#176; 55&#39; 30.308&quot; W., NAD 1983-86) and New Channel Range following the northern boundary of the Rehandling Basin and the northern boundary of the Oyster Bed Island Turning Basin back to the northern edge of the main navigational channel, thence through points SR-17 (latitude 32&#176; 02&#39; 07.661&quot; N., longitude 080&#176; 53&#39; 39.379&quot; W., NAD 1983-86) and SR-16 (latitude 32&#176; 02&#39; 07.533&quot; N., longitude 080&#176; 53&#39; 31.663&quot; W., NAD 1983-86), to a point at latitude 32&#176; 02&#39; 08&quot; N., longitude 080&#176; 53&#39; 25&quot; W., NAD 1983-86 (now marked by Navigational Buoy &quot;24&quot;) near the eastern end of Oyster Bed Island;<br /><br />
+	Proceeding thence from a point at latitude 32&#176; 02&#39; 08&quot; N., longitude 080&#176; 53&#39; 25&quot; W., NAD 1983-86 (now marked by Navigational Buoy R &quot;24&quot;) on a true azimuth of 0&#176; 0&#39; 0&quot; (true north) to the mean low low-water line of Oyster Bed Island; thence easterly along the said mean low low-water line of Oyster Bed Island to the point at which the said mean low low-water line of Oyster Bed Island intersects the Oyster Bed Island Training Wall;<br /><br />
+	Proceeding thence easterly along the mean low low-water line of the southern edge of the Oyster Bed Island Training Wall to its eastern end; thence continuing the same straight line to its intersection with the Jones Island Range line;<br /><br />
+	Proceeding thence southeasterly along the Jones Island Range line until reaching the northern boundary of the main navigational channel as depicted on the Channel Chart;<br /><br />
+	Proceeding thence southeasterly along the northern boundary of the main navigational channel as depicted on the Channel Chart, via Jones Island Range and Bloody Point Range, to a point at latitude 31&#176; 59&#39; 16.700&quot; N., longitude 080&#176; 46&#39; 02.500&quot; W., NAD 1983-86 (now marked by Navigational Buoy &quot;6&quot;); and finally,<br /><br />
+	Proceeding from a point at latitude 31&#176; 59&#39; 16.700&quot; N., longitude 080&#176; 46&#39; 02.500&quot; W., NAD 1983-86 (now marked by Navigational Buoy &quot;6&quot;) extending southeasterly to the federal-state boundary on a true azimuth of 104 degrees (bearing of S76&#176;E), which describes the line being at right angles to the baseline from the southernmost point of Hilton Head Island and the northernmost point of Tybee Island, drawn by the Baseline Committee in 1970.<br /><br />
+	Should the need for further delimitation arise, the boundary shall further extend southeasterly on above-described true azimuth of 104 degrees (bearing of S76&#176;E).<br /><br />
+	Provided, further, that nothing in this section in any way shall be considered to govern or affect in any way the division between the states of the remaining assimilative capacity that is, the capacity to receive wastewater and other discharges without violating water quality standards, of the portion of the Savannah River described in this section.<br /><br />
+HISTORY: 1962 Code SECTION 39-1; 1952 Code SECTION 39-1; 1942 Code SECTION 2038; 1932 Code SECTION 2038; Civ. C. &#39;22 SECTION 1; Civ. C. &#39;12 SECTION 1; Civ. C. &#39;02 SECTION 1; G. S. 1; R. S. 1; 1923 (33) 114; 1970 (56) 2051; 1978 Act No. 413, SECTION 1; 1978 Act No. 414, SECTION 1; 1978 Act No. 416, SECTION 1; 1996 Act No. 375, SECTION 1; 1998 Act No. 341, SECTION 1; 2008 Act No. 264, SECTION 1, eff June 4, 2008; 2016 Act No. 270 (S.667), SECTION 2, eff January 1, 2017.<br /><br />
+Editor&#39;s Note<br /><br />
+	In 2016, to correct a typographical error, in the eighth paragraph from the end, substituted &quot;Long Island Crossing Range through points SR-20 (latitude 32&#176; 04&#39; 13.042&quot; N., longitude 080&#176; 57&#39; 14.511&quot; W., NAD 1983-86), and SR-19 (latitude 32&#176; 02&#39; 30.984&quot; N., longitude 080&#176; 55&#39; 30.308&quot; W., NAD 1983-86)&quot; for &quot;Long Island Crossing Range through points SR-20 (latitude 32&#176; 04&#39; 13.042&quot; N., longitude 080&#176; 57&#39; 14.511&quot; W., NAD 1983-86), and SR-19 (latitude 32&#176; 02&#39; 30.984&quot; N., longitude 080&#176; 55&#39; 30.308&#39; W., NAD 1983-86)&quot;.<br /><br />
+	2016 Act No. 270, SECTIONS 1, 3, provide as follows:<br /><br />
+	&quot;SECTION 1. The provisions of Section 1-1-10 of the 1976 Code are amended to clarify the original location of the boundary between North and South Carolina along Horry, Dillon, Marlboro, Chesterfield, Lancaster, York, Cherokee, and Spartanburg counties and to provide additional information about the plats describing the location of the boundary between North Carolina and South Carolina along Greenville, Pickens, and Oconee counties so that the northern line will be as described by those plats.&quot;<br /><br />
+	&quot;SECTION 3. This part defines the legislative intent and purpose of the amendments and additions in this act to Title 12 of the 1976 Code.<br /><br />
+	&quot;The General Assembly recognizes that the state of a business&#39;s location, or portion of it, may change as a result of the boundary clarification and this change can have tax and licensing consequences.<br /><br />
+	&quot;It is the intent of the General Assembly that when, as a result of the boundary clarification, an individual&#39;s residence or a business location is determined to be located in South Carolina rather than North Carolina where the residence or business had previously been taxed, the individual or business should not be liable for back taxes to South Carolina solely as a result of the clarification. The intention of this act is only to address the effects on persons whose residences and businesses who are determined to be located in South Carolina rather than North Carolina as a result of the boundary clarification. This act does not apply to persons whose residences and businesses are not affected by the boundary clarification.&quot;<br /><br />
+Effect of Amendment<br /><br />
+	The 2008 amendment substantially rewrote the second undesignated paragraph; in the fifth undesignated paragraph, added the clause at the end starting with &quot;and depicted in&quot;; and made changes in the fifteenth and sixteenth undesignated paragraphs.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-20.</span> Effect of change of State boundary on bordering lands.<br /><br />
+	Whenever the location of the State line has been or may be re-established and corrected by competent authority, the lines of bordering lands which were established and fixed according to the previous location of the State line shall not be changed by reason of such re-establishment and correction of the State line.<br /><br />
+HISTORY: 1962 Code SECTION 39-2; 1952 Code SECTION 39-2; 1942 Code SECTION 2039; 1932 Code SECTION 2039; Civ. C. &#39;22 SECTION 2; Civ. C. &#39;12 SECTION 2; 1906 (25) 63.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-30.</span> Daylight saving time observation.<br /><br />
+	If the United States Congress amends 15 U.S.C. Section 260a to authorize states to observe daylight saving time year round, it is the intent of the South Carolina General Assembly that daylight saving time be the year-round standard of the entire State and all of its political subdivisions.<br /><br />
+HISTORY: 2020 Act No. 113 (S.11), SECTION 1, eff February 3, 2020.<br /><br />
+<div style="text-align: center;">ARTICLE 3</div>
+<div style="text-align: center;">Executive Department</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-110.</span> What officers constitute executive department.<br /><br />
+	The executive department of this State is hereby declared to consist of the following officers, that is to say: The Governor and Lieutenant Governor, the Secretary of State, the State Treasurer, the Attorney General and the solicitors, the Adjutant General, the Comptroller General, the State Superintendent of Education, the Commissioner of Agriculture and the Director of the Department of Insurance.<br /><br />
+HISTORY: 1962 Code SECTION 1-1; 1952 Code SECTION 1-1; 1942 Code SECTION 3082; 1932 Code SECTION 3082; Civ. C. &#39;22 SECTION 766; Civ. C. &#39;12 SECTION 682; Civ. C. &#39;02 SECTION 613; G. S. 464; R. S. 530; 1865 (13) 350; 1941 (42) 119; 1960 (51) 1646; 1993 Act No. 181, SECTION 2.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-120.</span> Vacancies in executive department.<br /><br />
+	In case any vacancy shall occur in the office of Secretary of State, State Treasurer, Comptroller General, Attorney General or Adjutant General, such vacancy shall be filled by election by the General Assembly, a majority of the votes cast being necessary to a choice. If such vacancy occur during the recess of the General Assembly, the Governor shall fill the vacancy by appointment until an election by the General Assembly at the session next ensuing such vacancy.<br /><br />
+HISTORY: 1962 Code SECTION 1-2; 1952 Code SECTION 1-2; 1942 Code SECTION 3083; 1932 Code SECTION 3083; Civ. C. &#39;22 SECTION 767; Civ. C. &#39;12 SECTION 683; Civ. C. &#39;02 SECTION 614; G. S. 465; R. S. 531; 1875 (15) 935; 1942 (42) 1446.<br /><br />
+<div style="text-align: center;">ARTICLE 7</div>
+<div style="text-align: center;">Public Employment</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-540.</span> Written employment applications required.<br /><br />
+	State, county and municipal officers, departments, boards and commissions, and all school districts in this State, shall require applications in writing for employment by them, upon such application forms as they may severally prescribe, which shall include information as to active or honorary membership in or affiliation with all membership associations and organizations. The provisions of this section shall not apply to any office or position which by law is filled by the vote of the qualified electors in any general or special election.<br /><br />
+HISTORY: 1962 Code SECTION 1-36; 1956 (49) 1747; (50) 234.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-550.</span> Honorably discharged veterans shall have preference for public employment.<br /><br />
+	Honorably discharged members of the United States Armed Forces who are given employment preference by the United States Government, now and hereafter, shall be given preference for appointment and employment in every public department and upon all public works in this State insofar as such preference may be practicable; age, loss of limb or other physical impairment which does not in fact incapacitate shall not be deemed to disqualify them, provided they possess the capacity of skill and knowledge necessary to discharge the duties of the position involved. Provided, that any public department operating on a merit system shall give preferences similar to those given by the United States Government to eligible members discharged from the Armed Forces insofar as such preferences may be practicable.<br /><br />
+HISTORY: 1962 Code SECTION 1-37; 1968 (55) 2541.<br /><br />
+<div style="text-align: center;">ARTICLE 9</div>
+<div style="text-align: center;">State Emblems, Pledge to State Flag, Official Observances</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-610.</span> Official State gem stone.<br /><br />
+	The amethyst is the official gem stone of the State.<br /><br />
+HISTORY: 1962 Code SECTION 1-363.2; 1969 (56) 441.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-612.</span> Official State seabird.<br /><br />
+	The eastern brown pelican is the official seabird of the State.<br /><br />
+HISTORY: 2024 Act No. 186 (H.5246), SECTION 1, eff May 20, 2024.<br /><br />
+Editor&#39;s Note<br /><br />
+	2024 Act No. 186, preamble, provides as follows:<br /><br />
+	&quot;Whereas, the first known eastern brown pelican was described in 1789 and at the Charleston Harbor; and<br /><br />
+	&quot;Whereas, the brown pelican is one of the largest birds found on the east coast and is known for its long bill and underlying throat pouch; and<br /><br />
+	&quot;Whereas, eastern brown pelicans are the only pelicans in the world that are not entirely white. The front of a brown pelican&#39;s head is white, but its feathers fade to dark brown. During breeding season, the bird swaps white for a vibrant yellowish gold and exchanges dark brown for a silver-grey; and<br /><br />
+	&quot;Whereas, in 1970, the eastern brown pelican was listed as endangered under the federal Endangered Species Act, when populations plummeted to less than one hundred; and<br /><br />
+	&quot;Whereas, unlike most birds that warm their eggs with the skin of their breasts, pelicans incubate their eggs with the skin of their feet, standing on them and holding the eggs under the webbing of their feet. Widespread use of a pesticide known as DDT caused the chemical to leak into the food chain and caused the eastern brown pelican&#39;s eggs to have thinner shells, which caused them to break during incubation, leading to the populations decline; and<br /><br />
+	&quot;Whereas, the United States&#39; ban of DDT in 1972 and the Brown Pelican Recovery Plan of 1979 helped the brown pelican population recover, and the brown pelican is no longer considered endangered; and<br /><br />
+	&quot;Whereas, designating the brown pelican as the state seabird of South Carolina will highlight the importance of preserving and enhancing the habitat of this species and other seabirds along our coastline and serve as a symbol of our commitment to environmental stewardship and wildlife conservation; and<br /><br />
+	&quot;Whereas, eastern brown pelicans and other similar South Carolina coastal birds add to the unique and beautiful character of South Carolina, increasing quality of life. Now, therefore,<br /><br />
+	&quot;Be it enacted by the General Assembly of the State of South Carolina: [Text of Act]&quot;<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-615.</span> American History Month designated.<br /><br />
+	The month of February in every year is designated American History Month. South Carolinians are encouraged to sponsor and participate in appropriate observances of American History Month.<br /><br />
+HISTORY: 1988 Act No. 418, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-616.</span> African American History Month designated.<br /><br />
+	The month of February of every year is also designated African American History Month in South Carolina to be observed concurrently with American History Month as provided in Section 1-1-615, but with emphasis on the contributions of African Americans to the growth, development, culture, and institutions of our country. South Carolinians are encouraged to sponsor and participate in appropriate observances of African American History Month.<br /><br />
+HISTORY: 2012 Act No. 131, SECTION 2, eff March 13, 2012.<br /><br />
+Editor&#39;s Note<br /><br />
+	2012 Act No. 131, SECTION 1, provides as follows:<br /><br />
+	&quot;The General Assembly finds that:<br /><br />
+	&quot;(1) Black History Month, now to be designated as African American History Month in South Carolina, began as &#39;Negro History Week&#39;, which was created in 1926 by Carter G. Woodson, a noted African American historian, scholar, educator, and publisher. It became a month-long celebration in 1976. The month of February was chosen to coincide with the birthdays of Frederick Douglass and Abraham Lincoln;<br /><br />
+	&quot;(2) African Americans of all generations have contributed greatly to the growth, development, culture, and institutions of the United States; and<br /><br />
+	&quot;(3) to declare the month of February of each year as African American History Month in our State to honor the significant contributions to our country of these outstanding individuals.&quot;<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-617.</span> Endometriosis Awareness Month.<br /><br />
+	The month of March in every year is designated as &quot;Endometriosis Awareness Month&quot;. South Carolinians are encouraged to sponsor and participate in relevant educational activities and events in the observance of &quot;Endometriosis Awareness Month&quot;.<br /><br />
+HISTORY: 2014 Act No. 166 (S.983), SECTION 1, eff May 16, 2014.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-618.</span> Airborne Heritage Day designated.<br /><br />
+	August sixteenth of each year is designated as South Carolina Airborne Heritage Day.<br /><br />
+HISTORY: 2007 Act No. 11, SECTION 1, eff April 18, 2007.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-620.</span> Official State stone.<br /><br />
+	Blue granite is the official stone of the State.<br /><br />
+HISTORY: 1962 Code SECTION 1-363.3; 1969 (56) 441.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-625.</span> Official State reptile.<br /><br />
+	The loggerhead turtle (Caretta caretta) is the official reptile of the State.<br /><br />
+HISTORY: 1988 Act No. 588, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-630.</span> Official State bird.<br /><br />
+	The Carolina Wren is the official bird of the State.<br /><br />
+HISTORY: 1962 Code SECTION 28-2; 1952 Code SECTION 28-2; 1942 Code SECTION 1777; 1939 (41) 483; 1948 (45) 1758; 1952 (47) 2179.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-635.</span> Official State wild game bird.<br /><br />
+	The South Carolina Wild Turkey (Meleagris Gallopavo) is the official wild game bird of the State.<br /><br />
+HISTORY: 1976 Act No. 508, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-640.</span> Official State fish.<br /><br />
+	The striped bass or rockfish is the official fish of the State.<br /><br />
+HISTORY: 1962 Code SECTION 28-2.1; 1972 (57) 2508.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-645.</span> Official State insect.<br /><br />
+	(A) The Carolina mantid, Stagmomantis carolina (Johannson) , or praying mantis, is the official insect of the State.<br /><br />
+	(B) A statement in substantially the following form must be printed in the next edition and all subsequent editions of the South Carolina Legislative Manual in the appropriate section:<br /><br />
+	The State Insect<br /><br />
+	The Carolina mantid, Stagmomantis carolina (Johannson), or praying mantis, was designated the state insect by the General Assembly by Act 591 of 1988, for the following reasons: it is a native, beneficial insect that is easily recognizable throughout the State; it symbolizes the importance of the natural science of entomology and its special role in all forms of agriculture in helping to control harmful insects; and it provides a perfect specimen of living science for the school children of this State.<br /><br />
+HISTORY: 1988 Act No. 591, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-647.</span> Official State butterfly.<br /><br />
+	The tiger swallowtail is designated as the official state butterfly.<br /><br />
+HISTORY: 1994 Act No. 319, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-650.</span> Official State animal.<br /><br />
+	The white-tailed deer (odocoileus virginianus) is the official animal of the State.<br /><br />
+HISTORY: 1962 Code SECTION 28-2.2; 1972 (57) 2508.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-655.</span> Official State dog.<br /><br />
+	The Boykin Spaniel is the official dog of the State.<br /><br />
+HISTORY: 1985 Act No. 31, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-660.</span> Official State tree.<br /><br />
+	The palmetto tree is hereby designated and adopted as the official tree of the State.<br /><br />
+HISTORY: 1962 Code SECTION 29-11; 1952 Code SECTION 29-11; 1942 Code SECTION 3284-11; 1939 (41) 99.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-661.</span> Official State carnivorous plant.<br /><br />
+	The Venus flytrap (Dionaea Muscipula) is the official carnivorous plant of the State.<br /><br />
+HISTORY: 2023 Act No. 11 (S.581), SECTION 1, eff May 8, 2023.<br /><br />
+Editor&#39;s Note<br /><br />
+	2023 Act No. 11, preamble, provides as follows:<br /><br />
+	&quot;Whereas, the Venus flytrap is a small flowering perennial plant that grows in boggy areas of the Southeastern United States; and<br /><br />
+	&quot;Whereas, the Venus flytrap is one of the most internationally recognized carnivorous plants, characterized by leaves with hinged lobes that spring shut when stimulated by insects and is dependent on a fire-maintained landscape; and<br /><br />
+	&quot;Whereas, the Venus flytrap is federally designated as an At-Risk Species and the State of South Carolina is just one of two places in the world where the Venus flytrap is native; and<br /><br />
+	&quot;Whereas, the Venus flytrap is considered globally imperiled and Horry County is known to have the only remaining population of the Venus flytrap in the State of South Carolina. Now, therefore, [text of Act].&quot;<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-665.</span> Official State dance.<br /><br />
+	The shag is the official dance of the State.<br /><br />
+HISTORY: 1984 Act No. 329, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-667.</span> Official State waltz.<br /><br />
+	&quot;The Richardson Waltz&quot; is designated as the official state waltz.<br /><br />
+HISTORY: 2000 Act No. 389, Part I, SECTION 3.<br /><br />
+Editor&#39;s Note<br /><br />
+	2000 Act No. 389, Part I, SECTION1, provides as follows:<br /><br />
+	Sections 1 through 4 of this act are known and may be cited as the &quot;Richardson Waltz Act&quot;.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-670.</span> Official pledge to State flag.<br /><br />
+	The pledge to the flag of South Carolina shall be as follows:<br /><br />
+	&quot;I salute the flag of South Carolina and pledge to the Palmetto State love, loyalty and faith.&quot;<br /><br />
+HISTORY: 1962 Code SECTION 1-95; 1966 (54) 2271.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-674.</span> State Pecan Festival.<br /><br />
+	The South Carolina Pecan Festival in Florence County is designated as the official State Pecan Festival.<br /><br />
+HISTORY: 2011 Act No. 9, SECTION 1, eff April 12, 2011.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-675.</span> State Botanical Garden.<br /><br />
+	The Botanical Garden of Clemson University is designated the State Botanical Garden.<br /><br />
+HISTORY: 1992 Act No. 288, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-676.</span> Official State lowcountry handcraft.<br /><br />
+	The sweet grass basket is the official state lowcountry handcraft.<br /><br />
+HISTORY: 2006 Act No. 234, SECTION 1, eff February 21, 2006.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-677.</span> Official State grass.<br /><br />
+	Indian Grass, Sorghastrum nutans, is designated as the official grass of the State. In making this designation, the General Assembly makes no warranty or endorsement of Indian Grass as a commercial product, but recognizes Indian Grass as a native, nonnoxious plant, with a historical, continuing, widespread, and beneficial existence in South Carolina.<br /><br />
+HISTORY: 2001 Act No. 94, SECTION 2.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-680.</span> Official State fruit.<br /><br />
+	The peach is the official fruit of the State.<br /><br />
+HISTORY: 1984 Act No. 360, SECTION 2.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-681.</span> Official state vegetable.<br /><br />
+	Collard greens are the official vegetable of the State.<br /><br />
+HISTORY: 2011 Act No. 38, SECTION 1, eff June 2, 2011.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-682.</span> Official state snack food.<br /><br />
+	Boiled peanuts are the official state snack food. Nothing in this section requires or encourages any school district in this State to serve peanuts to students, especially students with food allergies.<br /><br />
+HISTORY: 2006 Act No. 270, SECTION 2, eff May 1, 2006.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-683.</span> Official state picnic cuisine.<br /><br />
+	Barbecue is designated as the official State Picnic Cuisine of South Carolina.<br /><br />
+HISTORY: 2014 Act No. 231 (S.1136), SECTION 1, eff June 2, 2014.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-685.</span> Official State song.<br /><br />
+	&quot;South Carolina On My Mind&quot; is designated as an official state song to help inspire pride in our State and improve the quality of life among all South Carolinians, and to promote the image of South Carolina beyond our borders by further developing tourism and industry through the attraction of vacationers, prospective investors, and new residents.<br /><br />
+HISTORY: 1984 Act No. 302, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-686.</span> Official State poultry festival.<br /><br />
+	The South Carolina Poultry Festival in Lexington County is designated as the official State Poultry Festival.<br /><br />
+HISTORY: 2024 Act No. 107 (H.3960), SECTION 1, eff February 5, 2024.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-688.</span> Official State music.<br /><br />
+	The spiritual is the official music of the State.<br /><br />
+HISTORY: 1999 Act No. 64, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-689.</span> Official State popular music.<br /><br />
+	Beach music is designated as the official state popular music of South Carolina.<br /><br />
+HISTORY: 2001 Act No. 15, SECTION 2.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-690.</span> Official State beverage.<br /><br />
+	Milk is the official state beverage.<br /><br />
+HISTORY: 1984 Act No. 360, SECTION 4.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-691.</span> Official state fossil.<br /><br />
+	The Columbian Mammoth is designated as the official State Fossil of South Carolina.<br /><br />
+HISTORY: 2014 Act No. 177 (H.4482), SECTION 1, eff May 16, 2014.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-692.</span> Official State hospitality beverage.<br /><br />
+	South Carolina grown tea is designated as the official hospitality beverage of the State.<br /><br />
+HISTORY: 1995 Act No. 31, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-693.</span> Official State opera.<br /><br />
+	Porgy and Bess is designated as the official opera of this State. The State and any of its agencies, departments, or political subdivisions may not use any copyrighted or proprietary material from Porgy and Bess without the express written permission from the estates of Dubose Heyward, George Gershwin, and Ira Gershwin or the management company responsible for licensing productions of this opera in part or in its entirety.<br /><br />
+HISTORY: 2001 Act No. 94, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-694.</span> Official State Tobacco Museum.<br /><br />
+	(A) The South Carolina Tobacco Museum is the official tobacco museum of the State of South Carolina. The designation of the South Carolina Tobacco Museum as the official tobacco museum of the State is an honorary designation and does not bind the State in any way.<br /><br />
+	(B) The official designation does not create a new state agency or educational institution or qualify the South Carolina Tobacco Museum for state funds.<br /><br />
+	(C) The official designation does not confer any liability upon the State.<br /><br />
+	(D) The official designation does not sanction by the State any activity, philosophy, or course of action conducted, published, or undertaken by the South Carolina Tobacco Museum.<br /><br />
+HISTORY: 2004 Act No. 222, SECTION 1, eff April 29, 2004.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-695.</span> Official State shell.<br /><br />
+	The Lettered Olive, Oliva sayana, is the official shell of the State.<br /><br />
+HISTORY: 1984 Act No. 360, SECTION 6.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-696.</span> Official State language.<br /><br />
+	The English language is the official language of the State of South Carolina.<br /><br />
+HISTORY: 1987 Act No. 25, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-697.</span> Use of language other than English prohibited.<br /><br />
+	Neither this State nor any political subdivision thereof shall require, by law, ordinance, regulation, order, decree, program, or policy, the use of any language other than English; provided, however, that nothing in SECTIONS 1-1-696 through 1-1-698 shall prohibit a state agency or a political subdivision of the State from requiring an applicant to have certain degrees of knowledge of a foreign language as a condition of employment where appropriate.<br /><br />
+HISTORY: 1987 Act No. 25, SECTION 2.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-698.</span> Exceptions to prohibition against use of language other than English.<br /><br />
+	Sections 1-1-696 through 1-1-698 do not prohibit any law, ordinance, regulation, order, decree, program, or policy requiring educational instruction in a language other than English for the purpose of making students who use a language other than English proficient in English or making students proficient in a language in addition to English.<br /><br />
+HISTORY: 1987 Act No. 25, SECTION 3.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-699.</span> Official State amphibian.<br /><br />
+	The Spotted Salamander, Ambystoma maculatum, is designated as the official state amphibian.<br /><br />
+HISTORY: 1999 Act No. 79, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-700.</span> Official State American Folk Dance.<br /><br />
+	The square dance is the official American Folk Dance of the State.<br /><br />
+HISTORY: 1994 Act No. 329, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-701.</span> Official State spider.<br /><br />
+	The &quot;Carolina Wolf Spider&quot;, Hogna carolinensis, is designated as the official state spider.<br /><br />
+HISTORY: 2000 Act No. 389, Part II, SECTION 7.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-702.</span> Official State tapestry.<br /><br />
+	The tapestry, &quot;From the Mountains to the Sea&quot;, is designated as the official state tapestry.<br /><br />
+HISTORY: 2000 Act No. 354, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-703.</span> Official State tartan.<br /><br />
+	The Carolina Tartan is designated as the official tartan of the State of South Carolina.<br /><br />
+HISTORY: 2002 Act No. 303, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-704.</span> Official State wildflower.<br /><br />
+	Goldenrod (solidago altissima) is the official state wildflower.<br /><br />
+HISTORY: 2003 Act No. 31, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-705.</span> Official State railroad museum.<br /><br />
+	The South Carolina Railroad Museum in Fairfield County is the official railroad museum of the State of South Carolina, upon the payment of a fee of five dollars to the Secretary of State.<br /><br />
+HISTORY: 1997 Act No. 155, Part II, SECTION 60A.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-706.</span> Official State military academy.<br /><br />
+	(A) Camden Military Academy is designated as the official military academy of the State. The designation of Camden Military Academy as the official military academy of the State is an honorary designation and does not bind the State in any way.<br /><br />
+	(B) The official designation does not create a new state agency or educational institution or qualify Camden Military Academy for state funds.<br /><br />
+	(C) The official designation does not confer any liability of the State.<br /><br />
+HISTORY: 2001 Act No. 56, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-707.</span> Official State Hall of Fame.<br /><br />
+	(A) The South Carolina Hall of Fame located in the Myrtle Beach Convention Center, operated by South Carolina Hall of Fame, Inc. , an eleemosynary corporation certified by the Secretary of State on June 1, 1963, is the official state Hall of Fame. The official designation is an honorary designation and does not bind the State in any way.<br /><br />
+	(B) The official designation does not create a new state agency or educational institution or qualify the South Carolina Hall of Fame for state funds.<br /><br />
+	(C) The official designation does not confer any liability upon the State.<br /><br />
+	(D) The official designation does not sanction by the State any activity, philosophy, or course of action conducted, published, or undertaken by the Hall of Fame.<br /><br />
+HISTORY: 2001 Act No. 107, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-708.</span> Official State folk art and crafts center.<br /><br />
+	The South Carolina Artisans Center, a nonprofit organization, located in Walterboro is designated as the official folk art and crafts center of the State of South Carolina.<br /><br />
+HISTORY: 2000 Act No. 256, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-709.</span> Official State rural drama theater.<br /><br />
+	(A) The Abbeville Opera House is designated as the official state rural drama theater of the State. The designation of the Abbeville Opera House as the official state rural drama theater of the State is an honorary designation and does not bind the State in any way.<br /><br />
+	(B) The official designation does not create a new state agency or educational institution or qualify the Abbeville Opera House for state funds.<br /><br />
+	(C) The official designation does not confer any liability of the State.<br /><br />
+	(D) The official designation does not sanction by the State any activity, philosophy, or course of action conducted, published, or undertaken by the Abbeville Opera House.<br /><br />
+HISTORY: 2001 Act No. 48, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-710.</span> Official State color.<br /><br />
+	The color indigo blue worn on the uniform of Colonel William Moultrie&#39;s soldiers and adopted as the background of the South Carolina State flag, is designated as the official color of the State of South Carolina.<br /><br />
+HISTORY: 2008 Act No. 200, SECTION 1, eff April 16, 2008.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-711.</span> Official state duck.<br /><br />
+	The &quot;wood duck&quot; (Aix sponsa) also known as the summer duck and the Carolina duck is designated as the official state duck.<br /><br />
+HISTORY: 2009 Act No. 58, SECTION 1, eff upon approval (became law without the Governor&#39;s signature on June 3, 2009).<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-712.</span> Official state marine mammal.<br /><br />
+	The &quot;bottlenose dolphin&quot; (Tursiops truncatus) is designated as the official state marine mammal.<br /><br />
+HISTORY: 2009 Act No. 58, SECTION 2, eff upon approval (became law without the Governor&#39;s signature on June 3, 2009).<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-713.</span> Official state migratory marine mammal.<br /><br />
+	The &quot;northern right whale&quot; (Eubalaena glacialis) is designated as the official state migratory marine mammal.<br /><br />
+HISTORY: 2009 Act No. 58, SECTION 3, eff upon approval (became law without the Governor&#39;s signature on June 3, 2009).<br /><br />
+	SECTION 1-1-713A. Official state emblem of United States Armed Forces who have given their lives in the line of duty.<br /><br />
+	The Honor and Remember Flag is designated as the official State Emblem of Service and Sacrifice by those in United States Armed Forces who have given their lives in the line of duty.<br /><br />
+HISTORY: 2012 Act No. 237, SECTION 1, eff June 18, 2012.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-714.</span> Official state heritage horse.<br /><br />
+	The Marsh Tacky is designated as the official State Heritage Horse of South Carolina.<br /><br />
+HISTORY: 2010 Act No. 240, SECTION 2, eff June 11, 2010.<br /><br />
+	SECTION 1-1-714A. Official state heritage work animal.<br /><br />
+	The mule is hereby designated as the official State Heritage Work Animal of South Carolina.<br /><br />
+HISTORY: 2010 Act No. 240, SECTION 3, eff June 11, 2010.<br /><br />
+<div style="text-align: center;">ARTICLE 11</div>
+<div style="text-align: center;">Census</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-715.</span> United States Census of 2020 adopted.<br /><br />
+	(A) The United States Census of 2020 is adopted as the true and correct enumeration of the inhabitants of this State, and of the several counties, municipalities, and other political subdivisions of this State.<br /><br />
+	(B) The geographic assignments in Sections 2-1-45 and 2-1-75 are derived from the decennial census P.L. 94-171 redistricting data released by the United States Census Bureau on August 12, 2021, and September 16, 2021.<br /><br />
+HISTORY: 2003 Act No. 55, SECTION 2; 2011 Act No. 71, Pt I, SECTION 1, eff June 28, 2011; 2011 Act No. 75, Pt I, SECTION 1, eff August 1, 2011; 2021 Act No. 117 (H.4493), Pt I, SECTION 1, eff December 10, 2021.<br /><br />
+Code Commissioner&#39;s Note<br /><br />
+	This section was codified at the direction of the Code Commissioner.<br /><br />
+Effect of Amendment<br /><br />
+	The 2011 amendments substituted &quot;2010&quot; for &quot;2000&quot;.<br /><br />
+	2021 Act No. 117, Pt. I, SECTION 1, inserted the (A) designator, and in (A), substituted &quot;2020&quot; for &quot;2010&quot;, and added (B).<br /><br />
+<div style="text-align: center;">ARTICLE 13</div>
+<div style="text-align: center;">Reports to Governor or General Assembly</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-810.</span> Annual accountability reports by agencies and departments of state government.<br /><br />
+	Each agency and department of state government shall submit an annual accountability report to the Governor and the General Assembly covering a period from July first to June thirtieth, unless otherwise directed by the specific statute governing the department or institution.<br /><br />
+HISTORY: 1962 Code SECTION 1-44; 1952 Code SECTION 1-44; 1942 Code SECTION 2096; 1932 Code SECTION 2096; 1929 (36) 225; 1931 (37) 278; 1933 (38) 490; 1960 (51) 1746; 1995 Act No. 145, Part II, SECTION 43A.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-820.</span> Contents of annual accountability reports.<br /><br />
+	The annual accountability report required by Section 1-1-810 must contain the agency&#39;s or department&#39;s mission, objectives to accomplish the mission, and performance measures that show the degree to which objectives are being met.<br /><br />
+HISTORY: 1962 Code SECTION 1-45; 1952 Code SECTION 1-45; 1942 Code SECTION 2097; 1932 Code SECTION 2097; Civ. C. &#39;22 SECTION 58; Civ. C. &#39;12 SECTION 48; Civ. C. &#39;02 SECTION 45; 1896 (22) 202; 1960 (51) 1779; 1995 Act No. 145, Part II, SECTION 43B.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-830.</span> One report shall not be embraced in another.<br /><br />
+	No State officer shall embrace in his report the report of another State officer which is required to be published by law, but he may make such reference thereto as may be necessary, including a brief recapitulation thereof, when necessary to the proper understanding of such report.<br /><br />
+HISTORY: 1962 Code SECTION 1-46; 1952 Code SECTION 1-46; 1942 Code SECTION 2102; 1932 Code SECTION 2102; Civ. C. &#39;22 SECTION 63; Civ. C. &#39;12 SECTION 53; Civ. C. &#39;02 SECTION 50; R. S. 50; 1886 (19) 310.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-840.</span> Special reports.<br /><br />
+	The Governor or the General Assembly, or either branch thereof by resolution, may call upon any department or institution at any time for such special reports as may be deemed in the interest of the public welfare.<br /><br />
+HISTORY: 1962 Code SECTION 1-47; 1952 Code SECTION 1-47; 1942 Code SECTION 2096; 1932 Code SECTION 2096; 1929 (36) 225; 1931 (37) 278; 1933 (38) 490.<br /><br />
+<div style="text-align: center;">ARTICLE 15</div>
+<div style="text-align: center;">Reporting of Expenditures of State Appropriated Funds, Personal Data and the Like</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-970.</span> Personnel data required to be furnished quarterly.<br /><br />
+	All agencies, departments and institutions of state government shall furnish to the State Personnel Division not later than fifteen days following the close of the second quarter of each even-numbered year a current personnel organization chart in a form prescribed by the division showing all authorized positions, the personnel grade and compensation of each and indications as to whether such positions are filled or vacant.<br /><br />
+	All agencies, departments and institutions of state government shall furnish to the State Personnel Division not later than fifteen days following the close of each quarter except the second quarter of each even-numbered year any and all changes or alterations to the personnel organization chart in a form prescribed by the division.<br /><br />
+	The State Personnel Division shall ensure that all reports submitted to the division by agencies, departments and institutions of state government are accurate and up-to-date and, based on that information, shall furnish to the Legislative Audit Council organizational charts and alterations to existing charts for each such agency, department and institution in such form as the division and Audit Council shall determine.<br /><br />
+	The charts prepared by the division shall be furnished to the Audit Council not later than thirty days following the end of each quarter.<br /><br />
+HISTORY: 1976 Act No. 561, SECTION 7; 1977 Act No. 101, SECTION 3.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-980.</span> Penalties for failure to cooperate with implementation of reporting procedures.<br /><br />
+	All service agencies of the State shall cooperate with individual agencies, departments and institutions of State government in the implementation of this article. Any person who falsifies any report, statement or document required under this article shall be subject to punishment pursuant to SECTION 16-9-30 of the Code. Wilful failure to comply with the reporting requirements of this article shall be deemed misfeasance in office and subject the chief executive authority of the offending agency, department or institution to the penalties therefor.<br /><br />
+HISTORY: 1976 Act No. 561, SECTION 8.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-990.</span> Reports and information deemed public records; dissemination of copies.<br /><br />
+	All reports and information assembled pursuant to the provisions of this article are considered &quot;public records&quot; as defined in the Freedom of Information Act of 1972. Commencing on July 1, 1985, and thereafter, the Comptroller General shall furnish copies of the information when requested by authorized parties. The provisions of subsection (2) of SECTION 11-35-1230 of the 1976 Code of Laws govern fiscal reporting.<br /><br />
+HISTORY: 1976 Act No. 561, SECTION 9; 1985 Act No. 201, Part II, SECTION 2A.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-1000.</span> Partial exemption granted law enforcement agencies.<br /><br />
+	The provisions of this article shall not be construed to require any law enforcement agency to report in detail expenditures which would jeopardize the necessary confidentiality of its operations, but all such agencies shall report the total amount of funds expended for payments to informants and for purchases of illegal substances in connection with criminal investigations.<br /><br />
+HISTORY: 1976 Act No. 561, SECTION 10.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-1020.</span> Purchase of equipment by Office of State Treasurer for lease or resale to entities of state government; funding.<br /><br />
+	(A) The Office of State Treasurer is authorized to provide financing arrangements under the master lease program on behalf of boards, commissions, institutions, and agencies of state government for the purpose of renting, leasing, or purchasing office equipment, telecommunications equipment, energy conservation equipment, medical equipment, data processing equipment, and related software in accordance with procurement statutes and regulations.<br /><br />
+	(B) The Office of State Treasurer shall negotiate the terms of any financing arrangement and prescribe the procedures necessary to administer this program.<br /><br />
+	(C) When providing financing as described in subsection (A) of this section, the Office of State Treasurer shall ensure that repayment schedules provide sufficient funds to defray the cost of administering this program. The Office of State Treasurer shall retain such funds as are necessary to defray administrative costs. Any excess funds at year-end must be deposited to the credit of the general fund of the State.<br /><br />
+HISTORY: 1981 Act No. 178 Part II, SECTION 19; 1982 Act No. 466 Part II, SECTION 27; 1990 Act No. 612, Part II, SECTION 12; 1994 Act No. 497, SECTION 10B; 2002 Act No. 286, SECTION 1.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-1025.</span> Insurance on state data processing and telecommunications facilities.<br /><br />
+	The State Fiscal Accountability Authority, through its Insurance Reserve Fund, shall provide insurance against the accidental or deliberate destruction of data processing and telecommunications facilities operated by the State. The insurance shall specifically include replacement cost of hardware and software systems and specialized environmental systems and shall also provide for an alternate processing location should replacement or repair of the original processing location exceed ten calendar days.<br /><br />
+HISTORY: 1982 Act No. 466, Part II, SECTION 25.<br /><br />
+Code Commissioner&#39;s Note<br /><br />
+	At the direction of the Code Commissioner, references in this section to the offices of the former State Budget and Control Board, Office of the Governor, or other agencies, were changed to reflect the transfer of them to the Department of Administration or other entities, pursuant to the directive of the South Carolina Restructuring Act, 2014 Act No. 121, SECTION 5(D)(1), effective July 1, 2015.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-1030.</span> Governmental or quasi-governmental entity not to pay contingency fee or bonus to private counsel without prior written agreement.<br /><br />
+	Notwithstanding any other provision of law, effective July 1, 1993, no governmental agency or quasi-governmental entity or agency shall pay a contingency fee or bonus to private counsel retained by such agency or entity for legal representation, unless such contingency fee or bonus arrangement has been reduced to writing setting forth the parameters of the employment and the terms of payment prior to the initiation of such representation.<br /><br />
+HISTORY: 1993 Act No. 164, Part II, SECTION 107.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-1035.</span> Expenditure of state or Medicaid funds to perform abortions.<br /><br />
+	No state funds or Medicaid funds shall be expended to perform abortions, except for those abortions authorized by federal law under the Medicaid program.<br /><br />
+HISTORY: 2000 Act No. 387, Part II, SECTION 35.<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-1040.</span> Links to websites posting department&#39;s monthly state procurement card statements or information; redaction.<br /><br />
+	All agencies, departments, and institutions of state government must be responsible for providing on their Internet websites a link to the Internet website of any agency, other than the individual agency, department, or institution, that posts on its Internet website that agency&#39;s, department&#39;s, or institution&#39;s monthly state procurement card statements or monthly reports containing all or substantially all the same information contained in the monthly state procurement card statements. The link must be to the specific webpage or section on the website of the agency where the state procurement card information for the state agency, department, or institution can be found. The information posted may not contain the state procurement card number. Any information that is expressly prohibited from public disclosure by federal or state law or regulation must be redacted from any posting required by this section.<br /><br />
+HISTORY: 2011 Act No. 74, Pt II, SECTION 2.B, eff August 1, 2011.<br /><br />
+Editor&#39;s Note<br /><br />
+	2011 Act No. 74, Pt. II, SECTION 2.C, provides as follows:<br /><br />
+	&quot;This SECTION takes effect upon approval by the Governor, and public institutions of higher learning to which this SECTION applies shall have one year from the effective date of this act to comply with its requirements.&quot;<br /><br />
+<div style="text-align: center;">ARTICLE 19</div>
+<div style="text-align: center;">Salaries of State Officers</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-1210.</span> Annual salaries of certain state officers.<br /><br />
+	Section effective until the approval and ratification of an amendment to Section 7, Article VI of the South Carolina Constitution. The referendum to amend Section 7, Article VI failed on November 6, 2018.<br /><br />
+	(A) The annual salaries of the state officers listed below are:<br /><br />
+<table style="border-collapse: collapse; width: 100%; margin: 10px 0;">
+  <tr>
+    <th style="padding: 4px 8px; text-align: left;">Governor</th>
+    <th style="padding: 4px 8px; text-align: left;">$98,000</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Lieutenant Governor</td>
+    <td style="padding: 4px 8px; text-align: left;">43,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Secretary of State</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">State Treasurer</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Attorney General</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Comptroller General</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Superintendent of Education</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Adjutant General</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Commissioner of Agriculture</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+</table>
+<br />
+	(B) These salaries must be increased by two percent on July 1, 1991, and on July first of each succeeding year through July 1, 1994.<br /><br />
+	(C) A state officer whose salary is provided in this section may not receive compensation for ex officio service on any state board, committee, or commission.<br /><br />
+	(D) Beginning with Fiscal Year 2022—2023, and beginning when the state officer&#39;s term commences and lasting until the term concludes, with the exception of the Governor and Lieutenant Governor, salaries for the state officers listed in subsection (A) must be based on recommendations by the Agency Head Salary Commission to the General Assembly as provided in Sections 8-11-160 and 8-11-165.<br /><br />
+HISTORY: 1985 Act No. 201, Part II, SECTION 11; 1989 Act No. 189, Part II, SECTION 9; 2021 Act No. 76 (H.3786), SECTION 1, eff May 17, 2021.<br /><br />
+Effect of Amendment<br /><br />
+	2021 Act No. 76, SECTION 1, inserted the (A), (B), and (C) designators, and added (D).<br /><br />
+<span style="font-weight: bold;"> SECTION 1-1-1210.</span> Annual salaries of certain state officers.<br /><br />
+	Section effective upon the approval and ratification of an amendment to Section 7, Article VI of the South Carolina Constitution. The referendum to amend Section 7, Article VI failed on November 6, 2018. See Editor&#39;s Note.<br /><br />
+	(A) The annual salaries of the state officers listed below are:<br /><br />
+<table style="border-collapse: collapse; width: 100%; margin: 10px 0;">
+  <tr>
+    <th style="padding: 4px 8px; text-align: left;">Governor</th>
+    <th style="padding: 4px 8px; text-align: left;">$98,000</th>
+    <th></th>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Lieutenant Governor</td>
+    <td style="padding: 4px 8px; text-align: left;">43,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Secretary of State</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">State Treasurer</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Attorney General</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Comptroller General</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Adjutant General</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+  <tr>
+    <td style="padding: 4px 8px; text-align: left;">Commissioner of Agriculture</td>
+    <td style="padding: 4px 8px; text-align: left;">85,000</td>
+    <td></td>
+  </tr>
+</table>
+<br />
+	(B) These salaries must be increased by two percent on July 1, 1991, and on July first of each succeeding year through July 1, 1994.<br /><br />
+	(C) A state officer whose salary is provided in this section may not receive compensation for ex officio service on any state board, committee, or commission.<br /><br />
+	(D) Beginning with Fiscal Year 2022—2023, and beginning when the state officer&#39;s term commences and lasting until the term concludes, with the exception of the Governor and Lieutenant Governor, salaries for the state officers listed in subsection (A) must be based on recommendations by the Agency Head Salary Commission to the General Assembly as provided in Sections 8-11-160 and 8-11-165.<br /><br />
+HISTORY: 1985 Act No. 201, Part II, SECTION 11; 1989 Act No. 189, Part II, SECTION 9; 2018 Act No. 178 (S.27), SECTION 3, eff upon contingency;2021 Act No. 76 (H.3786), SECTION 1, eff May 17, 2021.<br /><br />
+Editor&#39;s Note<br /><br />
+	2018 Act No. 178, SECTIONS 4 and 6, provide as follows:<br /><br />
+	&quot;SECTION 4. The person elected State Superintendent of Education in the 2018 General Election shall serve out his term; however, if the person vacates that office before the term expires in January 2023, any successors must: (1) be appointed as provided in Section 1-30-10(B)(1)(iv); and (2) must satisfy the experience requirements of Section 59-3-10(B).&quot;<br /><br />
+	&quot;SECTION 6. The provisions of Section 59-3-10(B), as contained in SECTION 1, take effect upon approval by the Governor. The remaining provisions of this act take effect upon approval and ratification of an amendment to Section 7, Article VI of the South Carolina Constitution, 1895, providing for the appointment of the State Superintendent of Education by the Governor, with the advice and consent of the Senate, and are applicable beginning with the 2018 General Election.&quot;<br /><br />
+	The referendum to amend Article VI, Section 7 failed on November 6, 2018.<br /><br />
+Effect of Amendment<br /><br />
+	2018 Act No. 178, SECTION 3, deleted the State Superintendent of Education from the list of salaries of specific state officers.<br /><br />
+	2021 Act No. 76, SECTION 1, inserted the (A), (B), and (C) designators, and added (D).<br /><br />
+<div style="text-align: center;">ARTICLE 20</div>
+<div style="text-align: center;">Reporting and Records of State Boards and Commissions Membership</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-1310.</span> State boards and commissions; notification of membership changes; contents.<br /><br />
+	Each state board and commission must send written notification to the Secretary of State&#39;s Office of any appointment, election, resignation, or vacancy in the membership of its board or commission. The notification must be sent within two weeks of the appointment, election, resignation, or vacancy and must include:<br /><br />
+	(1) the governing statute or Executive Order authorizing the appointment or election;<br /><br />
+	(2) the board or commission&#39;s address, phone number, fax number, and e-mail address, if any;<br /><br />
+	(3) the member&#39;s name;<br /><br />
+	(4) the member&#39;s district, circuit, seat, or position, if applicable;<br /><br />
+	(5) when the member&#39;s term begins and ends;<br /><br />
+	(6) the qualifications for membership on the board or commission and any specific requirements for the member&#39;s position;<br /><br />
+	(7) whether the member is eligible to receive compensation for his service;<br /><br />
+	(8) the name of the former member; and<br /><br />
+	(9) in the case of an appointment or election, whether it is a reappointment or reelection of an incumbent.<br /><br />
+HISTORY: 2002 Act No. 182, SECTION 1.<br /><br />
+<div style="text-align: center;">ARTICLE 21</div>
+<div style="text-align: center;">Workplace Domestic Violence Policy</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-1410.</span> Development and implementation of workplace domestic violence policy; zero tolerance policy statement.<br /><br />
+	Every state agency, based upon guidelines developed by the Office of Human Resources, Department of Administration, shall develop and implement an agency workplace domestic violence policy which must include, but is not limited to, a zero tolerance policy statement regarding acts or threats of domestic violence in the workplace and safety and security procedures.<br /><br />
+HISTORY: 2003 Act No. 92, SECTION 7.<br /><br />
+Code Commissioner&#39;s Note<br /><br />
+	At the direction of the Code Commissioner, references in this section to the offices of the former State Budget and Control Board, Office of the Governor, or other agencies, were changed to reflect the transfer of them to the Department of Administration or other entities, pursuant to the directive of the South Carolina Restructuring Act, 2014 Act No. 121, SECTION 5(D)(1), effective July 1, 2015.<br /><br />
+<div style="text-align: center;">ARTICLE 23</div>
+<div style="text-align: center;">Repeal of Joint Resolution Calling for Balanced Federal Budget; Disavowal of Calls for Constitutional Convention</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-1510.</span> In general.<br /><br />
+	(A) Joint Resolution 775 of 1976 is repealed.<br /><br />
+	(B) The General Assembly of the State of South Carolina disavows any other calls or applications for a constitutional convention made to Congress prior to the effective date of this act, by any means expressed, including, but not limited to, S. 1024 of 1978.<br /><br />
+	(C) The Secretary of State is directed to forward copies of this act bearing the Great Seal of the State to the following persons: The President and Vice President of the United States, the Speaker of the House of Representatives, and each member of the South Carolina Congressional Delegation in Washington, D.C.<br /><br />
+HISTORY: 2004 Act No. 314, SECTIONS 1, 2, 3, eff July 16, 2004.<br /><br />
+Code Commissioner&#39;s Note<br /><br />
+	This article was added and 2004 Act No. 314, SECTIONS 1 to 3 codified at the direction of the Code Commissioner.<br /><br />
+Editor&#39;s Note<br /><br />
+	The introduction to 2004 Act No. 314 provides as follows:<br /><br />
+	&quot;Whereas, the General Assembly of the State of South Carolina, acting with the best of intentions, at various times and during various sessions, has previously made applications to Congress to call one or more conventions to propose either a single amendment concerning a specific subject or to call a general convention to propose an unspecified and unlimited number of amendments to the United States Constitution, pursuant to the provisions of Article V thereof; and<br /><br />
+	&quot;Whereas, former Chief Justice of the Supreme Court of the United States of America Warren E. Burger, former Associate Justice of the United States Supreme Court Arthur J. Goldberg, and other leading constitutional scholars agree that such a convention may propose sweeping changes to the Constitution, any limitations or restrictions purportedly imposed by the states in applying for such a convention or conventions to the contrary notwithstanding, thereby creating an imminent peril to the well-established rights of the citizens and the duties of various levels of government; and<br /><br />
+	&quot;Whereas, the Constitution of the United States of America has been amended many times in the history of this nation and may be amended many more times, without the need to resort to a constitutional convention, and has been interpreted for more than two hundred years and has been found to be a sound document which protects the lives and liberties of the citizens; and<br /><br />
+	&quot;Whereas, there is no need for, rather, there is great danger in, a new constitution or in opening the Constitution to sweeping changes, the adoption of which would only create legal chaos in this nation and only begin the process of another two centuries of litigation over its meaning and interpretation. Now, therefore.&quot;<br /><br />
+<div style="text-align: center;">ARTICLE 25</div>
+<div style="text-align: center;">Video Conferencing</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-1610.</span> Use for performing administrative hearings; evidence of cost savings requirement; annual reports.<br /><br />
+	An administrative state agency performing administrative hearings within this State may make use of existing video conferencing capabilities. There must be evidence that a cost savings will be recognized by using video conferencing, as opposed to holding an administrative hearing where all parties must be in attendance at one particular location. A report of video conferencing activities and any related cost savings must be submitted annually, before January fifteenth, to the House Ways and Means Committee and the Senate Finance Committee.<br /><br />
+HISTORY: 2008 Act No. 353, SECTION 2, Pt 20F, eff July 1, 2009.<br /><br />
+<div style="text-align: center;">ARTICLE 27</div>
+<div style="text-align: center;">Antisemitism</div><br />
+<span style="font-weight: bold;"> SECTION 1-1-1710.</span> Definition of antisemitism.<br /><br />
+	(A) For purposes of this section, the term &quot;definition of antisemitism&quot;:<br /><br />
+	(1) includes the definition of antisemitism adopted on May 26, 2016, by the International Holocaust Remembrance Alliance, which has been adopted by the United States Department of State;<br /><br />
+	(2) includes contemporary examples of antisemitism identified by the International Holocaust Remembrance Alliance; and<br /><br />
+	(3) does not include criticism of Israel similar to that leveled against any other country.<br /><br />
+	(B) Nothing in this section may be construed to:<br /><br />
+	(1) diminish or infringe upon any rights protected under the First Amendment to the United States Constitution or Section 2, Article I of the South Carolina Constitution, 1895; or<br /><br />
+	(2) conflict with federal, state, or local discrimination laws.<br /><br />
+	(C) In reviewing, investigating, or deciding whether there has been a violation of any relevant policy, law, or regulation prohibiting discriminatory acts, the State shall take into consideration the definition of antisemitism set forth in law for purposes of determining whether the alleged act was discriminatory. A court or other relevant authority shall apply the same legal standard as applicable to like claims of discrimination arising under the laws of this State protecting civil rights, including Chapter 13 of this title.<br /><br />
+HISTORY: 2024 Act No. 138 (H.4042), SECTION 1, eff May 13, 2024.<br /><br />
+
+</div>
+
+
+					</div>		 <!-- mainwidepanel -->
+					
+				</div>		 <!-- pagebody -->
+				
+				<div id="footer" class="nodisplay" style="height: 30px;" onContextMenu="return false;">
+			<div id="footerdiv" style="margin:0;">
+				South Carolina Legislative Services Agency * 223 Blatt Building * 1105 Pendleton Street * Columbia, SC 29201<!-- * 803-212-4420--><br>
+				
+								<a href="/disclaimer.php">Disclaimer</a> * <a href="/policies.php">Policies</a> * <a href="/credits.php">Photo Credits</a> * <a href="/contact.php">Contact Us</a>
+							</div>
+		</div>
+		<div id="printfooter" class="printdisplay serifNormal" align=center style="font-size: 8pt;">
+			<br>
+			<br>
+			<hr>
+			Legislative Services Agency
+			<br>
+			h t t p : / / w w w . s c s t a t e h o u s e . g o v
+		</div>
+	
+		</div>	<!-- container or main in mobile page-->
+<script defer src="https://static.cloudflareinsights.com/beacon.min.js/v8c78df7c7c0f484497ecbca7046644da1771523124516" integrity="sha512-8DS7rgIrAmghBFwoOTujcf6D9rXvH8xm8JQ1Ja01h9QX8EzXldiszufYa4IFfKdLUKTTrnSFXLDkUEOTrZQ8Qg==" data-cf-beacon='{"version":"2024.11.0","token":"565410926b6c467d84cc32520b0caede","server_timing":{"name":{"cfCacheStatus":true,"cfEdge":true,"cfExtPri":true,"cfL4":true,"cfOrigin":true,"cfSpeedBrain":true},"location_startswith":null}}' crossorigin="anonymous"></script>
+</body>
+</html>
+
