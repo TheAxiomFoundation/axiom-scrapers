@@ -27,8 +27,7 @@ import re
 from collections.abc import Iterable
 from datetime import date
 
-from axiom_scrapers._common import FetchResult, Scraper, Section, clean_text, http_get
-from axiom_scrapers._common.base import LogFn  # re-exported for typing
+from axiom_scrapers._common import Scraper, Section, clean_text, http_get
 
 BASE = "https://www.ilga.gov/ftp/ILCS"
 
@@ -77,7 +76,7 @@ class ILCSStatutesScraper(Scraper[str]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> "import_pathlib.Path":  # type: ignore[name-defined]
+    def relative_output_path(self, section: Section) -> import_pathlib.Path:  # type: ignore[name-defined]
         """Nest by chapter so the tree stays browseable."""
         from pathlib import Path  # local — keep the module import surface tight
 

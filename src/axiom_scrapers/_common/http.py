@@ -20,7 +20,7 @@ from __future__ import annotations
 import time
 import urllib.error
 import urllib.request
-from typing import Callable
+from collections.abc import Callable
 
 DEFAULT_UA = (
     "Mozilla/5.0 (compatible; axiom-scraper/0.1; "
@@ -59,7 +59,7 @@ def http_get(
     timeout: float = 30.0,
     user_agent: str = DEFAULT_UA,
     sleeper: Callable[[float], None] = time.sleep,
-    opener: Callable[[urllib.request.Request, float], "urllib.request.http.client.HTTPResponse"]
+    opener: Callable[[urllib.request.Request, float], urllib.request.http.client.HTTPResponse]
     | None = None,
 ) -> FetchResult | None:
     """Fetch a URL with retries + soft-fail. Returns None on give-up.

@@ -45,8 +45,9 @@ class TestMain:
 
         We monkeypatch REGISTRY to a stub so we don't hit a live site.
         """
-        from axiom_scrapers._common.akn import Section
         from datetime import date
+
+        from axiom_scrapers._common.akn import Section
 
         class StubScraper(Scraper[str]):
             jurisdiction = "us-stub"

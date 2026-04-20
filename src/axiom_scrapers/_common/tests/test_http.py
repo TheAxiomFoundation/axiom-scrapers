@@ -8,7 +8,7 @@ from typing import Any
 
 import pytest
 
-from axiom_scrapers._common.http import DEFAULT_UA, FetchResult, SKIPPABLE_STATUS, http_get
+from axiom_scrapers._common.http import DEFAULT_UA, SKIPPABLE_STATUS, FetchResult, http_get
 
 
 class _FakeResponse:
@@ -20,7 +20,7 @@ class _FakeResponse:
         self.headers = headers or {}
         self.url = url or "https://example.test/"
 
-    def __enter__(self) -> "_FakeResponse":
+    def __enter__(self) -> _FakeResponse:
         return self
 
     def __exit__(self, *a: object) -> None:

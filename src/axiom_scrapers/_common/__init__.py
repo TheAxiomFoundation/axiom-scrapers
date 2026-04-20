@@ -10,7 +10,7 @@ Most per-state scrapers import from here:
 """
 
 from .akn import AKN_NS, Section, build_akn_xml
-from .base import ScrapeResult, Scraper
+from .base import Scraper, ScrapeResult
 from .http import DEFAULT_UA, FetchResult, http_get
 from .text import clean_text, safe_path_segment, split_paragraphs
 

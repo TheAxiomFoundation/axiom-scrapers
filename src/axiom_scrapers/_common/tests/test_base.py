@@ -2,14 +2,14 @@
 
 from __future__ import annotations
 
+from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
-from typing import Iterable
 
 import pytest
 
 from axiom_scrapers._common.akn import Section
-from axiom_scrapers._common.base import ScrapeResult, Scraper
+from axiom_scrapers._common.base import Scraper, ScrapeResult
 
 
 def make_section(num: str = "1.01", heading: str = "Title") -> Section:

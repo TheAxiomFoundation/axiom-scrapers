@@ -139,7 +139,7 @@ class Scraper(ABC, Generic[SectionRef]):
         *,
         limit: int | None = None,
         log_every: int = 100,
-        logger: "LogFn | None" = None,
+        logger: LogFn | None = None,
     ) -> ScrapeResult:
         """Scrape every section and write AKN XML under ``out_root``.
 
