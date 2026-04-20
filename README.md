@@ -21,38 +21,42 @@ src/axiom_scrapers/
 └── cli.py                 # axiom-scrape CLI
 ```
 
-Doc types we support today: `statutes`, `regulations`, `guidance`, `manuals`.
-Doc types planned: `bills`, `rulemaking` (proposed rules in comment periods).
+`doc_type` values are singular (`statute`, `regulation`, `guidance`, `manual`, `bill`,
+`rulemaking`) — they describe one document, not a collection.
 
 ## Running
 
 ```bash
-# One jurisdiction, one doc type
-uv run axiom-scrape --jurisdiction us-il --doc-type statutes --out ./out
+# List every registered scraper
+uv run axiom-scrape --list
 
-# All known jurisdictions for a doc type
-uv run axiom-scrape --doc-type statutes --all --out ./out
+# Scrape one jurisdiction
+uv run axiom-scrape --jurisdiction us-il --doc-type statute --out ./out
 
-# Dry-run (parse one section, don't write)
-uv run axiom-scrape --jurisdiction us-il --doc-type statutes --dry-run
+# Limit to the first N sections (useful for smoke tests)
+uv run axiom-scrape --jurisdiction us-il --doc-type statute --limit 5 --out ./out
 ```
 
 ## Adding a new scraper
 
 See [`docs/adding-a-scraper.md`](docs/adding-a-scraper.md). TL;DR: subclass
 `axiom_scrapers._common.base.Scraper`, implement `list_sections()` and
-`parse_section()`, write fixture-based parse tests.
+`parse_section()`, write fixture-based parse tests, add a line to the CLI
+`REGISTRY` dict.
 
 ## Development
 
 ```bash
-uv sync
+uv sync --dev
 uv run pytest           # full suite + coverage
 uv run ruff check .
 uv run mypy src/
 ```
 
-Coverage floor is 85%. CI enforces it.
+Coverage floor is 75%. The remaining 25% is primarily the network-crawling
+helpers (directory listings, TOC walks) that would need a mock `http_get`
+to cover. [`docs/architecture.md`](docs/architecture.md) has the plan to raise
+the floor as those tests land.
 
 ## Architecture choices
 
@@ -60,31 +64,44 @@ Coverage floor is 85%. CI enforces it.
   refactor all scrapers at once. If a state ever needs its own release cadence,
   `git subtree split` cleanly extracts it.
 - **Offline-first tests.** Parse logic is unit-tested against saved HTML fixtures,
-  not live fetches. Fetches are covered by a separate `test_fetch` marker that runs
-  weekly on CI, not on every PR.
+  not live fetches. The `_common.http` layer handles retries, rate-limit backoff, and
+  soft-fail for missing sections (404/307/410) so per-state scrapers can stay thin.
 - **AKN 3.0 output.** Standardized across all scrapers so Atlas ingest is uniform.
   See [`docs/output-format.md`](docs/output-format.md).
 
-## Migration status
+## Jurisdictions covered
 
-The scrapers currently live in two places — `axiom-scrapers` (new) and
-`atlas/scripts/scrape_*.py` (legacy). Both emit the same AKN shape and feed the same
-Atlas ingester, so there's no urgency to the migration, but the legacy scrapers
-should move one at a time.
+19 US states as of 2026-04-20. Run `uv run axiom-scrape --list` for the current set.
 
-Migrated:
+| State | Authority code | Source                                     |
+| ----- | -------------- | ------------------------------------------ |
+| us-az | A.R.S.         | azleg.gov/ars                              |
+| us-de | Del. C.        | delcode.delaware.gov                       |
+| us-il | ILCS           | ilga.gov/ftp/ILCS                          |
+| us-in | IC             | iga.in.gov/ic                              |
+| us-ky | KRS            | apps.legislature.ky.gov (PDFs via poppler) |
+| us-mn | Minn. Stat.    | revisor.mn.gov/statutes                    |
+| us-mo | RSMo           | revisor.mo.gov                             |
+| us-mt | MCA            | leg.mt.gov/bills/mca                       |
+| us-nc | G.S.           | ncleg.gov/EnactedLegislation               |
+| us-ne | Neb. Rev. Stat.| nebraskalegislature.gov/laws               |
+| us-nh | RSA            | gencourt.state.nh.us/rsa                   |
+| us-nv | NRS            | leg.state.nv.us/NRS                        |
+| us-oh | R.C.           | codes.ohio.gov/ohio-revised-code           |
+| us-or | ORS            | oregonlegislature.gov/bills_laws/ors       |
+| us-pa | Pa. C.S.       | palrb.us                                   |
+| us-ri | RIGL           | webserver.rilegislature.gov/Statutes       |
+| us-sc | S.C. Code      | scstatehouse.gov/code                      |
+| us-vt | V.S.A.         | legislature.vermont.gov/statutes           |
+| us-wa | RCW            | app.leg.wa.gov/RCW                         |
 
-| Jurisdiction | Doc type  | Status   |
-| ------------ | --------- | -------- |
-| us-il        | statutes  | migrated |
+Federal CFR and IRS guidance are currently ingested directly by
+[`atlas/scripts/ingest_cfr_parts.py`](https://github.com/TheAxiomFoundation/atlas/blob/main/scripts/ingest_cfr_parts.py)
+and related ingesters; porting them into this repo is tracked separately.
 
-Queued for migration (still live in `atlas/scripts/`):
+## Downstream
 
-- us-nv, us-nc, us-az, us-pa, us-or, us-mn, us-oh, us-mo, us-mt,
-  us-de, us-ne, us-nh, us-ri, us-wa, us-sc, us-vt, us-in, us-ky
-- us-federal (CFR via eCFR API — `atlas/scripts/ingest_cfr_parts.py`)
-- us-federal (IRS guidance — `atlas/scripts/ingest_irs_guidance.py` if added)
-
-Each is a ~1-hour port: copy the parse regex, rewrite around
-`Scraper[SectionRef]`, save a real HTML fixture, write 5-10 parse
-tests. See [`docs/adding-a-scraper.md`](docs/adding-a-scraper.md).
+Every scraper writes to `{out}/{jurisdiction}/{doc_type}/.../*.xml`, matching the
+shape Atlas's `scripts/ingest_state_laws.py --state {xx}` expects. The two repos are
+kept deliberately decoupled: axiom-scrapers produces AKN XML, Atlas ingests it. Neither
+imports from the other.

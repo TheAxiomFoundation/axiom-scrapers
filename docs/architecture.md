@@ -65,9 +65,22 @@ Each jurisdiction can hold multiple doc-type subdirectories:
 * `bills/` — active legislation (not yet enacted)
 * `rulemaking/` — proposed rules in comment periods
 
+As of 2026-04, only `statutes/` is populated (19 US states). The other
+four types exist as a directory convention; porting the CFR / IRS
+guidance ingesters into this repo is tracked in the atlas repo.
+
 Each subdirectory is an independent scraper — its own
 `list_sections()` / `parse_section()` implementation, its own fixtures,
 its own tests.
+
+### Singular vs plural
+
+Directory names are plural (`statutes/`, `regulations/`) because they
+hold a collection of documents. The `doc_type` attribute on each
+`Scraper` subclass and on every emitted `Section` is singular
+(`"statute"`, `"regulation"`) because it describes *one* document.
+The CLI's `--doc-type` flag and the `REGISTRY` key both use the
+singular form to match what Atlas stores per-section.
 
 ## Scraper lifecycle
 
@@ -90,6 +103,11 @@ base class. A new scraper is ~50-200 lines of state-specific regex.
   touch the network.
 * **Base-class orchestration** — covered by `test_base.py` in `_common/`.
   Scrapers inherit this coverage for free.
+* **Network-crawl helpers** — `list_sections()` paths that walk upstream
+  TOCs / directory listings are currently undertested (they'd need a
+  mock `http_get` injected at the module boundary). Coverage floor is
+  set to 75% until those tests land; the parser coverage itself sits
+  at ~90%+ per scraper.
 * **Live-fetch integration** — intentionally not in CI. When a source
   site changes and parse fails, the saved fixtures will still pass; a
   manual re-run catches the drift.

@@ -130,9 +130,12 @@ Edit `src/axiom_scrapers/cli.py`:
 ```python
 REGISTRY: dict[tuple[str, str], str] = {
     ...
-    ("us-xx", "statutes"): "axiom_scrapers.jurisdictions.us_xx.statutes.scrape:StatutesScraper",
+    ("us-xx", "statute"): "axiom_scrapers.jurisdictions.us_xx.statutes.scrape:StatutesScraper",
 }
 ```
+
+`doc_type` is singular (`"statute"`) — matches the `doc_type` attribute
+on the scraper class and the value Atlas stores per-section.
 
 ## 6. Validate
 
@@ -145,9 +148,9 @@ uv run mypy src/axiom_scrapers/jurisdictions/us_xx
 ## 7. Run against production
 
 ```bash
-uv run axiom-scrape --jurisdiction us-xx --doc-type statutes \
+uv run axiom-scrape --jurisdiction us-xx --doc-type statute \
     --out ./out --limit 50    # smoke
-uv run axiom-scrape --jurisdiction us-xx --doc-type statutes --out ./out  # full
+uv run axiom-scrape --jurisdiction us-xx --doc-type statute --out ./out  # full
 ```
 
 ## Tips
