@@ -36,7 +36,7 @@ addopts = [
   "--strict-markers",
   "--cov=axiom_scrapers",
   "--cov-report=term-missing",
-  "--cov-fail-under=75",
+  "--cov-fail-under=76",
 ]
 
 [tool.coverage.run]
