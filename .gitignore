@@ -1,0 +1,16 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+dist/
+build/
+.env
+.env.local
+# Scraper output trees (each state writes under out/{jurisdiction}/...)
+out/
+/tmp_output/
