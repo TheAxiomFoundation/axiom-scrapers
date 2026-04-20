@@ -2,7 +2,12 @@
 
 import pytest
 
-from axiom_scrapers._common.text import clean_text, safe_path_segment, split_paragraphs
+from axiom_scrapers._common.text import (
+    clean_paragraphs,
+    clean_text,
+    safe_path_segment,
+    split_paragraphs,
+)
 
 
 class TestCleanText:
@@ -59,6 +64,46 @@ class TestCleanText:
         assert "an attempt when, with intent." in out
         # Two paragraphs separated by newline(s).
         assert "\n" in out
+
+
+class TestCleanParagraphs:
+    def test_empty_input_returns_empty(self) -> None:
+        assert clean_paragraphs("") == ""
+
+    def test_plain_text_passthrough(self) -> None:
+        assert clean_paragraphs("Hello world.") == "Hello world."
+
+    def test_single_paragraph_tags_stripped(self) -> None:
+        assert clean_paragraphs("<p>Hello.</p>") == "Hello."
+
+    def test_adjacent_paragraphs_preserve_blank_line(self) -> None:
+        """The whole point of clean_paragraphs vs clean_text."""
+        assert clean_paragraphs("<p>First.</p><p>Second.</p>") == "First.\n\nSecond."
+
+    def test_double_br_preserves_blank_line(self) -> None:
+        assert clean_paragraphs("A<br/><br/>B") == "A\n\nB"
+
+    def test_single_br_within_paragraph_is_newline(self) -> None:
+        assert clean_paragraphs("A<br/>B") == "A\nB"
+
+    def test_collapses_runs_of_blank_lines(self) -> None:
+        assert clean_paragraphs("A<p></p><p></p><p></p>B") == "A\n\nB"
+
+    def test_entity_and_nbsp_decoded(self) -> None:
+        assert clean_paragraphs("<p>&sect;&nbsp;1</p><p>A\xa0B</p>") == "§ 1\n\nA B"
+
+    def test_block_close_variants(self) -> None:
+        assert clean_paragraphs("<div>A</div><div>B</div>") == "A\n\nB"
+        assert clean_paragraphs("<li>A</li><li>B</li>") == "A\n\nB"
+
+    def test_span_closes_do_not_split(self) -> None:
+        """Spans are inline — their closes shouldn't introduce paragraph breaks."""
+        # </span> emits one newline (line-wrap), not two (paragraph break).
+        # Internal-whitespace normalization trims the space around it.
+        assert clean_paragraphs("<span>A</span> <span>B</span>") == "A\nB"
+
+    def test_trims_outer_whitespace(self) -> None:
+        assert clean_paragraphs("  <p>Hello.</p>  ") == "Hello."
 
 
 class TestSplitParagraphs:

@@ -30,7 +30,7 @@ import re
 from collections.abc import Iterable
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.revisor.mn.gov"
 
@@ -148,14 +148,13 @@ def parse_section_page(html: str, section: str) -> tuple[str, str] | None:
     shn_m = re.search(r'<h1\s+class="shn"[^>]*>(.*?)</h1>', body_html, re.DOTALL)
     heading = ""
     if shn_m:
-        raw = _clean_mn(shn_m.group(1))
+        raw = _clean_mn_heading(shn_m.group(1))
         raw = re.sub(rf"^{re.escape(section)}\s*", "", raw)
         heading = raw.rstrip(".").strip()
         body_html = body_html[: shn_m.start()] + body_html[shn_m.end() :]
 
     body_html = _SUBD_BLOCK_RE.sub(_subd_repl, body_html)
-    body = _clean_mn(body_html)
-    body = re.sub(r"\n{3,}", "\n\n", body).strip()
+    body = _clean_mn_body(body_html)
     return heading, body
 
 
@@ -192,9 +191,9 @@ def extract_part_urls(html: str) -> list[str]:
 def _subd_repl(match: re.Match[str]) -> str:
     inner = match.group("body")
     hdr_m = re.search(r'<h2\s+class="subd_no"[^>]*>(.*?)</h2>', inner, re.DOTALL)
-    hdr_text = _clean_mn(hdr_m.group(1)) if hdr_m else ""
+    hdr_text = _clean_mn_heading(hdr_m.group(1)) if hdr_m else ""
     body_inner = inner[: hdr_m.start()] + inner[hdr_m.end() :] if hdr_m else inner
-    body_inner_clean = _clean_mn(body_inner)
+    body_inner_clean = _clean_mn_body(body_inner)
     if hdr_text and body_inner_clean:
         return f"\n\n{hdr_text}\n{body_inner_clean}"
     if body_inner_clean:
@@ -202,8 +201,20 @@ def _subd_repl(match: re.Match[str]) -> str:
     return ""
 
 
-def _clean_mn(s: str) -> str:
-    """MN-specific cleaning: strip pilcrow permalinks + headnote spacing."""
+def _clean_mn_heading(s: str) -> str:
+    """MN-specific single-line cleaning for headings/short-notes."""
+    s = _strip_mn_noise(s)
+    return clean_text(s)
+
+
+def _clean_mn_body(s: str) -> str:
+    """MN-specific body cleaning; preserves blank-line paragraph breaks."""
+    s = _strip_mn_noise(s)
+    return clean_paragraphs(s)
+
+
+def _strip_mn_noise(s: str) -> str:
+    """Drop pilcrow permalink anchors + normalize headnote spans to spaces."""
     s = re.sub(
         r'<a[^>]*class="permalink"[^>]*>.*?</a>',
         "",
@@ -216,7 +227,7 @@ def _clean_mn(s: str) -> str:
         s,
         flags=re.IGNORECASE,
     )
-    return clean_text(s)
+    return s
 
 
 def _list_all_chapters() -> list[str]:

@@ -27,6 +27,22 @@ class TestParseSectionPage:
         assert body
         assert len(body) > 50
 
+    def test_body_preserves_paragraph_breaks(self) -> None:
+        """Multi-paragraph body yields `\\n\\n`-separated text so AKN emits
+        one <p> per source paragraph rather than collapsing everything."""
+        html = (
+            '<div class="norm">'
+            '<span class="bold">1.020. Heading —</span>'
+            '<p class="norm">First paragraph.</p>'
+            '<p class="norm">Second paragraph.</p>'
+            "</div><hr/>"
+        )
+        _, body = parse_section_page(html, "1.020")
+        assert "First paragraph." in body
+        assert "Second paragraph." in body
+        # Paragraph boundary must survive the HTML→text pass.
+        assert "\n\n" in body
+
     def test_returns_empty_on_no_norm_block(self) -> None:
         assert parse_section_page("<html>no norm</html>", "1.01") == ("", "")
 

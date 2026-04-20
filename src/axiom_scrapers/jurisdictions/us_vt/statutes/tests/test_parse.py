@@ -28,7 +28,9 @@ class TestParseSectionPage:
         assert parsed is not None
         title, section, heading, body = parsed
         assert title == "32"
-        assert section in {"5811", "05811"}
+        # The `(Cite as:)` marker carries the unpadded citation form.
+        # Confirming the exact string pins the canonicalization contract.
+        assert section == "5811"
         assert heading
         assert body
 

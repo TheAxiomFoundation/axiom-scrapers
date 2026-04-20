@@ -21,7 +21,7 @@ import re
 from collections.abc import Iterable
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.revisor.mo.gov"
 
@@ -139,7 +139,8 @@ def parse_section_page(html: str, section: str) -> tuple[str, str]:
         if md:
             heading = clean_text(md.group("d")).rstrip(".")
 
-    body = clean_text(body_html).lstrip("—–-").strip()
+    # Body keeps paragraph breaks: each <p class="norm"> → <p> in AKN output.
+    body = clean_paragraphs(body_html).lstrip("—–-").strip()
     return (heading, body)
 
 

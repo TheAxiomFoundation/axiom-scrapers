@@ -78,6 +78,20 @@ class TestParseSectionPage:
         heading, _ = parse_section_page(html)
         assert heading == "Em dash variant"
 
+    def test_body_preserves_paragraph_breaks(self) -> None:
+        """Long RSA sections carry multi-<p> bodies inside <codesect>."""
+        html = (
+            "<b> 1:1 H &#150;</b>"
+            "<codesect>"
+            "<p>First paragraph.</p>"
+            "<p>Second paragraph.</p>"
+            "</codesect>"
+        )
+        _, body = parse_section_page(html)
+        assert "First paragraph." in body
+        assert "Second paragraph." in body
+        assert "\n\n" in body
+
 
 class TestExtractTitleNames:
     def test_extracts_roman_numerals(self) -> None:

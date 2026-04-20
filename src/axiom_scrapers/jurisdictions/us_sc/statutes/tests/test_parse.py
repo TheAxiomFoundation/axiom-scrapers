@@ -60,6 +60,12 @@ class TestExtractHeadingAndBody:
         assert "Body para two" in body
         assert "HISTORY" not in body
 
+    def test_body_preserves_paragraph_breaks(self) -> None:
+        """<br/><br/> between paragraphs survives as a blank-line gap."""
+        slab = "Heading.<br/><br/>Para one.<br/><br/>Para two."
+        _, body = extract_heading_and_body(slab)
+        assert "\n\n" in body
+
     def test_no_history_keeps_everything(self) -> None:
         slab = "H.<br/>Body."
         heading, body = extract_heading_and_body(slab)

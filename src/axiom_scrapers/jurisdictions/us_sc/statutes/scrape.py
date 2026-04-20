@@ -19,7 +19,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.scstatehouse.gov/code"
 _DEFAULT_TITLES = tuple(range(1, 64))
@@ -158,9 +158,11 @@ def extract_heading_and_body(slab: str) -> tuple[str, str]:
 
     head_end = re.search(r"<br\s*/?>", content, re.IGNORECASE)
     if head_end is None:
-        return ("", clean_text(content))
+        # Heading-only slab: preserve paragraph breaks since there's no heading/body split.
+        return ("", clean_paragraphs(content))
     heading = clean_text(content[: head_end.start()]).rstrip(".")
-    body = clean_text(content[head_end.end() :])
+    # Body separators are <br/><br/>; preserve them as paragraph breaks.
+    body = clean_paragraphs(content[head_end.end() :])
     return (heading, body)
 
 

@@ -33,7 +33,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.gencourt.state.nh.us/rsa/html"
 
@@ -146,7 +146,9 @@ def parse_section_page(html: str) -> tuple[str, str]:
     heading = heading.rstrip(".")
 
     code_m = _CODESECT_RE.search(html)
-    body = clean_text(code_m.group(1)) if code_m else ""
+    # Long RSA sections carry multi-paragraph bodies; preserve breaks so
+    # each source paragraph emits its own <p> in the AKN output.
+    body = clean_paragraphs(code_m.group(1)) if code_m else ""
     return heading, body
 
 

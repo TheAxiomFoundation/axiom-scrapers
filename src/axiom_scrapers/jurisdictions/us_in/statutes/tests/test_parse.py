@@ -20,11 +20,11 @@ def _fixture(name: str) -> str:
 
 class TestSplitSections:
     def test_parses_real_title_2_excerpt(self) -> None:
-        sections = split_sections(_fixture("title_2_excerpt.html"), "2")
+        sections = split_sections(_fixture("title_2.html"), "2")
         assert len(sections) >= 5
 
     def test_first_section_has_ic_number_and_heading(self) -> None:
-        sections = split_sections(_fixture("title_2_excerpt.html"), "2")
+        sections = split_sections(_fixture("title_2.html"), "2")
         div_id, section_num, heading, body = sections[0]
         assert div_id.startswith("2-")
         assert section_num.startswith("2-")

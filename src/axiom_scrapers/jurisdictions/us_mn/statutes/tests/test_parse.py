@@ -57,9 +57,26 @@ class TestParseSectionPage:
         parsed = parse_section_page(html, "1.01")
         assert parsed is not None
         _, body = parsed
-        assert "permalink" not in body.lower() or "#" not in body
+        # Permalink anchors get stripped entirely — their visible text "#"
+        # shouldn't appear alongside the paragraph body.
+        assert "#" not in body
         assert "One" in body
         assert "Two" in body
+
+    def test_body_preserves_paragraph_breaks(self) -> None:
+        html = (
+            '<div class="section" id="stat.1.01">'
+            '<h1 class="shn">1.01 H.</h1>'
+            "<p>First paragraph.</p>"
+            "<p>Second paragraph.</p>"
+            '</div><div class="history">...</div>'
+        )
+        parsed = parse_section_page(html, "1.01")
+        assert parsed is not None
+        _, body = parsed
+        # Multi-paragraph source must emit paragraph-separated text so
+        # downstream AKN serialization produces multiple <p> elements.
+        assert body == "First paragraph.\n\nSecond paragraph."
 
 
 class TestExtractChapterTokens:

@@ -40,6 +40,32 @@ def clean_text(s: str) -> str:
     return s
 
 
+def clean_paragraphs(s: str) -> str:
+    """Return visible text that preserves blank-line paragraph boundaries.
+
+    Differs from :func:`clean_text` in the final whitespace pass: adjacent
+    block-close tags (``</p></p>``, ``<br/><br/>``) survive as ``\\n\\n``
+    so downstream :func:`split_paragraphs` can emit one ``<p>`` per source
+    paragraph.
+
+    Use this when the source HTML marks paragraph boundaries with repeated
+    block closes (Minnesota, Missouri, South Carolina, New Hampshire, etc.).
+    Scrapers whose source packs everything into a single span should stick
+    with :func:`clean_text`.
+    """
+    if not s:
+        return ""
+    s = re.sub(r"<br\s*/?>", "\n", s, flags=re.IGNORECASE)
+    s = re.sub(r"</(p|div|tr|td|li)>", "\n\n", s, flags=re.IGNORECASE)
+    s = re.sub(r"</span>", "\n", s, flags=re.IGNORECASE)
+    s = re.sub(r"<[^>]+>", "", s)
+    s = _html.unescape(s).replace("\xa0", " ")
+    s = re.sub(r"[ \t]+", " ", s)
+    s = re.sub(r" *\n *", "\n", s)
+    s = re.sub(r"\n{3,}", "\n\n", s)
+    return s.strip()
+
+
 def split_paragraphs(s: str) -> list[str]:
     """Split normalized text into non-empty paragraphs on blank-line gaps.
 
