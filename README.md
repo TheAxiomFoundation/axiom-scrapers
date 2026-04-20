@@ -64,3 +64,27 @@ Coverage floor is 85%. CI enforces it.
   weekly on CI, not on every PR.
 - **AKN 3.0 output.** Standardized across all scrapers so Atlas ingest is uniform.
   See [`docs/output-format.md`](docs/output-format.md).
+
+## Migration status
+
+The scrapers currently live in two places — `axiom-scrapers` (new) and
+`atlas/scripts/scrape_*.py` (legacy). Both emit the same AKN shape and feed the same
+Atlas ingester, so there's no urgency to the migration, but the legacy scrapers
+should move one at a time.
+
+Migrated:
+
+| Jurisdiction | Doc type  | Status   |
+| ------------ | --------- | -------- |
+| us-il        | statutes  | migrated |
+
+Queued for migration (still live in `atlas/scripts/`):
+
+- us-nv, us-nc, us-az, us-pa, us-or, us-mn, us-oh, us-mo, us-mt,
+  us-de, us-ne, us-nh, us-ri, us-wa, us-sc, us-vt, us-in, us-ky
+- us-federal (CFR via eCFR API — `atlas/scripts/ingest_cfr_parts.py`)
+- us-federal (IRS guidance — `atlas/scripts/ingest_irs_guidance.py` if added)
+
+Each is a ~1-hour port: copy the parse regex, rewrite around
+`Scraper[SectionRef]`, save a real HTML fixture, write 5-10 parse
+tests. See [`docs/adding-a-scraper.md`](docs/adding-a-scraper.md).
