@@ -1,0 +1,1 @@
+"""Nebraska Revised Statutes scraper."""

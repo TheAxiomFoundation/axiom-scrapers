@@ -1,0 +1,1 @@
+"""Minnesota Statutes scraper."""
