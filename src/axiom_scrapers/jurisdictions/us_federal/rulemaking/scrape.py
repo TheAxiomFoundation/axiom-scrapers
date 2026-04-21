@@ -10,10 +10,12 @@ rulemaking through a clean JSON API. Four document types flow through:
 * **Notice** — non-rule agency announcements
 * **Presidential Document** — executive orders, proclamations, etc.
 
-This scraper targets **final Rules** (agency codification of policy
-before they land in the CFR). Proposed Rules and Notices are out of
-scope for the first cut; adding them is a matter of changing
-``_DOC_TYPES``.
+This scraper targets **final Rules** and **Proposed Rules** — both
+are rulemaking in the APA sense and share the same text format. The
+heading for proposed rules gets a ``[Proposed]`` prefix so downstream
+consumers can distinguish at a glance without parsing the body.
+Presidential Documents (EOs, proclamations) are structurally
+different policy and get their own scraper.
 
 Architecture
 ------------
@@ -52,10 +54,14 @@ from axiom_scrapers._common import Scraper, Section, http_get
 
 BASE = "https://www.federalregister.gov/api/v1"
 
-#: Federal Register document types this scraper ingests. "RULE" is
-#: final rules; extending to "PRORULE" adds proposed rules and "NOTICE"
-#: adds agency notices.
-_DOC_TYPES: tuple[str, ...] = ("RULE",)
+#: Federal Register document types this scraper ingests. Both Rules
+#: and Proposed Rules are APA rulemaking. Notices are mixed (some
+#: policy, mostly not) so they're left out.
+_DOC_TYPES: tuple[str, ...] = ("RULE", "PRORULE")
+
+#: Heading prefix added to Proposed Rules so Atlas viewers can
+#: distinguish them from final Rules without parsing the body.
+_PROPOSED_PREFIX = "[Proposed] "
 
 #: Window (in days) of publications to fetch when no explicit bounds
 #: are provided. 7 days gives ~100-400 rules; workable smoke size.
@@ -95,6 +101,9 @@ class FRDocRef:
     publication_date: str  # ISO date
     raw_text_url: str
     agency_names: tuple[str, ...]
+    #: FR-declared document type (``"Rule"`` or ``"Proposed Rule"``).
+    #: Drives the heading prefix; not used for routing yet.
+    fr_type: str = ""
 
 
 class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
@@ -133,13 +142,16 @@ class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
         # FR citation is preferred; document_number is the fallback so
         # older pre-citation records still get a usable <num>.
         cite = ref.citation or f"FR Doc. {ref.document_number}"
+        heading = ref.title
+        if ref.fr_type == "Proposed Rule" and not heading.startswith(_PROPOSED_PREFIX):
+            heading = _PROPOSED_PREFIX + heading
         return Section(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
             work_number=ref.document_number,
             citation=cite,
-            heading=ref.title,
+            heading=heading,
             body=body,
             author_id=self.author_id,
             author_name=self.author_name,
@@ -220,6 +232,7 @@ def parse_index_results(index_json: str) -> list[FRDocRef]:
         title = entry.get("title") or ""
         citation = entry.get("citation") or ""
         pub_date = entry.get("publication_date") or ""
+        fr_type = entry.get("type") or ""
         agencies = entry.get("agencies") or []
         agency_names: tuple[str, ...] = tuple(
             a.get("name", "") for a in agencies if isinstance(a, dict)
@@ -232,6 +245,7 @@ def parse_index_results(index_json: str) -> list[FRDocRef]:
                 publication_date=str(pub_date),
                 raw_text_url=str(raw_text_url),
                 agency_names=agency_names,
+                fr_type=str(fr_type),
             )
         )
     return out

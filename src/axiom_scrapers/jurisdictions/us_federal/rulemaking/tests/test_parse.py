@@ -70,6 +70,19 @@ class TestParseIndexResults:
         )
         assert parse_index_results(payload)[0].agency_names == ("Treasury", "IRS")
 
+    def test_captures_fr_type(self) -> None:
+        payload = (
+            '{"results":['
+            '{"document_number":"A","title":"T","type":"Rule",'
+            '"raw_text_url":"https://x.test/a","publication_date":"2026-01-01"},'
+            '{"document_number":"B","title":"T","type":"Proposed Rule",'
+            '"raw_text_url":"https://x.test/b","publication_date":"2026-01-02"}'
+            "]}"
+        )
+        refs = parse_index_results(payload)
+        assert refs[0].fr_type == "Rule"
+        assert refs[1].fr_type == "Proposed Rule"
+
 
 class TestExtractBodyText:
     def test_real_document_body(self) -> None:
@@ -169,6 +182,53 @@ class TestScraperClass:
         assert sec.heading == "Enrolled Agent Fee Update"
         assert "SUMMARY" in sec.body
 
+    def test_parse_section_prefixes_proposed_rule_heading(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        ref = FRDocRef(
+            document_number="2026-07682",
+            title="Enrolled Agent Fee Update",
+            citation="91 FR 20910",
+            publication_date="2026-04-20",
+            raw_text_url="https://example.test/proposed.txt",
+            agency_names=("IRS",),
+            fr_type="Proposed Rule",
+        )
+        install_fake_http(
+            monkeypatch,
+            scrape,
+            {
+                "https://example.test/proposed.txt": (
+                    "<html><body><pre>ACTION: Notice of proposed rulemaking.</pre></body></html>"
+                )
+            },
+        )
+        sec = FederalRegisterRulemakingScraper().parse_section(ref)
+        assert sec is not None
+        assert sec.heading == "[Proposed] Enrolled Agent Fee Update"
+
+    def test_parse_section_no_prefix_for_final_rule(
+        self, monkeypatch: pytest.MonkeyPatch
+    ) -> None:
+        ref = FRDocRef(
+            document_number="2026-07681",
+            title="Final rule title",
+            citation="91 FR 20899",
+            publication_date="2026-04-20",
+            raw_text_url="https://example.test/final.txt",
+            agency_names=(),
+            fr_type="Rule",
+        )
+        install_fake_http(
+            monkeypatch,
+            scrape,
+            {"https://example.test/final.txt": "<html><body><pre>Body.</pre></body></html>"},
+        )
+        sec = FederalRegisterRulemakingScraper().parse_section(ref)
+        assert sec is not None
+        assert sec.heading == "Final rule title"
+        assert not sec.heading.startswith("[Proposed]")
+
     def test_parse_section_falls_back_to_doc_number_citation(
         self, monkeypatch: pytest.MonkeyPatch
     ) -> None:
@@ -232,8 +292,8 @@ class TestCrawlLayer:
         )
         scraper = FederalRegisterRulemakingScraper(generation_date=date(2026, 4, 20))
         start = (date(2026, 4, 20) - __import__("datetime").timedelta(days=7)).isoformat()
-        url1 = _index_url(("RULE",), start, "2026-04-20", 1)
-        url2 = _index_url(("RULE",), start, "2026-04-20", 2)
+        url1 = _index_url(scrape._DOC_TYPES, start, "2026-04-20", 1)
+        url2 = _index_url(scrape._DOC_TYPES, start, "2026-04-20", 2)
         install_fake_http(monkeypatch, scrape, {url1: page_1, url2: page_2})
         refs = list(scraper.list_sections())
         assert [r.document_number for r in refs] == ["2026-1", "2026-2"]
@@ -243,6 +303,6 @@ class TestCrawlLayer:
     ) -> None:
         scraper = FederalRegisterRulemakingScraper(generation_date=date(2026, 4, 20))
         start = (date(2026, 4, 20) - __import__("datetime").timedelta(days=7)).isoformat()
-        url1 = _index_url(("RULE",), start, "2026-04-20", 1)
+        url1 = _index_url(scrape._DOC_TYPES, start, "2026-04-20", 1)
         install_fake_http(monkeypatch, scrape, {url1: '{"results":[]}'})
         assert list(scraper.list_sections()) == []
