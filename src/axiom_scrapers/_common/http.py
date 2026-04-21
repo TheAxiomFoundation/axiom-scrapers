@@ -93,7 +93,14 @@ def http_get(
     thousand-section walk shouldn't kill the whole run. Callers should
     check for ``None`` and skip cleanly.
     """
-    _opener: Any = opener if opener is not None else urllib.request.urlopen
+    # urllib.request.urlopen's second positional arg is ``data``, not
+    # ``timeout`` — passing the timeout positionally would send it as the
+    # request body. Wrap it so the (req, timeout) shape still works and
+    # injected test fakes keep working.
+    def _default_opener(r: urllib.request.Request, t: float) -> Any:
+        return urllib.request.urlopen(r, timeout=t)
+
+    _opener: Any = opener if opener is not None else _default_opener
 
     last_exc: Exception | None = None
     req = urllib.request.Request(url, headers={"User-Agent": user_agent})

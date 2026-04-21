@@ -46,6 +46,10 @@ REGISTRY: dict[tuple[str, str], str] = {
     ("us-sc", "statute"): "axiom_scrapers.jurisdictions.us_sc.statutes.scrape:SCCodeStatutesScraper",
     ("us-vt", "statute"): "axiom_scrapers.jurisdictions.us_vt.statutes.scrape:VSAStatutesScraper",
     ("us-wa", "statute"): "axiom_scrapers.jurisdictions.us_wa.statutes.scrape:RCWStatutesScraper",
+    (
+        "us-federal",
+        "rulemaking",
+    ): "axiom_scrapers.jurisdictions.us_federal.rulemaking.scrape:FederalRegisterRulemakingScraper",
 }
 
 

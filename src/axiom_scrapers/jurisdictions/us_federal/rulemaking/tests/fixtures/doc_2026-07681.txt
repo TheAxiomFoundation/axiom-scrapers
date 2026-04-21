@@ -1,0 +1,442 @@
+<html>
+<head>
+<title>Federal Register, Volume 91 Issue 75 (Monday, April 20, 2026)</title>
+</head>
+<body><pre>
+[Federal Register Volume 91, Number 75 (Monday, April 20, 2026)]
+[Rules and Regulations]
+[Pages 20899-20902]
+From the Federal Register Online via the Government Publishing Office [<a href="http://www.gpo.gov">www.gpo.gov</a>]
+[FR Doc No: 2026-07681]
+
+
+=======================================================================
+-----------------------------------------------------------------------
+
+DEPARTMENT OF THE TREASURY
+
+Internal Revenue Service
+
+26 CFR Part 300
+
+[TD 10045]
+RIN 1545-BS12
+
+
+Enrolled Agent Special Enrollment Examination User Fee Update
+
+AGENCY: Internal Revenue Service (IRS), Treasury.
+
+ACTION: Interim final rule.
+
+-----------------------------------------------------------------------
+
+SUMMARY: This document contains interim final regulations relating to 
+the imposition of user fees for the special enrollment examination for 
+enrolled agents (EA SEE). These regulations reduce the user fee for 
+each part of the EA SEE from $99 per part to $66 per part. The 
+Independent Offices Appropriation Act of 1952 authorizes the charging 
+of user fees. The text of these interim final regulations also serves 
+as the text of the proposed regulations set forth in the notice of 
+proposed rulemaking on this subject in this issue in the Proposed Rules 
+section of this edition of the Federal Register.
+
+DATES: 
+    Effective date: These regulations are effective on April 20, 2026.
+    Applicability date: For date of applicability, see Sec.  300.4(d) 
+of these interim final regulations.
+
+FOR FURTHER INFORMATION CONTACT: Concerning the interim final 
+regulations, Sean Dix at (202) 317-6845; concerning cost methodology, 
+CFO Cost and User Fees at (202) 317-6400 (not toll-free numbers).
+
+SUPPLEMENTARY INFORMATION:
+
+Authority
+
+    This document contains interim final amendments to 26 CFR part 300 
+regarding user fees for the EA SEE.
+    The Independent Offices Appropriation Act of 1952 (IOAA), which is 
+codified at 31 U.S.C. 9701, authorizes agencies to prescribe 
+regulations that establish user fees for services provided by the 
+agency. The IOAA provides that regulations implementing user fees are 
+subject to policies prescribed by the President; these policies are set 
+forth in the Office of Management and Budget Circular A-25, 58 FR 38142 
+(July 15, 1993) (OMB Circular A-25).
+    Under OMB Circular A-25, Federal agencies that provide services 
+that confer benefits on identifiable recipients are to establish user 
+fees that recover the full cost of providing the service. An agency 
+that seeks to impose a user fee
+
+[[Page 20900]]
+
+for government-provided services must calculate the full cost of 
+providing those services. In general, a user fee should be set at an 
+amount that allows the agency to recover the direct and indirect costs 
+of providing the service, unless the Office of Management and Budget 
+(OMB) grants an exception. OMB Circular A-25 provides that agencies are 
+to review user fees biennially and update them as necessary.
+
+Background
+
+A. Enrolled Agents and the Special Enrollment Examinations
+
+    Section 330 of Title 31 of the United States Code authorizes the 
+Secretary of the Treasury or the Secretary's delegate (Secretary) to 
+regulate the practice of representatives before the Department of the 
+Treasury (Treasury Department) and to require that an individual 
+seeking to practice demonstrate the necessary qualifications, 
+competency, and good character and reputation. The rules governing 
+practice before the IRS are published in 31 CFR, Subtitle A, part 10, 
+and reprinted as Treasury Department Circular No. 230 (Circular 230).
+    Section 10.4(a) of Circular 230 authorizes the IRS to grant status 
+as enrolled agents to individuals who demonstrate special competence in 
+tax matters by passing a written examination, the EA SEE, and who have 
+not engaged in any conduct that would justify suspension or disbarment 
+under Circular 230.
+    The EA SEE is comprised of three parts, and an applicant generally 
+must pass all three parts within three years to be granted enrolled 
+agent status through written examination. The EA SEE testing period 
+generally begins on May 1 each year and ends the last day of the 
+following February. The EA SEE is not offered during March and April 
+when it is updated to reflect recent changes in the relevant law. More 
+information on the EA SEE, including content, scoring, and how to 
+register, can be found on the IRS website at <a href="https://www.irs.gov/tax-professionals/enrolled-agents">https://www.irs.gov/tax-professionals/enrolled-agents</a>. Since 2006, the IRS has engaged the 
+services of a third-party contractor to develop and administer the EA 
+SEE. The IRS Return Preparer Office (RPO) oversees the development and 
+administration of the EA SEE. As of January 31, 2026, there were 75,304 
+enrolled agents.
+
+B. The EA SEE User Fee
+
+    Section 10.4(a) of Circular 230 provides that the IRS will grant 
+enrolled agent status to an applicant who, among other things, 
+demonstrates special competence in tax matters by written examination. 
+The EA SEE is the written examination by which applicants can 
+demonstrate special competence in tax matters, and an applicant must 
+pass all three parts of the EA SEE to be granted enrolled agent status 
+through written examination. The IRS confers a benefit on individuals 
+who take the EA SEE beyond those that accrue to the general public by 
+providing them with an opportunity to demonstrate special competence in 
+tax matters by passing a written examination and thereby satisfy one of 
+the requirements for becoming an enrolled agent under section 10.4(a) 
+of Circular 230. Because the EA SEE is a service that provides a 
+special benefit to test takers, the IRS charges a user fee to take the 
+examination.
+    Final regulations (TD 9962) published in the Federal Register (87 
+FR 11295-02) on March 1, 2022, established the current $99 user fee 
+(per part) of the EA SEE. At that time the Treasury Department and the 
+IRS determined that a $99 user fee per part would recover the full 
+direct and indirect costs the government would incur to oversee the EA 
+SEE. The 2023 biennial review determined the full cost of the EA SEE 
+was $121 per part. The IRS requested and obtained a waiver from OMB to 
+postpone this increase to the EA SEE user fee until the 2025 biennial 
+review. As a result, the user fee is currently still $99 per part. The 
+contractor who administers the EA SEE also charges individuals taking 
+the EA SEE an additional fee for its services. For the May 2025 to 
+February 2026 testing period, the contractor's fee was $168 for each 
+part of the EA SEE. This contract expired at the end of the February 
+2026 testing period and a new contract was obtained, subject to public 
+procurement procedures. For the May 2026 to February 2027 testing 
+period, the contractor's fee is $251 for each part of the EA SEE.
+    As required by OMB Circular A-25, in 2025 the IRS conducted a 
+biennial review of the EA SEE user fee and calculated its costs for 
+overseeing the examination. As a result of the review, the IRS 
+determined that its full cost for overseeing the EA SEE is now $66 per 
+part. Therefore, these regulations decrease the amount of the user fee 
+for taking the EA SEE from $99 per part to $66 per part. This amount is 
+in addition to the amount payable directly to the third-party 
+contractor for each part. The IRS does not intend to subsidize any of 
+the cost of making the EA SEE available to examinees and is not 
+applying for an exception to the full-cost requirement in OMB Circular 
+A-25.
+    The decrease in the user fee is primarily attributable to a change 
+in timekeeping methodology, which resulted in a smaller estimated 
+expense for administering the EA SEE program. Additionally, there has 
+been an increase in the number of exam takers, further distributing the 
+fixed costs related to administering the exam. The proposed user fee 
+accounts for the time and personnel necessary to oversee the 
+development and administration of the EA SEE and to ensure that the 
+contractor complies with the terms of its contract. The IRS's oversight 
+costs include costs associated with: (1) review and approval of 
+materials used by the contractor in developing the EA SEE; (2) review 
+of surveys of existing enrolled agents, which help to determine the 
+topics to be covered in the EA SEE; (3) composition of potential EA SEE 
+questions in coordination with the contractor's external tax law 
+experts; and (4) analysis of the answers and raw scores of a testing 
+population to determine a passing score.
+    In addition, IRS personnel ensure the contractor's compliance with 
+its contract by reviewing the work of the contractor using an annual 
+Work Breakdown Structure--a project management tool--and reviewing and 
+verifying that the contractor is in compliance with a Quality Assurance 
+Plan measuring customer satisfaction and accuracy. The IRS incurs 
+additional costs associated with enforcing compliance with the Treasury 
+contractor personnel security and training policies, Federal 
+Information Security Modernization Act (FISMA), Section 508 of the 
+Rehabilitation Act of 1973 and other laws, regulations and policies in 
+the scope of the EA SEE contract; monitoring the contractor's help 
+desk; and the resolution of test-related issues such as cheating 
+incidents, appeals regarding test scores, refund requests, and customer 
+service complaints that are not resolved by the contractor.
+    The government is authorized to charge an EA SEE user fee under the 
+IOAA because, in exchange for the fee, it provides a service by 
+developing and administering the EA SEE, which allows individuals to 
+become enrolled agents and gain the ability to practice before the IRS 
+under Circular 230. OMB Circular A-25 states that user fees should be 
+collected in advance of or simultaneously with the provision of a 
+service. The EA SEE user fee is collected when potential enrolled 
+agents apply to take the examination during the examination season, 
+which begins annually in May.
+
+[[Page 20901]]
+
+Explanation of Provisions
+
+    The IRS follows generally accepted accounting principles (GAAP) in 
+calculating the full cost of overseeing the EA SEE. The Federal 
+Accounting Standards Advisory Board (FASAB) is the body that 
+establishes GAAP that apply for Federal reporting entities, such as the 
+IRS. FASAB publishes the FASAB Handbook of Accounting Standards and 
+Other Pronouncements, as Amended (Current Handbook), which is available 
+at <a href="https://files.fasab.gov/pdffiles/2025_FASAB_Handbook.pdf">https://files.fasab.gov/pdffiles/2025_FASAB_Handbook.pdf</a>. The 
+Current Handbook includes the Statement of Federal Financial Accounting 
+Standards (SFFAS) No. 4: Managerial Cost Accounting Standards and 
+Concepts. SFFAS No. 4 establishes internal costing standards under GAAP 
+to accurately measure and manage the full cost of Federal programs, and 
+the methodology below is in accordance with SFFAS No. 4.
+
+1. Cost Estimation of Direct Labor
+
+    The IRS uses various cost-measurement techniques to estimate the 
+cost attributable to the program. These techniques include using 
+various timekeeping systems to measure the time required to accomplish 
+activities, or using information provided by subject-matter experts on 
+the time devoted to a program. To determine the labor and benefits cost 
+attributable to oversight of the EA SEE, the IRS estimated the number 
+of full-time employees required to conduct activities related to the 
+costs of overseeing the EA SEE. The number of full-time employees is 
+based on both current employment numbers and future hiring estimates. 
+Other direct costs associated with overseeing the EA SEE include 
+travel, training, and supplies. When the indirect cost of a service or 
+activity is not specifically identified from the cost accounting 
+system, an overhead rate is added to the identifiable direct cost to 
+arrive at full cost.
+
+2. Overhead
+
+    Overhead is an indirect cost of operating an organization that is 
+not specifically identifiable with an activity. Overhead includes costs 
+of resources that are jointly or commonly consumed by one or more 
+organizational unit's activities but are not specifically identifiable 
+to a single activity. These costs can include:
+
+<bullet> General management and administration
+<bullet> Rent, security, utilities and maintenance
+<bullet> Procurement and contracting
+<bullet> Financial management and accounting
+<bullet> Information technology
+<bullet> Research, analytical and statistical
+
+    To calculate the overhead allocable to a service, the IRS applies 
+an overhead rate to the identified direct labor and benefits and other 
+direct costs. The overhead rate is the ratio of the IRS's indirect 
+labor, benefits, and non-labor costs of business divisions that do not 
+interact with taxpayers to the labor and benefits costs of business 
+divisions that interact with taxpayers. The IRS calculates an overhead 
+rate annually. For the FY 2025 user fee review, an overhead rate of 
+62.92 percent was used.
+
+3. Calculation of EA SEE User FEE
+
+    The IRS used projections for FYs 2026 through 2028 to determine the 
+direct and indirect costs associated with overseeing the EA SEE that 
+are includible in the EA SEE user fee calculation. Direct costs are 
+incurred by the RPO and include staffing and contract-related costs for 
+activities, processes, and procedures related to overseeing the EA SEE.
+    The labor and benefits for the work performed related to overseeing 
+the EA SEE is projected to be $3,505,101 in total over FYs 2026 through 
+2028. In addition to labor and benefits and overhead expenses, the IRS 
+projects incurring travel, training, and supplies costs of $16,182.82 
+in each of FYs 2026 through 2028. The total labor and benefits, travel, 
+training, and supplies, and overhead expenses projected are shown 
+below:
+
+----------------------------------------------------------------------------------------------------------------
+               Expense                     FY 2026            FY 2027            FY 2028             Total
+----------------------------------------------------------------------------------------------------------------
+Labor and benefits..................      $1,136,817.91      $1,168,080.40      $1,200,202.61         $3,505,101
+Travel, training, and supplies......          16,182.82          16,182.82          16,182.82             48,548
+Overhead (62.92 percent)............         715,286.00         734,956.00         755,167.00          2,205,409
+----------------------------------------------------------------------------------------------------------------
+
+    The total cost for FYs 2026 through 2028 are therefore projected to 
+be $5,759,058. The number of examination parts provided during FYs 
+2022, 2023, and 2024 were 27,313; 29,797; 29,584, respectively. The 
+total number of examination parts provided during the three years was 
+86,694. The IRS used this historical three-year volume to estimate the 
+number of examination parts it expects to provide in FYs 2026, 2027, 
+and 2028. Dividing this total cost by the projected examinations for 
+FYs 2026 through 2028 results in a cost per examination of $66 as shown 
+below:
+
+Total Costs $5,759,058
+Number of Applications / 86,694
+Cost per Application $66.43
+
+    Taking into account the full amount of these costs, the amount of 
+the EA SEE user fee per part is $66.
+    As noted in section B, the contractor who administers the EA SEE 
+also charges individuals taking the EA SEE an additional fee for its 
+services. For the May 2026 to February 2027, May 2027 to February 2028, 
+May 2028 to February 2029 testing periods, the contractor's fee is $251 
+for each part of the EA SEE. For the May 2029 to February 2030 testing 
+period, the contractor's fee is $211 for each part of the EA SEE. The 
+fee charged by the contractor is fixed by the current contract terms 
+and therefore cannot be reduced or renegotiated at this time. The 
+contract was subject to public procurement procedures, and there were 
+no tenders that were more competitive. The contract will expire on 
+February 28, 2030. The fee charged by the contractor may change when 
+the contract expires. Any future contract will be subject to the public 
+procurement procedures.
+
+Special Analyses
+
+I. Regulatory Planning and Review
+
+    These interim final regulations are not subject to review under 
+section 6(b) of Executive Order 12866 pursuant to the Memorandum of 
+Agreement (July 4, 2025) between the Treasury Department and OMB 
+regarding review of tax regulations.
+
+II. Regulatory Flexibility Act
+
+    Pursuant to the Regulatory Flexibility Act (5 U.S.C. chapter 6), it 
+is hereby certified that these interim final regulations will not have 
+a significant economic impact on a substantial number of small 
+entities. The EA SEE user fee primarily affects individuals who take 
+the EA SEE. Only individuals, not businesses, can be enrolled agents. 
+Thus, the economic impact of these regulations on any small entity 
+would be a result of an individual enrolled
+
+[[Page 20902]]
+
+agent owning a small entity or a small entity employing an enrolled 
+agent who must take the EA SEE. The Treasury Department and the IRS 
+estimate that an average of 28,898 EA SEE examination parts will be 
+taken by individuals annually. Therefore, a substantial number of small 
+entities is not likely to be affected. Additionally, the economic 
+impact on those entities is not significant. These regulations will 
+establish a $66 fee per examination part (plus $251 payable directly to 
+the third-party contractor), and will not have a significant economic 
+impact on a small entity. Accordingly, the rule is not expected to have 
+a significant economic impact on a substantial number of small 
+entities, and a regulatory flexibility analysis is not required.
+
+III. Unfunded Mandates Reform Act
+
+    Section 202 of the Unfunded Mandates Reform Act of 1995 (UMRA) 
+requires that agencies assess anticipated costs and benefits and take 
+certain other actions before issuing a final rule that includes any 
+Federal mandate that may result in expenditures in any one year by a 
+State, local, or Tribal government, in the aggregate, or by the private 
+sector, of $100 million in 1995 dollars, updated annually for 
+inflation. This rule does not include any Federal mandate that may 
+result in expenditures by State, local, or Tribal governments, or by 
+the private sector in excess of that threshold.
+
+IV. Executive Order 13132: Federalism
+
+    Executive Order 13132 (Federalism) prohibits an agency from 
+publishing any rule that has federalism implications if the rule either 
+imposes substantial, direct compliance costs on State and local 
+governments, and is not required by statute, or preempts State law, 
+unless the agency meets the consultation and funding requirements of 
+section 6 of the Executive order. These interim final regulations do 
+not have federalism implications and do not impose substantial direct 
+compliance costs on State and local governments or preempt State law 
+within the meaning of the Executive order.
+
+V. Good Cause
+
+    The annual EA SEE testing period for May 2026-February 2027 will 
+begin shortly. It would be unnecessary and contrary to the public 
+interest for the IRS to continue to charge the current, higher user fee 
+pending public comment after the IRS has determined pursuant to the 
+biennial review conducted under OMB Circular A-25 that the EA SEE user 
+fee should be reduced going forward. To enable the reduced fee amount 
+to be in effect for the upcoming EA SEE test period beginning in May 
+2026, the Treasury Department and the IRS find that there is good cause 
+to dispense with (1) notice and public comment pursuant to 5 U.S.C. 
+553(b) and (c) and (2) a delayed effective date pursuant to 5 U.S.C. 
+553(d). The Treasury Department and the IRS will consider public 
+comments submitted in response to the cross-referenced notice of 
+proposed rulemaking published in the Proposed Rules section of this 
+issue of the Federal Register and will promulgate a final rule after 
+considering those comments.
+
+VI. Submission to Small Business Administration
+
+    Pursuant to section 7805(f) of the Code, this Treasury decision has 
+been submitted to the Chief Counsel for the Office of Advocacy of the 
+Small Business Administration for comment on its impact on small 
+business.
+
+VII. Congressional Review Act
+
+    Pursuant to the Congressional Review Act (5 U.S.C. 801 et seq.), 
+the Office of Information and Regulatory Affairs designated this rule 
+as not a major rule, as defined by 5 U.S.C. 804(2).
+
+Drafting Information
+
+    The principal author of these regulations is Sean Dix, Office of 
+the Associate Chief Counsel (Procedure and Administration). Other 
+personnel from the Treasury Department and the IRS participated in the 
+development of the regulations.
+
+List of Subjects in 26 CFR Part 300
+
+    Estate taxes, Excise taxes, Fees, Gift taxes, Income taxes, 
+Reporting and recordkeeping requirements.
+
+Adoption of Amendments to the Regulations
+
+    Accordingly, the Treasury Department and the IRS amend 26 CFR part 
+300 as follows:
+
+PART 300--USER FEES
+
+    Paragraph 1. The authority citation for part 300 continues to read 
+in part as follows:
+
+    Authority: 31 U.S.C. 9701.
+
+    Par. 2. Section 300.4 is amended by revising paragraphs (b) and (d) 
+to read as follows:
+
+
+Sec.  300.4  Enrolled agent special enrollment examination fee.
+
+* * * * *
+    (b) Fee. The fee for taking the enrolled agent special enrollment 
+examination is $66 per part, which is the cost to the government for 
+overseeing the development and administration of the examination and is 
+in addition to the fees charged by the administrator of the 
+examination.
+* * * * *
+    (d) Applicability date. This section applies to registrations for 
+the enrolled agent special enrollment examination that occur on or 
+after April 20, 2026.
+
+Frank J. Bisignano,
+Chief Executive Officer.
+
+    Approved: March 30, 2026.
+Kenneth J. Kies,
+Assistant Secretary of the Treasury (Tax Policy).
+[FR Doc. 2026-07681 Filed 4-17-26; 8:45 am]
+BILLING CODE 4831-GV-P
+
+
+</pre></body>
+</html>
