@@ -12,6 +12,7 @@ dependency.
 
 from __future__ import annotations
 
+import re
 from dataclasses import dataclass
 from datetime import date
 from xml.sax.saxutils import escape as xml_escape
@@ -19,6 +20,18 @@ from xml.sax.saxutils import escape as xml_escape
 from .text import split_paragraphs
 
 AKN_NS = "http://docs.oasis-open.org/legaldocml/ns/akn/3.0"
+
+# XML 1.0 forbids most C0 control characters (everything below U+0020
+# except tab / LF / CR). Upstream sources occasionally leak these —
+# Federal Register PDF→text conversions embed NULL bytes (\x00), and
+# some state HTML carries stray form-feeds. Strip them before emitting
+# so the resulting AKN document is well-formed.
+_INVALID_XML_CHARS = re.compile(r"[\x00-\x08\x0b\x0c\x0e-\x1f]")
+
+
+def strip_invalid_xml_chars(s: str) -> str:
+    """Remove C0 control characters that XML 1.0 forbids."""
+    return _INVALID_XML_CHARS.sub("", s)
 
 
 @dataclass(frozen=True)
@@ -82,7 +95,7 @@ def build_akn_xml(section: Section) -> str:
     The shape is stable — Atlas's ingester keys on ``<FRBRnumber>`` and
     ``<section>``'s first ``<num>`` and ``<heading>`` children.
     """
-    paras = split_paragraphs(section.body)
+    paras = split_paragraphs(strip_invalid_xml_chars(section.body))
     paras_xml = (
         "\n            ".join(f"<p>{xml_escape(p)}</p>" for p in paras)
         if paras
@@ -141,8 +154,8 @@ def build_akn_xml(section: Section) -> str:
     </meta>
     <body>
       <section eId="{xml_escape(eid, {'"': "&quot;"})}">
-        <num>{xml_escape(section.citation)}</num>
-        <heading>{xml_escape(section.heading or f"Section {number}")}</heading>
+        <num>{xml_escape(strip_invalid_xml_chars(section.citation))}</num>
+        <heading>{xml_escape(strip_invalid_xml_chars(section.heading or f"Section {number}"))}</heading>
         <content>
             {paras_xml}
         </content>

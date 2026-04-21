@@ -129,6 +129,30 @@ class TestBuildAknXml:
         assert p is not None
         assert p.text == "A < B and C > D and E & F."
 
+    def test_invalid_xml_control_chars_stripped_from_body(self) -> None:
+        """PDF→text conversions (e.g. Federal Register) leak NULL bytes
+        and other C0 controls. They're forbidden in XML 1.0; strip
+        before emitting so the resulting document stays parseable."""
+        xml = build_akn_xml(
+            make_section(body="Before\x00 NULL\x0b vert-tab\x0c form-feed\x1f us.")
+        )
+        # Must round-trip through a strict XML parser.
+        root = ET.fromstring(xml)
+        p = root.find(
+            f".//{{{AKN_NS}}}section/{{{AKN_NS}}}content/{{{AKN_NS}}}p"
+        )
+        assert p is not None
+        assert p.text is not None
+        assert "\x00" not in p.text
+        assert "NULL" in p.text
+
+    def test_invalid_xml_control_chars_stripped_from_heading(self) -> None:
+        xml = build_akn_xml(make_section(heading="Heading\x00 with null"))
+        root = ET.fromstring(xml)  # must parse
+        h = root.find(f".//{{{AKN_NS}}}section/{{{AKN_NS}}}heading")
+        assert h is not None
+        assert h.text == "Heading with null"
+
     def test_xml_entities_escaped_in_citation(self) -> None:
         xml = build_akn_xml(make_section(citation='"R.C. 1.01"'))
         # No crash, parses, and the citation round-trips.
