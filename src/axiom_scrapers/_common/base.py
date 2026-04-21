@@ -28,7 +28,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-from typing import Generic, TypeVar
+from typing import Any, Generic, TypeVar
 
 from .akn import Section, build_akn_xml
 from .text import safe_path_segment
@@ -154,16 +154,45 @@ class Scraper(ABC, Generic[SectionRef]):
         started = time.time()
         written = 0
         skipped = 0
+        submitted = 0
 
-        refs = list(self.list_sections())
-        if limit is not None:
-            refs = refs[:limit]
-        total = len(refs)
-        log(f"Scraping {total} sections for {self.jurisdiction}/{self.doc_type}")
+        # Consume ``list_sections`` lazily so parse workers start processing
+        # as soon as the first ref is discovered — otherwise large corpora
+        # like VA (tens of thousands of TOC pages) block the entire parse
+        # phase behind a single-threaded discovery walk. Keeps the
+        # submitted-but-unfinished queue bounded so memory stays flat even
+        # for million-section jurisdictions.
+        refs_iter = iter(self.list_sections())
+
+        def _refill(ex: ThreadPoolExecutor, pending: dict[Any, None]) -> int:
+            """Pull refs from the iterator, submit to the pool.
+
+            Returns the number submitted in this call.
+            """
+            slots = max(0, self.workers * 4 - len(pending))
+            added = 0
+            for _ in range(slots):
+                try:
+                    ref = next(refs_iter)
+                except StopIteration:
+                    return added
+                if limit is not None and submitted + added >= limit:
+                    return added
+                fut = ex.submit(self._parse_and_write, ref, out_root)
+                pending[fut] = None
+                added += 1
+            return added
 
         with ThreadPoolExecutor(max_workers=self.workers) as ex:
-            futures = {ex.submit(self._parse_and_write, ref, out_root): ref for ref in refs}
-            for fut in as_completed(futures):
+            pending: dict[Any, None] = {}
+            submitted += _refill(ex, pending)
+            log(f"Scraping {self.jurisdiction}/{self.doc_type} (streaming discovery)")
+            exhausted = not pending
+            while pending:
+                # Drain one future at a time so refills happen promptly.
+                done_iter = as_completed(pending)
+                fut = next(done_iter)
+                del pending[fut]
                 ok = fut.result()
                 if ok:
                     written += 1
@@ -173,9 +202,14 @@ class Scraper(ABC, Generic[SectionRef]):
                 if log_every > 0 and seen % log_every == 0:
                     elapsed = time.time() - started
                     log(
-                        f"  {seen}/{total}: {written} ok, {skipped} skipped, "
+                        f"  {seen}: {written} ok, {skipped} skipped, "
                         f"{elapsed/60:.1f} min"
                     )
+                if not exhausted:
+                    added = _refill(ex, pending)
+                    submitted += added
+                    if added == 0 and (limit is None or submitted < limit):
+                        exhausted = True
 
         elapsed = time.time() - started
         log(
