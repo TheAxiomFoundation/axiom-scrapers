@@ -133,9 +133,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = ICStatutesScraper()
         rel = scraper.relative_output_path(self._section("2-1-1-1"))
-        assert rel == Path("us-in/statute/ch-2/ch-2-sec-1-1-1.xml")
+        assert rel == Path("us-in/statutes/ch-2/ch-2-sec-1-1-1.xml")
 
     def test_version_suffix_kept_in_filename(self) -> None:
         scraper = ICStatutesScraper()
         rel = scraper.relative_output_path(self._section("6-1.1-12-10.1-b"))
-        assert rel == Path("us-in/statute/ch-6/ch-6-sec-1.1-12-10.1-b.xml")
+        assert rel == Path("us-in/statutes/ch-6/ch-6-sec-1.1-12-10.1-b.xml")

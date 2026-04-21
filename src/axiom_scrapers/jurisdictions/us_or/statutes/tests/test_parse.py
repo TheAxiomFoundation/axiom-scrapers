@@ -145,9 +145,9 @@ class TestOutputPath:
     def test_numeric_chapter(self) -> None:
         scraper = ORSStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.020"))
-        assert rel == Path("us-or/statute/ch-1/ch-1-sec-1.020.xml")
+        assert rel == Path("us-or/statutes/ch-1/ch-1-sec-1.020.xml")
 
     def test_alpha_chapter(self) -> None:
         scraper = ORSStatutesScraper()
         rel = scraper.relative_output_path(self._section("285A.050"))
-        assert rel == Path("us-or/statute/ch-285A/ch-285A-sec-285A.050.xml")
+        assert rel == Path("us-or/statutes/ch-285A/ch-285A-sec-285A.050.xml")

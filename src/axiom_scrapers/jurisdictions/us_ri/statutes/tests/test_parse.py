@@ -148,9 +148,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = RIGLStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-2-1"))
-        assert rel == Path("us-ri/statute/ch-1/ch-1-sec-1-2-1.xml")
+        assert rel == Path("us-ri/statutes/ch-1/ch-1-sec-1-2-1.xml")
 
     def test_alpha_title(self) -> None:
         scraper = RIGLStatutesScraper()
         rel = scraper.relative_output_path(self._section("6A-2-1"))
-        assert rel == Path("us-ri/statute/ch-6A/ch-6A-sec-6A-2-1.xml")
+        assert rel == Path("us-ri/statutes/ch-6A/ch-6A-sec-6A-2-1.xml")

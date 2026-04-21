@@ -113,7 +113,7 @@ class TestRCScraperConfig:
         )
         rel = scraper.relative_output_path(sec)
         # Chapter prefix ("5747") becomes the intermediate dir.
-        assert rel == Path("us-oh/statute/ch-5747/5747.01.xml")
+        assert rel == Path("us-oh/statutes/ch-5747/5747.01.xml")
 
     def test_output_path_single_token_section(self) -> None:
         """A section number with no dot (rare but possible) still nests sensibly."""
@@ -134,4 +134,4 @@ class TestRCScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-oh/statute/ch-1/1.xml")
+        assert rel == Path("us-oh/statutes/ch-1/1.xml")

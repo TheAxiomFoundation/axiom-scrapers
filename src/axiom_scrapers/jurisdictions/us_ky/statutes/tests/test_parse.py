@@ -154,12 +154,12 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = KRSStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.010"))
-        assert rel == Path("us-ky/statute/ch-1/ch-1-sec-1.010.xml")
+        assert rel == Path("us-ky/statutes/ch-1/ch-1-sec-1.010.xml")
 
     def test_alpha_suffix_chapter(self) -> None:
         scraper = KRSStatutesScraper()
         rel = scraper.relative_output_path(self._section("6A.100"))
-        assert rel == Path("us-ky/statute/ch-6A/ch-6A-sec-6A.100.xml")
+        assert rel == Path("us-ky/statutes/ch-6A/ch-6A-sec-6A.100.xml")
 
 
 class TestSectionRefDataclass:

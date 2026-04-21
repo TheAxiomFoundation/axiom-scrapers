@@ -150,7 +150,7 @@ class ICStatutesScraper(Scraper[tuple[str, str]]):
         title, rest = section.work_number.split("-", 1)
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             f"ch-{title}",
             f"ch-{title}-sec-{rest}.xml",
         )

@@ -152,7 +152,7 @@ class TestMCAScraperConfig:
         )
         rel = scraper.relative_output_path(sec)
         # Title + chapter prefix forms the intermediate dir.
-        assert rel == Path("us-mt/statute/ch-15-30/15-30-2101.xml")
+        assert rel == Path("us-mt/statutes/ch-15-30/15-30-2101.xml")
 
     def test_output_path_for_single_digit_title(self) -> None:
         from axiom_scrapers._common.akn import Section
@@ -172,4 +172,4 @@ class TestMCAScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-mt/statute/ch-1-1/1-1-101.xml")
+        assert rel == Path("us-mt/statutes/ch-1-1/1-1-101.xml")

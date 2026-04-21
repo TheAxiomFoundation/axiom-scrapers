@@ -144,7 +144,7 @@ class PAStatutesScraper(Scraper[PASectionRef]):
         filename = f"tt-{title_token}-sec-{safe_section}.xml"
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             f"tt-{title_token}",
             filename,
         )

@@ -246,7 +246,7 @@ class TestNRSScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-nv/statute/ch-244/244.010.xml")
+        assert rel == Path("us-nv/statutes/ch-244/244.010.xml")
 
     def test_output_path_handles_letter_chapter_token(self) -> None:
         """Chapters like 244A must land under ``ch-244A``, not
@@ -266,7 +266,7 @@ class TestNRSScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-nv/statute/ch-244A/244A.010.xml")
+        assert rel == Path("us-nv/statutes/ch-244A/244A.010.xml")
 
 
 class TestConnectionResetHandledByHttpGet:

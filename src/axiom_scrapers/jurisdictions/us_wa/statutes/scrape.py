@@ -112,7 +112,7 @@ class RCWStatutesScraper(Scraper[str]):
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             f"ch-{safe_chapter}",
             f"ch-{safe_chapter}-sec-{safe_section}.xml",
         )

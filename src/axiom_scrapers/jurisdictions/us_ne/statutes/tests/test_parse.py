@@ -136,14 +136,14 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = NebRevStatScraper()
         rel = scraper.relative_output_path(self._section("1-101"))
-        assert rel == Path("us-ne/statute/ch-1/ch-1-sec-101.xml")
+        assert rel == Path("us-ne/statutes/ch-1/ch-1-sec-101.xml")
 
     def test_decimal_section(self) -> None:
         scraper = NebRevStatScraper()
         rel = scraper.relative_output_path(self._section("1-105.01"))
-        assert rel == Path("us-ne/statute/ch-1/ch-1-sec-105.01.xml")
+        assert rel == Path("us-ne/statutes/ch-1/ch-1-sec-105.01.xml")
 
     def test_two_digit_chapter(self) -> None:
         scraper = NebRevStatScraper()
         rel = scraper.relative_output_path(self._section("90-1201"))
-        assert rel == Path("us-ne/statute/ch-90/ch-90-sec-1201.xml")
+        assert rel == Path("us-ne/statutes/ch-90/ch-90-sec-1201.xml")

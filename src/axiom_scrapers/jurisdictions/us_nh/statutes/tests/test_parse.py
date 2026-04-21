@@ -156,14 +156,14 @@ class TestOutputPath:
     def test_numeric_chapter(self) -> None:
         scraper = RSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-1"))
-        assert rel == Path("us-nh/statute/ch-1/ch-1-sec-1-1.xml")
+        assert rel == Path("us-nh/statutes/ch-1/ch-1-sec-1-1.xml")
 
     def test_alpha_suffix_chapter(self) -> None:
         scraper = RSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-A-5"))
-        assert rel == Path("us-nh/statute/ch-1-A/ch-1-A-sec-1-A-5.xml")
+        assert rel == Path("us-nh/statutes/ch-1-A/ch-1-A-sec-1-A-5.xml")
 
     def test_dashed_section_token(self) -> None:
         scraper = RSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-14-a"))
-        assert rel == Path("us-nh/statute/ch-1/ch-1-sec-1-14-a.xml")
+        assert rel == Path("us-nh/statutes/ch-1/ch-1-sec-1-14-a.xml")

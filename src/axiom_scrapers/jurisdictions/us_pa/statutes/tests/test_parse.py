@@ -162,7 +162,7 @@ class TestPAScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-pa/statute/tt-18/tt-18-sec-901.xml")
+        assert rel == Path("us-pa/statutes/tt-18/tt-18-sec-901.xml")
 
     def test_output_path_preserves_dotted_section(self) -> None:
         from axiom_scrapers._common.akn import Section
@@ -182,4 +182,4 @@ class TestPAScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-pa/statute/tt-42/tt-42-sec-5523.1.xml")
+        assert rel == Path("us-pa/statutes/tt-42/tt-42-sec-5523.1.xml")

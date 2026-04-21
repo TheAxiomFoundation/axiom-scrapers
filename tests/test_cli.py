@@ -102,4 +102,4 @@ class TestMain:
             ]
         )
         assert rc == 0
-        assert (tmp_path / "us-stub/statute/1.01.xml").exists()
+        assert (tmp_path / "us-stub/statutes/1.01.xml").exists()

@@ -223,7 +223,7 @@ class NRSStatutesScraper(Scraper[tuple[str, str]]):
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             f"ch-{chapter}",
             f"{safe_section}.xml",
         )

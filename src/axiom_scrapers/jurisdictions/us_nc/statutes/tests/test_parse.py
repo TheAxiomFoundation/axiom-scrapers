@@ -165,7 +165,7 @@ class TestGSScraperConfig:
         rel = scraper.relative_output_path(sec)
         # Chapter prefix ("1") becomes the intermediate dir; filename
         # prefixes the chapter token for browseability.
-        assert rel == Path("us-nc/statute/ch-1/ch-1-sec-1-339.1.xml")
+        assert rel == Path("us-nc/statutes/ch-1/ch-1-sec-1-339.1.xml")
 
     def test_output_path_handles_alphanumeric_chapter(self) -> None:
         from axiom_scrapers._common.akn import Section
@@ -185,4 +185,4 @@ class TestGSScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-nc/statute/ch-14B/ch-14B-sec-14B-500.xml")
+        assert rel == Path("us-nc/statutes/ch-14B/ch-14B-sec-14B-500.xml")

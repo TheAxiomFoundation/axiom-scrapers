@@ -150,9 +150,9 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = MinnStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.01"))
-        assert rel == Path("us-mn/statute/ch-1/ch-1-sec-1.01.xml")
+        assert rel == Path("us-mn/statutes/ch-1/ch-1-sec-1.01.xml")
 
     def test_alpha_suffix_chapter(self) -> None:
         scraper = MinnStatutesScraper()
         rel = scraper.relative_output_path(self._section("2A.04"))
-        assert rel == Path("us-mn/statute/ch-2A/ch-2A-sec-2A.04.xml")
+        assert rel == Path("us-mn/statutes/ch-2A/ch-2A-sec-2A.04.xml")

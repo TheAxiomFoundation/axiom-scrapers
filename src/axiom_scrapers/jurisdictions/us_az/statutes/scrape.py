@@ -112,7 +112,7 @@ class ARSStatutesScraper(Scraper[tuple[int, str]]):
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             f"ch-{title}",
             f"ch-{title}-sec-{safe_section}.xml",
         )

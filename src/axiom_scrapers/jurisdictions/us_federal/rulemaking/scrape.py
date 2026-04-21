@@ -116,6 +116,8 @@ class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
 
     jurisdiction = "us-federal"
     doc_type = "rulemaking"
+    # "rulemaking" is already the collective noun — no pluralization.
+    doc_type_dir = "rulemaking"
     authority_code = "FR"
     author_id = "us-federal-register"
     author_name = "U.S. Federal Register"
@@ -169,7 +171,7 @@ class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
         safe = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             year,
             f"{safe}.xml",
         )

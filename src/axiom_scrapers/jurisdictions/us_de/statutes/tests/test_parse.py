@@ -162,9 +162,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = DelCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-101"))
-        assert rel == Path("us-de/statute/title-1/title-1-sec-101.xml")
+        assert rel == Path("us-de/statutes/title-1/title-1-sec-101.xml")
 
     def test_nests_for_title_31(self) -> None:
         scraper = DelCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("31-500"))
-        assert rel == Path("us-de/statute/title-31/title-31-sec-500.xml")
+        assert rel == Path("us-de/statutes/title-31/title-31-sec-500.xml")

@@ -148,9 +148,9 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = RSMoStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.010"))
-        assert rel == Path("us-mo/statute/ch-1/ch-1-sec-1.010.xml")
+        assert rel == Path("us-mo/statutes/ch-1/ch-1-sec-1.010.xml")
 
     def test_three_digit_chapter(self) -> None:
         scraper = RSMoStatutesScraper()
         rel = scraper.relative_output_path(self._section("143.121"))
-        assert rel == Path("us-mo/statute/ch-143/ch-143-sec-143.121.xml")
+        assert rel == Path("us-mo/statutes/ch-143/ch-143-sec-143.121.xml")

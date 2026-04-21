@@ -127,7 +127,7 @@ class MCAStatutesScraper(Scraper[str]):
             chapter_key = f"ch-{parts[0]}"
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             chapter_key,
             f"{section.work_number}.xml",
         )

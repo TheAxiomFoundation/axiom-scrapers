@@ -82,7 +82,7 @@ class ILCSStatutesScraper(Scraper[str]):
         chapter = section.work_number.split("-")[0]
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             f"ch-{chapter}",
             f"{section.work_number}.xml",
         )

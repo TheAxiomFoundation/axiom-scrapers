@@ -203,20 +203,34 @@ class Scraper(ABC, Generic[SectionRef]):
         dest.write_text(build_akn_xml(sec), encoding="utf-8")
         return True
 
+    #: Plural directory segment for this doc_type in the output tree.
+    #: Atlas's ingester walks ``{repo}/statutes/`` / ``{repo}/regulations/``
+    #: etc. — plural. Override if the pluralization isn't just ``+s``
+    #: (``rulemaking`` is already plural; overrides set ``"rulemaking"``).
+    doc_type_dir: str = ""
+
     def relative_output_path(self, section: Section) -> Path:
         """Return the output filename for a section, relative to ``out_root``.
 
         Default layout::
 
-            {jurisdiction}/{doc_type}/{section_id}.xml
+            {jurisdiction}/{doc_type_dir}/{section_id}.xml
+
+        where ``doc_type_dir`` is the plural directory segment
+        (``statutes``, ``regulations``) that matches what atlas's
+        ingester walks.
 
         Subclasses often override to nest by chapter / title so the
         tree stays browseable:
 
-            {jurisdiction}/{doc_type}/ch-{chapter}/{section_id}.xml
+            {jurisdiction}/{doc_type_dir}/ch-{chapter}/{section_id}.xml
         """
         safe = safe_path_segment(section.work_number)
-        return Path(self.jurisdiction) / self.doc_type / f"{safe}.xml"
+        return Path(self.jurisdiction) / self._doc_type_dir() / f"{safe}.xml"
+
+    def _doc_type_dir(self) -> str:
+        """Plural directory segment; defaults to ``{doc_type}s``."""
+        return self.doc_type_dir or f"{self.doc_type}s"
 
 
 def _default_logger(msg: str) -> None:

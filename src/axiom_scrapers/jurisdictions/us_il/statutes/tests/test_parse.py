@@ -133,7 +133,7 @@ class TestILCSScraperConfig:
         )
         rel = scraper.relative_output_path(sec)
         # Chapter prefix ("35") becomes the intermediate dir.
-        assert rel == Path("us-il/statute/ch-35/35-155-2.xml")
+        assert rel == Path("us-il/statutes/ch-35/35-155-2.xml")
 
 
 class TestCrawlLayer:

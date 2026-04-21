@@ -158,9 +158,9 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = RCWStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.04.010"))
-        assert rel == Path("us-wa/statute/ch-1.04/ch-1.04-sec-1.04.010.xml")
+        assert rel == Path("us-wa/statutes/ch-1.04/ch-1.04-sec-1.04.010.xml")
 
     def test_alpha_title(self) -> None:
         scraper = RCWStatutesScraper()
         rel = scraper.relative_output_path(self._section("9A.04.010"))
-        assert rel == Path("us-wa/statute/ch-9A.04/ch-9A.04-sec-9A.04.010.xml")
+        assert rel == Path("us-wa/statutes/ch-9A.04/ch-9A.04-sec-9A.04.010.xml")

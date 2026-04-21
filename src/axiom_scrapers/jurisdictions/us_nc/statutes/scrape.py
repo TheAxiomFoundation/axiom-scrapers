@@ -148,7 +148,7 @@ class GSStatutesScraper(Scraper[tuple[str, str]]):
         chapter = section.work_number.split("-", 1)[0]
         return Path(
             self.jurisdiction,
-            self.doc_type,
+            self._doc_type_dir(),
             f"ch-{chapter}",
             f"ch-{chapter}-sec-{section.work_number}.xml",
         )

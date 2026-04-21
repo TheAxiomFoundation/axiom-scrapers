@@ -86,14 +86,14 @@ class TestScraperRun:
     def test_default_output_path_shape(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper(["244.010"])
         scraper.run(tmp_path, log_every=0)
-        expected = tmp_path / "us-test" / "statute" / "244.010.xml"
+        expected = tmp_path / "us-test" / "statutes" / "244.010.xml"
         assert expected.exists()
 
     def test_slash_in_section_id_is_sanitized(self, tmp_path: Path) -> None:
         # Some real IL citations are "35-155/2" — slashes would break path.
         scraper = _OneShotScraper(["35-155_2"])  # we pass safe form already
         scraper.run(tmp_path, log_every=0)
-        assert (tmp_path / "us-test" / "statute" / "35-155_2.xml").exists()
+        assert (tmp_path / "us-test" / "statutes" / "35-155_2.xml").exists()
 
     def test_parse_returning_none_counts_as_skip(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper(["1.01", "1.02", "1.03"], skip={"1.02"})
@@ -130,7 +130,7 @@ class TestScraperRun:
     def test_written_xml_contains_section_heading(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper(["42.01"])
         scraper.run(tmp_path, log_every=0)
-        content = (tmp_path / "us-test" / "statute" / "42.01.xml").read_text()
+        content = (tmp_path / "us-test" / "statutes" / "42.01.xml").read_text()
         assert "Heading for 42.01" in content
         assert "TEST 42.01" in content
 
@@ -142,15 +142,15 @@ class TestOutputPathOverride:
                 chapter = section.work_number.split(".")[0]
                 return Path(
                     self.jurisdiction,
-                    self.doc_type,
+                    self._doc_type_dir(),
                     f"ch-{chapter}",
                     f"{section.work_number}.xml",
                 )
 
         scraper = ChapterNestedScraper(["244.010", "244.011", "300.001"])
         scraper.run(tmp_path, log_every=0)
-        assert (tmp_path / "us-test/statute/ch-244/244.010.xml").exists()
-        assert (tmp_path / "us-test/statute/ch-300/300.001.xml").exists()
+        assert (tmp_path / "us-test/statutes/ch-244/244.010.xml").exists()
+        assert (tmp_path / "us-test/statutes/ch-300/300.001.xml").exists()
 
 
 class TestScrapeResult:

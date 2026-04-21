@@ -130,9 +130,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = VSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("32-5811"))
-        assert rel == Path("us-vt/statute/ch-32/ch-32-sec-32-5811.xml")
+        assert rel == Path("us-vt/statutes/ch-32/ch-32-sec-32-5811.xml")
 
     def test_alpha_title(self) -> None:
         scraper = VSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("09A-101"))
-        assert rel == Path("us-vt/statute/ch-09A/ch-09A-sec-09A-101.xml")
+        assert rel == Path("us-vt/statutes/ch-09A/ch-09A-sec-09A-101.xml")
