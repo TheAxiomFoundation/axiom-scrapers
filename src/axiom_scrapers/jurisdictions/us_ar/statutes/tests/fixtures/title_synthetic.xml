@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Content Type="Statutes">
+  <Indexes>
+    <Index Level="1" HasChildren="1">
+      <Caption>Title 4</Caption>
+      <Description>Business and Commercial Law</Description>
+      <Indexes>
+        <Index Level="2" HasChildren="1">
+          <Caption>Chapter 2A</Caption>
+          <Description>Leases</Description>
+          <Indexes>
+            <Index Level="3" HasChildren="1">
+              <Caption>Subchapter 1</Caption>
+              <Description>General Provisions</Description>
+              <Indexes>
+                <Index Level="4" HasChildren="1">
+                  <Caption>Part 1</Caption>
+                  <Description>General Provisions</Description>
+                  <Indexes>
+                    <Index Level="5" HasChildren="0">
+                      <Caption>Section 4-2A-101</Caption>
+                      <Description>Short title.</Description>
+                      <Content>&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;This chapter shall be known and may be cited as the Uniform Commercial Code -- Leases.&lt;br&gt;&lt;br&gt;&lt;font size = -2&gt;&lt;b&gt;HISTORY:&lt;/b&gt; Acts 1993, No. 439, &amp;#167;1.&lt;/font&gt;</Content>
+                      <ShortName>Ark. Code 4-2A-101</ShortName>
+                      <RevisionHistory>&lt;b&gt;HISTORY:&lt;/b&gt; Acts 1993, No. 439, &amp;#167;1</RevisionHistory>
+                    </Index>
+                  </Indexes>
+                </Index>
+              </Indexes>
+            </Index>
+            <Index Level="3" HasChildren="0">
+              <Caption>Section 4-99-100 -- 4-99-199</Caption>
+              <Description>[Repealed.]</Description>
+              <Content>&lt;br&gt;&lt;b&gt;4-99-100 -- 4-99-199.&amp;nbsp;&amp;nbsp;[Repealed.]&lt;/b&gt;</Content>
+              <ShortName>Ark. Code 4-99-100 -- 4-99-199</ShortName>
+              <RevisionHistory></RevisionHistory>
+            </Index>
+            <Index Level="3" HasChildren="0">
+              <Caption>Section 4-99-200</Caption>
+              <Description>Empty body section.</Description>
+              <Content></Content>
+              <ShortName>Ark. Code 4-99-200</ShortName>
+              <RevisionHistory></RevisionHistory>
+            </Index>
+          </Indexes>
+        </Index>
+      </Indexes>
+    </Index>
+  </Indexes>
+</Content>

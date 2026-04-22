@@ -1,0 +1,1 @@
+"""Wyoming Statutes scraper."""

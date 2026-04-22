@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Content Type="Statutes">
+  <Indexes>
+    <Index Level="1" HasChildren="1">
+      <Caption>Title 1</Caption>
+      <Description>General Provisions (Section 1-1-101 to Section 1-5-116)</Description>
+      <Indexes>
+        <Index Level="2" HasChildren="1">
+          <Caption>Chapter 1</Caption>
+          <Description>General Provisions (Section 1-1-101 and Section 1-1-102)</Description>
+          <Indexes>
+            <Index Level="3" HasChildren="0">
+              <Caption>Section 1-1-101</Caption>
+              <Description>Extension of western boundary line</Description>
+              <Content>&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;The western boundary line of the State of Arkansas is extended as follows, so as to include all that strip of land in the Indian Territory lying and being situated between the Arkansas state line adjacent to the city of Fort Smith, and the Arkansas River and Poteau River, described as follows, namely: Beginning at a point on the south bank of the Arkansas River one hundred (100) paces west of Old Fort Smith, where the western boundary line of the State of Arkansas crosses the Arkansas River, and running southwesterly along the south bank of the Arkansas River to the mouth of the Poteau; thence at right angles with the Poteau River to the center of the current of that river; thence southerly up the middle of the current of the Poteau River, except where the Arkansas state line intersects the Poteau River, to a point in the middle of the current of the Poteau River opposite the mouth of Mill Creek, and where it is intersected by the middle of the current of Mill Creek; thence up the middle of Mill Creek to the Arkansas state line; thence northerly along the Arkansas state line to the point of beginning.&lt;br&gt;&lt;br&gt;&lt;font size = -2&gt;&lt;b&gt;HISTORY:&lt;/b&gt; Acts 1905, No. 41, &amp;#167;1, p. 124; C. &amp;amp; M. Dig., &amp;#167;9180; Pope's Dig., &amp;#167;11865; A.S.A. 1947, &amp;#167;5-101.&lt;/font&gt;</Content>
+              <ShortName>Ark. Code 1-1-101</ShortName>
+              <RevisionHistory>&lt;b&gt;HISTORY:&lt;/b&gt; Acts 1905, No. 41, &amp;#167;1, p. 124; C. &amp;amp; M. Dig., &amp;#167;9180; Pope's Dig., &amp;#167;11865; A.S.A. 1947, &amp;#167;5-101</RevisionHistory>
+            </Index>
+            <Index Level="3" HasChildren="0">
+              <Caption>Section 1-1-102</Caption>
+              <Description>Signature by mark</Description>
+              <Content>&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;In addition to the provisions of &amp;#167;&amp;#167; 4-3-401, 7-5-305, 7-7-308, 27-14-705, and 28-25-103, a signature by mark on a document is legal for the purposes of executing the document if the signature is:&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;(1)&lt;/b&gt;&amp;nbsp;Made by a person who at the time of signature lacks the ability to:&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;(A)&lt;/b&gt;&amp;nbsp;Write; or&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;(B)&lt;/b&gt;&amp;nbsp;Sign his or her name; and&lt;br&gt;&lt;br&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&lt;b&gt;(2)&lt;/b&gt;&amp;nbsp;Witnessed by at least one (1) disinterested person.&lt;br&gt;&lt;br&gt;&lt;font size = -2&gt;&lt;b&gt;HISTORY:&lt;/b&gt; Acts 2009, No. 412, &amp;#167;1.&lt;/font&gt;</Content>
+              <ShortName>Ark. Code 1-1-102</ShortName>
+              <RevisionHistory>&lt;b&gt;HISTORY:&lt;/b&gt; Acts 2009, No. 412, &amp;#167;1</RevisionHistory>
+            </Index>
+          </Indexes>
+        </Index>
+      </Indexes>
+    </Index>
+  </Indexes>
+</Content>

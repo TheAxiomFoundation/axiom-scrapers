@@ -1,0 +1,854 @@
+1                          INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES, §422.7
+
+
+
+
+  422.7 “Net income” — how computed.
+  The term “net income” means the taxable income as properly computed for federal income
+tax purposes under section 63 of the Internal Revenue Code, with the following adjustments:
+  1. Subtract interest and dividends from federal securities.
+  2. Add interest and dividends from foreign securities and from securities of state and
+other political subdivisions exempt from federal income tax under the Internal Revenue Code,
+except for those securities the interest and dividends from which are exempt from taxation
+by the state of Iowa as otherwise provided by law, including:
+  a. Vision Iowa program bonds pursuant to section 12.71, subsection 8, Code 2020.
+  b. School infrastructure program bonds pursuant to section 12.81, subsection 8.
+  c. Iowa jobs program revenue bonds pursuant to section 12.87, subsection 8.
+  d. Iowa utilities commission and Iowa consumer advocate building project bonds pursuant
+to section 12.91, subsection 9.
+  e. Iowa finance authority beginning farmer loan program bonds pursuant to section 16.64,
+subsection 2.
+  f. Water pollution control works and drinking facilities financing program bonds pursuant
+to section 16.131, subsection 5.
+  g. Iowa prison infrastructure revenue bonds pursuant to section 12.80, subsection 3, and
+section 16.177, subsection 8.
+  h. Quad cities interstate metropolitan authority bonds pursuant to section 28A.24.
+  i. Iowa finance authority 911 program bonds pursuant to section 34A.20, subsection 6.
+  j. Soil and water conservation subdistrict bonds pursuant to section 161A.22.
+  k. Community college residence hall and dormitory bonds pursuant to section 260C.61.
+  l. Community college bond program bonds pursuant to section 260C.71, subsection 6.
+  m. Higher education loan authority bonds pursuant to section 261A.27.
+  n. State board of regents bonds pursuant to sections 262.41, 262.51, 262.60, 262A.8, and
+263A.6.
+  o. Interstate bridges bonds pursuant to section 313A.36.
+  p. Aviation authority bonds pursuant to section 330A.16.
+  q. County health center bonds pursuant to section 331.441, subsection 2, paragraph “c”,
+subparagraph (7).
+  r. Rural water district bonds pursuant to section 357A.15.
+  s. Urban renewal bonds pursuant to section 403.9, subsection 2.
+  t. Municipal housing project bonds pursuant to section 403A.12.
+  u. Natural hazard mitigation financing program bonds pursuant to section 16.232,
+subsection 4.
+  3. Add any federal net operating loss deduction carried over from a taxable year beginning
+prior to January 1, 2023.
+  4. Individual taxpayers and married taxpayers who file a joint return or separate returns
+for Iowa income tax purposes may avail themselves of the disability income exclusion and
+shall compute the amount of the disability income exclusion subject to the limitations for
+joint federal income tax return filers provided by section 105(d) of the Internal Revenue Code.
+The disability income exclusion provided in section 105(d) of the Internal Revenue Code, as
+amended up to and including December 31, 1982, continues to apply for state income tax
+purposes for tax years beginning on or after January 1, 1984.
+  5. a. For tax years beginning in the 2023 calendar year, subtract the amount of federal
+income taxes paid during the tax year to the extent payment is for a tax year beginning prior
+to January 1, 2023, and add any federal income tax refunds received during the tax year to
+the extent the federal income tax was deducted for a tax year beginning prior to January 1,
+2023. Federal income taxes paid for a tax year in which an Iowa return was not required to
+be filed shall not be subtracted.
+  b. Notwithstanding any other provision of law to the contrary, amounts subtracted or
+added pursuant to this subsection shall not be included in the calculation of net income for
+purposes of section 422.5, subsection 2 or 3, or section 422.13.
+  6. a. If the adjusted gross income includes income or loss from a small business operated
+
+Fri Dec 12 20:18:42 2025                                 Iowa Code 2026, Section 422.7 (203, 12)
+§422.7, INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES                                     2
+
+
+
+by the taxpayer, an additional deduction shall be allowed in computing the income or loss
+from the small business if the small business hired for employment in the state during its
+annual accounting period ending with or during the taxpayer’s tax year any of the following:
+  (1) An individual with a disability domiciled in this state at the time of the hiring who
+meets any of the following conditions:
+  (a) Has a physical or mental impairment which substantially limits one or more major life
+activities.
+  (b) Has a record of that impairment.
+  (c) Is regarded as having that impairment.
+  (2) An individual domiciled in this state at the time of the hiring who meets any of the
+following conditions:
+  (a) Has been convicted of a felony in this or any other state or the District of Columbia.
+  (b) Is on parole pursuant to chapter 906.
+  (c) Is on probation pursuant to chapter 907, for an offense other than a simple
+misdemeanor.
+  (d) Is in a work release program pursuant to chapter 904, subchapter IX.
+  (3) An individual, whether or not domiciled in this state at the time of the hiring, who is
+on parole or probation and to whom the interstate compact for adult offender supervision
+under chapter 907B applies.
+  b. (1) The amount of the additional deduction is equal to sixty-five percent of the wages
+paid to individuals, but shall not exceed twenty thousand dollars per individual, named in
+paragraph “a”, subparagraphs (1), (2), and (3) who were hired for the first time by that
+business during the annual accounting period for work done in the state. This additional
+deduction is allowed for the wages paid to those individuals successfully completing a
+probationary period during the twelve months following the date of first employment by the
+business and shall be deducted at the close of the annual accounting period.
+  (2) The additional deduction shall not be allowed for wages paid to an individual who was
+hired to replace an individual whose employment was terminated within the twelve-month
+period preceding the date of first employment. However, if the individual being replaced left
+employment voluntarily without good cause attributable to the employer or if the individual
+was discharged for misconduct in connection with the individual’s employment as determined
+by the department of workforce development, the additional deduction shall be allowed.
+  (3) A taxpayer who is a partner of a partnership or a shareholder of a subchapter S
+corporation, may deduct that portion of wages qualified under this subsection paid by the
+partnership or subchapter S corporation based on the taxpayer’s pro rata share of the profits
+or losses from the partnership or subchapter S corporation.
+  c. For purposes of this subsection:
+  (1) “Physical or mental impairment” means any physiological disorder or condition,
+cosmetic disfigurement, or anatomical loss affecting one or more of the body systems or any
+mental or psychological disorder, including intellectual disability, organic brain syndrome,
+emotional or mental illness, and specific learning disabilities.
+  (2) (a) “Small business” means a profit or nonprofit business, including but not limited to
+an individual, partnership, corporation, joint venture, association, or cooperative, to which
+the following apply:
+  (i) It is not an affiliate or subsidiary of a business dominant in its field of operation.
+  (ii) It has twenty or fewer full-time equivalent positions and not more than the equivalent
+of three million dollars in annual gross revenues as computed for the preceding fiscal year or
+as the average of the three preceding fiscal years.
+  (iii) It does not include the practice of a profession.
+  (b) “Small business” includes an employee-owned business which has been an
+employee-owned business for less than three years or which meets the conditions of
+subparagraph division (a), subparagraph subdivisions (i) through (iii).
+  (c) For purposes of this definition, “dominant in its field of operation” means having more
+than twenty full-time equivalent positions and more than three million dollars in annual gross
+revenues, and “affiliate or subsidiary of a business dominant in its field of operation” means
+a business which is at least twenty percent owned by a business dominant in its field of
+
+Fri Dec 12 20:18:42 2025                                Iowa Code 2026, Section 422.7 (203, 12)
+3                          INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES, §422.7
+
+
+
+operation, or by partners, officers, directors, majority stockholders, or their equivalents, of a
+business dominant in that field of operation.
+   7. a. If the adjusted gross income includes income or loss from a business operated by
+the taxpayer, and if the business does not qualify for the adjustment under subsection 6, an
+additional deduction shall be allowed in computing the income or loss from the business if
+the business hired for employment in the state during its annual accounting period ending
+with or during the taxpayer’s tax year either of the following:
+   (1) An individual domiciled in this state at the time of the hiring who meets any of the
+following conditions:
+   (a) Has been convicted of a felony in this or any other state or the District of Columbia.
+   (b) Is on parole pursuant to chapter 906.
+   (c) Is on probation pursuant to chapter 907, for an offense other than a simple
+misdemeanor.
+   (d) Is in a work release program pursuant to chapter 904, subchapter IX.
+   (2) An individual, whether or not domiciled in this state at the time of the hiring, who is
+on parole or probation and to whom the interstate compact for adult offender supervision
+under chapter 907B applies.
+   b. The amount of the additional deduction is equal to sixty-five percent of the wages
+paid to individuals, but shall not exceed twenty thousand dollars per individual, named in
+paragraph “a”, subparagraphs (1) and (2) who were hired for the first time by that business
+during the annual accounting period for work done in the state. This additional deduction
+is allowed for the wages paid to those individuals successfully completing a probationary
+period during the twelve months following the date of first employment by the business and
+shall be deducted at the close of the annual accounting period.
+   c. The additional deduction shall not be allowed for wages paid to an individual who was
+hired to replace an individual whose employment was terminated within the twelve-month
+period preceding the date of first employment. However, if the individual being replaced left
+employment voluntarily without good cause attributable to the employer or if the individual
+was discharged for misconduct in connection with the individual’s employment as determined
+by the department of workforce development, the additional deduction shall be allowed.
+   d. A taxpayer who is a partner of a partnership or a shareholder of a subchapter S
+corporation, may deduct that portion of wages qualified under this subsection paid by the
+partnership or subchapter S corporation based on the taxpayer’s pro rata share of the profits
+or losses from the partnership or subchapter S corporation.
+   e. The department shall develop and distribute information concerning the deduction
+available for businesses employing persons named in paragraph “a”, subparagraphs (1) and
+(2).
+   8. Subtract, to the extent included, the amount of social security benefits taxable under
+section 86 of the Internal Revenue Code.
+   9. Add interest and dividends from regulated investment companies exempt from federal
+income tax under the Internal Revenue Code and subtract the loss on the sale or exchange of
+a share of a regulated investment company held for six months or less to the extent the loss
+was disallowed under section 852(b)(4)(B) of the Internal Revenue Code.
+   10. a. Subtract, to the extent included, the amount of a federal, state, or local grant
+provided to a communications service provider, if the grant is used to install broadband
+infrastructure that facilitates broadband service in targeted service areas at or above the
+download and upload speeds.
+   b. As used in this subsection, “broadband infrastructure”, “communications service
+provider”, and “targeted service area” mean the same as defined in section 8.76, respectively.
+   11. Add, to the extent deducted for federal tax purposes, charitable contributions under
+section 170 of the Internal Revenue Code to the extent such contribution was made to an
+organization for the purpose of deposit in the Iowa education savings plan trust established
+in chapter 12D, and the taxpayer designated that any part of the contribution be used for the
+direct benefit of any dependent of the taxpayer or any other single beneficiary designated by
+the taxpayer.
+   12. a. Subtract, to the extent included, income resulting from the payment by an employer
+
+Fri Dec 12 20:18:42 2025                                  Iowa Code 2026, Section 422.7 (203, 12)
+§422.7, INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES                                         4
+
+
+
+of the taxpayer, whether paid to the taxpayer or to a lender, of principal or interest on any
+qualified education loan incurred by the taxpayer.
+   b. If the taxpayer has a deduction in computing federal taxable income under section 221
+of the Internal Revenue Code for interest on a qualified education loan, the taxpayer shall
+recompute for purposes of this subsection the amount of the deduction under paragraph “a”
+by not subtracting any amount of income resulting from the employer’s payment of interest
+on a qualified education loan that was also deducted by the taxpayer under section 221 of the
+Internal Revenue Code.
+   c. For purposes of this subsection, “qualified education loan” means the same as defined
+in section 221 of the Internal Revenue Code.
+   13. a. For purposes of this subsection:
+   (1) “Farming business” means the production, care, growing, harvesting, preservation,
+handling, or storage of crops or forest or fruit trees; the production, care, feeding,
+management, and housing of livestock; or horticulture, all for intended profit.
+   (2) “Held” shall be determined with reference to the holding period provisions of section
+1223 of the Internal Revenue Code and the federal regulations pursuant thereto.
+   (3) “Livestock” means the same as defined in section 717.1.
+   (4) “Materially participated” means the same as “material participation” in section 469(h)
+of the Internal Revenue Code, except that section 469(h)(3) of the Internal Revenue Code
+shall not apply.
+   (5) (a) “Real property used in a farming business” means all tracts of land and the
+improvements and structures located on such tracts which are in good faith used primarily
+for a farming business. Buildings which are primarily used or intended for human habitation
+are deemed to be used in a farming business when the building is located on or adjacent to
+the parcel used in the farming business. Land and the nonresidential improvements and
+structures located on such land that shall be considered to be used primarily in a farming
+business include but are not limited to land, improvements, or structures used for the
+storage or maintenance of farm machinery or equipment, for the drying, storage, handling,
+or preservation of agricultural crops, or for the storage of farm inputs, feed, or manure. Real
+property used in a farming business shall also include woodland, wasteland, pastureland,
+and idled land used for the conservation of natural resources including soil and water.
+   (b) Real property classified as agricultural property for Iowa property tax purposes,
+except real property described in section 441.21, subsection 12, paragraph “a” or “b”, shall
+be presumed to be real property used in a farming business. However, this presumption is
+rebuttable if the department shows by a preponderance of evidence that the real property
+did not meet the requirements of subparagraph division (a).
+   (6) “Relative” means a person that satisfies one or more of the following conditions:
+   (a) The individual is related to the taxpayer by consanguinity or affinity within the second
+degree as determined by common law.
+   (b) The individual is a lineal descendent of the taxpayer.              For purposes of this
+subparagraph division, “lineal descendent” means children of the taxpayer, including legally
+adopted children and biological children, stepchildren, grandchildren, great-grandchildren,
+and any other lineal descendent of the taxpayer.
+   (c) An entity in which an individual who satisfies the conditions of either subparagraph
+division (a) or (b) has a legal or equitable interest as an owner, member, partner, or beneficiary.
+   (7) “Retired farmer” means an individual who is disabled or who is fifty-five years of age
+or older and who no longer materially participates in a farming business when an exclusion
+and deduction is claimed under this subsection.
+   b. Subtract the net capital gain from the sale of real property used in a farming business
+if one of the following conditions are satisfied:
+   (1) The taxpayer has materially participated in a farming business for a minimum of ten
+years and has held the real property used in a farming business for a minimum of ten years. If
+the taxpayer is a retired farmer, the taxpayer is considered to meet the material participation
+requirement if the taxpayer materially participated in a farming business for ten years or
+more in the aggregate, prior to making an election under this subsection.
+
+
+Fri Dec 12 20:18:42 2025                                   Iowa Code 2026, Section 422.7 (203, 12)
+5                          INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES, §422.7
+
+
+
+   (2) The taxpayer has held the real property used in a farming business which is sold to a
+relative of the taxpayer.
+   c. For a taxpayer who is a retired farmer, subtract the net capital gain from the sale of
+cattle or horses held by the taxpayer for breeding, draft, dairy, or sporting purposes for a
+period of twenty-four months or more from the date of acquisition; but only if the taxpayer
+materially participated in the farming business for five of the eight years preceding the
+farmer’s retirement or disability and who has sold all or substantially all of the taxpayer’s
+interest in the farming business by the time the election under this paragraph is made.
+   d. For a taxpayer who is a retired farmer, subtract the net capital gain from the sale of
+breeding livestock, other than cattle and horses, if the livestock is held by the taxpayer for
+a period of twelve months or more from the date of acquisition; but only if the taxpayer
+materially participated in the farming business for five of the eight years preceding the
+farmer’s retirement or disability and has sold all or substantially all of the taxpayer’s interest
+in the farming business by the time the election under this paragraph is made.
+   e. A taxpayer who is a retired farmer may make, subject to the limitations described in
+paragraphs “f” and “g”, a single, lifetime election to exclude all qualifying capital gains under
+paragraphs “b”, “c”, and “d”.
+   f. A taxpayer who is a retired farmer who elects to exclude capital gains under paragraph
+“b”, “c”, or “d” shall not claim the beginning farmer tax credit under section 422.11E or the
+exclusion for net income received pursuant to a farm tenancy agreement in subsection 14, in
+the tax year in which this election is made or in any subsequent year.
+   g. A taxpayer who is a retired farmer who claims the beginning farmer tax credit under
+section 422.11E shall not, in the same year, make an election under this subsection. A
+taxpayer who is a retired farmer and who elects to exclude the net income received from
+a farm tenancy agreement under subsection 14, shall not, in the same tax year or in any
+subsequent tax year, make the election under this subsection.
+  h. Married individuals who file separate state income tax returns shall allocate their
+combined annual net capital gain exclusion under paragraphs “b”, “c”, and “d” to each
+spouse in the proportion that each spouse’s respective net capital gain bears to the total net
+capital gain.
+   i. The department shall establish criteria, by rule, relating to whether and how a surviving
+spouse may claim the income exclusion for which a deceased retired farmer would have been
+eligible under this subsection.
+   14. a. Subtract, to the extent included, net income received by an eligible individual
+pursuant to a farm tenancy agreement covering real property held by the eligible individual
+for ten or more years, if the eligible individual materially participated in a farming business
+for ten or more years in the aggregate.
+   b. An individual who elects to exclude income received pursuant to a farm tenancy
+agreement under this subsection shall not claim any of the following in the tax year in which
+the election is made or in any succeeding year:
+  (1) The capital gain exclusion under subsection 13.
+  (2) The beginning farmer tax credit under section 422.11E.
+  c. Married individuals who file separate state income tax returns shall allocate their
+combined annual exclusion limit to each spouse in the proportion that each spouse’s
+respective net income from a farm tenancy agreement bears to the total net income from a
+farm tenancy agreement.
+  d. The department shall establish criteria, by rule, relating to whether and how a surviving
+spouse may claim the income exclusion for which a deceased eligible individual would have
+been eligible under this subsection.
+   e. Net income from a farm tenancy agreement earned, received, or reported by an entity
+taxed as a partnership for federal tax purposes, an S corporation, or a trust or estate is not
+eligible for the election and deduction in this subsection, even if such net income ultimately
+passes through to an eligible individual.
+  f. For purposes of this subsection:
+  (1) “Eligible individual” means an individual who is disabled or who is fifty-five years
+of age or older at the time the election is made, who no longer materially participates in a
+
+Fri Dec 12 20:18:42 2025                                   Iowa Code 2026, Section 422.7 (203, 12)
+§422.7, INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES                                         6
+
+
+
+farming business at the time the election is made, and who, as an owner-lessor, is party to a
+farm tenancy agreement.
+   (2) “Farm tenancy agreement” means a written agreement outlining the rights and
+obligations of an owner-lessor and a tenant-lessee where the tenant-lessee has a farm
+tenancy as defined in section 562.1A. A “farm tenancy agreement” includes cash leases,
+crop share leases, or livestock share leases.
+   (3) “Farming business” means the production, care, growing, harvesting, preservation,
+handling, or storage of crops or forest or fruit trees; the production, care, feeding,
+management, and housing of livestock; or horticulture, all intended for profit.
+   (4) “Held” shall be determined with reference to the holding period provisions of section
+1223 of the Internal Revenue Code and the federal regulations pursuant thereto.
+   (5) “Livestock” means the same as defined in section 717.1.
+   (6) “Materially participated” means the same as “material participation” in section 469(h)
+of the Internal Revenue Code, except that section 469(h)(3) of the Internal Revenue Code
+shall not apply.
+   15. Subtract, to the extent included, the amount of federal Segal AmeriCorps education
+award payments.
+   16. Subtract, to the extent included, payments received by an individual providing
+unskilled in-home health-related care services pursuant to section 249.3, subsection 2,
+paragraph “a”, subparagraph (2), to a member of the individual caregiver’s family. For
+purposes of this subsection, a member of the individual caregiver’s family includes a spouse,
+parent, stepparent, child, stepchild, brother, stepbrother, sister, stepsister, lineal ancestor, or
+lineal descendant, and such persons by marriage or adoption. A health care professional
+licensed by an examination board designated in section 147.13, subsections 1 through 10, is
+not eligible for the exemption authorized in this subsection.
+   17. If the taxpayer is owner of an individual development account certified under chapter
+541A at any time during the tax year, deductions of all of the following shall be allowed:
+   a. Contributions made to the account by persons and entities, other than the taxpayer, as
+authorized in chapter 541A.
+   b. The amount of any state match payments authorized under section 541A.3, subsection
+1.
+   c. Earnings from the account.
+   18. a. For a taxpayer who is sixty-five years of age or older and whose net income is
+less than one hundred thousand dollars, subtract, to the extent not otherwise deducted in
+computing federal taxable income, the amounts paid by the taxpayer for the purchase of
+health benefits coverage or insurance for the taxpayer or taxpayer’s spouse or dependent.
+   b. For purposes of this subsection, “net income” means net income as properly computed
+under this section without regard to the deduction in this subsection and with the following
+additional adjustments:
+   (1) Add back any amount of pensions or other retirement income received from any
+source which is not taxable under this subchapter, including but not limited to amounts
+deductible under subsections 8, 19, 20, and 21.
+   (2) Add back any amount of itemized or standard deduction, personal exemption
+deduction, or qualified business income deduction that was allowed as a deduction from
+federal adjusted gross income in computing federal taxable income under the Internal
+Revenue Code.
+   19. a. Subtract, to the extent included, the total amount received from a governmental
+or other pension or retirement plan, including defined benefit or defined contribution plans,
+annuities, individual retirement accounts, plans maintained or contributed to by an employer,
+or maintained or contributed to by a self-employed person as an employer, and deferred
+compensation plans or any earnings attributable to the deferred compensation plans received
+by a person who is any of the following:
+   (1) Disabled.
+   (2) Fifty-five years of age or older.
+   (3) The surviving spouse of an individual or a survivor having an insurable interest in an
+individual who would have qualified for the exemption under this subsection for the tax year.
+
+Fri Dec 12 20:18:42 2025                                   Iowa Code 2026, Section 422.7 (203, 12)
+7                          INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES, §422.7
+
+
+
+  b. Married taxpayers who file separate state income tax returns shall allocate their
+combined annual exclusion amount to each spouse in the proportion that each spouse’s
+respective income received from a pension or retirement plan bears to the total combined
+pension or retirement pay received.
+  c. (1) A taxpayer who is not disabled or fifty-five years of age or older and who receives
+a pension amount provided pursuant to section 97B.49B or 97B.49C, or chapter 97A, 410,
+or 411 as a surviving spouse may exclude the amount received from the pension in the tax
+year as a result of the death of the decedent, regardless of whether the decedent would have
+qualified for the exemption in the tax year.
+  (2) A taxpayer who is not disabled or fifty-five years of age or older and who receives
+other pension or retirement pay not specified in subparagraph (1) as a surviving spouse
+or as a survivor with an insurable interest in an individual who would have qualified for
+the exemption for the tax year may only exclude the amount received from a pension or
+retirement plan in the tax year as a result of the death of the decedent.
+  20. a. Subtract, to the extent included, retirement pay received by a taxpayer from the
+federal government for military service performed in the armed forces, the armed forces
+military reserve, or national guard.
+  b. The exclusion of retirement pay under this subsection is in addition to any exclusion
+provided under subsection 19.
+  21. a. Subtract, to the extent included, amounts received as survivor benefits by a
+taxpayer from the federal government pursuant to 10 U.S.C. §1447, et seq.
+  b. The exclusion of survivor benefits under this subsection is in addition to any exclusion
+provided under subsection 19.
+  22. a. Subtract the maximum contribution that may be deducted for Iowa income tax
+purposes as a participant in the Iowa educational savings plan trust pursuant to section 12D.3,
+subsection 1. For purposes of this paragraph, a participant who makes a contribution on or
+before the date prescribed in section 422.21 for making and filing an individual income tax
+return, excluding extensions, or the date for making and filing an individual income tax return
+determined by the director pursuant to an order issued under section 421.17, subsection
+30, may elect to be deemed to have made the contribution on the last day of the preceding
+calendar year. The director, after consultation with the treasurer of state, shall prescribe by
+rule the manner and method by which a participant may make an election authorized by the
+preceding sentence.
+   b. Add the amount resulting from the cancellation of a participation agreement refunded
+to the taxpayer as a participant in the Iowa educational savings plan trust to the extent
+previously deducted as a contribution to the trust.
+   c. (1) Add, to the extent previously deducted as a contribution to the trust, the amount
+resulting from a withdrawal or transfer made by the taxpayer from the Iowa educational
+savings plan trust for purposes other than any of the following:
+   (a) The payment of qualified higher education expenses.
+   (b) The payment of tuition to an elementary or secondary school if the tuition amounts
+are qualified education expenses.
+   (c) A change in beneficiaries under, or transfer to another account within, the Iowa
+educational savings plan trust, or a transfer to the Iowa ABLE savings plan trust, provided
+such change or transfer is permitted under section 12D.6, subsection 5.
+  (d) The payment of expenses for fees, books, supplies, and equipment required for the
+participation of a beneficiary in an apprenticeship program.
+   (e) The payment of qualified education loan repayments.
+   (f) (i) A recontribution of a refund of any qualified higher education expenses from an
+eligible educational institution to the extent that such refund has been recontributed to the
+Iowa educational savings plan trust described in chapter 12D and meets all of the following
+criteria:
+   (A) The recontribution is made to the same account from which the original withdrawal
+was made.
+   (B) The recontribution occurs within sixty days of the date of refund.
+
+
+Fri Dec 12 20:18:42 2025                                 Iowa Code 2026, Section 422.7 (203, 12)
+§422.7, INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES                                          8
+
+
+
+  (C) The recontribution amount does not exceed the amount refunded by the eligible
+educational institution.
+  (ii) A deduction under paragraph “a” shall not be taken for the amount of the
+recontribution.
+  (g) A direct trustee-to-trustee transfer to a Roth individual retirement account in
+accordance with the rules under section 529(c)(3)(E) of the Internal Revenue Code.
+  (2) For purposes of this paragraph:
+  (a) “Apprenticeship program” means a program registered and certified with the United
+States secretary of labor under section 1 of the National Apprenticeship Act, 29 U.S.C. §50.
+  (b) “Elementary or secondary school” means all of the following:
+  (i) An elementary or secondary school in this state which is accredited under section
+256.11, and adheres to the provisions of the federal Civil Rights Act of 1964 and chapter 216.
+  (ii) An elementary or secondary school located out of state that educates a beneficiary
+who meets the definition of “children requiring special education” in section 256B.2, if the
+elementary or secondary school is accredited under the laws of the state in which it is located
+and adheres to the federal Civil Rights Act of 1964 and applicable state law analogous to
+chapter 216.
+  (c) “Qualified education expenses” and “tuition” all mean the same as defined in section
+12D.1, subsection 2.
+  (d) “Qualified education loan” means the same as defined in section 12D.1, subsection 2.
+  (e) “Qualified education loan repayments” means amounts paid as principal or interest on
+any qualified education loan of the beneficiary or a sibling of the beneficiary. The repayment
+amounts shall not exceed ten thousand dollars in the aggregate for the beneficiary or the
+sibling, respectively.
+  (f) (i) “Qualified higher education expenses” means the same as defined in section
+529(e)(3) of the Internal Revenue Code.
+  (ii) For purposes of this subparagraph division (c), “Internal Revenue Code” means the
+Internal Revenue Code of 1954, prior to the date of its redesignation as the Internal Revenue
+Code of 1986 by the Tax Reform Act of 1986, or means the Internal Revenue Code of 1986 as
+amended and in effect on January 1, 2020. This definition shall not be construed to include
+any amendment to the Internal Revenue Code enacted after the date specified in the preceding
+sentence, including any amendment with retroactive applicability or effectiveness.
+  (g) “Sibling” means the same as defined in section 12D.1, subsection 2.
+  23. Subtract, to the extent included, income from interest and earnings received from the
+Iowa educational savings plan trust created in chapter 12D.
+  24. a. (1) Subtract the amount contributed during the tax year on behalf of a designated
+beneficiary that is a resident of this state to the Iowa ABLE savings plan trust or to the qualified
+ABLE program with which the state has contracted pursuant to section 12I.10, not to exceed
+the maximum contribution level established in section 12I.3, subsection 1, paragraph “d”, or
+section 12I.10, subsection 2, paragraph “a”, as applicable.
+  (2) This paragraph “a” shall not apply to any amount of contribution that represents a
+transfer from the Iowa educational savings plan trust created in chapter 12D that meets the
+requirements of subsection 22, paragraph “c”, subparagraph (1), subparagraph division (c),
+and that was previously deducted as a contribution to the Iowa educational savings plan trust.
+  b. Add the amount resulting from the cancellation of a participation agreement refunded
+to the taxpayer as an account owner in the Iowa ABLE savings plan trust or the qualified
+ABLE program with which the state has contracted pursuant to section 12I.10 to the extent
+previously deducted pursuant to this subsection by the taxpayer or any other person
+as a contribution to the trust or qualified ABLE program, or to the extent the amount
+was previously deducted by the taxpayer or any other person pursuant to subsection 22,
+paragraph “a”, and qualified as a transfer under paragraph “a”, subparagraph (2), of this
+subsection.
+  c. Add the amount resulting from a withdrawal made by a taxpayer from the Iowa
+ABLE savings plan trust or the qualified ABLE program with which the state has contracted
+pursuant to section 12I.10 for purposes other than the payment of qualified disability
+expenses to the extent previously deducted pursuant to this subsection by the taxpayer
+
+Fri Dec 12 20:18:42 2025                                    Iowa Code 2026, Section 422.7 (203, 12)
+9                          INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES, §422.7
+
+
+
+or any other person as a contribution to the trust or qualified ABLE program, or to the
+extent the amount was previously deducted by the taxpayer or any other person pursuant to
+subsection 22, paragraph “a”, and qualified as a transfer under paragraph “a”, subparagraph
+(2), of this subsection.
+   25. Subtract, to the extent included, income from interest and earnings received from the
+Iowa ABLE savings plan trust created in chapter 12I, or received by a resident account owner
+from a qualified ABLE program with which the state has contracted pursuant to section 12I.10.
+   26. Subtract, to the extent not otherwise excluded, the amount of withdrawals from
+qualified retirement plan accounts made during the tax year if the taxpayer or taxpayer’s
+spouse is a member of the Iowa national guard or reserve forces of the United States who
+is ordered to national guard duty or federal active duty. In addition, a penalty for such
+withdrawals shall not be assessed by the state.
+   27. a. Subject to the restrictions in paragraph “b”, subtract the sum of the following
+amounts:
+   (1) The amount of contributions made by an account holder during the tax year to the
+account holder’s first-time homebuyer savings accounts, not to exceed the following annual
+limit:
+   (a) (i) For married taxpayers who file a joint return and maintain a joint first-time
+homebuyer savings account, four thousand dollars.
+   (ii) For any other account holder, two thousand dollars.
+   (b) For the tax year beginning in the 2018 calendar year and for each subsequent tax
+year, the director shall multiply each dollar amount set forth in subparagraph division (a),
+subparagraph subdivisions (i) and (ii), by the latest cumulative inflation factor, shall round off
+the resulting product to the nearest one dollar, and shall incorporate the result into the income
+tax forms and instructions for each tax year. For purposes of this subparagraph division,
+“cumulative inflation factor” means the product of the annual inflation factor for the 2018
+calendar year and all annual inflation factors for subsequent calendar years as determined by
+section 422.4, subsection 1, paragraph “a”. The cumulative inflation factor applies to all tax
+years beginning on or after January 1 of the calendar year for which the latest annual inflation
+factor has been determined. Notwithstanding any other provision, the annual inflation factor
+for the 2018 calendar year is one hundred percent.
+   (2) To the extent included, income from interest received from the account holder’s
+first-time homebuyer savings accounts.
+   b. (1) The subtraction in paragraph “a” shall not exceed the following aggregate lifetime
+limit:
+   (a) For married taxpayers who file a joint return and maintain a joint first-time homebuyer
+savings account, an amount equal to the product of the deductible amount determined
+for the year in paragraph “a”, subparagraph (1), subparagraph division (a), subparagraph
+subdivision (i), multiplied by ten.
+   (b) For any other account holder, an amount equal to the product of the deductible
+amount determined for the year in paragraph “a”, subparagraph (1), subparagraph division
+(a), subparagraph subdivision (ii), multiplied by ten.
+   (2) The subtraction in paragraph “a” shall not be allowed to an account holder upon one
+of the following dates, whichever occurs first:
+   (a) January 1 of the tenth calendar year after the calendar year during which the account
+holder first opened a first-time homebuyer savings account.
+   (b) The date on which funds within an account holder’s first-time homebuyer savings
+account are withdrawn for purposes other than the payment or reimbursement of the
+designated beneficiary’s eligible home costs in connection with a qualified home purchase.
+Any amount transferred between different first-time homebuyer savings accounts of the
+same account holder by a person other than the account holder shall not be considered a
+withdrawal for purposes of this subparagraph division (b).
+   c. (1) Add, to the extent previously deducted under paragraph “a”, subparagraph (1),
+the amount withdrawn during the tax year from an account holder’s first-time homebuyer
+savings account for purposes other than the payment or reimbursement of the designated
+beneficiary’s eligible home costs in connection with a qualified home purchase.
+
+Fri Dec 12 20:18:42 2025                                   Iowa Code 2026, Section 422.7 (203, 12)
+§422.7, INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES                                    10
+
+
+
+   (2) For purposes of this paragraph “c”, any amount remaining in an account holder’s
+first-time homebuyer savings account on January 1 of the tenth calendar year after the
+calendar year during which the account holder first opened a first-time homebuyer savings
+account shall be considered immediately withdrawn under subparagraph (1).
+   (3) For purposes of this paragraph “c”, the transfer of amounts between different first-time
+homebuyer accounts of the same account holder by a person other than the account holder
+shall not cause such transfer to be considered a withdrawal under subparagraph (1).
+   d. For any amount considered a withdrawal required to be added to net income pursuant
+to paragraph “c”, the account holder shall be assessed a penalty equal to ten percent of the
+amount of the withdrawal. The penalty shall not apply to withdrawals made by reason of the
+death of the account holder, or to withdrawals made pursuant to a garnishment, levy, or other
+order, including but not limited to an order in bankruptcy following a filing for protection
+under the federal bankruptcy code, 11 U.S.C. §101 et seq.
+   e. Add, to the extent deducted for federal tax purposes, interest, taxes, and other
+miscellaneous expenses to the extent such amounts are eligible home costs in connection
+with a qualified home purchase that were paid or reimbursed from funds in a first-time
+homebuyer savings account.
+   f. For purposes of this subsection, “account holder”, “designated beneficiary”, “eligible
+home costs”, “first-time homebuyer savings account”, and “qualified home purchase” mean
+the same as defined in section 541B.2.
+   28. Subtract, to the extent included, military student loan repayments received by the
+taxpayer serving on active duty in the national guard or armed forces military reserve or on
+active duty status in the armed forces.
+   29. Subtract, to the extent included, all pay received by the taxpayer from the federal
+government for military service performed while on active duty status in the armed forces,
+the armed forces military reserve, or the national guard.
+   30. a. If the taxpayer, while living, donates one or more of the taxpayer’s human organs
+to another human being for immediate human organ transplantation during the tax year,
+subtract, to the extent not otherwise excluded, the following unreimbursed expenses incurred
+by the taxpayer and related to the taxpayer’s organ donation:
+   (1) Travel expenses.
+   (2) Lodging expenses.
+   (3) Lost wages.
+   b. The maximum amount that may be deducted under paragraph “a” is ten thousand
+dollars. A taxpayer shall only take the deduction under this subsection once. If a deduction
+is taken under this subsection, the amount of expenses shall not be considered medical care
+expenses under section 213 of the Internal Revenue Code for state tax purposes.
+   c. For purposes of this subsection, “human organ” means all or part of a liver, pancreas,
+kidney, intestine, lung, or bone marrow.
+   31. Subtract, to the extent included, the amount of any grant provided pursuant to the
+injured veterans grant program pursuant to section 35A.14.
+   32. Subtract, to the extent included, amounts received from the veterans trust fund for
+any of the following items:
+   a. Travel expenses pursuant to section 35A.13, subsection 8, paragraph “a”.
+   b. Unemployment assistance pursuant to section 35A.13, subsection 8, paragraph “c”.
+   33. Subtract, to the extent not otherwise deducted in computing federal taxable income,
+the amounts paid by the taxpayer to the department of veterans affairs for the purpose of
+providing grants under the injured veterans grant program established in section 35A.14.
+Amounts subtracted under this subsection shall not be used by the taxpayer in computing the
+amount of charitable contributions as defined by section 170 of the Internal Revenue Code.
+   34. Subtract, to the extent included, income from interest and earnings received from a
+burial trust fund as defined in section 523A.102.
+   35. Subtract, to the extent included, the amount of victim compensation awards paid
+under the victim compensation program, victim restitution payments received pursuant to
+chapter 910 or 915, and any damages awarded by a court, and received by the taxpayer, in a
+civil action filed by the victim against the offender, during the tax year.
+
+Fri Dec 12 20:18:42 2025                                 Iowa Code 2026, Section 422.7 (203, 12)
+11                         INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES, §422.7
+
+
+
+   36. Subtract, to the extent included, the amount of any biodiesel production refund
+provided pursuant to section 423.4.
+   37. A taxpayer who is an eligible educator as defined in section 62(d)(1) of the Internal
+Revenue Code is allowed to take the deduction for certain expenses of elementary and
+secondary school teachers allowed under section 62(a)(2)(D) of the Internal Revenue Code
+in computing net income for state tax purposes in excess of the amount of the taxpayer’s
+deduction for certain expenses of elementary and secondary school teachers for federal tax
+purposes allowed under section 62(a)(2)(D) of the Internal Revenue Code, but not to exceed
+five hundred dollars.
+   38. Any adjustment subtracted from federal taxable income for an adjustment year
+pursuant to section 6225 of the Internal Revenue Code and the regulations thereunder shall
+be added back in computing net income of the partnership and the partners for state tax
+purposes for the adjustment year.
+   39. a. Section 163(j) of the Internal Revenue Code does not apply in computing net
+income for state tax purposes. If the taxpayer’s federal adjusted gross income for the tax
+year was increased or decreased by reason of the application of section 163(j) of the Internal
+Revenue Code, the taxpayer shall recompute net income for state tax purposes under rules
+prescribed by the director.
+   b. For any tax year in which paragraph “a” does not apply, a taxpayer shall not be
+permitted to deduct any amount of interest expense paid or accrued in a previous taxable
+year that is allowed as a deduction in the current taxable year by reason of the carryforward
+of disallowed business interest provisions of section 163(j)(2) of the Internal Revenue Code,
+if either of the following apply:
+   (1) The interest expense was originally paid or accrued during a tax year in which
+paragraph “a” applied.
+   (2) The interest expense was originally paid or accrued during a tax year in which the
+taxpayer was not required to file an Iowa return.
+   40. Notwithstanding any other provision of law to the contrary, any funds received by a
+student through a higher education institution to support the student’s financial needs as a
+result of the COVID-19 pandemic pursuant to §§3504, 18004, or 18008 of Pub. L. No. 116-136
+shall not be included in the student’s Iowa net income for any tax year ending after March
+27, 2020.
+   41. Reserved.
+   42. a. Subtract the following percentage of the net capital gain from the sale or
+exchange of capital stock of a qualified corporation for which an election is made by an
+employee-owner:
+   (1) For the tax year beginning in the 2023 calendar year, thirty-three percent.
+   (2) For the tax year beginning in the 2024 calendar year, sixty-six percent.
+   (3) For tax years beginning on or after January 1, 2025, one hundred percent.
+   b. (1) An employee-owner is entitled to make one irrevocable lifetime election to exclude
+the net capital gain from the sale or exchange of capital stock of one qualified corporation
+which capital stock was acquired by the employee-owner while employed and on account of
+employment by such qualified corporation.
+   (2) The election shall apply to all subsequent sales or exchanges of qualifying capital stock
+of the elected corporation within fifteen years of the date of the election, provided that the
+subsequent sales or exchanges were of capital stock in the same qualified corporation and
+were acquired by the employee-owner while employed and on account of employment by
+such qualified corporation.
+   (3) The election shall apply to qualifying capital stock that has been transferred by inter
+vivos gift from the employee-owner to the employee-owner’s spouse or to a trust for the
+benefit of the employee-owner’s spouse following the transfer. This subparagraph (3) shall
+apply to a spouse only if the spouse was married to the employee-owner on the date of the
+sale or exchange or the date of death of the employee-owner.
+   (4) If the employee-owner dies after having sold or exchanged qualifying capital stock
+without having made an election under this subsection, the surviving spouse or, if there is no
+
+
+Fri Dec 12 20:18:42 2025                                 Iowa Code 2026, Section 422.7 (203, 12)
+§422.7, INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES                                     12
+
+
+
+surviving spouse, the personal representative of the employee-owner’s estate, may make the
+election that would have qualified under this subsection.
+   (5) The election shall be made in the manner and form prescribed by the department and
+shall be included with the taxpayer’s state income tax return for the taxable year in which
+the election is made.
+   c. For purposes of this subsection:
+   (1) “Capital stock” means common or preferred stock, either voting or nonvoting.
+“Capital stock” does not include stock rights, stock warrants, stock options, or debt securities.
+   (2) “Employee-owner” means an individual who owns capital stock in a qualified
+corporation for at least ten years, which capital stock was acquired by the individual while
+employed and on account of employment by such corporation for at least ten cumulative
+years.
+   (3) “Personal representative” means the same as defined in section 633.3, or if there is
+no such personal representative appointed, then the person legally authorized to perform
+substantially the same functions.
+   (4) (a) “Qualified corporation” means, with respect to an employee-owner, a corporation
+which, at the time of the first sale or exchange for which an election is made by the employee-
+owner under this subsection, meets all of the following conditions:
+   (i) The corporation employed individuals in this state for at least ten years.
+   (ii) The corporation has had at least five shareholders for the ten years prior to the first
+sale or exchange under this subsection.
+   (iii) The corporation has had at least two shareholders or groups of shareholders who are
+not related for the ten years prior to the first sale or exchange under this subsection. Two
+persons are considered related when, under section 318 of the Internal Revenue Code, one
+is a person who owns, directly or indirectly, capital stock that if directly owned would be
+attributed to the other person, or is the brother, sister, aunt, uncle, cousin, niece, or nephew
+of the other person who owns capital stock either directly or indirectly.
+   (b) “Qualified corporation” includes any member of an Iowa affiliated group if the Iowa
+affiliated group includes a member that has employed individuals in this state for at least ten
+years. For purposes of this subparagraph division, “Iowa affiliated group” means an affiliated
+group that has made a valid election to file an Iowa consolidated income tax return under
+section 422.37 in the year in which the deduction under this subsection is claimed. “Member”
+includes any entity included in the consolidated return under section 422.37, subsection 2,
+for the tax year in which the deduction is claimed.
+   (c) “Qualified corporation” also includes any corporation that was a party to a
+reorganization that was entirely or substantially tax free if such reorganization occurred
+during or after the employment of the employee-owner.
+   43. Subtract, to the extent included, the amount of an education savings account payment
+under section 257.11B received by the taxpayer for payment of qualified educational
+expenses.
+   44. a. For purposes of this subsection, “held” shall be determined with reference to the
+holding period provisions of section 1223 of the Internal Revenue Code and the federal
+regulations pursuant thereto.
+   b. Subtract the net capital gain from the following:
+   (1) The sale of cattle or horses held by the taxpayer for breeding, draft, dairy, or sporting
+purposes for a period of twenty-four months or more from the date of acquisition, but only
+if the taxpayer received more than one-half of the taxpayer’s gross income from farming or
+ranching operations during the tax year.
+   (2) The sale of breeding livestock, other than cattle or horses, held by the taxpayer for
+a period of twelve months or more from the date of acquisition, but only if the taxpayer
+received more than one-half of the taxpayer’s gross income from farming or ranching
+operations during the tax year.
+   c. A retired farmer as defined in subsection 13 is not eligible for the exclusion in this
+subsection if taking the exclusion allowed in subsection 13, paragraph “c” or “d”, in the same
+tax year.
+   45. a. Subtract, to the extent included, the amount of any qualifying state disaster
+
+Fri Dec 12 20:18:42 2025                                  Iowa Code 2026, Section 422.7 (203, 12)
+13                                     INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES, §422.7
+
+
+
+recovery new housing grant issued to an individual or business by the economic development
+authority.
+  b. For purposes of this subsection, “qualifying state disaster recovery new housing
+grant” means an award of a state disaster recovery new housing grant that was applied for
+between August 20, 2024, and December 31, 2024, and approved and issued by the economic
+development authority.
+  c. This subsection is repealed January 1, 2028.
+  [C35, §6943-f7; C39, §6943.039; C46, 50, 54, 58, 62, 66, 71, 73, 75, 77, 79, 81, §422.7; 81
+Acts, ch 132, §4 – 6, 9 – 11; 82 Acts, ch 1023, §3 – 8, 25, 30, 31, ch 1203, §2]
+  83 Acts, ch 174, §1, 3; 83 Acts, ch 179, §5, 6, 21, 24; 84 Acts, ch 1305, §29, 30; 85 Acts, ch
+230, §4; 86 Acts, ch 1232, §2; 86 Acts, ch 1236, §5; 86 Acts, ch 1238, §18; 86 Acts, ch 1241,
+§14; 86 Acts, ch 1243, §33; 87 Acts, 1st Ex, ch 1, §3; 87 Acts, 2nd Ex, ch 1, §4 – 6; 88 Acts, ch
+1028, §13 – 15; 89 Acts, ch 175, §2; 89 Acts, ch 225, §18, 19; 89 Acts, ch 228, §6, 7, 11; 89 Acts,
+ch 249, §2; 89 Acts, ch 251, §13; 89 Acts, ch 268, §4; 89 Acts, ch 285, §3; 90 Acts, ch 1171, §2;
+90 Acts, ch 1195, §1; 90 Acts, ch 1251, §52; 90 Acts, ch 1271, §1901, 1903; 91 Acts, ch 196,
+§2; 91 Acts, ch 210, §1; 92 Acts, ch 1225, §1, 5; 92 Acts, ch 1247, §30, 31, 39; 93 Acts, ch 97,
+§14, 20; 94 Acts, ch 1165, §12, 46; 94 Acts, ch 1166, §2, 3, 12; 94 Acts, ch 1183, §77 – 79, 97;
+95 Acts, ch 5, §1, 14; 95 Acts, ch 152, §3, 7; 95 Acts, ch 206, §1, 4; 96 Acts, ch 1106, §7; 96
+Acts, ch 1129, §113; 96 Acts, ch 1186, §23; 97 Acts, ch 133, §1; 97 Acts, ch 135, §4, 9; 98 Acts,
+ch 1100, §57; 98 Acts, ch 1172, §12, 14; 98 Acts, ch 1174, §5, 6; 98 Acts, ch 1177, §1 – 6; 2000
+Acts, ch 1103, §2, 3; 2000 Acts, ch 1163, §5, 6; 2000 Acts, ch 1194, §8, 21; 2001 Acts, ch 15,
+§1, 2; 2001 Acts, ch 116, §6, 28; 2001 Acts, ch 127, §4, 5, 9, 10; 2001 Acts, 2nd Ex, ch 6, §21,
+22, 25, 26, 37; 2002 Acts, ch 1069, §4, 11, 14; 2002 Acts, ch 1150, §4; 2002 Acts, ch 1151, §5,
+36; 2003 Acts, ch 139, §5, 11, 12; 2003 Acts, ch 142, §5, 6, 11; 2003 Acts, 1st Ex, ch 2, §184,
+205; 2004 Acts, ch 1086, §66; 2004 Acts, 1st Ex, ch 1001, §38, 41, 42; 2005 Acts, ch 2, §1, 2,
+6; 2005 Acts, ch 19, §53; 2005 Acts, ch 24, §4, 10, 11; 2005 Acts, ch 127, §1, 2; 2006 Acts, ch
+1013, §1, 2; 2006 Acts, ch 1106, §2, 4; 2006 Acts, ch 1112, §4, 5; 2006 Acts, ch 1140, §4, 10,
+11; 2006 Acts, ch 1158, §12; 2006 Acts, ch 1179, §71; 2006 Acts, 1st Ex, ch 1001, §41, 49; 2007
+Acts, ch 27, §2, 11; 2007 Acts, ch 54, §35; 2007 Acts, ch 162, §4, 13; 2007 Acts, ch 176, §2,
+4; 2007 Acts, ch 186, §8; 2008 Acts, ch 1011, §4, 9; 2008 Acts, ch 1131, §2 – 4; 2008 Acts, ch
+1178, §8, 17; 2009 Acts, ch 118, §6, 12; 2009 Acts, ch 133, §136 – 139; 2009 Acts, ch 161, §3, 4;
+2010 Acts, ch 1107, §1, 2; 2011 Acts, ch 41, §2, 5, 7, 18, 19, 23 – 25; 2011 Acts, ch 105, §1 – 3;
+2011 Acts, ch 113, §57, 60; 2011 Acts, ch 131, §137, 139, 140, 142; 2012 Acts, ch 1019, §129;
+2012 Acts, ch 1021, §73; 2012 Acts, ch 1059, §12; 2012 Acts, ch 1072, §37; 2012 Acts, ch 1110,
+§7; 2012 Acts, ch 1123, §1, 32; 2012 Acts, ch 1136, §33, 39 – 41; 2012 Acts, ch 1138, §133, 134;
+2013 Acts, ch 1, §9, 11, 12; 2013 Acts, ch 70, §1, 2; 2013 Acts, ch 100, §23, 27; 2014 Acts, ch
+1080, §85, 98; 2014 Acts, ch 1093, §19, 21; 2014 Acts, ch 1116, §3 – 5; 2015 Acts, ch 1, §9, 11,
+12; 2015 Acts, ch 116, §27, 29, 30; 2015 Acts, ch 125, §1, 7; 2015 Acts, ch 137, §87, 91, 162;
+2015 Acts, ch 138, §72, 73, 161; 2016 Acts, ch 1011, §68; 2017 Acts, ch 116, §1, 10; 2017 Acts,
+ch 170, §37, 45; 2018 Acts, ch 1026, §129; 2018 Acts, ch 1161, §58, 65, 67, 75, 76, 97, 98, 108
+– 112, 114 – 118, 133, 134, 144, 145, 147, 148; 2019 Acts, ch 46, §3; 2020 Acts, ch 1062, §94;
+2020 Acts, ch 1113, §1, 2; 2020 Acts, ch 1118, §62, 71, 77, 80, 82, 100, 103, 104, 111 – 113, 118,
+120 – 122, 126, 129 – 132, 136 – 139; 2021 Acts, ch 80, §259 – 261; 2021 Acts, ch 86, §21, 31,
+32; 2021 Acts, ch 139, §6, 9 – 11; 2021 Acts, ch 154, §1, 2; 2021 Acts, ch 177, §1, 5, 7, 8, 52, 54,
+55, 57; 2022 Acts, ch 1002, §1 – 7, 10, 11, 27 – 29; 2022 Acts, ch 1138, §70 – 72; 2023 Acts, ch
+1, §8, 10, 11; 2023 Acts, ch 19, §1118; 2023 Acts, ch 64, §103, 113; 2023 Acts, ch 66, §96, 97;
+2023 Acts, ch 115, §1, 4 – 6, 8, 9, 12, 55 – 58; 2024 Acts, ch 1054, §16; 2024 Acts, ch 1138, §12
+– 14; 2024 Acts, ch 1147, §2, 3; 2024 Acts, ch 1160, §1, 2; 2024 Acts, ch 1170, §369; 2025 Acts,
+ch 28, §14, 23, 25, 26; 2025 Acts, ch 148, §11, 12
+   Referred to in §12D.9, 12I.8, 12I.10, 422.4, 422.5, 422.8, 422.16, 422.35, 425.17, 541A.2, 541A.3, 541B.6
+   For business expense deductions using forgiven federal Paycheck Protection Program (PPP) proceeds in computing net income for
+certain fiscal-year filers under the federal Consolidated Appropriations Act, 2021; see 2021 Acts, ch 177, §9, 10
+   Subsection 34 applies retroactively to January 1, 2021, for tax years beginning on or after that date; 2021 Acts, ch 154, §2
+   2021 amendment to subsection 37 applies retroactively to January 1, 2021, for tax years beginning on or after that date; 2021 Acts, ch
+139, §11
+   2021 amendment to subsection 38 applies retroactively to July 1, 2020, and applies to federal adjustments and federal partnership
+adjustments that have a final determination date after July 1, 2020; 2021 Acts, ch 86, §32
+   2021 repeal of subsection 39, former paragraph b, applies retroactively to January 1, 2021, for tax years beginning on or after that date;
+2021 Acts, ch 177, §57
+
+
+
+Fri Dec 12 20:18:42 2025                                                            Iowa Code 2026, Section 422.7 (203, 12)
+§422.7, INDIVIDUAL INCOME, CORPORATE, AND FRANCHISE TAXES                                                                                14
+
+
+
+    2021 repeal of former subsection 39A applies retroactively to January 1, 2021, for tax years beginning on or after that date, and for
+qualified property placed in service on or after that date; 2021 Acts, ch 177, §54
+    2022 amendment to subsection 13 is effective January 1, 2023, and applies to sales consummated on or after January 1, 2023, for tax
+years beginning on or after January 1, 2023; 2022 Acts, ch 1002, §10, 11
+    Subsection 14 is effective January 1, 2023, and applies to tax years beginning on or after January 1, 2023; 2022 Acts, ch 1002, §5, 6
+    2022 amendment to subsection 19 by 2022 Acts, ch 1002, §27 is effective January 1, 2023, and applies to tax years beginning on or after
+January 1, 2023; 2022 Acts, ch 1002, §28, 29
+    Former subsection 41 applies retroactively to January 1, 2022, for tax years beginning on or after January 1, 2022, but before January 1,
+2023, for payments received in the 2022 calendar year; 2022 Acts, ch 1138, §72
+    Subsection 42 is effective January 1, 2023, and applies to tax years beginning on or after January 1, 2023; 2022 Acts, ch 1002, §2, 3
+    Repeal of former subsections 39, 39B, 43, and 53, relating to bonus depreciation under section 168 of the Internal Revenue Code or
+increased expensing under section 179 of the Internal Revenue Code, applies retroactively to property placed in service on or after January
+1, 2023; 2018 Acts, ch 1161, §118, 133, 134; 2021 Acts, ch 177, §1; 2023 Acts, ch 115, §4, 6
+    Subsection 43 applies retroactively to tax years beginning on or after January 1, 2023; 2023 Acts, ch 1, §11
+    2023 amendment to subsection 4 applies retroactively to January 1, 2023, for tax years beginning on or after that date; 2023 Acts, ch
+115, §12
+    2023 amendment to subsection 5, paragraph a applies retroactively to January 1, 2023, for tax years beginning on or after that date;
+2023 Acts, ch 115, §12
+    2023 amendment to subsection 13, paragraph a, subparagraph (4) applies retroactively to January 1, 2023, for tax years beginning on
+or after that date; 2023 Acts, ch 115, §58
+    2023 amendment to subsection 14, paragraph f, subparagraph (6) applies retroactively to January 1, 2023, for tax years beginning on or
+after that date; 2023 Acts, ch 115, §58
+    2024 amendments to subsection 19, paragraphs a and c apply retroactively to January 1, 2024, for tax years beginning on or after that
+date; 2024 Acts, ch 1138, §14
+    Subsection 22, paragraph c, subparagraph (1), subparagraph division (g) applies retroactively to January 1, 2024, for tax years beginning
+on or after that date; 2024 Acts, ch 1147, §3
+    Subsection 44 applies retroactively to January 1, 2023, for tax years beginning on or after that date; 2024 Acts, ch 1160, §2
+    Subsection 45 applies retroactively to tax years beginning on or after January 1, 2024; 2025 Acts, ch 28, §26
+    Former subsection 41 repealed by its own terms effective January 1, 2026; 2022 Acts, ch 1138, §70
+    Subsection 2, NEW paragraph u
+    Subsection 14, paragraph a amended
+    Subsection 14, paragraph f, NEW subparagraph (4) and former subparagraphs (4) and (5) rennumbered as (5) and (6)
+    NEW subsection 45
+
+
+
+
+Fri Dec 12 20:18:42 2025                                                            Iowa Code 2026, Section 422.7 (203, 12)
+

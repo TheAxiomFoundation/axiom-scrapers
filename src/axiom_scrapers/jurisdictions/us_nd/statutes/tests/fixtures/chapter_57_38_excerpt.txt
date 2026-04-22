@@ -1,0 +1,499 @@
+                                  CHAPTER 57-38
+                                     INCOME TAX
+
+57-38-01. Definitions.
+As used in this chapter, unless the context or subject matter otherwise requires:
+1. "Chronically mentally ill" means a person who, as a result of a mental disorder, exhibits
+     emotional or behavioral functioning which is so impaired as to interfere substantially
+     with the person's capacity to remain in the community without verified supportive
+     treatment or services of a long-term or indefinite duration. This mental disability must
+     be severe and persistent, resulting in a long-term limitation of the person's functional
+     capacities for primary activities of daily living such as interpersonal relationships,
+     homemaking, self-care, employment, and recreation.
+2. "Corporation" includes associations, business trusts, joint stock companies, and
+     insurance companies.
+3. "Developmental disability" has the same meaning as defined in section 25-01.2-01.
+4. "Domestic" when applied to a corporation means created or organized under the laws
+     of North Dakota.
+5. "Federal Internal Revenue Code of 1954, as amended", "United States Internal
+     Revenue Code of 1954, as amended", and "Internal Revenue Code of 1954, as
+     amended", mean the United States Internal Revenue Code of 1986, as amended.
+     Reference to the Internal Revenue Code of 1954, as amended, includes a reference to
+     the United States Internal Revenue Code of 1986, as amended, and reference to the
+     United States Internal Revenue Code of 1986, as amended, includes a reference to
+     the provisions of law formerly known as the Internal Revenue Code of 1954, as
+     amended.
+     a. Except that the provisions of section 168(f)(8) of the Internal Revenue Code of
+          1954, as amended, are not adopted in those instances when the minimum
+          investment by the lessor is less than one hundred percent for the purpose of
+          computing North Dakota taxable income for individuals, estates, trusts, and
+          corporations for taxable years beginning on or after January 1, 1983. Therefore,
+          federal taxable income must be increased, or decreased, as the case may be, to
+          reflect the adoption or nonadoption of the provisions of section 168(f)(8) of the
+          Internal Revenue Code of 1954, as amended, and such adjustments must be
+          made before computing income subject to apportionment.
+     b. Provided, that one-half of the amount not allowed as an accelerated cost
+          recovery system depreciation deduction for the taxable year beginning after
+          December 31, 1982, may be deducted from federal taxable income in each of the
+          next two taxable years beginning after December 31, 1985, and one-half of the
+          amount not allowed as an accelerated cost recovery system depreciation
+          deduction for the taxable year beginning after December 31, 1983, may be
+          deducted from federal taxable income in each of the next two years beginning
+          after December 31, 1987, and one-half of the amount not allowed as an
+          accelerated cost recovery system depreciation deduction for the taxable year
+          beginning after December 31, 1984, may be deducted from federal taxable
+          income in each of the next two taxable years beginning after December 31, 1989.
+          All such adjustments must be made before computing income subject to
+          apportionment.
+     c. Provided, that the depreciation adjustments allowed in subdivision b shall be
+          limited to those eligible assets acquired during taxable years beginning after
+          December 31, 1982. Acquisitions made before taxable years beginning
+          January 1, 1983, must be depreciated pursuant to the methods permissible under
+          Internal Revenue Code provisions in effect prior to January 1, 1981.
+     d. Except that for purposes of applying the Internal Revenue Code of 1954, as
+          amended, with respect to actual distributions made after December 31, 1984, by
+          a domestic international sales corporation, or former domestic international sales
+          corporation, which was a domestic international sales corporation on
+
+                                       Page No. 1
+
+             December 31, 1984, any accumulated domestic international sales corporation
+             income of a domestic international sales corporation, or former domestic
+             international sales corporation, which is derived before January 1, 1985, may not
+             be treated as previously taxed income.
+ 6.   "Foreign" when applied to a corporation means created or organized outside of North
+      Dakota.
+ 7.   "Mental disorder" means a substantial disorder of the person's emotional processes,
+      thought, cognition, or memory. Mental disorder is distinguished from:
+      a. Conditions which are primarily those of drug abuse, alcoholism, or intellectual
+             disability, unless in addition to one or more of these conditions, the person has a
+             mental disorder.
+      b. The declining mental abilities that accompany impending death.
+      c. Character and personality disorders characterized by lifelong and deeply
+             ingrained antisocial behavior patterns, including sexual behaviors which are
+             abnormal and prohibited by statute, unless the behavior results from a mental
+             disorder.
+ 8.   "Passthrough entity" means a corporation that for the applicable tax year is treated as
+      an S corporation under the Internal Revenue Code, a limited liability company that for
+      the applicable tax year is not taxed as a corporation for federal income tax purposes, a
+      general partnership, limited partnership, limited liability partnership, limited liability
+      limited partnership, trust, or a similar entity that passes its income, deductions, and
+      credits through to its owners.
+ 9.   "Person" includes individuals, fiduciaries, partnerships, corporations, and limited
+      liability companies, and other entities recognized by the laws of this state.
+10.   "Qualified investment fund" means any regulated investment company as defined
+      under the Internal Revenue Code, which for the calendar year in which the distribution
+      is paid:
+      a. Has investments in interest-bearing obligations issued by or on behalf of this
+             state, any political subdivision of this state, or the United States government; and
+      b. Has provided the tax commissioner with a detailed schedule of the assets
+             contained in its investment portfolio and a schedule of the income attributable to
+             each asset in its investment portfolio for the calendar year.
+11.   "Resident" applies only to natural persons and includes, for the purpose of determining
+      liability for the tax imposed by this chapter upon or with reference to the income of any
+      income year, any person domiciled in the state of North Dakota and any other person
+      who maintains a permanent place of abode within the state and spends in the
+      aggregate more than seven months of the income year within the state. A full-time
+      active duty member of the armed forces assigned to a military installation in this state,
+      or the member's spouse, is not a "resident" of this state for purposes of this chapter
+      simply by reason of having voted in an election in this state.
+12.   "Tax commissioner" means the state tax commissioner.
+13.   "Taxable income" in the case of individuals, estates, trusts, and corporations means
+      the taxable income as computed for an individual, estate, trust, or corporation for
+      federal income tax purposes under the United States Internal Revenue Code of 1954,
+      as amended, plus or minus the adjustments as may be provided by this chapter or
+      other provisions of law. Except as otherwise expressly provided, "taxable income"
+      does not include any amount computed for federal alternative minimum tax purposes.
+14.   "Taxpayer" includes any individual, corporation, or fiduciary subject to a tax imposed
+      by this chapter.
+15.   Any term, as used in this code, as it pertains to the filing and reporting of income,
+      deductions, or exemptions or the paying of North Dakota income tax, has the same
+      meaning as when used in a comparable context in the laws of the United States
+      relating to federal income taxes, unless a different meaning is clearly required or
+      contemplated.
+
+
+
+
+                                         Page No. 2
+
+     57-38-01.1. Declaration of legislative intent.
+     It is the intent of the legislative assembly to simplify the state income tax laws and to
+demonstrate that federal legislation is not necessary to deal with certain interstate tax problems,
+by adopting the federal definition of taxable income as the starting point for the computation of
+state income tax by all taxpayers and providing the necessary adjustments thereto to
+substantially preserve and maintain existing exemptions and deductions. It is the further intent
+of the legislative assembly to eliminate double taxation of the earnings of small corporations by
+recognizing a subchapter S election when made for federal income tax purposes.
+
+    57-38-01.2. Adjustments to taxable income for individuals and fiduciaries.
+    Repealed by S.L. 2009, ch. 545, § 32.
+
+    57-38-01.3. Adjustments to taxable income for corporations.
+    1. The taxable income of a corporation as computed pursuant to the provisions of the
+         Internal Revenue Code of 1954, as amended, must be:
+         a. Reduced by any interest received from obligations of the United States that is
+              included in taxable income or in the computation thereof on the federal return.
+         b. Reduced by any other income included in the taxable income, or in the
+              computation thereof, on the federal return which is exempt from taxation by this
+              state because of the provisions of the Constitution of North Dakota or the
+              Constitution of the United States.
+         c. Increased by the amount of any income taxes, including income taxes of foreign
+              countries, or franchise or privilege taxes measured by income, to the extent that
+              such taxes were deducted to determine federal taxable income.
+         d. Increased by the amount of any interest and dividends from foreign securities and
+              from securities of state and their political subdivisions exempt from federal
+              income tax, provided that interest upon obligations of the state of North Dakota or
+              any of its political subdivisions may not be included.
+         e. Reduced by the amount of net income not allocated and apportioned to this state
+              under the provisions of chapter 57-38.1, but only to the extent that the amount of
+              net income not allocated and apportioned to this state under the provisions of that
+              chapter is not included in any adjustment made pursuant to the preceding
+              subdivisions.
+          f. Repealed by S.L. 2003, ch. 529, § 3.
+         g. Increased by the amount of any special deductions and net operating loss
+              deductions to the extent that these items were deducted in determining federal
+              taxable income.
+         h. Reduced by dividends paid, as defined in section 561 of the Internal Revenue
+              Code of 1986, as amended, by a regulated investment company or a fund of a
+              regulated investment company as defined in section 851(a) or 851(g) of the
+              Internal Revenue Code of 1986, as amended, except that the deduction for
+              dividends paid is not allowed with respect to dividends attributable to any income
+              that is not subject to taxation under this chapter when earned by the regulated
+              investment company. Sections 852(b)(7) and 855 of the Internal Revenue Code
+              of 1986, as amended, apply for computing the deduction for dividends paid. A
+              regulated investment company is not allowed a deduction for dividends received
+              as defined in sections 243 through 245 of the Internal Revenue Code of 1986, as
+              amended.
+          i. Except for a cooperative described in this subsection, increased by the amount of
+              the deduction allowable under section 199 of the Internal Revenue Code
+              [26 U.S.C. 199], but only to the extent of the deduction taken to determine federal
+              taxable income. For a cooperative that has elected to pass the deduction through
+              to its patrons under section 199(d)(3), of the Internal Revenue Code [26 U.S.C.
+              199(d)(3)], the increase under this subsection does not include the amount
+              passed through to its patrons.
+
+
+                                            Page No. 3
+
+j.   For taxable years 2005 and 2006, increased by the amount of extraterritorial
+     income as defined in section 114 of the Internal Revenue Code [26 U.S.C. 114],
+     that is excluded under sections 101(d), 101(e), and 101(f) of Pub. L. 108-357
+     [118 Stat. 1418], but only to the extent the income was excluded in determining
+     federal taxable income.
+k.   Reduced, for an interest charge domestic international sales corporation without
+     economic substance owned by individuals or passthrough entities, by the amount
+     of actual or deemed distributions of the interest charge domestic international
+     sales corporation to its owners. For purposes of this subsection, "without
+     economic substance" means, in the case of an interest charge domestic
+     international sales corporation subject to Internal Revenue Code section 992, that
+     the interest charge domestic international sales corporation has elected to use
+     intercompany pricing rules of Internal Revenue Code section 994, rather than the
+     Internal Revenue Code section 482 method. For purposes of this subsection, a
+     passthrough entity means an entity that for the applicable tax year is treated as
+     an S corporation under this chapter or a cooperative, general partnership, limited
+     partnership, limited liability partnership, trust, or limited liability company that for
+     the applicable tax year is not taxed as a corporation under this chapter.
+l.   Increased by the amount of the dividends paid deduction otherwise allowed under
+     section 857 of the Internal Revenue Code of 1986, as amended, if the real estate
+     investment trust is a captive real estate investment trust.
+     (1) For purposes of this subdivision:
+           (a) "Captive real estate trust" means a real estate investment trust the
+                 shares or beneficial interests of which are not regularly traded on an
+                 established securities market, and more than fifty percent of the voting
+                 power or value of the beneficial interests or shares of the real estate
+                 investment trust are owned or controlled, directly, indirectly, or
+                 constructively, by a single entity that is:
+                 [1] Treated as an association taxable as a corporation under the
+                      Internal Revenue Code of 1986, as amended; and
+                 [2] Not exempt from federal income taxation under section 501(a) of
+                      the Internal Revenue Code of 1986, as amended.
+           (b) "Listed Australian property trust" means an Australian unit trust
+                 registered as a managed investment scheme under the Australian
+                 Corporations Act in which the principal class of units is listed on a
+                 recognized stock exchange in Australia, and is regularly traded on an
+                 established securities market, or an entity organized as a trust,
+                 provided that a listed Australian property trust owns or controls,
+                 directly or indirectly, seventy-five percent or more of the voting power
+                 or value of the beneficial interests or shares of such trust.
+           (c) "Qualified foreign entity" means a corporation, trust, association, or
+                 partnership organized outside the laws of the United States, and
+                 which satisfies all of the following criteria:
+                 [1] At least seventy-five percent of the entity's total asset value at
+                      the close of its taxable year is represented by real estate assets
+                      as defined in section 856(c)(5)(B) of the Internal Revenue Code
+                      of 1986, as amended, including shares or certificates of
+                      beneficial interest in any real estate investment trust, cash and
+                      cash equivalents, and United States government securities;
+                 [2] The entity is not subject to tax on amounts distributed to its
+                      beneficial owners or is exempt from entity level taxation;
+                 [3] The entity distributes at least eighty-five percent of its taxable
+                      income, as computed in the jurisdiction in which it is organized,
+                      to the holders of its shares or certificates of beneficial interest on
+                      an annual basis;
+
+
+                                   Page No. 4
+
+                      [4]    Not more than ten percent of the voting power or value in the
+                             entity is held directly or indirectly or constructively by a single
+                             entity or individual, or the shares or beneficial interests of such
+                             entity are regularly traded on an established securities market;
+                             and
+                        [5] The entity is organized in a country that has a tax treaty with the
+                             United States.
+                (d) "Real estate investment trust" has the meaning ascribed in
+                        section 856 of the Internal Revenue Code of 1986, as amended.
+          (2) For the purposes of applying subparagraph a of paragraph 1, the following
+                entities are not considered an association taxable as a corporation:
+                (a) A real estate investment trust other than a captive real estate
+                        investment trust;
+                (b) A qualified real estate investment trust subsidiary under subsection i of
+                        section 856 of the Internal Revenue Code of 1986, as amended, other
+                        than a qualified real estate investment trust subsidiary of a captive real
+                        estate investment trust;
+                (c) A listed Australian property trust; and
+                (d) A qualified foreign entity.
+          (3) A real estate investment trust that is intended to be regularly traded on an
+                established securities market and that satisfies the requirements of
+                sections 856(a)(5), 856(a)(6), and 856(h)(2) of the Internal Revenue Code of
+                1986, as amended, shall not be deemed a captive real estate investment
+                trust within the meaning of this subdivision.
+          (4) A real estate investment trust that does not become regularly traded on an
+                established securities market within one year of the date on which it first
+                became a real estate investment trust shall be deemed not to have been
+                regularly traded on an established securities market, retroactive to the date
+                it first became a real estate investment trust, and shall file an amended
+                return reflecting the retroactive designation for any tax year or part-year
+                occurring during its initial year of status as a real estate investment trust. For
+                purposes of this subdivision, a real estate investment trust becomes a real
+                estate investment trust on the first day that it has both met the requirements
+                of section 856 of the Internal Revenue Code of 1986, as amended, and has
+                elected to be treated as a real estate investment trust under section 856(c)
+                (1) of the Internal Revenue Code of 1986, as amended.
+          (5) For purposes of this subdivision, the constructive ownership rules of
+                section 318(a) of the Internal Revenue Code of 1986, as amended, as
+                modified by section 856(d)(5) of the Internal Revenue Code of 1986, as
+                amended, apply in determining the ownership of stock, assets, or net profits
+                of any person.
+     Provided, however, that each adjustment in the above subdivisions authorized under
+     law is allowed only to the extent that the adjustment is allocated and apportioned to
+     North Dakota income.
+2.   The tax commissioner is hereby authorized to prescribe rules and regulations to
+     prevent requiring income that had been previously taxed under this chapter from being
+     taxed again because of the provisions of this chapter and to prescribe rules and
+     regulations to prevent any income from becoming exempt from taxation because of the
+     provisions of this chapter if it would otherwise have been subject to taxation under the
+     provisions of this chapter.
+3.   The sum calculated pursuant to subsection 1 must be reduced by the amount of any
+     net operating loss that is attributable to North Dakota sources, including a net
+     operating loss calculated under chapter 57-35.3 for tax years beginning before
+     January 1, 2013. If the net operating loss that is attributable to North Dakota sources
+     exceeds the sum calculated pursuant to subsection 1, the excess may be carried
+     forward for the same time period that an identical federal net operating loss may be
+
+                                         Page No. 5
+
+     carried forward. If a corporation uses an apportionment formula to determine the
+     amount of income that is attributable to North Dakota, the corporation must use the
+     same formula to determine the amount of net operating loss that is attributable to
+     North Dakota. In addition, no deduction may be taken for a carryforward when
+     determining the amount of net operating loss that is attributable to North Dakota
+     sources.
+
+57-38-01.4. Recognition of subchapter S election.
+1. For the purposes of this chapter, any person as defined in section 57-38-01 and
+     required to file a North Dakota income tax return who makes an election under
+     subchapter S of the Internal Revenue Code of 1954, as amended, for federal income
+     tax purposes shall have such status recognized and such person's taxable income
+     must be computed as provided in subchapter S of the Internal Revenue Code of 1954,
+     as amended, with the adjustments allowed by this chapter or other provisions of law.
+     Income of a subchapter S corporation subject to tax for federal income tax purposes is
+     also subject to state income tax at the corporate income tax rates imposed by section
+     57-38-30.
+2. The distributed and undistributed taxable income of an electing small business
+     corporation for federal and state income tax purposes derived from or connected with
+     sources in this state does constitute income derived from sources within this state for a
+     nonresident person who is a shareholder of such a corporation, and a net operating
+     loss of such corporation derived from or connected with sources in this state does
+     constitute a loss or deduction connected with sources in this state for such a
+     nonresident individual.
+
+57-38-01.5. Crop insurance proceeds - Option to postpone for income tax purposes.
+Repealed by S.L. 1983, ch. 630, § 2.
+
+57-38-01.6. Deduction for contributions to retirement plans.
+Repealed by S.L. 1983, ch. 630, § 2.
+
+57-38-01.7. Income tax credit for charitable contributions - Limitation.
+1. At the election of the taxpayer, there must be allowed, subject to the applicable
+     limitations provided in this subsection, as a nonrefundable credit against the income
+     tax liability under section 57-38-30 or 57-38-30.3 for the taxable year, an amount equal
+     to fifty percent of the aggregate amount of charitable contributions made by the
+     taxpayer during the year to nonprofit private institutions of higher education located
+     within the state or to the North Dakota independent college fund. The amount
+     allowable as a credit under this subsection for any taxable year may not exceed fifty
+     percent of the taxpayer's total income tax under this chapter for the year, or two
+     thousand five hundred dollars, whichever is less.
+2. At the election of the taxpayer, there must be allowed, subject to the applicable
+     limitations provided in this subsection, as a nonrefundable credit against the income
+     tax liability under section 57-38-30 or 57-38-30.3 for the taxable year, an amount equal
+     to fifty percent of the aggregate amount of charitable contributions made by the
+     taxpayer during the year directly to nonprofit private institutions of secondary
+     education, located within the state. The amount allowable as a credit under this
+     subsection for any taxable year may not exceed fifty percent of the taxpayer's total
+     income tax under this chapter for the year, or two thousand five hundred dollars,
+     whichever is less.
+3. At the election of the taxpayer, there must be allowed, subject to the applicable
+     limitations provided in this subsection, as a nonrefundable credit against the income
+     tax liability under section 57-38-30 or 57-38-30.3 for the taxable year, an amount equal
+     to fifty percent of the aggregate amount of charitable contributions made by the
+     taxpayer during the year directly to nonprofit private institutions of primary education,
+
+
+                                       Page No. 6
+
+         located within the state. The amount allowable as a credit under this subsection for
+         any taxable year may not exceed fifty percent of the taxpayer's total income tax under
+         this chapter for the year, or two thousand five hundred dollars, whichever is less.
+    4.   A passthrough entity entitled to a credit under this section must be considered to be
+         the taxpayer for purposes of this section and the amount of the credit allowed must be
+         determined at the passthrough entity level. The amount of the total credit determined
+         at the entity level must be passed through to the partners, shareholders, or members
+         in proportion to their respective interests in the passthrough entity.
+    5.   For purposes of this section, the term "nonprofit private institution of higher education"
+         means only a nonprofit private educational institution located in the state of North
+         Dakota which normally maintains a regular faculty and curriculum, which normally has
+         a regularly organized body of students in attendance at the place where its educational
+         activities are carried on, and which regularly offers education at a level above the
+         twelfth grade. The term "nonprofit private institution of secondary education" means
+         only a nonprofit private educational institution located in North Dakota which normally
+         maintains a regular faculty and curriculum approved by the state department of public
+         instruction, which normally has a regularly organized body of students in attendance at
+         the place where its educational activities are carried on, and which regularly offers
+         education to students in the ninth through the twelfth grades. The term "nonprofit
+         private institution of primary education" means only a nonprofit private educational
+         institution located in North Dakota which normally maintains a regular faculty and
+         curriculum approved by the state department of public instruction, which normally has
+         a regularly organized body of students in attendance at the place where its educational
+         activities are carried on, and which regularly offers education to students in
+         kindergarten through eighth grade.
+    6.   For purposes of this section, a taxpayer may elect to treat a contribution as made in
+         the preceding taxable year if the contribution and election are made not later than the
+         time prescribed in section 57-38-34 for filing the return for that taxable year, including
+         extensions granted by the commissioner.
+
+   57-38-01.8. Income tax credit for installation of geothermal, solar, wind, or biomass
+energy devices.
+    1. A taxpayer filing a North Dakota income tax return pursuant to the provisions of this
+        chapter may claim a credit against the tax liability under section 57-38-30 for the cost
+        of a geothermal, solar, or biomass energy device installed before January 1, 2015, in a
+        building or on property owned or leased by the taxpayer in North Dakota. A wind
+        energy device on which construction was commenced before January 1, 2015, and
+        which is installed before January 1, 2017, is eligible for the credit provided in this
+        section. The credit for a device installed before January 1, 2001, must be in an amount
+        equal to five percent per year for three years, and for a device installed after
+        December 31, 2000, must be in an amount equal to three percent per year for five
+        years of the actual cost of acquisition and installation of the geothermal, solar, wind, or
+        biomass energy device and must be subtracted from any income tax liability of the
+        taxpayer as determined pursuant to the provisions of this chapter.
+    2. For the purposes of this section:
+        a. "Biomass energy device" means a system using agricultural crops, wastes, or
+              residues; wood or wood wastes or residues; animal wastes; landfill gas; or other
+              biological sources to produce fuel or electricity.
+        b. "Geothermal energy device" means a system or mechanism or series of
+              mechanisms designed to provide heating or cooling or to produce electrical or
+              mechanical power, or any combination of these, by a method which extracts or
+              converts the energy naturally occurring beneath the earth's surface in rock
+              structures, water, or steam.
+        c. "Solar or wind energy device" means a system or mechanism or series of
+              mechanisms designed to provide heating or cooling or to produce electrical or
+
+
+                                            Page No. 7
+
+               mechanical power, or any combination of these, or to store any of these, by a
+               method which converts the natural energy of the sun or wind.
+   3.   If a geothermal, solar, wind, or biomass energy device is a part of a system which uses
+        other means of energy, only that portion of the total system directly attributable to the
+        cost of the geothermal, solar, wind, or biomass energy device may be included in
+        determining the amount of the credit. The costs of installation may not include costs of
+        redesigning, remodeling, or otherwise altering the structure of a building in which a
+        geothermal, solar, wind, or biomass energy device is installed.
+   4.   A partnership, subchapter S corporation, limited partnership, limited liability company,
+        or any other passthrough entity that installs a geothermal, solar, wind, or biomass
+        energy device in a building or on property owned or leased by the passthrough entity
+        must be considered to be the taxpayer for purposes of this section, and the amount of
+        the credit allowed with respect to the entity's investments must be determined at the
+        passthrough entity level. The amount of the total credit determined at the entity level
+        must be passed through to the corporate partners, shareholders, or members in
+        proportion to their respective interests in the passthrough entity.
+   5.   If a taxpayer entitled to the credit provided by this section is a member of a group of
+        corporations filing a North Dakota consolidated tax return using the combined
+        reporting method, the credit may be claimed against the aggregate North Dakota tax
+        liability of all of the corporations included in the North Dakota consolidated return.
+   6.   a. The credit allowed under this section may not exceed the liability for tax under
+               this chapter. If the amount of credit determined under this section exceeds the
+               liability for tax under this chapter, the excess may be used as a credit carryover to
+               each of the five succeeding taxable years.
+        b. Any excess tax credits earned for wind energy devices installed after
+               September 30, 2008, and before January 1, 2012, may be used as a credit
+               carryover to each of the thirty succeeding taxable years.
+        c. For any tax credits for geothermal, solar, or biomass energy devices installed
+               after September 30, 2008, and wind energy devices installed after December 31,
+               2011, the excess may be used as a credit carryover to each of the ten
+               succeeding taxable years.
+   7.   For geothermal, solar, wind, or biomass energy devices installed after December 31,
+        2006, if ownership of a device is transferred at the time installation is complete and the
+        device is fully operational, the purchaser of the device is eligible for the tax credit
+        under this section. Subsequent purchasers of the device are not eligible for the tax
+        credit.
+   8.   An individual taxpayer filing a North Dakota return pursuant to the provisions of this
+        chapter may claim a credit against the tax liability under section 57-38-30.3 for the cost
+        of a geothermal energy device installed after December 31, 2008, and before
+        January 1, 2015, in a building or on property owned or leased by the taxpayer in North
+        Dakota. The credit must be in an amount equal to three percent per year for five years
+        of the actual cost of acquisition and installation of the geothermal energy device.
+
+   57-38-01.9. Deduction of contributions to individual retirement account.
+   Repealed by S.L. 1983, ch. 630, § 2.
+
+   57-38-01.10. Deferral of crop disaster payments and proceeds of livestock sold on
+account of drought.
+   Repealed by S.L. 1983, ch. 630, § 2.
+
+   57-38-01.11. Reporting net operating loss.
+   Repealed by S.L. 1983, ch. 630, § 2.
+
+   57-38-01.12. Reporting of investment credit carryback for prior taxable years.
+   Repealed by S.L. 1983, ch. 628, § 2.
+
+
+                                           Page No. 8
+
+    57-38-01.13. Taxation of the gain or loss resulting from the sale of a principal
+residence.
+    Any gain or loss resulting from the sale or exchange of a principal residence in this state by
+a taxpayer who reinvests in another principal residence outside of this state must be treated in
+the same way for state income tax purposes as it is treated for federal income tax purposes.
+
+     57-38-01.14. No gain recognized on property subject to eminent domain sale or
+transfer.
+     If any private property, through the exercise of eminent domain, is involuntarily converted
+into property of either like or unlike kind, no gain, either ordinary or capital, may be recognized
+for corporate income tax purposes.
+
+    57-38-01.15. Proration and itemization of deductions and exemptions.
+    Repealed by S.L. 1989, ch. 710, § 4.
+
+    57-38-01.16. Income tax credit for employment of individuals with developmental
+disabilities or severe mental illness.
+    1. A taxpayer filing an income tax return under this chapter may claim a credit against the
+          tax liability imposed under section 57-38-30 or section 57-38-30.3 for a portion of the
+          wages paid to an employee with a developmental disability or a severe mental illness.
+    2. The credit allowed under this section equals twenty-five percent of up to six thousand
+          dollars in wages paid annually by the taxpayer for each employee with a
+          developmental disability or severe mental illness, if the department of health and
+          human services' vocational rehabilitation division determines the individual has a most
+          significant disability, is eligible for services, and requires customized employment or
+          supported employment to obtain competitive integrated employment.
