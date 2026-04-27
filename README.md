@@ -2,9 +2,11 @@
 
 Scrapers for global statutes, regulations, bills, and rulemaking. Each scraper fetches
 from an authoritative upstream source (state legislature website, eCFR API, etc.) and
-emits [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
-XML files. The downstream consumer is [Atlas](https://github.com/TheAxiomFoundation/atlas),
-which ingests the XML into Postgres for the Atlas viewer and RAC encoding pipeline.
+emits local [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
+XML as an ingest intermediate. The downstream consumer is
+[Atlas](https://github.com/TheAxiomFoundation/atlas), which ingests the XML into
+Postgres for the Atlas viewer and RuleSpec encoding pipeline. Generated XML stays
+out of Git and R2.
 
 ## Layout
 
@@ -66,7 +68,8 @@ the floor as those tests land.
 - **Offline-first tests.** Parse logic is unit-tested against saved HTML fixtures,
   not live fetches. The `_common.http` layer handles retries, rate-limit backoff, and
   soft-fail for missing sections (404/307/410) so per-state scrapers can stay thin.
-- **AKN 3.0 output.** Standardized across all scrapers so Atlas ingest is uniform.
+- **AKN 3.0 intermediate output.** Standardized across all scrapers so Atlas
+  ingest is uniform without making generated XML a persisted artifact.
   See [`docs/output-format.md`](docs/output-format.md).
 
 ## Jurisdictions covered
@@ -104,4 +107,5 @@ and related ingesters; porting them into this repo is tracked separately.
 Every scraper writes to `{out}/{jurisdiction}/{doc_type}/.../*.xml`, matching the
 shape Atlas's `scripts/ingest_state_laws.py --state {xx}` expects. The two repos are
 kept deliberately decoupled: axiom-scrapers produces AKN XML, Atlas ingests it. Neither
-imports from the other.
+imports from the other. Treat the output tree as local scratch space; do not commit it
+or upload it to R2.

@@ -6,7 +6,7 @@ looks up ``<FRBRnumber>`` for the section id and ``.//akn:body//akn:section``
 for the heading + content.
 
 Authored deliberately — no third-party AKN library. Keeping it in-house
-means we can adapt to cosilico/atlas tweaks without pulling in a
+means we can adapt to Atlas ingestion tweaks without pulling in a
 dependency.
 """
 
@@ -103,9 +103,8 @@ def build_akn_xml(section: Section) -> str:
     )
     gen = section.generation_date.isoformat()
 
-    # Canonical FRBR paths — we pick the shape that mirrors Cosilico's
-    # existing rules-us-* repos so Atlas's ingester doesn't need
-    # per-author logic.
+    # Canonical FRBR paths mirror the existing rules-us-* repos so Atlas's
+    # ingester doesn't need per-author logic.
     jurisdiction = section.jurisdiction
     authority = section.authority_code.lower()
     number = section.work_number

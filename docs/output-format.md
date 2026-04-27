@@ -1,8 +1,9 @@
 # Output format
 
-Every scraper emits [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
-XML files. Atlas's `ingest_state_laws.py` is the primary consumer and
-keys on specific elements — this doc pins the contract.
+Every scraper emits local [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
+XML files as an ingest intermediate. Atlas's `ingest_state_laws.py` is the
+primary consumer and keys on specific elements — this doc pins the contract.
+Generated XML should not be committed to Git or uploaded to R2.
 
 ## File layout
 

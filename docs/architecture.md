@@ -11,9 +11,9 @@
    fixtures. No network calls in CI.
 4. **Graceful decay.** Source sites change / go offline / rate-limit. Runs
    should skip dead sections, not crash.
-5. **Consumer-agnostic output.** We emit Akoma Ntoso 3.0 XML. Atlas
-   happens to be the first consumer; another project could ingest from
-   the same tree.
+5. **Consumer-agnostic intermediate output.** We emit local Akoma Ntoso
+   3.0 XML for ingest. Atlas happens to be the first consumer; another
+   project could ingest from the same scratch tree.
 
 ## Layout
 
@@ -115,7 +115,7 @@ base class. A new scraper is ~50-200 lines of state-specific regex.
 ## Output contract
 
 See [`output-format.md`](output-format.md) for the AKN 3.0 shape Atlas
-expects.
+expects. Generated XML is a local intermediate, not a Git or R2 artifact.
 
 ## Adding a scraper
 
