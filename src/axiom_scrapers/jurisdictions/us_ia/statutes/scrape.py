@@ -32,7 +32,7 @@ HEADING                    {page_no}``) and the timestamp footer on every
 page. We strip both so body paragraphs stay contiguous.
 
 Provenance (``[C51, ...]``, ``YYYY Acts, ch ...``, ``Referred to in §...``)
-is kept inline with the body — consistent with how other Atlas state
+is kept inline with the body — consistent with how other Axiom state
 ingests treat session-law citations (cf. Virginia).
 
 Dependencies
@@ -119,7 +119,7 @@ class IowaCodeStatutesScraper(Scraper[IASectionRef]):
 
     Per-section PDF walker. Each PDF is one Iowa Code section; we extract
     text with ``pdftotext -layout`` and drop the running head + footer so
-    the parsed body matches what Atlas ingests for other states.
+    the parsed body matches what Axiom ingests for other states.
     """
 
     jurisdiction = "us-ia"

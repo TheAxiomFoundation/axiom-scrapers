@@ -139,7 +139,7 @@ class TestParsePdfBody:
         assert heading == "State boundaries"
         assert "Constitution of the State" in body
         # Provenance citations (Code history, session acts, cross-refs)
-        # stay inline with the body per Atlas convention.
+        # stay inline with the body per Axiom convention.
         assert "2009 Acts" in body
         assert "Iowa Code 2026" not in body  # footer stripped
 

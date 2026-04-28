@@ -135,7 +135,7 @@ REGISTRY: dict[tuple[str, str], str] = {
 ```
 
 `doc_type` is singular (`"statute"`) — matches the `doc_type` attribute
-on the scraper class and the value Atlas stores per-section.
+on the scraper class and the value Axiom stores per-section.
 
 ## 6. Validate
 
@@ -163,6 +163,6 @@ uv run axiom-scrape --jurisdiction us-xx --doc-type statute --out ./out  # full
 * **Strip source footers.** Most state sites append "Source: P.A. xxx"
   or "History:" lines. Trim them before emitting so the body is clean.
 * **Pick a stable section identifier.** AKN's `FRBRnumber` value is the
-  primary key Atlas uses. Pick whatever's unique within the jurisdiction
+  primary key Axiom uses. Pick whatever's unique within the jurisdiction
   — usually the state's canonical short cite (`1-339.1`, `244.010`,
   `35-155-2`).

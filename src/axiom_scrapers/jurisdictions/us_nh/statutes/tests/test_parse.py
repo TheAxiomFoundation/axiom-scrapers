@@ -1,6 +1,6 @@
 """Offline parse tests for the New Hampshire RSA scraper.
 
-Uses inline HTML fixtures matching the shape documented in the atlas
+Uses inline HTML fixtures matching the shape documented in the Axiom
 source (the live server was rate-limiting/timing-out at port time).
 """
 

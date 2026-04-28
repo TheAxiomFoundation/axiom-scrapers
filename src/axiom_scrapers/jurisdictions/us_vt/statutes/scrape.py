@@ -21,7 +21,7 @@ Each section page has::
     </ul>
 
 Trailing history note ``(Added 1966, No. 61 …)`` is part of the last
-paragraph and kept inline with the body (matching atlas behavior).
+paragraph and kept inline with the body (matching Axiom behavior).
 """
 
 from __future__ import annotations

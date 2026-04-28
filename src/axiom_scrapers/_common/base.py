@@ -76,11 +76,11 @@ class Scraper(ABC, Generic[SectionRef]):
                 ...
     """
 
-    #: Full jurisdiction slug stored in AKN ``<FRBRcountry>`` and Atlas
+    #: Full jurisdiction slug stored in AKN ``<FRBRcountry>`` and Axiom's
     #: ``jurisdiction`` column, e.g. ``"us-il"``, ``"us-federal"``, ``"uk"``.
     jurisdiction: str = ""
 
-    #: Atlas doc_type value — ``"statute"``, ``"regulation"``,
+    #: Axiom doc_type value — ``"statute"``, ``"regulation"``,
     #: ``"guidance"``, ``"manual"``.
     doc_type: str = ""
 
@@ -238,7 +238,7 @@ class Scraper(ABC, Generic[SectionRef]):
         return True
 
     #: Plural directory segment for this doc_type in the output tree.
-    #: Atlas's ingester walks ``{repo}/statutes/`` / ``{repo}/regulations/``
+    #: Axiom's ingester walks ``{repo}/statutes/`` / ``{repo}/regulations/``
     #: etc. — plural. Override if the pluralization isn't just ``+s``
     #: (``rulemaking`` is already plural; overrides set ``"rulemaking"``).
     doc_type_dir: str = ""
@@ -251,7 +251,7 @@ class Scraper(ABC, Generic[SectionRef]):
             {jurisdiction}/{doc_type_dir}/{section_id}.xml
 
         where ``doc_type_dir`` is the plural directory segment
-        (``statutes``, ``regulations``) that matches what atlas's
+        (``statutes``, ``regulations``) that matches what Axiom's
         ingester walks.
 
         Subclasses often override to nest by chapter / title so the

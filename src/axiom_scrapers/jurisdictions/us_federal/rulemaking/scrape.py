@@ -59,7 +59,7 @@ BASE = "https://www.federalregister.gov/api/v1"
 #: policy, mostly not) so they're left out.
 _DOC_TYPES: tuple[str, ...] = ("RULE", "PRORULE")
 
-#: Heading prefix added to Proposed Rules so Atlas viewers can
+#: Heading prefix added to Proposed Rules so Axiom viewers can
 #: distinguish them from final Rules without parsing the body.
 _PROPOSED_PREFIX = "[Proposed] "
 

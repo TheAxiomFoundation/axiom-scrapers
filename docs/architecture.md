@@ -12,7 +12,7 @@
 4. **Graceful decay.** Source sites change / go offline / rate-limit. Runs
    should skip dead sections, not crash.
 5. **Consumer-agnostic intermediate output.** We emit local Akoma Ntoso
-   3.0 XML for ingest. Atlas happens to be the first consumer; another
+   3.0 XML for ingest. Axiom happens to be the first consumer; another
    project could ingest from the same scratch tree.
 
 ## Layout
@@ -49,7 +49,7 @@ Directories use `{country}_{region}` with ISO 3166-style lowercase codes:
 * `ca_on` — Ontario, Canada
 
 The corresponding AKN `FRBRcountry` value uses the dashed form `us-il`,
-which matches Atlas's `jurisdiction` column. Convert via
+which matches Axiom's `jurisdiction` column. Convert via
 `dir.replace("_", "-")`.
 
 ### Document types
@@ -67,7 +67,7 @@ Each jurisdiction can hold multiple doc-type subdirectories:
 
 As of 2026-04, only `statutes/` is populated (19 US states). The other
 four types exist as a directory convention; porting the CFR / IRS
-guidance ingesters into this repo is tracked in the atlas repo.
+guidance ingesters into this repo is tracked in the axiom repo.
 
 Each subdirectory is an independent scraper — its own
 `list_sections()` / `parse_section()` implementation, its own fixtures,
@@ -80,7 +80,7 @@ hold a collection of documents. The `doc_type` attribute on each
 `Scraper` subclass and on every emitted `Section` is singular
 (`"statute"`, `"regulation"`) because it describes *one* document.
 The CLI's `--doc-type` flag and the `REGISTRY` key both use the
-singular form to match what Atlas stores per-section.
+singular form to match what Axiom stores per-section.
 
 ## Scraper lifecycle
 
@@ -114,8 +114,8 @@ base class. A new scraper is ~50-200 lines of state-specific regex.
 
 ## Output contract
 
-See [`output-format.md`](output-format.md) for the AKN 3.0 shape Atlas
-expects. Generated XML is a local intermediate, not a Git or R2 artifact.
+See [`output-format.md`](output-format.md) for the AKN 3.0 shape Axiom expects.
+Generated XML is a local intermediate, not a Git or R2 artifact.
 
 ## Adding a scraper
 

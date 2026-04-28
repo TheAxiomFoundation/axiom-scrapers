@@ -1,12 +1,12 @@
 """Akoma Ntoso 3.0 document builder.
 
 Centralizes the AKN XML template so every scraper emits the same shape.
-Atlas's ``ingest_state_laws.py`` expects this exact structure — it
+Axiom's ``ingest_state_laws.py`` expects this exact structure — it
 looks up ``<FRBRnumber>`` for the section id and ``.//akn:body//akn:section``
 for the heading + content.
 
 Authored deliberately — no third-party AKN library. Keeping it in-house
-means we can adapt to Atlas ingestion tweaks without pulling in a
+means we can adapt to Axiom ingestion tweaks without pulling in a
 dependency.
 """
 
@@ -44,7 +44,7 @@ class Section:
         Full jurisdiction slug, e.g. ``"us-il"``, ``"us-federal"``,
         ``"uk"``. Used in FRBR URIs.
     doc_type
-        The Atlas doc_type this section rolls up under —
+        The Axiom doc_type this section rolls up under —
         ``"statute"``, ``"regulation"``, ``"guidance"``, ``"manual"``.
         Different authorities will emit different sets.
     authority_code
@@ -92,7 +92,7 @@ class Section:
 def build_akn_xml(section: Section) -> str:
     """Render a :class:`Section` into an Akoma Ntoso 3.0 document.
 
-    The shape is stable — Atlas's ingester keys on ``<FRBRnumber>`` and
+    The shape is stable — Axiom's ingester keys on ``<FRBRnumber>`` and
     ``<section>``'s first ``<num>`` and ``<heading>`` children.
     """
     paras = split_paragraphs(strip_invalid_xml_chars(section.body))
@@ -103,7 +103,7 @@ def build_akn_xml(section: Section) -> str:
     )
     gen = section.generation_date.isoformat()
 
-    # Canonical FRBR paths mirror the existing rules-us-* repos so Atlas's
+    # Canonical FRBR paths mirror the existing rules-us-* repos so Axiom's
     # ingester doesn't need per-author logic.
     jurisdiction = section.jurisdiction
     authority = section.authority_code.lower()

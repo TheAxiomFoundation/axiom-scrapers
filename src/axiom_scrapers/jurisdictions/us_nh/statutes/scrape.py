@@ -111,7 +111,7 @@ class RSAStatutesScraper(Scraper[NHSectionRef]):
         ``work_number`` is ``{chapter}-{section}``; split once at the
         *last* dash so alpha-suffixed chapters (``1-A-5``) and dashed
         section tokens (``14-a``) both resolve cleanly. We preserve
-        the exact atlas layout here.
+        the exact Axiom layout here.
         """
         # Chapter is everything up to the last "-{section}" chunk; but
         # chapter may itself contain a dash (1-A). We detect chapter via

@@ -1,8 +1,8 @@
 # Output format
 
 Every scraper emits local [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
-XML files as an ingest intermediate. Atlas's `ingest_state_laws.py` is the
-primary consumer and keys on specific elements — this doc pins the contract.
+XML files as an ingest intermediate. The Axiom corpus `ingest_state_laws.py` is
+the primary consumer and keys on specific elements — this doc pins the contract.
 Generated XML should not be committed to Git or uploaded to R2.
 
 ## File layout
@@ -80,19 +80,19 @@ out/us-il/statute/
 </akomaNtoso>
 ```
 
-## Atlas ingest contract
+## Axiom ingest contract
 
-Atlas's `ingest_state_laws.py` reads:
+The Axiom corpus `ingest_state_laws.py` reads:
 
 * `<FRBRWork>/<FRBRnumber value="…">` → section identifier; forms the
-  Atlas `citation_path`.
+  Axiom `citation_path`.
 * `<body>//<section>/<num>` → rendered citation text.
-* `<body>//<section>/<heading>` → Atlas `heading` column.
+* `<body>//<section>/<heading>` → Axiom `heading` column.
 * `<body>//<section>/<content>/<p>…</p>` → joined on blank lines to
-  form Atlas `body` column.
+  form Axiom `body` column.
 
 Changes that affect these four readers require coordinated PRs in
-atlas.
+axiom.
 
 ## FRBRdate deliberately omits `name="enacted"`
 

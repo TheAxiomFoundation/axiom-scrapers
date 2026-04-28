@@ -4,8 +4,8 @@ Scrapers for global statutes, regulations, bills, and rulemaking. Each scraper f
 from an authoritative upstream source (state legislature website, eCFR API, etc.) and
 emits local [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
 XML as an ingest intermediate. The downstream consumer is
-[Atlas](https://github.com/TheAxiomFoundation/atlas), which ingests the XML into
-Postgres for the Atlas viewer and RuleSpec encoding pipeline. Generated XML stays
+[axiom](https://github.com/TheAxiomFoundation/axiom), which ingests the XML into
+Postgres for the Axiom app and RuleSpec encoding pipeline. Generated XML stays
 out of Git and R2.
 
 ## Layout
@@ -68,8 +68,8 @@ the floor as those tests land.
 - **Offline-first tests.** Parse logic is unit-tested against saved HTML fixtures,
   not live fetches. The `_common.http` layer handles retries, rate-limit backoff, and
   soft-fail for missing sections (404/307/410) so per-state scrapers can stay thin.
-- **AKN 3.0 intermediate output.** Standardized across all scrapers so Atlas
-  ingest is uniform without making generated XML a persisted artifact.
+- **AKN 3.0 intermediate output.** Standardized across all scrapers so Axiom
+  corpus ingest is uniform without making generated XML a persisted artifact.
   See [`docs/output-format.md`](docs/output-format.md).
 
 ## Jurisdictions covered
@@ -99,13 +99,13 @@ the floor as those tests land.
 | us-wa | RCW            | app.leg.wa.gov/RCW                         |
 
 Federal CFR and IRS guidance are currently ingested directly by
-[`atlas/scripts/ingest_cfr_parts.py`](https://github.com/TheAxiomFoundation/atlas/blob/main/scripts/ingest_cfr_parts.py)
+[`axiom/scripts/ingest_cfr_parts.py`](https://github.com/TheAxiomFoundation/axiom/blob/main/scripts/ingest_cfr_parts.py)
 and related ingesters; porting them into this repo is tracked separately.
 
 ## Downstream
 
 Every scraper writes to `{out}/{jurisdiction}/{doc_type}/.../*.xml`, matching the
-shape Atlas's `scripts/ingest_state_laws.py --state {xx}` expects. The two repos are
-kept deliberately decoupled: axiom-scrapers produces AKN XML, Atlas ingests it. Neither
-imports from the other. Treat the output tree as local scratch space; do not commit it
-or upload it to R2.
+shape the Axiom corpus `scripts/ingest_state_laws.py --state {xx}` expects. The
+two repos are kept deliberately decoupled: axiom-scrapers produces AKN XML,
+Axiom ingests it. Neither imports from the other. Treat the output tree as local
+scratch space; do not commit it or upload it to R2.

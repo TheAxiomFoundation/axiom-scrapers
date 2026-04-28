@@ -20,7 +20,7 @@ Each section page wraps the body in::
 
 The final paragraph often carries acts-of-assembly provenance ("Code
 1919, § 1; …") which we keep inline with the body, matching how
-Atlas's other state ingests treat session-law citations.
+Axiom's other state ingests treat session-law citations.
 """
 
 from __future__ import annotations
