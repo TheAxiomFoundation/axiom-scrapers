@@ -4,7 +4,7 @@ Scrapers for global statutes, regulations, bills, and rulemaking. Each scraper f
 from an authoritative upstream source (state legislature website, eCFR API, etc.) and
 emits local [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
 XML as an ingest intermediate. The downstream consumer is
-[axiom](https://github.com/TheAxiomFoundation/axiom), which ingests the XML into
+[axiom-corpus](https://github.com/TheAxiomFoundation/axiom-corpus), which ingests the XML into
 Postgres for the Axiom app and RuleSpec encoding pipeline. Generated XML stays
 out of Git and R2.
 
@@ -99,7 +99,7 @@ the floor as those tests land.
 | us-wa | RCW            | app.leg.wa.gov/RCW                         |
 
 Federal CFR and IRS guidance are currently ingested directly by
-[`axiom/scripts/ingest_cfr_parts.py`](https://github.com/TheAxiomFoundation/axiom/blob/main/scripts/ingest_cfr_parts.py)
+[`axiom-corpus/scripts/ingest_cfr_parts.py`](https://github.com/TheAxiomFoundation/axiom-corpus/blob/main/scripts/ingest_cfr_parts.py)
 and related ingesters; porting them into this repo is tracked separately.
 
 ## Downstream

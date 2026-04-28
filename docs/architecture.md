@@ -67,7 +67,7 @@ Each jurisdiction can hold multiple doc-type subdirectories:
 
 As of 2026-04, only `statutes/` is populated (19 US states). The other
 four types exist as a directory convention; porting the CFR / IRS
-guidance ingesters into this repo is tracked in the axiom repo.
+guidance ingesters into this repo is tracked in the axiom-corpus repo.
 
 Each subdirectory is an independent scraper — its own
 `list_sections()` / `parse_section()` implementation, its own fixtures,
