@@ -52,7 +52,7 @@ from pathlib import Path
 
 from axiom_scrapers._common import (
     Scraper,
-    Section,
+    SourceSection,
     clean_paragraphs,
     clean_text,
     http_get,
@@ -287,7 +287,7 @@ class WyoStatutesScraper(Scraper[WySectionRef]):
     chapters → articles, fetching each leaf document once and yielding
     one :class:`WySectionRef` per ``<div class="Section">`` block found
     inside it. ``parse_section`` then has zero network work — it just
-    builds the AKN :class:`Section` from the ref.
+    builds the :class:`SourceSection` from the ref.
     """
 
     jurisdiction = "us-wy"
@@ -308,10 +308,10 @@ class WyoStatutesScraper(Scraper[WySectionRef]):
             for leaf in self._iter_leaf_documents(title_node):
                 yield from self._sections_from_leaf(title_node, leaf)
 
-    def parse_section(self, ref: WySectionRef) -> Section | None:
+    def parse_section(self, ref: WySectionRef) -> SourceSection | None:
         if not ref.body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -325,15 +325,15 @@ class WyoStatutesScraper(Scraper[WySectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-wy/statutes/title-{T}/{section_id}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-wy/statutes/title-{T}/{section_id}.txt``."""
         title = extract_title_from_work_number(section.work_number)
         safe = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"title-{title}",
-            f"{safe}.xml",
+            f"{safe}.txt",
         )
 
     # --- Internal helpers --------------------------------------------------

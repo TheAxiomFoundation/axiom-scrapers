@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_ia.statutes.scrape import (
     IASectionRef,
     IowaCodeStatutesScraper,
@@ -216,8 +216,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-ia",
             doc_type="statute",
             authority_code="Iowa Code",
@@ -234,14 +234,14 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = IowaCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("422.7"))
-        assert rel == Path("us-ia/statutes/ch-422/ch-422-sec-422.7.xml")
+        assert rel == Path("us-ia/statutes/ch-422/ch-422-sec-422.7.txt")
 
     def test_alpha_suffix_chapter(self) -> None:
         scraper = IowaCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("38D.2"))
-        assert rel == Path("us-ia/statutes/ch-38D/ch-38D-sec-38D.2.xml")
+        assert rel == Path("us-ia/statutes/ch-38D/ch-38D-sec-38D.2.txt")
 
     def test_alpha_suffix_section(self) -> None:
         scraper = IowaCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.15A"))
-        assert rel == Path("us-ia/statutes/ch-1/ch-1-sec-1.15A.xml")
+        assert rel == Path("us-ia/statutes/ch-1/ch-1-sec-1.15A.txt")

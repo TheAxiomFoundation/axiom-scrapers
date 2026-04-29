@@ -63,7 +63,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, http_get
+from axiom_scrapers._common import Scraper, SourceSection, http_get
 
 BASE = "https://nmonesource.com"
 NAV_PATH = "/nmos/nmsa/en/nav_date.do?iframe=true"
@@ -172,12 +172,12 @@ class NMSAStatutesScraper(Scraper[NMSectionRef]):
                 self._cache[ref] = (heading, body)
                 yield ref
 
-    def parse_section(self, ref: NMSectionRef) -> Section | None:
+    def parse_section(self, ref: NMSectionRef) -> SourceSection | None:
         data = self._cache.get(ref)
         if data is None:
             return None
         heading, body = data
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -191,15 +191,15 @@ class NMSAStatutesScraper(Scraper[NMSectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-nm/statutes/ch-{chapter}/ch-{chapter}-sec-{id}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-nm/statutes/ch-{chapter}/ch-{chapter}-sec-{id}.txt``."""
         chapter = section.work_number.split("-", 1)[0]
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 

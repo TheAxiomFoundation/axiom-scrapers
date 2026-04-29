@@ -25,14 +25,14 @@ Because one fetch yields many sections, the scraper's
 ``list_sections`` fetches each chapter page once, splits it into
 ``(chapter, section)`` entries, caches them on the instance, and
 yields the cache keys.  ``parse_section`` then reads from the cache
-— no duplicate network calls — and returns a :class:`Section` per
+— no duplicate network calls — and returns a :class:`SourceSection` per
 ref.  Threads in the base-class runner operate on the cache reads,
 which is cheap and thread-safe because the cache is populated
 serially inside ``list_sections`` before ``run`` starts the pool.
 
 Output layout
 -------------
-``us-nc/statute/ch-{chapter}/ch-{chapter}-sec-{section}.xml`` —
+``us-nc/statute/ch-{chapter}/ch-{chapter}-sec-{section}.txt`` —
 nested by chapter token so the tree stays browseable.
 """
 
@@ -43,7 +43,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://www.ncleg.gov/EnactedLegislation/Statutes/HTML/ByChapter"
 TOC_URL = "https://www.ncleg.gov/Laws/GeneralStatutesTOC"
@@ -111,8 +111,8 @@ class GSStatutesScraper(Scraper[tuple[str, str]]):
                 self._cache[(chapter, section_id)] = (heading, body)
                 yield (chapter, section_id)
 
-    def parse_section(self, ref: tuple[str, str]) -> Section | None:
-        """Build a :class:`Section` from the cached parse.
+    def parse_section(self, ref: tuple[str, str]) -> SourceSection | None:
+        """Build a :class:`SourceSection` from the cached parse.
 
         Returns ``None`` when the body is empty (repealed-section
         placeholder) so the base runner counts it as skipped.
@@ -124,7 +124,7 @@ class GSStatutesScraper(Scraper[tuple[str, str]]):
         heading, body = cached
         if not body or body.lower() in {"repealed.", "repealed"}:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -138,7 +138,7 @@ class GSStatutesScraper(Scraper[tuple[str, str]]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Nest by chapter so the tree stays browseable.
 
         NC section IDs already encode the chapter as the prefix before
@@ -150,7 +150,7 @@ class GSStatutesScraper(Scraper[tuple[str, str]]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{section.work_number}.xml",
+            f"ch-{chapter}-sec-{section.work_number}.txt",
         )
 
 

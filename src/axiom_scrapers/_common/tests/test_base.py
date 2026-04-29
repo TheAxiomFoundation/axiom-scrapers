@@ -8,12 +8,12 @@ from pathlib import Path
 
 import pytest
 
-from axiom_scrapers._common.akn import Section
 from axiom_scrapers._common.base import Scraper, ScrapeResult
+from axiom_scrapers._common.source_section import SourceSection
 
 
-def make_section(num: str = "1.01", heading: str = "Title") -> Section:
-    return Section(
+def make_section(num: str = "1.01", heading: str = "Title") -> SourceSection:
+    return SourceSection(
         jurisdiction="us-test",
         doc_type="statute",
         authority_code="TEST",
@@ -45,7 +45,7 @@ class _OneShotScraper(Scraper[str]):
     def list_sections(self) -> Iterable[str]:
         return iter(self._refs)
 
-    def parse_section(self, ref: str) -> Section | None:
+    def parse_section(self, ref: str) -> SourceSection | None:
         if ref in self._skip:
             return None
         return make_section(num=ref, heading=f"Heading for {ref}")
@@ -58,7 +58,7 @@ class TestScraperConfigValidation:
             def list_sections(self) -> Iterable[str]:
                 return iter([])
 
-            def parse_section(self, ref: str) -> Section | None:
+            def parse_section(self, ref: str) -> SourceSection | None:
                 return None
 
         with pytest.raises(TypeError, match="must set class attributes"):
@@ -71,7 +71,7 @@ class TestScraperConfigValidation:
 
 
 class TestScraperRun:
-    def test_writes_one_xml_per_parsed_section(self, tmp_path: Path) -> None:
+    def test_writes_text_and_metadata_per_parsed_section(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper(["1.01", "1.02", "1.03"])
         result = scraper.run(tmp_path, log_every=0)
 
@@ -80,27 +80,31 @@ class TestScraperRun:
         assert result.total == 3
         assert result.elapsed_seconds >= 0
 
-        files = list(tmp_path.rglob("*.xml"))
-        assert len(files) == 3
+        text_files = list(tmp_path.rglob("*.txt"))
+        meta_files = list(tmp_path.rglob("*.meta.yaml"))
+        assert len(text_files) == 3
+        assert len(meta_files) == 3
 
     def test_default_output_path_shape(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper(["244.010"])
         scraper.run(tmp_path, log_every=0)
-        expected = tmp_path / "us-test" / "statutes" / "244.010.xml"
+        expected = tmp_path / "us-test" / "statutes" / "244.010.txt"
         assert expected.exists()
+        assert expected.with_suffix(".meta.yaml").exists()
 
     def test_slash_in_section_id_is_sanitized(self, tmp_path: Path) -> None:
         # Some real IL citations are "35-155/2" — slashes would break path.
         scraper = _OneShotScraper(["35-155_2"])  # we pass safe form already
         scraper.run(tmp_path, log_every=0)
-        assert (tmp_path / "us-test" / "statutes" / "35-155_2.xml").exists()
+        assert (tmp_path / "us-test" / "statutes" / "35-155_2.txt").exists()
 
     def test_parse_returning_none_counts_as_skip(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper(["1.01", "1.02", "1.03"], skip={"1.02"})
         result = scraper.run(tmp_path, log_every=0)
         assert result.written == 2
         assert result.skipped == 1
-        assert len(list(tmp_path.rglob("*.xml"))) == 2
+        assert len(list(tmp_path.rglob("*.txt"))) == 2
+        assert len(list(tmp_path.rglob("*.meta.yaml"))) == 2
 
     def test_limit_caps_run(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper([f"1.{i:02d}" for i in range(100)])
@@ -109,7 +113,7 @@ class TestScraperRun:
 
     def test_exception_in_parse_is_soft_failed(self, tmp_path: Path) -> None:
         class ExplodingScraper(_OneShotScraper):
-            def parse_section(self, ref: str) -> Section | None:
+            def parse_section(self, ref: str) -> SourceSection | None:
                 if ref == "BAD":
                     raise ValueError("boom")
                 return make_section(num=ref)
@@ -127,10 +131,10 @@ class TestScraperRun:
         assert any(m.startswith("Scraping") for m in msgs)
         assert any("DONE" in m for m in msgs)
 
-    def test_written_xml_contains_section_heading(self, tmp_path: Path) -> None:
+    def test_written_metadata_contains_section_heading(self, tmp_path: Path) -> None:
         scraper = _OneShotScraper(["42.01"])
         scraper.run(tmp_path, log_every=0)
-        content = (tmp_path / "us-test" / "statutes" / "42.01.xml").read_text()
+        content = (tmp_path / "us-test" / "statutes" / "42.01.meta.yaml").read_text()
         assert "Heading for 42.01" in content
         assert "TEST 42.01" in content
 
@@ -138,19 +142,19 @@ class TestScraperRun:
 class TestOutputPathOverride:
     def test_subclass_can_override_layout(self, tmp_path: Path) -> None:
         class ChapterNestedScraper(_OneShotScraper):
-            def relative_output_path(self, section: Section) -> Path:
+            def relative_output_path(self, section: SourceSection) -> Path:
                 chapter = section.work_number.split(".")[0]
                 return Path(
                     self.jurisdiction,
                     self._doc_type_dir(),
                     f"ch-{chapter}",
-                    f"{section.work_number}.xml",
+                    f"{section.work_number}.txt",
                 )
 
         scraper = ChapterNestedScraper(["244.010", "244.011", "300.001"])
         scraper.run(tmp_path, log_every=0)
-        assert (tmp_path / "us-test/statutes/ch-244/244.010.xml").exists()
-        assert (tmp_path / "us-test/statutes/ch-300/300.001.xml").exists()
+        assert (tmp_path / "us-test/statutes/ch-244/244.010.txt").exists()
+        assert (tmp_path / "us-test/statutes/ch-300/300.001.txt").exists()
 
 
 class TestScrapeResult:

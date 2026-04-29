@@ -31,9 +31,10 @@ Two endpoints:
 
 Downstream
 ----------
-Output is AKN XML keyed on the Federal Register document number
-(``2026-07681``). Citation uses the FR form (``91 FR 20899``) when
-present; document number is the stable identifier for deduplication.
+Output is normalized source text plus sidecar metadata, keyed on the
+Federal Register document number (``2026-07681``). Citation uses the
+FR form (``91 FR 20899``) when present; document number is the stable
+identifier for deduplication.
 
 Runtime cost
 ------------
@@ -50,7 +51,7 @@ from dataclasses import dataclass
 from datetime import timedelta
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, http_get
+from axiom_scrapers._common import Scraper, SourceSection, http_get
 
 BASE = "https://www.federalregister.gov/api/v1"
 
@@ -132,7 +133,7 @@ class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
         end = self.generation_date.isoformat()
         yield from _paged_index(_DOC_TYPES, start, end)
 
-    def parse_section(self, ref: FRDocRef) -> Section | None:
+    def parse_section(self, ref: FRDocRef) -> SourceSection | None:
         if not ref.raw_text_url:
             return None
         res = http_get(ref.raw_text_url)
@@ -147,7 +148,7 @@ class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
         heading = ref.title
         if ref.fr_type == "Proposed Rule" and not heading.startswith(_PROPOSED_PREFIX):
             heading = _PROPOSED_PREFIX + heading
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -161,8 +162,8 @@ class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-federal/rulemaking/{YYYY}/{document_number}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-federal/rulemaking/{YYYY}/{document_number}.txt``.
 
         Date from the work_number prefix (document numbers start with
         the publication year, e.g. ``2026-07681`` → year 2026).
@@ -173,7 +174,7 @@ class FederalRegisterRulemakingScraper(Scraper[FRDocRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             year,
-            f"{safe}.xml",
+            f"{safe}.txt",
         )
 
 

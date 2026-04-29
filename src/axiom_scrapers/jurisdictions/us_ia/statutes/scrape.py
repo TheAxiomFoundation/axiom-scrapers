@@ -53,7 +53,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, http_get
+from axiom_scrapers._common import Scraper, SourceSection, http_get
 
 BASE = "https://www.legis.iowa.gov"
 
@@ -142,7 +142,7 @@ class IowaCodeStatutesScraper(Scraper[IASectionRef]):
                 for section in _list_chapter_sections(chapter, self.year):
                     yield IASectionRef(chapter=chapter, section=section, year=self.year)
 
-    def parse_section(self, ref: IASectionRef) -> Section | None:
+    def parse_section(self, ref: IASectionRef) -> SourceSection | None:
         url = f"{BASE}/docs/code/{ref.year}/{ref.work_number}.pdf"
         res = http_get(url)
         if res is None:
@@ -155,7 +155,7 @@ class IowaCodeStatutesScraper(Scraper[IASectionRef]):
         heading, body = parse_pdf_body(text, ref.work_number)
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -169,8 +169,8 @@ class IowaCodeStatutesScraper(Scraper[IASectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-ia/statutes/ch-{chapter}/ch-{chapter}-sec-{work_number}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-ia/statutes/ch-{chapter}/ch-{chapter}-sec-{work_number}.txt``.
 
         The chapter prefix comes from splitting on the first dot —
         ``422.7`` → chapter ``422``, ``38D.2`` → chapter ``38D``.
@@ -181,7 +181,7 @@ class IowaCodeStatutesScraper(Scraper[IASectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 

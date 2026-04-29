@@ -31,7 +31,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_paragraphs, clean_text, http_get
 
 BASE = "https://law.lis.virginia.gov/vacode"
 
@@ -104,7 +104,7 @@ class VACodeStatutesScraper(Scraper[VASectionRef]):
                 for section in _list_sections(title, chapter):
                     yield VASectionRef(title, chapter, section)
 
-    def parse_section(self, ref: VASectionRef) -> Section | None:
+    def parse_section(self, ref: VASectionRef) -> SourceSection | None:
         url = f"{BASE}/title{ref.title}/chapter{ref.chapter}/section{ref.section}/"
         res = http_get(url)
         if res is None:
@@ -115,7 +115,7 @@ class VACodeStatutesScraper(Scraper[VASectionRef]):
         heading, body = parsed
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -129,8 +129,8 @@ class VACodeStatutesScraper(Scraper[VASectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-va/statutes/title-{T}/title-{T}-sec-{id}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-va/statutes/title-{T}/title-{T}-sec-{id}.txt``.
 
         VA section ids are ``{title}-{section}`` (e.g. ``1-1``,
         ``2.2-4007.01``), so the title prefix comes from splitting on
@@ -142,7 +142,7 @@ class VACodeStatutesScraper(Scraper[VASectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"title-{title}",
-            f"title-{title}-sec-{safe_section}.xml",
+            f"title-{title}-sec-{safe_section}.txt",
         )
 
 

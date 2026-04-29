@@ -134,10 +134,10 @@ class TestMCAScraperConfig:
         assert scraper.workers == 6
 
     def test_output_path_nests_by_title_and_chapter(self, tmp_path: Path) -> None:
-        from axiom_scrapers._common.akn import Section
+        from axiom_scrapers._common.source_section import SourceSection
 
         scraper = MCAStatutesScraper()
-        sec = Section(
+        sec = SourceSection(
             jurisdiction="us-mt",
             doc_type="statute",
             authority_code="MCA",
@@ -152,13 +152,13 @@ class TestMCAScraperConfig:
         )
         rel = scraper.relative_output_path(sec)
         # Title + chapter prefix forms the intermediate dir.
-        assert rel == Path("us-mt/statutes/ch-15-30/15-30-2101.xml")
+        assert rel == Path("us-mt/statutes/ch-15-30/15-30-2101.txt")
 
     def test_output_path_for_single_digit_title(self) -> None:
-        from axiom_scrapers._common.akn import Section
+        from axiom_scrapers._common.source_section import SourceSection
 
         scraper = MCAStatutesScraper()
-        sec = Section(
+        sec = SourceSection(
             jurisdiction="us-mt",
             doc_type="statute",
             authority_code="MCA",
@@ -172,4 +172,4 @@ class TestMCAScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-mt/statutes/ch-1-1/1-1-101.xml")
+        assert rel == Path("us-mt/statutes/ch-1-1/1-1-101.txt")

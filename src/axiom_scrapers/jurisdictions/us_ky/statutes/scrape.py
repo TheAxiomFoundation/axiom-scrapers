@@ -39,7 +39,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://apps.legislature.ky.gov/law/statutes"
 
@@ -96,7 +96,7 @@ class KRSStatutesScraper(Scraper[KYSectionRef]):
             for section_dot, sid, toc_heading in _list_chapter_sections(cid):
                 yield KYSectionRef(chapter, section_dot, sid, toc_heading)
 
-    def parse_section(self, ref: KYSectionRef) -> Section | None:
+    def parse_section(self, ref: KYSectionRef) -> SourceSection | None:
         res = http_get(f"{BASE}/statute.aspx?id={ref.section_id}")
         if res is None:
             return None
@@ -111,7 +111,7 @@ class KRSStatutesScraper(Scraper[KYSectionRef]):
         if not body:
             return None
         section = f"{ref.chapter}{ref.section_dot}"  # e.g. "1.010"
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -125,15 +125,15 @@ class KRSStatutesScraper(Scraper[KYSectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-ky/statute/ch-{chapter}/ch-{chapter}-sec-{section}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-ky/statute/ch-{chapter}/ch-{chapter}-sec-{section}.txt``."""
         chapter = section.work_number.split(".", 1)[0]
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 

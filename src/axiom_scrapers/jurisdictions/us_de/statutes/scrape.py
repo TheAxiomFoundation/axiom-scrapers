@@ -34,7 +34,7 @@ from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://delcode.delaware.gov"
 
@@ -118,7 +118,7 @@ class DelCodeStatutesScraper(Scraper[DESectionRef]):
                         self._cache[ref] = (heading, body)
                         yield ref
 
-    def parse_section(self, ref: DESectionRef) -> Section | None:
+    def parse_section(self, ref: DESectionRef) -> SourceSection | None:
         cached = self._cache.get(ref)
         if cached is None:
             return None
@@ -127,7 +127,7 @@ class DelCodeStatutesScraper(Scraper[DESectionRef]):
             return None
         citation = f"{ref.title} Del. C. § {ref.section_id}"
         work_number = f"{ref.title}-{ref.section_id}"
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -141,7 +141,7 @@ class DelCodeStatutesScraper(Scraper[DESectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Nest by title and chapter.
 
         ``work_number`` is ``{title}-{section}``; we split once.
@@ -152,7 +152,7 @@ class DelCodeStatutesScraper(Scraper[DESectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"title-{title}",
-            f"title-{title}-sec-{safe_section}.xml",
+            f"title-{title}-sec-{safe_section}.txt",
         )
 
 

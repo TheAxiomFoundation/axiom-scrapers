@@ -53,7 +53,7 @@ import re
 from collections.abc import Iterable
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_paragraphs, clean_text, http_get
 
 #: Last complete publication year Justia archives for TCA. Bump when a
 #: new year's snapshot lands.
@@ -133,7 +133,7 @@ class TCAStatutesScraper(Scraper[tuple[str, str, str]]):
                 for section in _list_sections(title, chapter):
                     yield (title, chapter, section)
 
-    def parse_section(self, ref: tuple[str, str, str]) -> Section | None:
+    def parse_section(self, ref: tuple[str, str, str]) -> SourceSection | None:
         title, chapter, section_id = ref
         url = f"{BASE}/title-{title}/chapter-{chapter}/section-{section_id}/"
         res = http_get(url)
@@ -145,7 +145,7 @@ class TCAStatutesScraper(Scraper[tuple[str, str, str]]):
         heading, body = parsed
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -159,8 +159,8 @@ class TCAStatutesScraper(Scraper[tuple[str, str, str]]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-tn/statutes/title-{T}/title-{T}-sec-{id}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-tn/statutes/title-{T}/title-{T}-sec-{id}.txt``.
 
         Section ids are ``{title}-{chapter}-{section}``; the title
         segment for the directory comes from splitting on the first
@@ -173,7 +173,7 @@ class TCAStatutesScraper(Scraper[tuple[str, str, str]]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"title-{title}",
-            f"title-{title}-sec-{safe_section}.xml",
+            f"title-{title}-sec-{safe_section}.txt",
         )
 
 

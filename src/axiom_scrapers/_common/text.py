@@ -3,7 +3,7 @@
 Most state legislatures export statutes from Word/ColdFusion/ASP, leaving
 inline HTML noise — soft-break artifacts, font spans, literal ``&#160;``,
 Windows-1252 dashes. Normalizing once here keeps per-jurisdiction parsers
-terse and makes the AKN-3.0 output predictable.
+terse and makes the source-section output predictable.
 """
 
 from __future__ import annotations
@@ -69,7 +69,8 @@ def clean_paragraphs(s: str) -> str:
 def split_paragraphs(s: str) -> list[str]:
     """Split normalized text into non-empty paragraphs on blank-line gaps.
 
-    Consistent with how downstream AKN emits a ``<p>`` per paragraph.
+    Consistent with source-section text output: one blank-line-separated
+    paragraph in source becomes one paragraph in the emitted text.
     """
     return [p for p in re.split(r"\n\n+", s) if p.strip()]
 

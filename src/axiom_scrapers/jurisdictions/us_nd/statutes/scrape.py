@@ -60,7 +60,7 @@ from datetime import date
 from pathlib import Path
 from urllib.parse import urljoin
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://ndlegis.gov"
 TOC_URL = f"{BASE}/general-information/north-dakota-century-code"
@@ -131,7 +131,7 @@ class NDCCStatutesScraper(Scraper[NDSectionRef]):
         for pdf_url, section_num, heading in extract_toc_entries(res.text()):
             yield NDSectionRef(pdf_url, section_num, heading)
 
-    def parse_section(self, ref: NDSectionRef) -> Section | None:
+    def parse_section(self, ref: NDSectionRef) -> SourceSection | None:
         sections = self._get_chapter(ref.pdf_url)
         parsed = sections.get(ref.section_num)
         if parsed is not None:
@@ -142,7 +142,7 @@ class NDCCStatutesScraper(Scraper[NDSectionRef]):
             heading = ref.toc_heading
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -156,8 +156,8 @@ class NDCCStatutesScraper(Scraper[NDSectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-nd/statutes/ch-{title-chapter}/ch-{tc}-sec-{section}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-nd/statutes/ch-{title-chapter}/ch-{tc}-sec-{section}.txt``.
 
         ND section ids are ``{title}-{chapter}-{section}``; the first
         two parts form the chapter token (e.g. ``57-38`` in
@@ -171,7 +171,7 @@ class NDCCStatutesScraper(Scraper[NDSectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
     # --- Chapter cache helpers ------------------------------------------

@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_ne.statutes.scrape import (
     NebRevStatScraper,
     extract_section_tokens,
@@ -118,8 +118,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-ne",
             doc_type="statute",
             authority_code="NebRevStat",
@@ -136,14 +136,14 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = NebRevStatScraper()
         rel = scraper.relative_output_path(self._section("1-101"))
-        assert rel == Path("us-ne/statutes/ch-1/ch-1-sec-101.xml")
+        assert rel == Path("us-ne/statutes/ch-1/ch-1-sec-101.txt")
 
     def test_decimal_section(self) -> None:
         scraper = NebRevStatScraper()
         rel = scraper.relative_output_path(self._section("1-105.01"))
-        assert rel == Path("us-ne/statutes/ch-1/ch-1-sec-105.01.xml")
+        assert rel == Path("us-ne/statutes/ch-1/ch-1-sec-105.01.txt")
 
     def test_two_digit_chapter(self) -> None:
         scraper = NebRevStatScraper()
         rel = scraper.relative_output_path(self._section("90-1201"))
-        assert rel == Path("us-ne/statutes/ch-90/ch-90-sec-1201.xml")
+        assert rel == Path("us-ne/statutes/ch-90/ch-90-sec-1201.txt")

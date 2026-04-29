@@ -30,7 +30,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, http_get
+from axiom_scrapers._common import Scraper, SourceSection, http_get
 
 BASE = "https://www.oregonlegislature.gov/bills_laws/ors"
 
@@ -99,13 +99,13 @@ class ORSStatutesScraper(Scraper[tuple[str, str]]):
                 self._cache[ref] = (heading, body)
                 yield ref
 
-    def parse_section(self, ref: tuple[str, str]) -> Section | None:
+    def parse_section(self, ref: tuple[str, str]) -> SourceSection | None:
         cached = self._cache.get(ref)
         if cached is None:
             return None
         heading, body = cached
         _chapter, section = ref
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -119,14 +119,14 @@ class ORSStatutesScraper(Scraper[tuple[str, str]]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         chapter = _section_chapter_token(section.work_number)
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 

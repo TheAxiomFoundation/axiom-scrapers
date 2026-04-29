@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_mo.statutes.scrape import (
     RSMoStatutesScraper,
     extract_chapter_tokens,
@@ -28,7 +28,7 @@ class TestParseSectionPage:
         assert len(body) > 50
 
     def test_body_preserves_paragraph_breaks(self) -> None:
-        """Multi-paragraph body yields `\\n\\n`-separated text so AKN emits
+        """Multi-paragraph body yields `\\n\\n`-separated text so source text preserves
         one <p> per source paragraph rather than collapsing everything."""
         html = (
             '<div class="norm">'
@@ -130,8 +130,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-mo",
             doc_type="statute",
             authority_code="RSMo",
@@ -148,9 +148,9 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = RSMoStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.010"))
-        assert rel == Path("us-mo/statutes/ch-1/ch-1-sec-1.010.xml")
+        assert rel == Path("us-mo/statutes/ch-1/ch-1-sec-1.010.txt")
 
     def test_three_digit_chapter(self) -> None:
         scraper = RSMoStatutesScraper()
         rel = scraper.relative_output_path(self._section("143.121"))
-        assert rel == Path("us-mo/statutes/ch-143/ch-143-sec-143.121.xml")
+        assert rel == Path("us-mo/statutes/ch-143/ch-143-sec-143.121.txt")

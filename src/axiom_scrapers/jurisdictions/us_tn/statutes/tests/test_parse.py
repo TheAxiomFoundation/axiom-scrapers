@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers._common.testing import install_fake_http
 from axiom_scrapers.jurisdictions.us_tn.statutes import scrape
 from axiom_scrapers.jurisdictions.us_tn.statutes.scrape import (
@@ -146,8 +146,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-tn",
             doc_type="statute",
             authority_code="Tenn. Code Ann.",
@@ -164,12 +164,12 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = TCAStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-1-101"))
-        assert rel == Path("us-tn/statutes/title-1/title-1-sec-1-1-101.xml")
+        assert rel == Path("us-tn/statutes/title-1/title-1-sec-1-1-101.txt")
 
     def test_multi_digit_title(self) -> None:
         scraper = TCAStatutesScraper()
         rel = scraper.relative_output_path(self._section("67-8-303"))
-        assert rel == Path("us-tn/statutes/title-67/title-67-sec-67-8-303.xml")
+        assert rel == Path("us-tn/statutes/title-67/title-67-sec-67-8-303.txt")
 
 
 class TestCrawlLayer:

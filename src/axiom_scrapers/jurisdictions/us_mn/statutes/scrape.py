@@ -30,7 +30,7 @@ import re
 from collections.abc import Iterable
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.revisor.mn.gov"
 
@@ -82,7 +82,7 @@ class MinnStatutesScraper(Scraper[str]):
         for chapter in _list_all_chapters():
             yield from _list_chapter_sections(chapter)
 
-    def parse_section(self, ref: str) -> Section | None:
+    def parse_section(self, ref: str) -> SourceSection | None:
         res = http_get(f"{BASE}/statutes/cite/{ref}")
         if res is None:
             return None
@@ -92,7 +92,7 @@ class MinnStatutesScraper(Scraper[str]):
         heading, body = parsed
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -106,15 +106,15 @@ class MinnStatutesScraper(Scraper[str]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-mn/statute/ch-{chapter}/ch-{chapter}-sec-{section}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-mn/statute/ch-{chapter}/ch-{chapter}-sec-{section}.txt``."""
         chapter = section.work_number.split(".", 1)[0]
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 

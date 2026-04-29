@@ -13,7 +13,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_nv.statutes.scrape import (
     NRSStatutesScraper,
     _chapter_token,
@@ -171,7 +171,7 @@ class TestParseSections:
 
     def test_crlf_line_endings_normalized(self) -> None:
         """NV's Word export ships with CRLF. Bodies must not carry
-        stray ``\\r`` chars through to AKN output."""
+        stray ``\\r`` chars through to source text output."""
         html = _load(_NRS_244)
         sections = _parse_sections(html, generation_date=date.today())
         for s in sections:
@@ -232,7 +232,7 @@ class TestNRSScraperConfig:
 
     def test_output_path_nests_by_chapter(self) -> None:
         scraper = NRSStatutesScraper()
-        sec = Section(
+        sec = SourceSection(
             jurisdiction="us-nv",
             doc_type="statute",
             authority_code="NRS",
@@ -246,13 +246,13 @@ class TestNRSScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-nv/statutes/ch-244/244.010.xml")
+        assert rel == Path("us-nv/statutes/ch-244/244.010.txt")
 
     def test_output_path_handles_letter_chapter_token(self) -> None:
         """Chapters like 244A must land under ``ch-244A``, not
         accidentally collapse to ``ch-244``."""
         scraper = NRSStatutesScraper()
-        sec = Section(
+        sec = SourceSection(
             jurisdiction="us-nv",
             doc_type="statute",
             authority_code="NRS",
@@ -266,7 +266,7 @@ class TestNRSScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-nv/statutes/ch-244A/244A.010.xml")
+        assert rel == Path("us-nv/statutes/ch-244A/244A.010.txt")
 
 
 class TestConnectionResetHandledByHttpGet:

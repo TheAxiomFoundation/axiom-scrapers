@@ -57,7 +57,7 @@ from datetime import date
 from pathlib import Path
 from xml.etree import ElementTree as ET
 
-from axiom_scrapers._common import Scraper, Section, clean_paragraphs, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_paragraphs, http_get
 
 # Per-title bulk XML — {tt} is zero-padded (01..28).
 BASE = "https://law.resource.org/pub/us/code/ar/arkansas.xml.2012"
@@ -131,12 +131,12 @@ class ARCodeStatutesScraper(Scraper[ARSectionRef]):
                 self._cache[ref] = (heading, body)
                 yield ref
 
-    def parse_section(self, ref: ARSectionRef) -> Section | None:
+    def parse_section(self, ref: ARSectionRef) -> SourceSection | None:
         cached = self._cache.get(ref)
         if cached is None:
             return None
         heading, body = cached
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -150,8 +150,8 @@ class ARCodeStatutesScraper(Scraper[ARSectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-ar/statutes/title-{T}/title-{T}-sec-{id}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-ar/statutes/title-{T}/title-{T}-sec-{id}.txt``.
 
         The title prefix comes from the first dash-delimited segment
         of the section id (which is the title number in the Arkansas
@@ -163,7 +163,7 @@ class ARCodeStatutesScraper(Scraper[ARSectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"title-{title}",
-            f"title-{title}-sec-{safe_section}.xml",
+            f"title-{title}-sec-{safe_section}.txt",
         )
 
 
@@ -196,7 +196,7 @@ def parse_title_xml(xml: str) -> list[tuple[str, str, str]]:
         # carries the source's inline HTML (<br>, <b>, <font>, &nbsp;,
         # &#167;). clean_paragraphs normalizes that into paragraph-split
         # plain text; adjacent <br><br> survives as a \n\n gap that
-        # build_akn_xml turns into separate <p> elements.
+        # render_source_text preserves as separate paragraphs.
         body = clean_paragraphs(content_raw)
         heading = heading_raw.rstrip(".").strip()
         out.append((section_id, heading, body))

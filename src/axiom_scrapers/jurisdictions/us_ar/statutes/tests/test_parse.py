@@ -8,7 +8,7 @@ from pathlib import Path
 
 import pytest
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers._common.testing import install_fake_http
 from axiom_scrapers.jurisdictions.us_ar.statutes import scrape
 from axiom_scrapers.jurisdictions.us_ar.statutes.scrape import (
@@ -50,7 +50,7 @@ class TestParseTitleXml:
         )
         _, body = sections["1-1-102"]
         # Section 1-1-102 is a multi-paragraph numbered list; at least one
-        # \n\n must survive so build_akn_xml emits multiple <p> elements.
+        # \n\n must survive so render_source_text preserves multiple paragraphs.
         assert "\n\n" in body
 
     def test_handles_alphanumeric_chapter_and_deep_nesting(self) -> None:
@@ -202,8 +202,8 @@ class TestCrawlLayer:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-ar",
             doc_type="statute",
             authority_code="Ark. Code Ann.",
@@ -220,14 +220,14 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = ARCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-1-101"))
-        assert rel == Path("us-ar/statutes/title-1/title-1-sec-1-1-101.xml")
+        assert rel == Path("us-ar/statutes/title-1/title-1-sec-1-1-101.txt")
 
     def test_alphanumeric_chapter(self) -> None:
         scraper = ARCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("4-2A-101"))
-        assert rel == Path("us-ar/statutes/title-4/title-4-sec-4-2A-101.xml")
+        assert rel == Path("us-ar/statutes/title-4/title-4-sec-4-2A-101.txt")
 
     def test_double_digit_title(self) -> None:
         scraper = ARCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("26-51-2405"))
-        assert rel == Path("us-ar/statutes/title-26/title-26-sec-26-51-2405.xml")
+        assert rel == Path("us-ar/statutes/title-26/title-26-sec-26-51-2405.txt")

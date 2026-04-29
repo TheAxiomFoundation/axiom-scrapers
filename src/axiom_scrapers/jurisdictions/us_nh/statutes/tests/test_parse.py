@@ -9,7 +9,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_nh.statutes.scrape import (
     NHSectionRef,
     RSAStatutesScraper,
@@ -138,8 +138,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-nh",
             doc_type="statute",
             authority_code="RSA",
@@ -156,14 +156,14 @@ class TestOutputPath:
     def test_numeric_chapter(self) -> None:
         scraper = RSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-1"))
-        assert rel == Path("us-nh/statutes/ch-1/ch-1-sec-1-1.xml")
+        assert rel == Path("us-nh/statutes/ch-1/ch-1-sec-1-1.txt")
 
     def test_alpha_suffix_chapter(self) -> None:
         scraper = RSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-A-5"))
-        assert rel == Path("us-nh/statutes/ch-1-A/ch-1-A-sec-1-A-5.xml")
+        assert rel == Path("us-nh/statutes/ch-1-A/ch-1-A-sec-1-A-5.txt")
 
     def test_dashed_section_token(self) -> None:
         scraper = RSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-14-a"))
-        assert rel == Path("us-nh/statutes/ch-1/ch-1-sec-1-14-a.xml")
+        assert rel == Path("us-nh/statutes/ch-1/ch-1-sec-1-14-a.txt")

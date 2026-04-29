@@ -30,7 +30,7 @@ from collections.abc import Iterable
 from pathlib import Path
 from urllib.parse import quote
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://app.leg.wa.gov/RCW"
 
@@ -80,7 +80,7 @@ class RCWStatutesScraper(Scraper[str]):
             for chapter in _list_chapters_for_title(title):
                 yield from _list_sections_for_chapter(chapter)
 
-    def parse_section(self, ref: str) -> Section | None:
+    def parse_section(self, ref: str) -> SourceSection | None:
         res = http_get(f"{BASE}/default.aspx?cite={quote(ref)}")
         if res is None:
             return None
@@ -90,7 +90,7 @@ class RCWStatutesScraper(Scraper[str]):
         heading, body = parsed
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -104,8 +104,8 @@ class RCWStatutesScraper(Scraper[str]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-wa/statute/ch-{title}.{chapter}/ch-{...}-sec-{section}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-wa/statute/ch-{title}.{chapter}/ch-{...}-sec-{section}.txt``."""
         parts = section.work_number.split(".")
         chapter = ".".join(parts[:2]) if len(parts) >= 3 else parts[0]
         safe_chapter = chapter.replace("/", "_")
@@ -114,7 +114,7 @@ class RCWStatutesScraper(Scraper[str]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{safe_chapter}",
-            f"ch-{safe_chapter}-sec-{safe_section}.xml",
+            f"ch-{safe_chapter}-sec-{safe_section}.txt",
         )
 
 

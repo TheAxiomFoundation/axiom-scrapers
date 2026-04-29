@@ -33,7 +33,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.gencourt.state.nh.us/rsa/html"
 
@@ -81,7 +81,7 @@ class RSAStatutesScraper(Scraper[NHSectionRef]):
                 for section in _list_sections_in_chapter(title, chapter):
                     yield NHSectionRef(title, chapter, section)
 
-    def parse_section(self, ref: NHSectionRef) -> Section | None:
+    def parse_section(self, ref: NHSectionRef) -> SourceSection | None:
         url = f"{BASE}/{ref.title}/{ref.chapter}/{ref.chapter}-{ref.section}.htm"
         res = http_get(url)
         if res is None:
@@ -91,7 +91,7 @@ class RSAStatutesScraper(Scraper[NHSectionRef]):
             return None
         full_cite = f"{ref.chapter}:{ref.section}"
         work_number = f"{ref.chapter}-{ref.section}"
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -105,8 +105,8 @@ class RSAStatutesScraper(Scraper[NHSectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-nh/statute/ch-{chapter}/ch-{chapter}-sec-{section}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-nh/statute/ch-{chapter}/ch-{chapter}-sec-{section}.txt``.
 
         ``work_number`` is ``{chapter}-{section}``; split once at the
         *last* dash so alpha-suffixed chapters (``1-A-5``) and dashed
@@ -128,7 +128,7 @@ class RSAStatutesScraper(Scraper[NHSectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 
@@ -147,7 +147,7 @@ def parse_section_page(html: str) -> tuple[str, str]:
 
     code_m = _CODESECT_RE.search(html)
     # Long RSA sections carry multi-paragraph bodies; preserve breaks so
-    # each source paragraph emits its own <p> in the AKN output.
+    # each source paragraph emits its own <p> in the source text output.
     body = clean_paragraphs(code_m.group(1)) if code_m else ""
     return heading, body
 

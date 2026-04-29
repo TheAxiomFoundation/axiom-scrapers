@@ -28,7 +28,7 @@ import re
 from collections.abc import Iterable
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://www.azleg.gov"
 
@@ -76,7 +76,7 @@ class ARSStatutesScraper(Scraper[tuple[int, str]]):
             for url in _list_section_urls_for_title(title):
                 yield (title, url)
 
-    def parse_section(self, ref: tuple[int, str]) -> Section | None:
+    def parse_section(self, ref: tuple[int, str]) -> SourceSection | None:
         _title, url = ref
         res = http_get(url)
         if res is None:
@@ -87,7 +87,7 @@ class ARSStatutesScraper(Scraper[tuple[int, str]]):
         section_id, heading, body = parsed
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -101,8 +101,8 @@ class ARSStatutesScraper(Scraper[tuple[int, str]]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """Nest by title: ``us-az/statute/ch-{title}/ch-{title}-sec-{id}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """Nest by title: ``us-az/statute/ch-{title}/ch-{title}-sec-{id}.txt``.
 
         A.R.S. section ids encode the title as the prefix before the
         first ``-`` (``1-101`` → title 1, ``43-1001`` → title 43), so
@@ -114,7 +114,7 @@ class ARSStatutesScraper(Scraper[tuple[int, str]]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{title}",
-            f"ch-{title}-sec-{safe_section}.xml",
+            f"ch-{title}-sec-{safe_section}.txt",
         )
 
 

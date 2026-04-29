@@ -18,7 +18,7 @@ Each section page contains:
     <section class="laws-body"><span><p>...</p><p>...</p></span></section>
 
 with an optional trailing ``<p>Last updated ...</p>`` notice that we
-strip before emitting AKN.
+strip before emitting source text.
 
 Repealed / missing sections still return HTTP 200 but omit
 ``<section class="laws-body">``; :func:`_parse_section_html` returns
@@ -39,7 +39,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import FetchResult, Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import FetchResult, Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://codes.ohio.gov"
 ROOT = f"{BASE}/ohio-revised-code"
@@ -72,7 +72,7 @@ _BODY_RE = re.compile(
 
 # "Last updated March 30, 2026 at 9:13 AM" — LSC publishes this as
 # the last paragraph of every section body. Strip it so the emitted
-# AKN body is just statutory text.
+# source text is just statutory text.
 _LAST_UPDATED_TAIL = re.compile(r"\s*Last updated[^\n]*$")
 
 
@@ -106,7 +106,7 @@ class RCStatutesScraper(Scraper[str]):
                     seen_sections.add(section)
                     yield f"{ROOT}/section-{section}"
 
-    def parse_section(self, url: str) -> Section | None:
+    def parse_section(self, url: str) -> SourceSection | None:
         res = http_get(url)
         if res is None:
             return None
@@ -115,22 +115,22 @@ class RCStatutesScraper(Scraper[str]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Nest by chapter (the bit before the first ``.``) so the tree stays browseable."""
         chapter = section.work_number.split(".", 1)[0]
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"{section.work_number}.xml",
+            f"{section.work_number}.txt",
         )
 
 
 # --- Pure-function helpers (tested in isolation) -------------------------
 
 
-def _parse_section_html(html: str, generation_date: date) -> Section | None:
-    """Turn one section-page HTML into a :class:`Section`, or ``None``.
+def _parse_section_html(html: str, generation_date: date) -> SourceSection | None:
+    """Turn one section-page HTML into a :class:`SourceSection`, or ``None``.
 
     Parse strategy:
 
@@ -158,7 +158,7 @@ def _parse_section_html(html: str, generation_date: date) -> Section | None:
         return None
 
     citation = f"R.C. \u00a7 {section_num}"
-    return Section(
+    return SourceSection(
         jurisdiction="us-oh",
         doc_type="statute",
         authority_code="RC",

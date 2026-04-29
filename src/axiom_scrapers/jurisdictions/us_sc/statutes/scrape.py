@@ -19,7 +19,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.scstatehouse.gov/code"
 _DEFAULT_TITLES = tuple(range(1, 64))
@@ -81,13 +81,13 @@ class SCCodeStatutesScraper(Scraper[tuple[int, str, str]]):
                     self._cache[ref] = (heading, body)
                     yield ref
 
-    def parse_section(self, ref: tuple[int, str, str]) -> Section | None:
+    def parse_section(self, ref: tuple[int, str, str]) -> SourceSection | None:
         cached = self._cache.get(ref)
         if cached is None:
             return None
         heading, body = cached
         _title, _chapter, section_num = ref
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -101,15 +101,15 @@ class SCCodeStatutesScraper(Scraper[tuple[int, str, str]]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-sc/statute/ch-{title}/ch-{title}-sec-{section}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-sc/statute/ch-{title}/ch-{title}-sec-{section}.txt``."""
         title = section.work_number.split("-", 1)[0]
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{title}",
-            f"ch-{title}-sec-{safe_section}.xml",
+            f"ch-{title}-sec-{safe_section}.txt",
         )
 
 

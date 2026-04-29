@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_nm.statutes.scrape import (
     NMSAStatutesScraper,
     NMSectionRef,
@@ -263,8 +263,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-nm",
             doc_type="statute",
             authority_code="NMSA 1978",
@@ -281,14 +281,14 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = NMSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("17-1-1"))
-        assert rel == Path("us-nm/statutes/ch-17/ch-17-sec-17-1-1.xml")
+        assert rel == Path("us-nm/statutes/ch-17/ch-17-sec-17-1-1.txt")
 
     def test_alpha_chapter(self) -> None:
         scraper = NMSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("24A-1-3"))
-        assert rel == Path("us-nm/statutes/ch-24A/ch-24A-sec-24A-1-3.xml")
+        assert rel == Path("us-nm/statutes/ch-24A/ch-24A-sec-24A-1-3.txt")
 
     def test_subdivided_section(self) -> None:
         scraper = NMSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("7-2-1.1"))
-        assert rel == Path("us-nm/statutes/ch-7/ch-7-sec-7-2-1.1.xml")
+        assert rel == Path("us-nm/statutes/ch-7/ch-7-sec-7-2-1.1.txt")

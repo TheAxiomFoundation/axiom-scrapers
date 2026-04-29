@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_sc.statutes.scrape import (
     SCCodeStatutesScraper,
     extract_chapter_tokens,
@@ -128,8 +128,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-sc",
             doc_type="statute",
             authority_code="S.C. Code",
@@ -146,9 +146,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = SCCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-1-10"))
-        assert rel == Path("us-sc/statutes/ch-1/ch-1-sec-1-1-10.xml")
+        assert rel == Path("us-sc/statutes/ch-1/ch-1-sec-1-1-10.txt")
 
     def test_alpha_section_suffix(self) -> None:
         scraper = SCCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("12-21-2710A"))
-        assert rel == Path("us-sc/statutes/ch-12/ch-12-sec-12-21-2710A.xml")
+        assert rel == Path("us-sc/statutes/ch-12/ch-12-sec-12-21-2710A.txt")

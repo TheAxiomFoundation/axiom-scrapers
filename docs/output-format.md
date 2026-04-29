@@ -1,114 +1,89 @@
 # Output format
 
-Every scraper emits local [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
-XML files as an ingest intermediate. The Axiom corpus `ingest_state_laws.py` is
-the primary consumer and keys on specific elements — this doc pins the contract.
-Generated XML should not be committed to Git or uploaded to R2.
+Every scraper emits normalized source-section text plus deterministic sidecar
+metadata as a local ingest intermediate. Generated scrape output should not be
+committed to Git or uploaded to R2.
 
 ## File layout
 
 ```
 out_root/
 └── {jurisdiction}/                 # us-il, us-ny, us-federal
-    └── {doc_type}/                 # statute, regulation, guidance, manual
+    └── {doc_type_dir}/             # statutes, regulations, guidance, manual
         └── {optional chapter dir}/
-            └── {section_number}.xml
+            ├── {section_number}.txt
+            └── {section_number}.meta.yaml
 ```
 
-Scrapers are free to add a chapter / title directory level when the
-source has one — makes the tree browseable. Example from IL:
+Scrapers are free to add a chapter, title, or year directory level when the
+source has one. Example from Illinois:
 
 ```
-out/us-il/statute/
+out/us-il/statutes/
 ├── ch-1/
-│   ├── 1-1-1.xml
-│   └── 1-1-2.xml
+│   ├── 1-1-1.txt
+│   ├── 1-1-1.meta.yaml
+│   ├── 1-1-2.txt
+│   └── 1-1-2.meta.yaml
 ├── ch-35/
-│   ├── 35-155-1.xml
-│   └── 35-155-2.xml
+│   ├── 35-155-1.txt
+│   ├── 35-155-1.meta.yaml
+│   ├── 35-155-2.txt
+│   └── 35-155-2.meta.yaml
 └── ...
 ```
 
-## XML shape
+## Text file
 
-```xml
-<?xml version="1.0" encoding="UTF-8"?>
-<akomaNtoso xmlns="http://docs.oasis-open.org/legaldocml/ns/akn/3.0">
-  <act name="section">
-    <meta>
-      <identification source="#axiom">
-        <FRBRWork>
-          <FRBRthis value="/akn/us-il/act/ilcs/35-155-2"/>
-          <FRBRuri value="/akn/us-il/act/ilcs/35-155-2"/>
-          <FRBRauthor href="#il-legislature"/>
-          <FRBRcountry value="us-il"/>
-          <FRBRnumber value="35-155-2"/>
-          <FRBRname value="ILCS"/>
-        </FRBRWork>
-        <FRBRExpression>
-          <FRBRthis value="/akn/us-il/act/ilcs/35-155-2/eng@2026-04-20"/>
-          <FRBRuri value="/akn/us-il/act/ilcs/35-155-2/eng@2026-04-20"/>
-          <FRBRdate date="2026-04-20" name="publication"/>
-          <FRBRauthor href="#axiom"/>
-          <FRBRlanguage language="eng"/>
-        </FRBRExpression>
-        <FRBRManifestation>
-          <FRBRthis value="/akn/us-il/act/ilcs/35-155-2/eng@2026-04-20/main.xml"/>
-          <FRBRuri value="/akn/us-il/act/ilcs/35-155-2/eng@2026-04-20/main.xml"/>
-          <FRBRdate date="2026-04-20" name="generation"/>
-          <FRBRauthor href="#axiom"/>
-        </FRBRManifestation>
-      </identification>
-      <references source="#axiom">
-        <TLCOrganization eId="il-legislature" href="https://www.ilga.gov"
-                         showAs="Illinois General Assembly"/>
-        <TLCOrganization eId="axiom" href="https://axiom-foundation.org"
-                         showAs="Axiom Foundation"/>
-      </references>
-    </meta>
-    <body>
-      <section eId="sec_35_155_2">
-        <num>35 ILCS 155/2</num>
-        <heading>Definitions</heading>
-        <content>
-            <p>As used in this Act:</p>
-            <p>"Renting" means any transfer of the possession…</p>
-        </content>
-      </section>
-    </body>
-  </act>
-</akomaNtoso>
+The `.txt` file contains only normalized source body text. Paragraphs are
+separated by one blank line and the file ends with a trailing newline when it
+has content.
+
+```text
+As used in this Act:
+
+"Renting" means any transfer of the possession or use of property.
+```
+
+Headings and citations live in metadata, not in the text body.
+
+## Metadata file
+
+The `.meta.yaml` sidecar has one record with deterministic key order:
+
+```yaml
+format: axiom-source-section/v1
+jurisdiction: "us-il"
+doc_type: "statute"
+authority_code: "ILCS"
+work_number: "35-155-2"
+citation: "35 ILCS 155/2"
+heading: "Definitions"
+generation_date: "2026-04-20"
+source:
+  author_id: "il-legislature"
+  author_name: "Illinois General Assembly"
+  author_url: "https://www.ilga.gov"
+text_path: "35-155-2.txt"
 ```
 
 ## Axiom ingest contract
 
-The Axiom corpus `ingest_state_laws.py` reads:
+The Axiom corpus ingester reads:
 
-* `<FRBRWork>/<FRBRnumber value="…">` → section identifier; forms the
-  Axiom `citation_path`.
-* `<body>//<section>/<num>` → rendered citation text.
-* `<body>//<section>/<heading>` → Axiom `heading` column.
-* `<body>//<section>/<content>/<p>…</p>` → joined on blank lines to
-  form Axiom `body` column.
+* `work_number` -> the source section identifier used to build citation paths.
+* `citation` -> rendered citation text.
+* `heading` -> section heading.
+* `{text_path}` -> body text, with paragraphs already normalized.
+* `jurisdiction`, `doc_type`, and `authority_code` -> corpus metadata.
 
-Changes that affect these four readers require coordinated PRs in
-axiom.
-
-## FRBRdate deliberately omits `name="enacted"`
-
-We don't know the real enactment date of each scraped section; writing
-the scrape date there would mislead downstream consumers. We emit only
-`publication` and `generation` (both the scrape date) at the Expression
-and Manifestation levels. If a scraper starts parsing a real enactment
-date from source metadata, it should add a separate `<FRBRdate
-name="enacted">` at the Work level.
+Changes that affect these fields require a coordinated Axiom corpus update.
 
 ## Section-number rules
 
-* Use the state's canonical short-cite form as `FRBRnumber`. Unique
-  within the jurisdiction.
-* Preserve dots, dashes, colons (DC UCC `28:9-316`, IL `35-155-2.1`).
-  The `<section eId="…">` attribute converts non-alphanumerics to
-  underscores — that's AKN's rule, not ours.
-* When a section has alpha suffixes (`101A`, `204.1a`), preserve them;
-  they're meaningful.
+* Use the state's canonical short-cite form as `work_number`. It must be unique
+  within the jurisdiction and document type.
+* Preserve dots, dashes, colons, and alpha suffixes when they are meaningful in
+  the source citation.
+* Replace slashes with underscores in filenames. The original citation text can
+  still appear in `citation`.

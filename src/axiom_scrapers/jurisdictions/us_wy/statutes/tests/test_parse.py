@@ -22,7 +22,7 @@ from typing import Any, cast
 from unittest.mock import patch
 
 from axiom_scrapers._common import FetchResult, http
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_wy.statutes.scrape import (
     GATEWAY,
     TITLES_ROOT_ID,
@@ -293,8 +293,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-wy",
             doc_type="statute",
             authority_code="Wyo. Stat. Ann.",
@@ -311,17 +311,17 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = WyoStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-2-101"))
-        assert rel == Path("us-wy/statutes/title-1/1-2-101.xml")
+        assert rel == Path("us-wy/statutes/title-1/1-2-101.txt")
 
     def test_two_digit_title(self) -> None:
         scraper = WyoStatutesScraper()
         rel = scraper.relative_output_path(self._section("39-15-103"))
-        assert rel == Path("us-wy/statutes/title-39/39-15-103.xml")
+        assert rel == Path("us-wy/statutes/title-39/39-15-103.txt")
 
     def test_decimal_section_suffix(self) -> None:
         scraper = WyoStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-39-104.5"))
-        assert rel == Path("us-wy/statutes/title-1/1-39-104.5.xml")
+        assert rel == Path("us-wy/statutes/title-1/1-39-104.5.txt")
 
 
 class TestEndToEndWithStubbedNetwork:

@@ -67,7 +67,7 @@ from datetime import date
 from pathlib import Path
 from urllib.request import Request, urlopen
 
-from axiom_scrapers._common import Scraper, Section
+from axiom_scrapers._common import Scraper, SourceSection
 from axiom_scrapers._common.http import DEFAULT_UA
 
 DEFAULT_RELEASE = "gov.ga.ocga.2019.08.21.release.73"
@@ -161,14 +161,14 @@ class OCGAStatutesScraper(Scraper[OCGASectionRef]):
         for sec_id, (title, _heading, _body) in self._cache.items():
             yield OCGASectionRef(title=title, section_id=sec_id)
 
-    def parse_section(self, ref: OCGASectionRef) -> Section | None:
+    def parse_section(self, ref: OCGASectionRef) -> SourceSection | None:
         entry = self._cache.get(ref.section_id)
         if entry is None:
             return None
         _title, heading, body = entry
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -182,8 +182,8 @@ class OCGAStatutesScraper(Scraper[OCGASectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-ga/statutes/title-{T}/title-{T}-sec-{id}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-ga/statutes/title-{T}/title-{T}-sec-{id}.txt``.
 
         Section ids are ``{title}-{chapter}-{section}``, so splitting on
         the first ``-`` recovers the title for the directory prefix.
@@ -194,7 +194,7 @@ class OCGAStatutesScraper(Scraper[OCGASectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"title-{title}",
-            f"title-{title}-sec-{safe_section}.xml",
+            f"title-{title}-sec-{safe_section}.txt",
         )
 
     # --- internals -------------------------------------------------------

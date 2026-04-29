@@ -47,7 +47,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://mca.legmt.gov/bills/mca"
 
@@ -107,13 +107,13 @@ class MCAStatutesScraper(Scraper[str]):
                 for part_dir in _list_parts(title_dir, chapter_dir):
                     yield from _list_section_urls(title_dir, chapter_dir, part_dir)
 
-    def parse_section(self, url: str) -> Section | None:
+    def parse_section(self, url: str) -> SourceSection | None:
         res = http_get(url)
         if res is None:
             return None
         return _parse_section_html(res.text(), generation_date=self.generation_date)
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Nest by ``ch-{title}-{chapter}`` so the tree stays browseable.
 
         MCA citations are ``title-chapter-section`` (three dashes), so the
@@ -129,7 +129,7 @@ class MCAStatutesScraper(Scraper[str]):
             self.jurisdiction,
             self._doc_type_dir(),
             chapter_key,
-            f"{section.work_number}.xml",
+            f"{section.work_number}.txt",
         )
 
 
@@ -154,8 +154,8 @@ def _token_to_num(token: str) -> str:
     return str(raw)
 
 
-def _parse_section_html(html: str, generation_date: date) -> Section | None:
-    """Turn one section-page HTML into a :class:`Section`, or ``None``.
+def _parse_section_html(html: str, generation_date: date) -> SourceSection | None:
+    """Turn one section-page HTML into a :class:`SourceSection`, or ``None``.
 
     Returns ``None`` when the page is not a readable section —
     404/redirect dummies that lack ``<div class="section-doc">``, or
@@ -183,7 +183,7 @@ def _parse_section_html(html: str, generation_date: date) -> Section | None:
     paras = [p for p in paras if p]
     body = "\n\n".join(paras).strip()
     # MCA often leads the body with an em-dash following the heading
-    # span. Trim leading dashes / whitespace so the AKN body is clean.
+    # span. Trim leading dashes / whitespace so the source text is clean.
     body = body.strip("\u2014\u2013-").strip()
 
     if not body or body.lower() in {"repealed.", "repealed"}:
@@ -191,7 +191,7 @@ def _parse_section_html(html: str, generation_date: date) -> Section | None:
 
     work_number = citation_num
     citation = f"MCA \u00a7 {citation_num}"
-    return Section(
+    return SourceSection(
         jurisdiction="us-mt",
         doc_type="statute",
         authority_code="MCA",

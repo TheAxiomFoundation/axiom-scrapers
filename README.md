@@ -2,20 +2,20 @@
 
 Scrapers for global statutes, regulations, bills, and rulemaking. Each scraper fetches
 from an authoritative upstream source (state legislature website, eCFR API, etc.) and
-emits local [Akoma Ntoso 3.0](https://www.oasis-open.org/committees/download.php/59858/akn-core-v1.0-cos01-part1.pdf)
-XML as an ingest intermediate. The downstream consumer is
-[axiom-corpus](https://github.com/TheAxiomFoundation/axiom-corpus), which ingests the XML into
-Postgres for the Axiom app and RuleSpec encoding pipeline. Generated XML stays
-out of Git and R2.
+emits local source-section text plus sidecar metadata as an ingest intermediate.
+The downstream consumer is
+[axiom-corpus](https://github.com/TheAxiomFoundation/axiom-corpus), which ingests
+that scratch output into Postgres for the Axiom app and RuleSpec encoding
+pipeline. Generated scrape output stays out of Git and R2.
 
 ## Layout
 
 ```
 src/axiom_scrapers/
-├── _common/               # Shared infrastructure (http, akn-xml, text, base class)
+├── _common/               # Shared infrastructure (http, source output, text, base class)
 ├── jurisdictions/
 │   └── {country}_{region}/
-│       └── {doc_type}/    # statutes, regulations, guidance, bills, rulemaking, manuals
+│       └── {doc_type_dir}/ # statutes, regulations, guidance, bills, rulemaking, manuals
 │           ├── scrape.py
 │           └── tests/
 │               ├── test_parse.py
@@ -68,8 +68,9 @@ the floor as those tests land.
 - **Offline-first tests.** Parse logic is unit-tested against saved HTML fixtures,
   not live fetches. The `_common.http` layer handles retries, rate-limit backoff, and
   soft-fail for missing sections (404/307/410) so per-state scrapers can stay thin.
-- **AKN 3.0 intermediate output.** Standardized across all scrapers so Axiom
-  corpus ingest is uniform without making generated XML a persisted artifact.
+- **Source-section intermediate output.** Standardized across all scrapers so
+  Axiom corpus ingest is uniform without making generated scrape output a
+  persisted artifact.
   See [`docs/output-format.md`](docs/output-format.md).
 
 ## Jurisdictions covered
@@ -104,8 +105,9 @@ and related ingesters; porting them into this repo is tracked separately.
 
 ## Downstream
 
-Every scraper writes to `{out}/{jurisdiction}/{doc_type}/.../*.xml`, matching the
-shape the Axiom corpus `scripts/ingest_state_laws.py --state {xx}` expects. The
-two repos are kept deliberately decoupled: axiom-scrapers produces AKN XML,
-Axiom ingests it. Neither imports from the other. Treat the output tree as local
-scratch space; do not commit it or upload it to R2.
+Every scraper writes paired `{section}.txt` and `{section}.meta.yaml` files under
+`{out}/{jurisdiction}/{doc_type_dir}/.../`, matching the shape the Axiom corpus
+ingester expects. The two repos are kept deliberately decoupled:
+axiom-scrapers produces local source-section artifacts, Axiom ingests them.
+Neither imports from the other. Treat the output tree as local scratch space; do
+not commit it or upload it to R2.

@@ -28,7 +28,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://www.ilga.gov/ftp/ILCS"
 
@@ -68,7 +68,7 @@ class ILCSStatutesScraper(Scraper[str]):
             for act_href in _list_act_hrefs(chapter_href):
                 yield from _list_section_urls(act_href)
 
-    def parse_section(self, url: str) -> Section | None:
+    def parse_section(self, url: str) -> SourceSection | None:
         res = http_get(url)
         if res is None:
             return None
@@ -77,22 +77,22 @@ class ILCSStatutesScraper(Scraper[str]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Nest by chapter so the tree stays browseable."""
         chapter = section.work_number.split("-")[0]
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"{section.work_number}.xml",
+            f"{section.work_number}.txt",
         )
 
 
 # --- Pure-function helpers (tested in isolation) -------------------------
 
 
-def _parse_section_html(html: str, generation_date: date) -> Section | None:
-    """Turn one section-file HTML body into a :class:`Section`, or None.
+def _parse_section_html(html: str, generation_date: date) -> SourceSection | None:
+    """Turn one section-file HTML body into a :class:`SourceSection`, or None.
 
     Parse strategy:
 
@@ -148,7 +148,7 @@ def _parse_section_html(html: str, generation_date: date) -> Section | None:
 
     work_number = f"{chapter}-{act}-{section}"
     citation = f"{chapter} ILCS {act}/{section}"
-    return Section(
+    return SourceSection(
         jurisdiction="us-il",
         doc_type="statute",
         authority_code="ILCS",

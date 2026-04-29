@@ -29,7 +29,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://webserver.rilegislature.gov/Statutes"
 
@@ -84,7 +84,7 @@ class RIGLStatutesScraper(Scraper[RISectionRef]):
                 for section in _list_section_tokens(title, chapter):
                     yield RISectionRef(title, chapter, section)
 
-    def parse_section(self, ref: RISectionRef) -> Section | None:
+    def parse_section(self, ref: RISectionRef) -> SourceSection | None:
         url = (
             f"{BASE}/TITLE{ref.title}/{ref.title}-{ref.chapter}/"
             f"{ref.title}-{ref.chapter}-{ref.section}.htm"
@@ -98,7 +98,7 @@ class RIGLStatutesScraper(Scraper[RISectionRef]):
         section_id, heading, body = parsed
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -112,8 +112,8 @@ class RIGLStatutesScraper(Scraper[RISectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-ri/statute/ch-{title}/ch-{title}-sec-{section}.xml``.
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-ri/statute/ch-{title}/ch-{title}-sec-{section}.txt``.
 
         Title is the prefix before the first ``-`` in ``work_number``.
         """
@@ -123,7 +123,7 @@ class RIGLStatutesScraper(Scraper[RISectionRef]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{title}",
-            f"ch-{title}-sec-{safe_section}.xml",
+            f"ch-{title}-sec-{safe_section}.txt",
         )
 
 

@@ -20,8 +20,8 @@ body paragraphs until the next ``&#167;`` marker.
 
 Output
 ------
-Akoma Ntoso 3.0 XML at
-``{out}/us-pa/statute/tt-{title:02d}/tt-{title:02d}-sec-{section}.xml``.
+Normalized source text plus sidecar metadata at
+``{out}/us-pa/statutes/tt-{title:02d}/tt-{title:02d}-sec-{section}.txt``.
 
 SectionRef
 ----------
@@ -31,7 +31,7 @@ title HTML is expensive to re-fetch (1-4 MB). :meth:`list_sections`
 fetches each title's HTML *once*, splits it into per-section tuples,
 and hands each :class:`PASectionRef` (title, section id, heading,
 pre-extracted body) to :meth:`parse_section`. The parse step then only
-builds the :class:`~axiom_scrapers._common.akn.Section` — no HTTP.
+builds the :class:`~axiom_scrapers._common.source_section.SourceSection` — no HTTP.
 """
 
 from __future__ import annotations
@@ -41,7 +41,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://www.legis.state.pa.us"
 
@@ -68,7 +68,7 @@ _SOURCE_TRAILER = re.compile(
     re.IGNORECASE,
 )
 
-#: Minimum body length to emit a Section. Below this, the chunk is
+#: Minimum body length to emit a SourceSection. Below this, the chunk is
 #: almost certainly a TOC entry that slipped past dedup (subchapter
 #: header, cross-reference, etc.).
 MIN_BODY_CHARS = 30
@@ -115,13 +115,13 @@ class PAStatutesScraper(Scraper[PASectionRef]):
         for title in PA_TITLES:
             yield from _list_refs_for_title(title)
 
-    def parse_section(self, ref: PASectionRef) -> Section | None:
-        """Build a :class:`Section` from a pre-extracted ref. No HTTP."""
+    def parse_section(self, ref: PASectionRef) -> SourceSection | None:
+        """Build a :class:`SourceSection` from a pre-extracted ref. No HTTP."""
         if not ref.body_text or len(ref.body_text) < MIN_BODY_CHARS:
             return None
         work_number = f"{ref.title:02d}-{_safe_section(ref.section)}"
         citation = f"{ref.title} Pa.C.S. \u00a7 {ref.section}"
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -135,13 +135,13 @@ class PAStatutesScraper(Scraper[PASectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Nest by title so the tree stays browseable.
 
-        Layout: ``us-pa/statute/tt-{title:02d}/tt-{title:02d}-sec-{section}.xml``.
+        Layout: ``us-pa/statute/tt-{title:02d}/tt-{title:02d}-sec-{section}.txt``.
         """
         title_token, safe_section = section.work_number.split("-", 1)
-        filename = f"tt-{title_token}-sec-{safe_section}.xml"
+        filename = f"tt-{title_token}-sec-{safe_section}.txt"
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),

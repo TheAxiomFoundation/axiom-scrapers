@@ -4,27 +4,33 @@ Most per-state scrapers import from here:
 
 * :mod:`.http` — polite URL fetcher with retries.
 * :mod:`.text` — HTML/whitespace normalization.
-* :mod:`.akn` — Akoma Ntoso 3.0 XML builder.
+* :mod:`.source_section` — normalized source-section artifacts.
 * :mod:`.base` — :class:`Scraper` abstract base class; subclass to add
   a new jurisdiction.
 """
 
-from .akn import AKN_NS, Section, build_akn_xml
 from .base import Scraper, ScrapeResult
 from .http import DEFAULT_UA, FetchResult, http_get
+from .source_section import (
+    SourceSection,
+    render_source_metadata_yaml,
+    render_source_text,
+    strip_invalid_control_chars,
+)
 from .text import clean_paragraphs, clean_text, safe_path_segment, split_paragraphs
 
 __all__ = [
-    "AKN_NS",
     "DEFAULT_UA",
     "FetchResult",
     "ScrapeResult",
     "Scraper",
-    "Section",
-    "build_akn_xml",
+    "SourceSection",
     "clean_paragraphs",
     "clean_text",
     "http_get",
+    "render_source_metadata_yaml",
+    "render_source_text",
     "safe_path_segment",
     "split_paragraphs",
+    "strip_invalid_control_chars",
 ]

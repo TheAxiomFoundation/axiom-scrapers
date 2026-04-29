@@ -9,7 +9,7 @@ from pathlib import Path
 
 import pytest
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_ga.statutes.scrape import (
     OCGASectionRef,
     OCGAStatutesScraper,
@@ -278,8 +278,8 @@ class TestScraperClass:
 
 class TestOutputPath:
     @staticmethod
-    def _section(work_number: str) -> Section:
-        return Section(
+    def _section(work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-ga",
             doc_type="statute",
             authority_code="O.C.G.A.",
@@ -296,9 +296,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = OCGAStatutesScraper(generation_date=date(2026, 4, 21))
         rel = scraper.relative_output_path(self._section("1-1-10"))
-        assert rel == Path("us-ga/statutes/title-1/title-1-sec-1-1-10.xml")
+        assert rel == Path("us-ga/statutes/title-1/title-1-sec-1-1-10.txt")
 
     def test_decimal_id(self) -> None:
         scraper = OCGAStatutesScraper(generation_date=date(2026, 4, 21))
         rel = scraper.relative_output_path(self._section("48-7-29.25"))
-        assert rel == Path("us-ga/statutes/title-48/title-48-sec-48-7-29.25.xml")
+        assert rel == Path("us-ga/statutes/title-48/title-48-sec-48-7-29.25.txt")

@@ -29,7 +29,7 @@ from collections.abc import Iterable
 from pathlib import Path
 from urllib.parse import quote
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://nebraskalegislature.gov/laws"
 
@@ -83,7 +83,7 @@ class NebRevStatScraper(Scraper[tuple[int, str]]):
             for token in _list_chapter_section_tokens(chapter):
                 yield (chapter, token)
 
-    def parse_section(self, ref: tuple[int, str]) -> Section | None:
+    def parse_section(self, ref: tuple[int, str]) -> SourceSection | None:
         _chapter, stat_token = ref
         res = http_get(f"{BASE}/statutes.php?statute={quote(stat_token)}")
         if res is None:
@@ -94,7 +94,7 @@ class NebRevStatScraper(Scraper[tuple[int, str]]):
         section_num, heading, body = parsed
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -108,8 +108,8 @@ class NebRevStatScraper(Scraper[tuple[int, str]]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-ne/statute/ch-{chapter}/ch-{chapter}-sec-{rest}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-ne/statute/ch-{chapter}/ch-{chapter}-sec-{rest}.txt``."""
         chapter = section.work_number.split("-", 1)[0]
         rest = (
             section.work_number[len(chapter) + 1 :]
@@ -121,7 +121,7 @@ class NebRevStatScraper(Scraper[tuple[int, str]]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 

@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_ri.statutes.scrape import (
     RIGLStatutesScraper,
     RISectionRef,
@@ -130,8 +130,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-ri",
             doc_type="statute",
             authority_code="RIGL",
@@ -148,9 +148,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = RIGLStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-2-1"))
-        assert rel == Path("us-ri/statutes/ch-1/ch-1-sec-1-2-1.xml")
+        assert rel == Path("us-ri/statutes/ch-1/ch-1-sec-1-2-1.txt")
 
     def test_alpha_title(self) -> None:
         scraper = RIGLStatutesScraper()
         rel = scraper.relative_output_path(self._section("6A-2-1"))
-        assert rel == Path("us-ri/statutes/ch-6A/ch-6A-sec-6A-2-1.xml")
+        assert rel == Path("us-ri/statutes/ch-6A/ch-6A-sec-6A-2-1.txt")

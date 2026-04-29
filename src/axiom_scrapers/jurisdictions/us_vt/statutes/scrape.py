@@ -31,7 +31,7 @@ from collections.abc import Iterable
 from dataclasses import dataclass
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, http_get
+from axiom_scrapers._common import Scraper, SourceSection, http_get
 
 BASE = "https://legislature.vermont.gov"
 ROOT = f"{BASE}/statutes/"
@@ -95,7 +95,7 @@ class VSAStatutesScraper(Scraper[VTSectionRef]):
                 for section in _list_section_tokens(title, chapter):
                     yield VTSectionRef(title, chapter, section)
 
-    def parse_section(self, ref: VTSectionRef) -> Section | None:
+    def parse_section(self, ref: VTSectionRef) -> SourceSection | None:
         url = f"{BASE}/statutes/section/{ref.title}/{ref.chapter}/{ref.section}"
         res = http_get(url)
         if res is None:
@@ -109,7 +109,7 @@ class VSAStatutesScraper(Scraper[VTSectionRef]):
         # Strip leading zeros from section for the canonical citation.
         canonical_section = section_num.lstrip("0") or section_num
         work_number = f"{title_from_cite}-{canonical_section}"
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -123,15 +123,15 @@ class VSAStatutesScraper(Scraper[VTSectionRef]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-vt/statute/ch-{title}/ch-{title}-sec-{section}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-vt/statute/ch-{title}/ch-{title}-sec-{section}.txt``."""
         title = section.work_number.split("-", 1)[0]
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{title}",
-            f"ch-{title}-sec-{safe_section}.xml",
+            f"ch-{title}-sec-{safe_section}.txt",
         )
 
 

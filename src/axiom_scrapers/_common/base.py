@@ -8,7 +8,7 @@ Each concrete scraper supplies only the per-source logic:
   (opaque to the base class) the scraper can later hand back to
   ``parse_section()``.
 * **How to parse a section.** ``parse_section(ref)`` turns one
-  identifier into a :class:`axiom_scrapers._common.akn.Section`.
+  identifier into a :class:`axiom_scrapers._common.source_section.SourceSection`.
 
 The base handles everything else: parallel fetching (the caller's
 logic is synchronous; the base provides a thread pool), error
@@ -30,7 +30,11 @@ from datetime import date
 from pathlib import Path
 from typing import Any, Generic, TypeVar
 
-from .akn import Section, build_akn_xml
+from .source_section import (
+    SourceSection,
+    render_source_metadata_yaml,
+    render_source_text,
+)
 from .text import safe_path_segment
 
 SectionRef = TypeVar("SectionRef")
@@ -72,20 +76,18 @@ class Scraper(ABC, Generic[SectionRef]):
                     for act in self._list_acts(chapter):
                         yield from self._list_section_urls(chapter, act)
 
-            def parse_section(self, url: str) -> Section | None:
+            def parse_section(self, url: str) -> SourceSection | None:
                 ...
     """
 
-    #: Full jurisdiction slug stored in AKN ``<FRBRcountry>`` and Axiom's
-    #: ``jurisdiction`` column, e.g. ``"us-il"``, ``"us-federal"``, ``"uk"``.
+    #: Full jurisdiction slug, e.g. ``"us-il"``, ``"us-federal"``, ``"uk"``.
     jurisdiction: str = ""
 
     #: Axiom doc_type value — ``"statute"``, ``"regulation"``,
     #: ``"guidance"``, ``"manual"``.
     doc_type: str = ""
 
-    #: Short abbreviation of the cite format, e.g. ``"ILCS"``,
-    #: ``"RCW"``. Written to ``<FRBRname>``.
+    #: Short abbreviation of the cite format, e.g. ``"ILCS"``, ``"RCW"``.
     authority_code: str = ""
 
     #: Short id for the source author, e.g. ``"il-legislature"``.
@@ -123,8 +125,8 @@ class Scraper(ABC, Generic[SectionRef]):
         ...
 
     @abstractmethod
-    def parse_section(self, ref: SectionRef) -> Section | None:
-        """Return a parsed :class:`Section`, or ``None`` to skip.
+    def parse_section(self, ref: SectionRef) -> SourceSection | None:
+        """Return a parsed :class:`SourceSection`, or ``None`` to skip.
 
         Returning ``None`` is the "soft fail" path — the section was
         repealed, had no body, or a live fetch failed. The run
@@ -142,11 +144,12 @@ class Scraper(ABC, Generic[SectionRef]):
         log_every: int = 100,
         logger: LogFn | None = None,
     ) -> ScrapeResult:
-        """Scrape every section and write AKN XML under ``out_root``.
+        """Scrape every section and write text + metadata under ``out_root``.
 
         Output layout
         -------------
-        ``{out_root}/{jurisdiction}/{doc_type}/{section_id}.xml``.
+        ``{out_root}/{jurisdiction}/{doc_type_dir}/{section_id}.txt`` and
+        ``{out_root}/{jurisdiction}/{doc_type_dir}/{section_id}.meta.yaml``.
         Each scraper can override :meth:`relative_output_path` if it
         wants a subdirectory per chapter / title.
         """
@@ -232,9 +235,14 @@ class Scraper(ABC, Generic[SectionRef]):
             return False
         if sec is None:
             return False
-        dest = out_root / self.relative_output_path(sec)
-        dest.parent.mkdir(parents=True, exist_ok=True)
-        dest.write_text(build_akn_xml(sec), encoding="utf-8")
+        text_dest = out_root / self.relative_output_path(sec)
+        text_dest.parent.mkdir(parents=True, exist_ok=True)
+        meta_dest = text_dest.with_suffix(".meta.yaml")
+        text_dest.write_text(render_source_text(sec), encoding="utf-8")
+        meta_dest.write_text(
+            render_source_metadata_yaml(sec, text_path=text_dest.name),
+            encoding="utf-8",
+        )
         return True
 
     #: Plural directory segment for this doc_type in the output tree.
@@ -243,12 +251,12 @@ class Scraper(ABC, Generic[SectionRef]):
     #: (``rulemaking`` is already plural; overrides set ``"rulemaking"``).
     doc_type_dir: str = ""
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Return the output filename for a section, relative to ``out_root``.
 
         Default layout::
 
-            {jurisdiction}/{doc_type_dir}/{section_id}.xml
+            {jurisdiction}/{doc_type_dir}/{section_id}.txt
 
         where ``doc_type_dir`` is the plural directory segment
         (``statutes``, ``regulations``) that matches what Axiom's
@@ -257,10 +265,10 @@ class Scraper(ABC, Generic[SectionRef]):
         Subclasses often override to nest by chapter / title so the
         tree stays browseable:
 
-            {jurisdiction}/{doc_type_dir}/ch-{chapter}/{section_id}.xml
+            {jurisdiction}/{doc_type_dir}/ch-{chapter}/{section_id}.txt
         """
         safe = safe_path_segment(section.work_number)
-        return Path(self.jurisdiction) / self._doc_type_dir() / f"{safe}.xml"
+        return Path(self.jurisdiction) / self._doc_type_dir() / f"{safe}.txt"
 
     def _doc_type_dir(self) -> str:
         """Plural directory segment; defaults to ``{doc_type}s``."""

@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_mn.statutes.scrape import (
     MinnStatutesScraper,
     extract_chapter_tokens,
@@ -75,7 +75,7 @@ class TestParseSectionPage:
         assert parsed is not None
         _, body = parsed
         # Multi-paragraph source must emit paragraph-separated text so
-        # downstream AKN serialization produces multiple <p> elements.
+        # downstream source text rendering produces multiple <p> elements.
         assert body == "First paragraph.\n\nSecond paragraph."
 
 
@@ -132,8 +132,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-mn",
             doc_type="statute",
             authority_code="Minn. Stat.",
@@ -150,9 +150,9 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = MinnStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.01"))
-        assert rel == Path("us-mn/statutes/ch-1/ch-1-sec-1.01.xml")
+        assert rel == Path("us-mn/statutes/ch-1/ch-1-sec-1.01.txt")
 
     def test_alpha_suffix_chapter(self) -> None:
         scraper = MinnStatutesScraper()
         rel = scraper.relative_output_path(self._section("2A.04"))
-        assert rel == Path("us-mn/statutes/ch-2A/ch-2A-sec-2A.04.xml")
+        assert rel == Path("us-mn/statutes/ch-2A/ch-2A-sec-2A.04.txt")

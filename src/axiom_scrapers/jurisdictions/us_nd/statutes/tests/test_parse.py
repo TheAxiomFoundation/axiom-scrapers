@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_nd.statutes.scrape import (
     NDCCStatutesScraper,
     NDSectionRef,
@@ -237,8 +237,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-nd",
             doc_type="statute",
             authority_code="NDCC",
@@ -255,16 +255,16 @@ class TestOutputPath:
     def test_nests_by_title_and_chapter(self) -> None:
         scraper = NDCCStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-01-01"))
-        assert rel == Path("us-nd/statutes/ch-1-01/ch-1-01-sec-1-01-01.xml")
+        assert rel == Path("us-nd/statutes/ch-1-01/ch-1-01-sec-1-01-01.txt")
 
     def test_handles_subsection_numbered_section(self) -> None:
         scraper = NDCCStatutesScraper()
         rel = scraper.relative_output_path(self._section("57-38-01.15"))
-        assert rel == Path("us-nd/statutes/ch-57-38/ch-57-38-sec-57-38-01.15.xml")
+        assert rel == Path("us-nd/statutes/ch-57-38/ch-57-38-sec-57-38-01.15.txt")
 
     def test_handles_decimal_title_and_chapter(self) -> None:
         scraper = NDCCStatutesScraper()
         rel = scraper.relative_output_path(self._section("16.1-08.1-03.15"))
         assert rel == Path(
-            "us-nd/statutes/ch-16.1-08.1/ch-16.1-08.1-sec-16.1-08.1-03.15.xml"
+            "us-nd/statutes/ch-16.1-08.1/ch-16.1-08.1-sec-16.1-08.1-03.15.txt"
         )

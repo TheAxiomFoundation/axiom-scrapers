@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_vt.statutes.scrape import (
     VSAStatutesScraper,
     VTSectionRef,
@@ -112,8 +112,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-vt",
             doc_type="statute",
             authority_code="V.S.A.",
@@ -130,9 +130,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = VSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("32-5811"))
-        assert rel == Path("us-vt/statutes/ch-32/ch-32-sec-32-5811.xml")
+        assert rel == Path("us-vt/statutes/ch-32/ch-32-sec-32-5811.txt")
 
     def test_alpha_title(self) -> None:
         scraper = VSAStatutesScraper()
         rel = scraper.relative_output_path(self._section("09A-101"))
-        assert rel == Path("us-vt/statutes/ch-09A/ch-09A-sec-09A-101.xml")
+        assert rel == Path("us-vt/statutes/ch-09A/ch-09A-sec-09A-101.txt")

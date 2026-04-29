@@ -21,7 +21,7 @@ import re
 from collections.abc import Iterable
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_paragraphs, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_paragraphs, clean_text, http_get
 
 BASE = "https://www.revisor.mo.gov"
 
@@ -78,14 +78,14 @@ class RSMoStatutesScraper(Scraper[str]):
                     continue
                 yield section
 
-    def parse_section(self, ref: str) -> Section | None:
+    def parse_section(self, ref: str) -> SourceSection | None:
         res = http_get(f"{BASE}/main/OneSection.aspx?section={ref}")
         if res is None:
             return None
         heading, body = parse_section_page(res.text(), ref)
         if not body:
             return None
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -99,14 +99,14 @@ class RSMoStatutesScraper(Scraper[str]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         chapter = section.work_number.split(".", 1)[0]
         safe_section = section.work_number.replace("/", "_")
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"ch-{chapter}-sec-{safe_section}.xml",
+            f"ch-{chapter}-sec-{safe_section}.txt",
         )
 
 
@@ -139,7 +139,7 @@ def parse_section_page(html: str, section: str) -> tuple[str, str]:
         if md:
             heading = clean_text(md.group("d")).rstrip(".")
 
-    # Body keeps paragraph breaks: each <p class="norm"> → <p> in AKN output.
+    # Body keeps paragraph breaks: each <p class="norm"> → <p> in source text output.
     body = clean_paragraphs(body_html).lstrip("—–-").strip()
     return (heading, body)
 

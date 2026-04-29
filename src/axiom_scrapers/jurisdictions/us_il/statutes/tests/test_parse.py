@@ -115,10 +115,10 @@ class TestILCSScraperConfig:
         assert scraper.workers == 8
 
     def test_output_path_nests_by_chapter(self, tmp_path: Path) -> None:
-        from axiom_scrapers._common.akn import Section
+        from axiom_scrapers._common.source_section import SourceSection
 
         scraper = ILCSStatutesScraper()
-        sec = Section(
+        sec = SourceSection(
             jurisdiction="us-il",
             doc_type="statute",
             authority_code="ILCS",
@@ -133,7 +133,7 @@ class TestILCSScraperConfig:
         )
         rel = scraper.relative_output_path(sec)
         # Chapter prefix ("35") becomes the intermediate dir.
-        assert rel == Path("us-il/statutes/ch-35/35-155-2.xml")
+        assert rel == Path("us-il/statutes/ch-35/35-155-2.txt")
 
 
 class TestCrawlLayer:

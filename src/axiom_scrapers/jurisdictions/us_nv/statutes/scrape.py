@@ -23,8 +23,8 @@ section starts with an anchor and is laid out like this::
 The chapter token can contain letters (``244``, ``244A``, ``360B``);
 the section number is always ``{chapter}.{nnn}`` where ``nnn`` may
 include letters, decimals, or dashes. :func:`_parse_sections` parses
-the full page into a list of :class:`Section` objects, splitting on the
-``<a name=NRS...Sec...>`` anchor boundaries.
+the full page into a list of :class:`SourceSection` objects, splitting
+on the ``<a name=NRS...Sec...>`` anchor boundaries.
 """
 
 from __future__ import annotations
@@ -40,10 +40,11 @@ from pathlib import Path
 from axiom_scrapers._common import (
     Scraper,
     ScrapeResult,
-    Section,
-    build_akn_xml,
+    SourceSection,
     clean_text,
     http_get,
+    render_source_metadata_yaml,
+    render_source_text,
 )
 
 BASE = "https://www.leg.state.nv.us/NRS"
@@ -80,7 +81,7 @@ _LEADLINE_SPAN = re.compile(
 
 # Source-history paragraphs — NRS uses ``SourceNote`` (not
 # ``SourceLine`` as some Word exports name it). These are citation
-# history, not body text, and must be stripped before emitting AKN.
+# history, not body text, and must be stripped before emitting source text.
 # The regex accepts both class names so we don't silently regress if
 # NV renames the class.
 _SOURCE_PARA = re.compile(
@@ -127,16 +128,16 @@ class NRSStatutesScraper(Scraper[tuple[str, str]]):
             chapter = _chapter_token(filename)
             yield (chapter, filename)
 
-    def parse_section(self, ref: tuple[str, str]) -> Section | None:
+    def parse_section(self, ref: tuple[str, str]) -> SourceSection | None:
         """Fetch one chapter page and return its *first* parsed section.
 
         .. warning::
            The :class:`Scraper` base class assumes one ``ref`` →
-           zero-or-one :class:`Section`, but NRS chapters contain
+           zero-or-one :class:`SourceSection`, but NRS chapters contain
            hundreds of sections per page. See :meth:`run` override.
         """
         # Single-section callers rarely hit this — the overridden
-        # :meth:`run` expands each chapter fetch into many Section
+        # :meth:`run` expands each chapter fetch into many SourceSection
         # objects directly. Kept for interface compliance.
         _chapter, filename = ref
         res = http_get(f"{BASE}/{filename}")
@@ -175,7 +176,7 @@ class NRSStatutesScraper(Scraper[tuple[str, str]]):
         total = len(refs)
         log(f"Scraping {total} chapters for {self.jurisdiction}/{self.doc_type}")
 
-        def _fetch_chapter(ref: tuple[str, str]) -> list[Section]:
+        def _fetch_chapter(ref: tuple[str, str]) -> list[SourceSection]:
             _chapter, filename = ref
             try:
                 res = http_get(f"{BASE}/{filename}")
@@ -194,9 +195,14 @@ class NRSStatutesScraper(Scraper[tuple[str, str]]):
             for fut in as_completed(futures):
                 sections = fut.result()
                 for sec in sections:
-                    dest = out_root / self.relative_output_path(sec)
-                    dest.parent.mkdir(parents=True, exist_ok=True)
-                    dest.write_text(build_akn_xml(sec), encoding="utf-8")
+                    text_dest = out_root / self.relative_output_path(sec)
+                    text_dest.parent.mkdir(parents=True, exist_ok=True)
+                    meta_dest = text_dest.with_suffix(".meta.yaml")
+                    text_dest.write_text(render_source_text(sec), encoding="utf-8")
+                    meta_dest.write_text(
+                        render_source_metadata_yaml(sec, text_path=text_dest.name),
+                        encoding="utf-8",
+                    )
                     written += 1
                 if not sections:
                     skipped += 1
@@ -212,10 +218,10 @@ class NRSStatutesScraper(Scraper[tuple[str, str]]):
         )
         return ScrapeResult(written=written, skipped=skipped, elapsed_seconds=elapsed)
 
-    def relative_output_path(self, section: Section) -> Path:
+    def relative_output_path(self, section: SourceSection) -> Path:
         """Nest by chapter so the tree stays browseable::
 
-        {jurisdiction}/{doc_type}/ch-{chapter}/{section}.xml
+        {jurisdiction}/{doc_type}/ch-{chapter}/{section}.txt
         """
         # work_number is ``{chapter}.{section}`` — first dot-separated
         # token is the chapter token (may include letters: ``244A``).
@@ -225,15 +231,15 @@ class NRSStatutesScraper(Scraper[tuple[str, str]]):
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{chapter}",
-            f"{safe_section}.xml",
+            f"{safe_section}.txt",
         )
 
 
 # --- Pure-function helpers (tested in isolation) -------------------------
 
 
-def _parse_sections(html: str, generation_date: date) -> list[Section]:
-    """Parse a full NRS chapter HTML page into :class:`Section` objects.
+def _parse_sections(html: str, generation_date: date) -> list[SourceSection]:
+    """Parse a full NRS chapter HTML page into :class:`SourceSection` objects.
 
     Parsing strategy
     ----------------
@@ -257,11 +263,11 @@ def _parse_sections(html: str, generation_date: date) -> list[Section]:
     """
     # Pre-normalize CRLF → LF. NV's Word HTML ships with CRLF and
     # ``clean_text``'s whitespace regex only collapses ``[ \t]``, so
-    # without this step carriage returns would leak into the AKN body.
+    # without this step carriage returns would leak into the source text.
     html = html.replace("\r\n", "\n").replace("\r", "\n")
 
     anchors = list(_SECTION_ANCHOR.finditer(html))
-    out: list[Section] = []
+    out: list[SourceSection] = []
     for i, m in enumerate(anchors):
         # ``m.group("chapter")`` / ``m.group("section")`` are the
         # anchor-derived tokens. The canonical section number from
@@ -299,7 +305,7 @@ def _parse_sections(html: str, generation_date: date) -> list[Section]:
             continue
 
         out.append(
-            Section(
+            SourceSection(
                 jurisdiction="us-nv",
                 doc_type="statute",
                 authority_code="NRS",

@@ -40,7 +40,7 @@ from collections.abc import Iterable
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common import Scraper, Section, clean_text, http_get
+from axiom_scrapers._common import Scraper, SourceSection, clean_text, http_get
 
 BASE = "https://iga.in.gov/ic"
 DEFAULT_YEAR = "2024"
@@ -117,7 +117,7 @@ class ICStatutesScraper(Scraper[tuple[str, str]]):
                 self._cache[ref] = (section_num, heading, body)
                 yield ref
 
-    def parse_section(self, ref: tuple[str, str]) -> Section | None:
+    def parse_section(self, ref: tuple[str, str]) -> SourceSection | None:
         cached = self._cache.get(ref)
         if cached is None:
             return None
@@ -131,7 +131,7 @@ class ICStatutesScraper(Scraper[tuple[str, str]]):
         else:
             filename_stem = div_id
         work_number = f"{title}-{filename_stem}".replace("/", "_")
-        return Section(
+        return SourceSection(
             jurisdiction=self.jurisdiction,
             doc_type=self.doc_type,
             authority_code=self.authority_code,
@@ -145,14 +145,14 @@ class ICStatutesScraper(Scraper[tuple[str, str]]):
             generation_date=self.generation_date,
         )
 
-    def relative_output_path(self, section: Section) -> Path:
-        """``us-in/statute/ch-{title}/ch-{title}-sec-{rest}.xml``."""
+    def relative_output_path(self, section: SourceSection) -> Path:
+        """``us-in/statute/ch-{title}/ch-{title}-sec-{rest}.txt``."""
         title, rest = section.work_number.split("-", 1)
         return Path(
             self.jurisdiction,
             self._doc_type_dir(),
             f"ch-{title}",
-            f"ch-{title}-sec-{rest}.xml",
+            f"ch-{title}-sec-{rest}.txt",
         )
 
 

@@ -47,7 +47,7 @@ class TestMain:
         """
         from datetime import date
 
-        from axiom_scrapers._common.akn import Section
+        from axiom_scrapers._common.source_section import SourceSection
 
         class StubScraper(Scraper[str]):
             jurisdiction = "us-stub"
@@ -60,8 +60,8 @@ class TestMain:
             def list_sections(self) -> list[str]:
                 return ["1.01"]
 
-            def parse_section(self, ref: str) -> Section | None:
-                return Section(
+            def parse_section(self, ref: str) -> SourceSection | None:
+                return SourceSection(
                     jurisdiction=self.jurisdiction,
                     doc_type=self.doc_type,
                     authority_code=self.authority_code,
@@ -102,4 +102,5 @@ class TestMain:
             ]
         )
         assert rc == 0
-        assert (tmp_path / "us-stub/statutes/1.01.xml").exists()
+        assert (tmp_path / "us-stub/statutes/1.01.txt").exists()
+        assert (tmp_path / "us-stub/statutes/1.01.meta.yaml").exists()

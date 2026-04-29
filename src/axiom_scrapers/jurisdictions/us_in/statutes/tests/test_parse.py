@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_in.statutes.scrape import (
     ICStatutesScraper,
     split_sections,
@@ -115,8 +115,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-in",
             doc_type="statute",
             authority_code="IC",
@@ -133,9 +133,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = ICStatutesScraper()
         rel = scraper.relative_output_path(self._section("2-1-1-1"))
-        assert rel == Path("us-in/statutes/ch-2/ch-2-sec-1-1-1.xml")
+        assert rel == Path("us-in/statutes/ch-2/ch-2-sec-1-1-1.txt")
 
     def test_version_suffix_kept_in_filename(self) -> None:
         scraper = ICStatutesScraper()
         rel = scraper.relative_output_path(self._section("6-1.1-12-10.1-b"))
-        assert rel == Path("us-in/statutes/ch-6/ch-6-sec-1.1-12-10.1-b.xml")
+        assert rel == Path("us-in/statutes/ch-6/ch-6-sec-1.1-12-10.1-b.txt")

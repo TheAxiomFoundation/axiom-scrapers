@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_de.statutes.scrape import (
     DelCodeStatutesScraper,
     DESectionRef,
@@ -144,8 +144,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-de",
             doc_type="statute",
             authority_code="Del. C.",
@@ -162,9 +162,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = DelCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-101"))
-        assert rel == Path("us-de/statutes/title-1/title-1-sec-101.xml")
+        assert rel == Path("us-de/statutes/title-1/title-1-sec-101.txt")
 
     def test_nests_for_title_31(self) -> None:
         scraper = DelCodeStatutesScraper()
         rel = scraper.relative_output_path(self._section("31-500"))
-        assert rel == Path("us-de/statutes/title-31/title-31-sec-500.xml")
+        assert rel == Path("us-de/statutes/title-31/title-31-sec-500.txt")

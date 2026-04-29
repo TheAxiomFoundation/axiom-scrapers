@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_az.statutes.scrape import (
     ARSStatutesScraper,
     extract_toc_urls,
@@ -138,8 +138,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-az",
             doc_type="statute",
             authority_code="ARS",
@@ -156,9 +156,9 @@ class TestOutputPath:
     def test_nests_by_title(self) -> None:
         scraper = ARSStatutesScraper()
         rel = scraper.relative_output_path(self._section("1-101"))
-        assert rel == Path("us-az/statutes/ch-1/ch-1-sec-1-101.xml")
+        assert rel == Path("us-az/statutes/ch-1/ch-1-sec-1-101.txt")
 
     def test_nests_for_two_digit_title(self) -> None:
         scraper = ARSStatutesScraper()
         rel = scraper.relative_output_path(self._section("43-1001"))
-        assert rel == Path("us-az/statutes/ch-43/ch-43-sec-43-1001.xml")
+        assert rel == Path("us-az/statutes/ch-43/ch-43-sec-43-1001.txt")

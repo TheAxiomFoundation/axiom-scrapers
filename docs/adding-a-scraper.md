@@ -162,7 +162,7 @@ uv run axiom-scrape --jurisdiction us-xx --doc-type statute --out ./out  # full
   and exhausted retries. Scrapers should just check and skip.
 * **Strip source footers.** Most state sites append "Source: P.A. xxx"
   or "History:" lines. Trim them before emitting so the body is clean.
-* **Pick a stable section identifier.** AKN's `FRBRnumber` value is the
-  primary key Axiom uses. Pick whatever's unique within the jurisdiction
-  — usually the state's canonical short cite (`1-339.1`, `244.010`,
-  `35-155-2`).
+* **Pick a stable section identifier.** `SourceSection.work_number` is the
+  source-side identifier Axiom uses to build citation paths. Pick whatever is
+  unique within the jurisdiction — usually the state's canonical short cite
+  (`1-339.1`, `244.010`, `35-155-2`).

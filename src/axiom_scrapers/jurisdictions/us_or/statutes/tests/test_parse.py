@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_or.statutes.scrape import (
     ORSStatutesScraper,
     _chapter_key,
@@ -127,8 +127,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-or",
             doc_type="statute",
             authority_code="ORS",
@@ -145,9 +145,9 @@ class TestOutputPath:
     def test_numeric_chapter(self) -> None:
         scraper = ORSStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.020"))
-        assert rel == Path("us-or/statutes/ch-1/ch-1-sec-1.020.xml")
+        assert rel == Path("us-or/statutes/ch-1/ch-1-sec-1.020.txt")
 
     def test_alpha_chapter(self) -> None:
         scraper = ORSStatutesScraper()
         rel = scraper.relative_output_path(self._section("285A.050"))
-        assert rel == Path("us-or/statutes/ch-285A/ch-285A-sec-285A.050.xml")
+        assert rel == Path("us-or/statutes/ch-285A/ch-285A-sec-285A.050.txt")

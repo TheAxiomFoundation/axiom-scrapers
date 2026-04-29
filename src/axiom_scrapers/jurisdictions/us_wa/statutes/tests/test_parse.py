@@ -5,7 +5,7 @@ from __future__ import annotations
 from datetime import date
 from pathlib import Path
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers.jurisdictions.us_wa.statutes.scrape import (
     RCWStatutesScraper,
     extract_chapter_tokens,
@@ -140,8 +140,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-wa",
             doc_type="statute",
             authority_code="RCW",
@@ -158,9 +158,9 @@ class TestOutputPath:
     def test_nests_by_chapter(self) -> None:
         scraper = RCWStatutesScraper()
         rel = scraper.relative_output_path(self._section("1.04.010"))
-        assert rel == Path("us-wa/statutes/ch-1.04/ch-1.04-sec-1.04.010.xml")
+        assert rel == Path("us-wa/statutes/ch-1.04/ch-1.04-sec-1.04.010.txt")
 
     def test_alpha_title(self) -> None:
         scraper = RCWStatutesScraper()
         rel = scraper.relative_output_path(self._section("9A.04.010"))
-        assert rel == Path("us-wa/statutes/ch-9A.04/ch-9A.04-sec-9A.04.010.xml")
+        assert rel == Path("us-wa/statutes/ch-9A.04/ch-9A.04-sec-9A.04.010.txt")

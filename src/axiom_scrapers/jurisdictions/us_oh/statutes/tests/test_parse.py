@@ -95,10 +95,10 @@ class TestRCScraperConfig:
         assert scraper.author_url == "https://codes.ohio.gov"
 
     def test_output_path_nests_by_chapter(self) -> None:
-        from axiom_scrapers._common.akn import Section
+        from axiom_scrapers._common.source_section import SourceSection
 
         scraper = RCStatutesScraper()
-        sec = Section(
+        sec = SourceSection(
             jurisdiction="us-oh",
             doc_type="statute",
             authority_code="RC",
@@ -113,14 +113,14 @@ class TestRCScraperConfig:
         )
         rel = scraper.relative_output_path(sec)
         # Chapter prefix ("5747") becomes the intermediate dir.
-        assert rel == Path("us-oh/statutes/ch-5747/5747.01.xml")
+        assert rel == Path("us-oh/statutes/ch-5747/5747.01.txt")
 
     def test_output_path_single_token_section(self) -> None:
         """A section number with no dot (rare but possible) still nests sensibly."""
-        from axiom_scrapers._common.akn import Section
+        from axiom_scrapers._common.source_section import SourceSection
 
         scraper = RCStatutesScraper()
-        sec = Section(
+        sec = SourceSection(
             jurisdiction="us-oh",
             doc_type="statute",
             authority_code="RC",
@@ -134,4 +134,4 @@ class TestRCScraperConfig:
             generation_date=date.today(),
         )
         rel = scraper.relative_output_path(sec)
-        assert rel == Path("us-oh/statutes/ch-1/1.xml")
+        assert rel == Path("us-oh/statutes/ch-1/1.txt")

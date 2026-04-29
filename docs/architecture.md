@@ -11,9 +11,9 @@
    fixtures. No network calls in CI.
 4. **Graceful decay.** Source sites change / go offline / rate-limit. Runs
    should skip dead sections, not crash.
-5. **Consumer-agnostic intermediate output.** We emit local Akoma Ntoso
-   3.0 XML for ingest. Axiom happens to be the first consumer; another
-   project could ingest from the same scratch tree.
+5. **Consumer-agnostic intermediate output.** We emit local source-section
+   text plus sidecar metadata for ingest. Axiom happens to be the first
+   consumer; another project could ingest from the same scratch tree.
 
 ## Layout
 
@@ -22,11 +22,11 @@ src/axiom_scrapers/
 ├── _common/                # Shared infrastructure
 │   ├── http.py             # http_get: retries, soft-fail, 429 backoff
 │   ├── text.py             # HTML → plain-text normalization
-│   ├── akn.py              # Section dataclass + build_akn_xml
+│   ├── source_section.py   # SourceSection dataclass + renderers
 │   └── base.py             # Scraper abstract base class
 ├── jurisdictions/
 │   └── {country}_{region}/
-│       └── {doc_type}/
+│       └── {doc_type_dir}/
 │           ├── scrape.py   # {State}{DocType}Scraper — subclasses Scraper
 │           └── tests/
 │               ├── test_parse.py
@@ -48,9 +48,8 @@ Directories use `{country}_{region}` with ISO 3166-style lowercase codes:
 * `uk_england` — England within the UK
 * `ca_on` — Ontario, Canada
 
-The corresponding AKN `FRBRcountry` value uses the dashed form `us-il`,
-which matches Axiom's `jurisdiction` column. Convert via
-`dir.replace("_", "-")`.
+Emitted metadata uses the dashed form `us-il`, which matches Axiom's
+`jurisdiction` column. Convert via `dir.replace("_", "-")`.
 
 ### Document types
 
@@ -77,7 +76,7 @@ its own tests.
 
 Directory names are plural (`statutes/`, `regulations/`) because they
 hold a collection of documents. The `doc_type` attribute on each
-`Scraper` subclass and on every emitted `Section` is singular
+`Scraper` subclass and on every emitted `SourceSection` is singular
 (`"statute"`, `"regulation"`) because it describes *one* document.
 The CLI's `--doc-type` flag and the `REGISTRY` key both use the
 singular form to match what Axiom stores per-section.
@@ -90,8 +89,8 @@ singular form to match what Axiom stores per-section.
 2. **Parse** — `parse_section(ref)` fetches + extracts one section's
    citation, heading, and body; returns `None` for repealed / missing /
    fetch-failed sections.
-3. **Emit** — the base class serializes the `Section` to AKN XML and
-   writes it under `out_root / relative_output_path(section)`.
+3. **Emit** — the base class writes `{section}.txt` and
+   `{section}.meta.yaml` under `out_root / relative_output_path(section)`.
 
 Parallelism, progress logging, soft-fail on exceptions — all in the
 base class. A new scraper is ~50-200 lines of state-specific regex.
@@ -114,8 +113,8 @@ base class. A new scraper is ~50-200 lines of state-specific regex.
 
 ## Output contract
 
-See [`output-format.md`](output-format.md) for the AKN 3.0 shape Axiom expects.
-Generated XML is a local intermediate, not a Git or R2 artifact.
+See [`output-format.md`](output-format.md) for the source-section shape Axiom
+expects. Generated output is a local intermediate, not a Git or R2 artifact.
 
 ## Adding a scraper
 

@@ -7,7 +7,7 @@ from pathlib import Path
 
 import pytest
 
-from axiom_scrapers._common.akn import Section
+from axiom_scrapers._common.source_section import SourceSection
 from axiom_scrapers._common.testing import install_fake_http
 from axiom_scrapers.jurisdictions.us_federal.rulemaking import scrape
 from axiom_scrapers.jurisdictions.us_federal.rulemaking.scrape import (
@@ -251,8 +251,8 @@ class TestScraperClass:
 
 
 class TestOutputPath:
-    def _section(self, work_number: str) -> Section:
-        return Section(
+    def _section(self, work_number: str) -> SourceSection:
+        return SourceSection(
             jurisdiction="us-federal",
             doc_type="rulemaking",
             authority_code="FR",
@@ -269,12 +269,12 @@ class TestOutputPath:
     def test_nests_by_year(self) -> None:
         scraper = FederalRegisterRulemakingScraper()
         rel = scraper.relative_output_path(self._section("2026-07681"))
-        assert rel == Path("us-federal/rulemaking/2026/2026-07681.xml")
+        assert rel == Path("us-federal/rulemaking/2026/2026-07681.txt")
 
     def test_old_document(self) -> None:
         scraper = FederalRegisterRulemakingScraper()
         rel = scraper.relative_output_path(self._section("1999-12345"))
-        assert rel == Path("us-federal/rulemaking/1999/1999-12345.xml")
+        assert rel == Path("us-federal/rulemaking/1999/1999-12345.txt")
 
 
 class TestCrawlLayer:
