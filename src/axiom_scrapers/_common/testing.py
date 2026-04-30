@@ -24,7 +24,7 @@ class FakeResponse:
 
     Only exposes :meth:`text` since that's all crawl-layer code ever
     calls on a fetch result. Accepts any ``fallback_encoding`` kwarg
-    for signature compatibility.
+    to match the fetch-result call shape.
     """
 
     def __init__(self, body: str) -> None:

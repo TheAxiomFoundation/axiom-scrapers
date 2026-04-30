@@ -2,14 +2,14 @@
 
 Source — ``wyoleg.gov`` (Folio/Rocket NXT CMS)
 ----------------------------------------------
-Wyoming publishes statutes through a legacy Folio/Rocket NXT site at
+Wyoming publishes statutes through an older Folio/Rocket NXT site at
 ``wyoleg.gov/NXT/gateway.dll``. The modern Angular SPA at the bare
 ``wyoleg.gov`` domain renders entirely client-side and exposes no
 statute API; the LSO Service JSON endpoint covers Bills/Calendar/etc.
 but not statutes; and Justia / FindLaw are blocked behind Cloudflare
 on most non-residential IPs. NXT is the only first-party path.
 
-Despite the legacy chrome, NXT exposes two clean stateless XHR
+Despite the older chrome, NXT exposes two clean stateless XHR
 endpoints that we can crawl with plain ``http_get`` (no cookies, no
 search session):
 
