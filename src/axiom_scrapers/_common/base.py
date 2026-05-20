@@ -28,7 +28,7 @@ from concurrent.futures import ThreadPoolExecutor, as_completed
 from dataclasses import dataclass
 from datetime import date
 from pathlib import Path
-from typing import Any, Generic, TypeVar
+from typing import Any, TypeVar
 
 from .source_section import (
     SourceSection,
@@ -54,7 +54,7 @@ class ScrapeResult:
         return self.written + self.skipped
 
 
-class Scraper(ABC, Generic[SectionRef]):
+class Scraper[SectionRef](ABC):
     """Abstract base class for a single-source scraper.
 
     Subclasses typically configure the class-level constants
